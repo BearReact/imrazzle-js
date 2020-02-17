@@ -1,17 +1,17 @@
-import App from './App';
+import App from '../App';
 import {BrowserRouter} from 'react-router-dom';
 import React, {useState} from 'react';
 import { hydrate } from 'react-dom';
 import {IntlProvider} from "react-intl";
 import get from 'loadsh/get'
-import en from './i18n/en.js';
-import zh from './i18n/zh.js';
-import {LocaleProvider} from './middleware/locale/LocaleContext';
-import {preloadLocale, preloadState} from './types';
+import en from '../i18n/en.js';
+import zh from '../i18n/zh.js';
+import {LocaleProvider} from '../middleware/locale/LocaleContext';
+import {preloadLocale, preloadState} from '../types';
 import {Provider} from 'react-redux';
-import configureStore from './library/redux/configureStore';
+import configureStore from '../library/redux/configureStore';
 import { ConnectedRouter } from 'connected-react-router';
-import history from './library/react-router/history';
+import history from '../library/react-router/history';
 
 
 if (!Intl.PluralRules) {

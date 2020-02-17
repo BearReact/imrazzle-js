@@ -18,7 +18,7 @@ if (module.hot) {
   console.log('✅  Server-side HMR Enabled!');
 
   module.hot.accept('./server', () => {
-    console.log('🔁  HMR Reloading `./server`...');
+    console.log('🔁  HMR Reloading `../server`...');
 
     try {
       app = require('./server').default;
