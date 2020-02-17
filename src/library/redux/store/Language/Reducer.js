@@ -9,7 +9,7 @@ const PREFIX = 'language';
  Initial State
  /** ---------------------------------------*/
 export const INITIAL_STATE = Immutable({
-    locale: 'en',
+    locale: 'en-US',
 });
 
 /** -----------------------------------------

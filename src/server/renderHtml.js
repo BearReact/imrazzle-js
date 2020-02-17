@@ -6,11 +6,15 @@ import {ServerStyleSheet} from "styled-components";
 import {renderToString} from "react-dom/server";
 import {IntlProvider} from "react-intl";
 import serialize from "serialize-javascript";
+import configureStore from '../library/redux/configureStore';
+import { Provider } from 'react-redux';
+import LanguageProvider from '../library/intl/provider';
+import {translationMessages} from '../library/intl/i18n';
 
 import App from '../App';
-import zh from "../i18n/zh";
-import en from "../i18n/en";
-import {preloadLocale} from '../types';
+// import zh from "../i18n/zh";
+// import en from "../i18n/en";
+import {PRELOAD_LOCALE, PRELOAD_STATE} from '../types';
 
 const assets = require(process.env.RAZZLE_ASSETS_MANIFEST);
 
@@ -24,28 +28,20 @@ export default (req, res) => {
     require('@formatjs/intl-pluralrules/dist/locale-data/en'); // Add locale data for de
     require('@formatjs/intl-pluralrules/dist/locale-data/zh'); // Add locale data for de
 
-    let messages;
-    const locale = get(req, `universalCookies.cookies.${preloadLocale}`, 'zh-CN');
+    // const locale = get(req, `universalCookies.cookies.${PRELOAD_LOCALE}`, 'zh-CN');
+    const preloadState = get(req, `universalCookies.cookies.${PRELOAD_STATE}`, {});
 
-    if (locale === 'en') {
-        messages = en;
-    } else {
-        messages = zh;
-    }
-
+    const store = configureStore(JSON.parse(preloadState));
 
     const markup = renderToString(
         sheet.collectStyles(
-            <IntlProvider
-                locale={locale}
-                key={locale}
-                defaultLocale={locale}
-                messages={messages}
-            >
-                <StaticRouter context={context} location={req.url} basename="/ap-main">
-                    <App/>
-                </StaticRouter>
-            </IntlProvider>
+            <Provider store={store}>
+                <LanguageProvider messages={translationMessages}>
+                    <StaticRouter context={context} location={req.url} basename="/ap-main">
+                        <App/>
+                    </StaticRouter>
+                </LanguageProvider>
+            </Provider>
         )
     );
     const styledComponentTags = sheet.getStyleTags();
@@ -81,7 +77,7 @@ export default (req, res) => {
 
         
         <script>
-            window.${preloadLocale} = ${serialize(locale)};
+            window.${PRELOAD_STATE} = ${serialize(preloadState)};
         </script>
         ${
                     process.env.NODE_ENV === 'production'

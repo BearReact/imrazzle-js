@@ -8,8 +8,8 @@ import {connectRouter} from 'connected-react-router';
 // import reduxPersist from './config/reduxPersist';
 
 
-import {reducer as languageProviderReducer} from '../intl/store/Reducer';
-import history from '../react-router/history';
+// import {reducer as languageProviderReducer} from '../intl/store/Reducer';
+// import history from '../react-router/history';
 import rootReducers from './store/rootReducers';
 
 /**
@@ -17,8 +17,8 @@ import rootReducers from './store/rootReducers';
  */
 export default function createReducer(injectedReducers = {}) {
     const appReducer = combineReducers({
-        language: languageProviderReducer,
-        router: connectRouter(history),
+        // language: languageProviderReducer,
+        // router: connectRouter(history),
         ...rootReducers,
         // ...injectedReducers,
     });

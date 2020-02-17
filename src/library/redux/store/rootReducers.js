@@ -5,6 +5,7 @@
  /** ---------------------------------------*/
 const rootReducers = {
 
+    language: require('./Language/Reducer').reducer,
     ui: require('./Ui/Reducer').reducer,
 
 };

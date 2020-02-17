@@ -8,7 +8,7 @@ import {LocaleConsumer} from '../../middleware/locale/LocaleContext';
 class Home extends React.Component {
   render() {
 
-    const {setLocale} = this.props;
+    const {changeLocale} = this.props;
 
     return (
       <div className="Home">
@@ -34,15 +34,12 @@ class Home extends React.Component {
 
           <div>
 
-              <LocaleConsumer>
-                  {localeProps => (
-                      <>
-                          <button onClick={() => localeProps.setLocale('en')}>英文</button>
-                          <button onClick={() => localeProps.setLocale('zh')}>中文</button>
-                      </>
-                  )}
 
-              </LocaleConsumer>
+              <>
+                  <button onClick={() => changeLocale('en-US')}>英文1</button>
+                  <button onClick={() => changeLocale('zh-CN')}>中文1</button>
+              </>
+
 
           </div>
           <a

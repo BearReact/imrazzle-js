@@ -23,6 +23,7 @@ const TranslationWrapper = ({ dangerouslySetInnerHTML, ...props }) =>
 export class LanguageProvider extends React.PureComponent {
     // eslint-disable-line react/prefer-stateless-function
     render() {
+
         return (
             <IntlProvider
                 locale={this.props.locale}
