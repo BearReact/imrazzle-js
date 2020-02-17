@@ -7,7 +7,12 @@ import get from 'loadsh/get'
 import en from './i18n/en.js';
 import zh from './i18n/zh.js';
 import {LocaleProvider} from './middleware/locale/LocaleContext';
-import {preloadLocale} from './types';
+import {preloadLocale, preloadState} from './types';
+import {Provider} from 'react-redux';
+import configureStore from './library/redux/configureStore';
+import { ConnectedRouter } from 'connected-react-router';
+import history from './library/react-router/history';
+
 
 if (!Intl.PluralRules) {
     require('@formatjs/intl-pluralrules/polyfill');
@@ -21,6 +26,7 @@ if (!Intl.RelativeTimeFormat) {
     require('@formatjs/intl-relativetimeformat/dist/locale-data/zh'); // Add locale data for de
 }
 
+const store = configureStore(get(window, preloadState));
 
 
 const Root = () => {
@@ -40,6 +46,7 @@ const Root = () => {
 
 
     return (
+        <Provider store={store}>
             <LocaleProvider
                 locale={locale}
                 setLocale={setLocale}
@@ -50,11 +57,14 @@ const Root = () => {
                     defaultLocale="en"
                     messages={messages}
                 >
-                        <BrowserRouter basename="/ap-main">
+                    <ConnectedRouter history={history}>
+                        {/*<BrowserRouter basename="/ap-main">*/}
                             <App setLocale={setLocale}/>
-                        </BrowserRouter>
+                        {/*</BrowserRouter>*/}
+                    </ConnectedRouter>
                 </IntlProvider>
             </LocaleProvider>
+        </Provider>
     );
 
 };
