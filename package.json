@@ -9,12 +9,20 @@
     "start:prod": "NODE_ENV=production node build/server.js"
   },
   "dependencies": {
-    "connected-react-router": "^6.7.0",
+    "@formatjs/intl-pluralrules": "^1.5.2",
+    "@formatjs/intl-relativetimeformat": "^4.5.9",
+    "connected-react-router": "6",
+    "cookie-parser": "^1.4.4",
     "express": "^4.17.1",
     "history": "^4.10.1",
+    "loadsh": "^0.0.4",
     "razzle": "3.0.0",
     "react": "^16.12.0",
+    "react-cookie": "^4.0.3",
     "react-dom": "^16.12.0",
-    "react-router-dom": "^5.1.2"
+    "react-intl": "^3.12.0",
+    "react-router-dom": "^5.1.2",
+    "serialize-javascript": "^3.0.0",
+    "universal-cookie-express": "^4.0.3"
   }
 }
