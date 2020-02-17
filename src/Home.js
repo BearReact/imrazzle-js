@@ -1,5 +1,6 @@
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
+import styled from 'styled-components';
 import {LocaleConsumer} from './middleware/locale/LocaleContext';
 
 import logo from './react.svg';
@@ -53,6 +54,7 @@ class Home extends React.Component {
           >
               Learn React
           </a>
+          <BackButton>TEST 123 Styled</BackButton>
           <FormattedMessage id="app.learn" values={{ name: 'React' }} />
       </div>
     );
@@ -60,3 +62,10 @@ class Home extends React.Component {
 }
 
 export default Home;
+
+
+const BackButton = styled.div`
+    background-color:red;
+    font-size: 12px;
+    color: #fff;
+`;

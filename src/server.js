@@ -7,6 +7,8 @@ import { renderToString } from 'react-dom/server';
 import {IntlProvider} from "react-intl";
 import serialize from 'serialize-javascript'; // Safer stringify, prevents XSS attacks
 // import { runtimeConfig } from './config';
+import { ServerStyleSheet } from 'styled-components';
+
 import {preloadLocale} from './types';
 
 // import cookieParser from 'cookie-parser';
@@ -33,6 +35,8 @@ server
   .get('/*', (req, res) => {
     const context = {};
 
+      const sheet = new ServerStyleSheet();
+
       require('@formatjs/intl-pluralrules/dist/locale-data/en'); // Add locale data for de
       require('@formatjs/intl-pluralrules/dist/locale-data/zh'); // Add locale data for de
 
@@ -47,19 +51,23 @@ server
 
 
       const markup = renderToString(
-        <IntlProvider
-            locale={locale}
-            key={locale}
-            defaultLocale={locale}
-            messages={messages}
-        >
-           <StaticRouter context={context} location={req.url} basename="/ap-main">
-                <App />
-           </StaticRouter>
-        </IntlProvider>
+          sheet.collectStyles(
+            <IntlProvider
+                locale={locale}
+                key={locale}
+                defaultLocale={locale}
+                messages={messages}
+            >
+               <StaticRouter context={context} location={req.url} basename="/ap-main">
+                    <App />
+               </StaticRouter>
+            </IntlProvider>
+          )
     );
+    const styleTags = sheet.getStyleTags();
 
-    if (context.url) {
+
+      if (context.url) {
       res.redirect(context.url);
     } else {
       res.status(200)
@@ -87,6 +95,8 @@ server
             ? `<script src="${assets.client.js}" defer></script>`
             : `<script src="${assets.client.js}" defer crossorigin></script>`
         }
+        
+        ${styleTags}
     </head>
     <body>
         <div id="root">${markup}</div>
