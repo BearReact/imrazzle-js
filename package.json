@@ -3,10 +3,11 @@
   "version": "0.1.0",
   "license": "MIT",
   "scripts": {
-    "start": "razzle start",
+    "dev": "razzle start",
     "build": "razzle build",
     "test": "razzle test --env=jsdom",
-    "start:prod": "NODE_ENV=production node build/server.js"
+    "start": "NODE_ENV=production node build/server.js",
+    "test:prod": "yarn build && yarn start"
   },
   "dependencies": {
     "@formatjs/intl-pluralrules": "^1.5.2",
@@ -32,6 +33,11 @@
     "serialize-javascript": "^3.0.0",
     "styled-components": "5.0.1",
     "universal-cookie": "^4.0.3",
-    "universal-cookie-express": "^4.0.3"
+    "universal-cookie-express": "^4.0.3",
+    "babel-plugin-styled-components": "1.10.7"
+  },
+  "devDependencies": {
+    "babel-plugin-transform-flow-strip-types": "6.22.0",
+    "flow-bin": "0.118.0"
   }
 }
