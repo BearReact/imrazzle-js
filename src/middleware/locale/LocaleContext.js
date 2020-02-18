@@ -1,17 +1,17 @@
 import * as React from 'react';
 import { useCookies } from 'react-cookie';
-import {preloadLocale} from '../../types';
+import {PRELOAD_LOCALE} from '../../types';
 
 const LocaleContext = React.createContext();
 
 
 const LocaleProvider = props => {
     const {children, locale, setLocale} = props;
-    const [cookies, setCookie] = useCookies([preloadLocale]);
+    const [cookies, setCookie] = useCookies([PRELOAD_LOCALE]);
 
     const handleSyncCookie = locale => {
 
-        setCookie(preloadLocale, locale, {path: '/'});
+        setCookie(PRELOAD_LOCALE, locale, {path: '/'});
         setLocale(locale);
     };
 

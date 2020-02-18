@@ -1,20 +1,19 @@
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import styled from 'styled-components';
-import {LocaleConsumer} from './middleware/locale/LocaleContext';
+import {LocaleConsumer} from '../../middleware/locale/LocaleContext';
 
-import logo from './react.svg';
-import './Home.css';
+// import logo from './react.svg';
 
 class Home extends React.Component {
   render() {
 
-    const {setLocale} = this.props;
+    const {changeLocale} = this.props;
 
     return (
       <div className="Home">
         <div className="Home-header">
-          <img src={logo} className="Home-logo" alt="logo" />
+          <img src="/react.svg" className="Home-logo" alt="logo" />
           <h2>Welcome to Razzle</h2>
         </div>
         <p className="Home-intro">
@@ -35,15 +34,12 @@ class Home extends React.Component {
 
           <div>
 
-              <LocaleConsumer>
-                  {localeProps => (
-                      <>
-                          <button onClick={() => localeProps.setLocale('en')}>英文</button>
-                          <button onClick={() => localeProps.setLocale('zh')}>中文</button>
-                      </>
-                  )}
 
-              </LocaleConsumer>
+              <>
+                  <button onClick={() => changeLocale('en-US')}>英文1</button>
+                  <button onClick={() => changeLocale('zh-CN')}>中文1</button>
+              </>
+
 
           </div>
           <a
