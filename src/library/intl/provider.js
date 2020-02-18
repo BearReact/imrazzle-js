@@ -13,6 +13,19 @@ import {connect} from 'react-redux';
 import {IntlProvider} from 'react-intl';
 
 
+if (!Intl.PluralRules) {
+    require('@formatjs/intl-pluralrules/polyfill');
+    require('@formatjs/intl-pluralrules/dist/locale-data/en'); // Add locale data for de
+    require('@formatjs/intl-pluralrules/dist/locale-data/zh'); // Add locale data for de
+}
+
+if (!Intl.RelativeTimeFormat) {
+    require('@formatjs/intl-relativetimeformat/polyfill');
+    require('@formatjs/intl-relativetimeformat/dist/locale-data/en'); // Add locale data for de
+    require('@formatjs/intl-relativetimeformat/dist/locale-data/zh'); // Add locale data for de
+}
+
+
 const TranslationWrapper = ({ dangerouslySetInnerHTML, ...props }) =>
     dangerouslySetInnerHTML ? (
         <span dangerouslySetInnerHTML={dangerouslySetInnerHTML} {...props} />
@@ -30,6 +43,7 @@ export class LanguageProvider extends React.PureComponent {
                 key={this.props.locale}
                 messages={this.props.messages[this.props.locale]}
                 textComponent={TranslationWrapper}
+                defaultLocale="en-US"
             >
                     {React.Children.only(this.props.children)}
             </IntlProvider>
