@@ -11,6 +11,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {IntlProvider} from 'react-intl';
+import IntlGlobalProvider from './global';
 
 
 if (!Intl.PluralRules) {
@@ -45,7 +46,9 @@ export class LanguageProvider extends React.PureComponent {
                 textComponent={TranslationWrapper}
                 defaultLocale="en-US"
             >
+                <IntlGlobalProvider>
                     {React.Children.only(this.props.children)}
+                </IntlGlobalProvider>
             </IntlProvider>
         );
     }

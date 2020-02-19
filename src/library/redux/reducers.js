@@ -3,13 +3,6 @@
  */
 
 import {combineReducers} from 'redux';
-import {connectRouter} from 'connected-react-router';
-// import {persistReducer} from 'redux-persist';
-// import reduxPersist from './config/reduxPersist';
-
-
-// import {reducer as languageProviderReducer} from '../intl/store/Reducer';
-// import history from '../react-router/history';
 import rootReducers from './store/rootReducers';
 
 /**
@@ -17,10 +10,8 @@ import rootReducers from './store/rootReducers';
  */
 export default function createReducer(injectedReducers = {}) {
     const appReducer = combineReducers({
-        // language: languageProviderReducer,
-        // router: connectRouter(history),
         ...rootReducers,
-        // ...injectedReducers,
+        ...injectedReducers,
     });
 
     // 重設APP Redux Store
@@ -33,12 +24,5 @@ export default function createReducer(injectedReducers = {}) {
         return appReducer(state, action);
     };
 
-    // Wrap the root reducer and return a new root reducer with router state
-    // const mergeWithRouterState = connectRouter(history);
-    // let finalReducers = mergeWithRouterState(rootReducer);
-    let finalReducers = rootReducer;
-
-
-
-    return finalReducers;
+    return rootReducer;
 }

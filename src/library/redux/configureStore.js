@@ -39,31 +39,38 @@ export default function configureStore(preloadState = {}, history = null) {
 
     const store = createStore(createReducer(), preloadState, composeEnhancers(...enhancers));
 
-    // const startup = () => store.dispatch(StartupActions.checking());
-    // configure persistStore and check reducer version number
 
-    // // Extensions
-    store.runSaga = sagaMiddleware.run;
-    store.runSaga(rootSaga);
-    //
-    // /* injected (若需要開啟使用再打開) */
-    // store.injectedReducers = {}; // Reducer registry
-    // store.injectedSagas = {}; // Saga registry
-    //
-    // // Make reducers hot reloadable, see http://mxs.is/googmo
-    // /* istanbul ignore next */
-    // if (module.hot) {
-    //     module.hot.accept('./reducers', () => {
-    //         store.replaceReducer(createReducer(store.injectedReducers));
-    //     });
-    // }
-    //
-    // createApiService(store, appConfig.apiOption);
-    // if (reduxPersist.active) {
-    //     Rehydration.updateReducers(store, startup);
-    // }else{
-    //     startup();
-    // }
+    // Create an object for any later reducers
+    store.asyncReducers = {};
+    store.asyncSagas = {};
+
+    // Create an inject reducer function
+    // This function adds the async reducer, and creates a new combined reducer
+    store.injectReducer = (key, asyncReducer) => {
+        store.asyncReducers[key] = asyncReducer;
+        store.replaceReducer(createReducer(store.asyncReducers));
+        return store;
+    };
+
+    // install Saga
+    store.sagaTask = sagaMiddleware.run(rootSaga);
+
+    // runSaga is middleware.run function
+    // rootSaga is a your root saga for static saagas
+    store.injectSaga = (key, saga) => {
+        // Create a dictionary to keep track of injected sagas
+        const isInjected = checkKey => typeof store.asyncSagas[checkKey] !== 'undefined';
+
+        // We won't run saga if it is already injected
+        if (isInjected(key)) return;
+
+        // Sagas return task when they executed, which can be used
+        // to cancel them
+        sagaMiddleware.run(saga);
+
+        // Save the task if we want to cancel it in the future
+        store.asyncSagas[key] = key;
+    };
 
     return store;
 }

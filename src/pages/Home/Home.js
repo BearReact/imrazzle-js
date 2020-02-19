@@ -1,7 +1,6 @@
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import styled from 'styled-components';
-import {LocaleConsumer} from '../../middleware/locale/LocaleContext';
 
 // import logo from './react.svg';
 

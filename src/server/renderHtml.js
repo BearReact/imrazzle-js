@@ -64,11 +64,10 @@ export default (req, res) => {
         <meta http-equiv="X-UA-Compatible" content="IE=chrome,chrome=1" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
         
-        <link rel="stylesheet" href="/bootstrap.min.css">
-        <link rel="stylesheet" href="/dist.css">
-
-        ${
-            assets.client.css
+        <link rel="stylesheet" href="/bootstrap.min.css" />
+        <link rel="stylesheet" href="/dist.css" />
+        
+        ${assets.client.css
                 ? `<link rel="stylesheet" href="${assets.client.css}">`
                 : ''
         }
@@ -76,15 +75,12 @@ export default (req, res) => {
        ${styledComponentTags}
 
         
-        <script>
-            window.${PRELOAD_STATE} = ${serialize(preloadState)};
-        </script>
+        <script>window.${PRELOAD_STATE} = ${serialize(preloadState)};</script>
         ${
                     process.env.NODE_ENV === 'production'
                         ? `<script src="${assets.client.js}" defer></script>`
                         : `<script src="${assets.client.js}" defer crossorigin></script>`
                 }
-        
     </head>
     <body>
         <div id="root">${markup}</div>
