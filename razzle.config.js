@@ -12,6 +12,18 @@ module.exports = {
             appConfig.output.filename = 'server.js';
         }
 
+        // switch (target){
+        //     case 'web':
+        //         // if(dev) config.devServer.public = 'localhost:3000';
+        //
+        //         break;
+        //     case 'node':
+        //         if(!dev) appConfig.output.filename = '/server/index.js';
+        //
+        //         break;
+        // }
+
+
         appConfig.resolve.alias = aliasConfig.resolve.alias;
 
         return appConfig;

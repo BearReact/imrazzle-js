@@ -1,0 +1,10 @@
+{
+    "statusType": "success",
+    "statusCode": null,
+    "message": null,
+    "formMessage": null,
+    "data": {
+        "isHasNotRead": true
+    },
+    "newMemberToken": null
+}

@@ -1,0 +1,28 @@
+{
+    "statusType": "success",
+    "statusCode": null,
+    "message": null,
+    "formMessage": null,
+    "data": {
+        "rows": [
+            {
+                "code": "1",
+                "name": "真人娱乐"
+            },
+            {
+                "code": "2",
+                "name": "体育博彩"
+            },
+            {
+                "code": "3",
+                "name": "电子游戏"
+            },
+            {
+                "code": "4",
+                "name": "彩票乐透"
+            }
+        ],
+        "pageTotal": null
+    },
+    "newMemberToken": null
+}

@@ -6,8 +6,6 @@ import get from 'loadsh/get'
 import {PRELOAD_STATE} from '../types';
 import {Provider} from 'react-redux';
 import configureStore from '../library/redux/configureStore';
-// import { ConnectedRouter } from 'connected-react-router';
-// import history from '../library/react-router/history';
 import LanguageProvider from "../library/intl/provider";
 import {translationMessages} from '../library/intl/i18n';
 import Immutable from 'seamless-immutable';

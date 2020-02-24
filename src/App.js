@@ -1,24 +1,26 @@
 import React from 'react';
-import {Route,Switch, Link} from 'react-router-dom';
+import { ThemeProvider } from 'styled-components';
+import { GridThemeProvider } from "styled-bootstrap-grid";
+import ScrollToTop from "@library/react-router/ScrollToTop";
+import gridConfig from '@config/grid';
+import getConfig from "@config/utils/getConfig";
 
-import Home from './pages/Home';
-import About from './pages/About';
-import News from './pages/News/List';
-import BlockTitle from "@components/atoms/BlockTitle";
+import RootRouter from "./pages/RootRouter";
 
-
-const App = () => (
-    <>
-          <Switch>
-            <Route exact path="/" component={Home} />
-            <Route exact path="/about" component={About} />
-            <Route exact path="/news" component={News} />
-          </Switch>
-
-          <Link to="/">GO HOME</Link><br/>
-          <Link to="/about">GO ABOUT</Link>
-          <Link to="/news">GO NEWS</Link>
-    </>
-);
+const App = () => {
+    return (
+        <ThemeProvider
+            theme={getConfig('theme')}
+        >
+            <GridThemeProvider
+                gridTheme={gridConfig}
+            >
+                <ScrollToTop>
+                    <RootRouter/>
+                </ScrollToTop>
+            </GridThemeProvider>
+        </ThemeProvider>
+    );
+};
 
 export default App;

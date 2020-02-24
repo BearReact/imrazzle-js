@@ -61,3 +61,23 @@ export function isIp(ip) {
     }
     return false;
 }
+
+
+
+
+/**
+ * 判斷是否為JSON
+ * @param json string
+ * @returns {boolean}
+ */
+export function isJSON(string) {
+    try {
+        const obj = JSON.parse(string);
+        if (obj && typeof obj === 'object' && obj !== null) {
+            return true;
+        }
+    } catch (err) {}
+    return false;
+}
+
+

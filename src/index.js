@@ -20,6 +20,8 @@ if (module.hot) {
   module.hot.accept('./server', () => {
     console.log('🔁  HMR Reloading `../server`...');
 
+    global.test22 = 'test';
+
     try {
       app = require('./server').default;
       server.removeListener('request', currentApp);

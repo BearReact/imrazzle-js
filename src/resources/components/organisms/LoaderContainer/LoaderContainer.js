@@ -1,11 +1,11 @@
 // @flow
 
 import * as React from 'react';
-import {px2vw} from '@utils/format';
+import px2vw from '@config/utils/getPx2vw';
+import {media} from "styled-bootstrap-grid";
 import styled,{css} from 'styled-components';
-import screen from '@themes/Screen';
-
-import Rolling from './Rolling';
+import { HalfCircleSpinner } from 'react-epic-spinners'
+import getConfig from "@config/utils/getConfig";
 
 type Props = {
     style?: React.CSSProperties,
@@ -19,37 +19,36 @@ type Props = {
     isHasPanel?: boolean,
 };
 
-const Loader = (props: Props) => {
-    const {className, style, children, isLoading, size, backgroundColor, isFullMaskBody, isHasPanel, rollingAlign} = props;
+const LoaderContainer = (props: Props) => {
+    const {className, style, children, isLoading, size, isFullMaskBody, isHasPanel, rollingAlign} = props;
     const isShowMask = (rollingAlign==='full' || rollingAlign==='area');
     return (
-        <LoaderContainer className={className} style={style} isFullSize={rollingAlign==='full'}>
+        <LoaderSelection className={className} style={style} isFullSize={rollingAlign==='full'}>
             {isShowMask && (
-                <Mask isLoading={isLoading} isFullSize={rollingAlign==='full'} isHasPanel={isHasPanel} backgroundColor={backgroundColor}>
+                <Mask isLoading={isLoading} isFullSize={rollingAlign==='full'} isHasPanel={isHasPanel}>
                     <MaskBody isFullMaskBody={isFullMaskBody}>
-                        <Rolling size={size}/>
+                        <HalfCircleSpinner size={size} color={getConfig('theme.primaryColor')}/>
                     </MaskBody>
                 </Mask>
             )}
 
             {children}
-        </LoaderContainer>
+        </LoaderSelection>
     );
 };
 
-Loader.defaultProps = {
+LoaderContainer.defaultProps = {
     style: undefined,
     className: undefined,
     children: null,
     isLoading: false,
     size: 30,
-    backgroundColor: siteConfig.theme.loaderMask,
     isFullMaskBody: false,
     isHasPanel: false,
     rollingAlign: 'full',
 };
 
-export default Loader;
+export default LoaderContainer;
 
 const MaskBody = styled.div`
     display: inherit;
@@ -64,7 +63,7 @@ const MaskBody = styled.div`
 `;
 
 const Mask = styled.div`
-    background-color: ${props => props.backgroundColor};
+    background-color: ${props => props.theme.loaderMaskColor};
     width: 100%;
     height: 100%;
     display: ${props => (props.isLoading ? 'flex' : 'none')};
@@ -76,17 +75,17 @@ const Mask = styled.div`
     align-items: ${props => props.isFullSize ? 'center' : 'flex-start'};
     padding: ${props => props.isFullSize ? 0 : px2vw(50)};
     
-     @media ${screen.lg} {
+     ${media.lg`
        padding: ${props => props.isFullSize ? 0 : '50px'};
        justify-content: ${props => props.isFullSize ? 'flex-start' : 'center'};
        
        ${props => props.isHasPanel && css`
             padding-left: 270px;
        `};
-    };
+    `};
 `;
 
-const LoaderContainer = styled.div`
+const LoaderSelection = styled.div`
     position: relative;
     
     ${props=> props.isFullSize && css`

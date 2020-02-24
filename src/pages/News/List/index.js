@@ -2,9 +2,9 @@ import {connect} from 'react-redux';
 import {injectIntl} from 'react-intl';
 import {compose} from 'redux';
 
-import List from './List';
-import {action as PageAction, reducer, saga} from '../store';
 import injectReducerSaga from '@library/redux/injectReducerSaga';
+import {action as PageAction, reducer, saga} from '../store';
+import List from './List';
 
 
 const mapDispatchToProps = {

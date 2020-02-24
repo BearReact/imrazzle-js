@@ -1,0 +1,17 @@
+*, html, body{font-family: 'Roboto', 'Microsoft YaHei', 'Microsoft JhengHei'; outline: none; touch-action: manipulation;}
+html{height: 100vh;}
+body{margin: 0;padding: 0; height: inherit;}
+#root{height: inherit;}
+a{color: #000;cursor: pointer; text-decoration:none;}
+a:hover{text-decoration:none;}
+button{outline: none;}
+button:hover{outline: none;}
+ul{list-style-type: none;margin: 0;padding: 0;}
+
+input:-webkit-autofill, input:-webkit-autofill:hover, input:-webkit-autofill:active {
+     -webkit-animation-name: autofill;
+     -webkit-animation-fill-mode: both;
+     transition: background-color 5000s ease-in-out 0s;
+}
+/* 修復 chrome auto輸入之後的樣式 */
+@-webkit-keyframes autofill { to {background: none;} }

@@ -1,14 +1,30 @@
 import React from 'react';
 import express from 'express';
+import get from 'lodash/get';
+import cookiesMiddleware from 'universal-cookie-express';
+import {isEmpty} from "@utils/equal";
 import renderHtml from './renderHtml';
+// import {version} from "../../package";
 
-const cookiesMiddleware = require('universal-cookie-express');
+
+const isDev = get(process, 'env.NODE_ENV', 'production') !== 'production';
 
 const server = express();
-server
-    .disable('x-powered-by')
-    .use(cookiesMiddleware())
-    .use(express.static(process.env.RAZZLE_PUBLIC_DIR))
-    .get('/*', renderHtml);
+
+server.disable('x-powered-by');
+server.use(cookiesMiddleware());
+server.use(express.static(process.env.RAZZLE_PUBLIC_DIR));
+
+
+if(isDev){
+    const reverseProxyList = require('./middleware/reverseProxyList').default;
+    if(!isEmpty(reverseProxyList)){
+        reverseProxyList.map(proxy => {
+            server.use(proxy);
+        })
+    }
+}
+
+server.get('/*', renderHtml);
 
 export default server;

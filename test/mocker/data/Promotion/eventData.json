@@ -1,0 +1,172 @@
+{
+    "statusType": "success",
+    "statusCode": null,
+    "message": null,
+    "formMessage": null,
+    "data": {
+        "rows": [
+            {
+                "id": 1129201814133366,
+                "title": "VIP尊荣会员活动",
+                "promotionStartTime": "2018-11-29 00:00:02",
+                "promotionEndTime": "2019-12-31 23:59:59",
+                "thumbUrl": "/sample/images/promotion/sample-1.jpg",
+                "isNew": false,
+                "categoryId": 43,
+                "detailUrl": "https://www.winbet688.com/M_Promotion/Detail?ReceptionId=1129201814133366&CategoryId=43&app=1&language=zh-CN"
+            },
+            {
+                "id": 1129201814133366,
+                "title": "VIP尊荣会员活动",
+                "promotionStartTime": "2018-11-29 00:00:02",
+                "promotionEndTime": "2019-12-31 23:59:59",
+                "thumbUrl": "/sample/images/promotion/sample-2.jpg",
+                "isNew": false,
+                "categoryId": 64,
+                "detailUrl": "https://www.winbet688.com/M_Promotion/Detail?ReceptionId=1129201814133366&CategoryId=64&app=1&language=zh-CN"
+            },
+            {
+                "id": 1128201818103356,
+                "title": "会员升级活动",
+                "promotionStartTime": "2018-11-29 00:00:01",
+                "promotionEndTime": "2019-12-31 23:59:59",
+                "thumbUrl": "/sample/images/promotion/sample-3.jpg",
+                "isNew": false,
+                "categoryId": 43,
+                "detailUrl": "https://www.winbet688.com/M_Promotion/Detail?ReceptionId=1128201818103356&CategoryId=43&app=1&language=zh-CN"
+            },
+            {
+                "id": 1128201818103356,
+                "title": "会员升级活动",
+                "promotionStartTime": "2018-11-29 00:00:01",
+                "promotionEndTime": "2019-12-31 23:59:59",
+                "thumbUrl": "/sample/images/promotion/sample-4.jpg",
+                "isNew": false,
+                "categoryId": 64,
+                "detailUrl": "https://www.winbet688.com/M_Promotion/Detail?ReceptionId=1128201818103356&CategoryId=64&app=1&language=zh-CN"
+            },
+            {
+                "id": 1129201815073367,
+                "title": " 体育首存50%，最高红利100元！",
+                "promotionStartTime": "2018-11-29 00:00:00",
+                "promotionEndTime": "2019-12-31 23:59:59",
+                "thumbUrl": "/Promotions/63485226-3b57-4c6e-b868-e61da64fb98d.jpg",
+                "isNew": false,
+                "categoryId": 43,
+                "detailUrl": "/sample/images/promotion/sample-5.jpg",
+            },
+            {
+                "id": 1129201815073367,
+                "title": " 体育首存50%，最高红利100元！",
+                "promotionStartTime": "2018-11-29 00:00:00",
+                "promotionEndTime": "2019-12-31 23:59:59",
+                "thumbUrl": "/Promotions/63485226-3b57-4c6e-b868-e61da64fb98d.jpg",
+                "isNew": false,
+                "categoryId": 61,
+                "detailUrl": "/sample/images/promotion/sample-6.jpg",
+            },
+            {
+                "id": 1129201816063368,
+                "title": "电子游艺300%，超值回馈三重送",
+                "promotionStartTime": "2018-11-29 00:00:00",
+                "promotionEndTime": "2019-12-31 23:59:59",
+                "thumbUrl": "/Promotions/ab20a052-ac12-46bc-8d68-30e708eca65b.jpg",
+                "isNew": false,
+                "categoryId": 43,
+                "detailUrl": "/sample/images/promotion/sample-7.jpg",
+            },
+            {
+                "id": 1129201816063368,
+                "title": "电子游艺300%，超值回馈三重送",
+                "promotionStartTime": "2018-11-29 00:00:00",
+                "promotionEndTime": "2019-12-31 23:59:59",
+                "thumbUrl": "/sample/images/promotion/sample-1.jpg",
+                "isNew": false,
+                "categoryId": 63,
+                "detailUrl": "https://www.winbet688.com/M_Promotion/Detail?ReceptionId=1129201816063368&CategoryId=63&app=1&language=zh-CN"
+            },
+            {
+                "id": 1129201816253369,
+                "title": "连赢额外送，最高5888元",
+                "promotionStartTime": "2018-11-29 00:00:00",
+                "promotionEndTime": "2019-12-31 23:59:59",
+                "thumbUrl": "/sample/images/promotion/sample-2.jpg",
+                "isNew": false,
+                "categoryId": 43,
+                "detailUrl": "https://www.winbet688.com/M_Promotion/Detail?ReceptionId=1129201816253369&CategoryId=43&app=1&language=zh-CN"
+            },
+            {
+                "id": 1129201816253369,
+                "title": "连赢额外送，最高5888元",
+                "promotionStartTime": "2018-11-29 00:00:00",
+                "promotionEndTime": "2019-12-31 23:59:59",
+                "thumbUrl": "/sample/images/promotion/sample-3.jpg",
+                "isNew": false,
+                "categoryId": 61,
+                "detailUrl": "https://www.winbet688.com/M_Promotion/Detail?ReceptionId=1129201816253369&CategoryId=61&app=1&language=zh-CN"
+            },
+            {
+                "id": 1129201816253369,
+                "title": "连赢额外送，最高5888元",
+                "promotionStartTime": "2018-11-29 00:00:00",
+                "promotionEndTime": "2019-12-31 23:59:59",
+                "thumbUrl": "/sample/images/promotion/sample-4.jpg",
+                "isNew": false,
+                "categoryId": 62,
+                "detailUrl": "https://www.winbet688.com/M_Promotion/Detail?ReceptionId=1129201816253369&CategoryId=62&app=1&language=zh-CN"
+            },
+            {
+                "id": 1129201816253369,
+                "title": "连赢额外送，最高5888元",
+                "promotionStartTime": "2018-11-29 00:00:00",
+                "promotionEndTime": "2019-12-31 23:59:59",
+                "thumbUrl": "/sample/images/promotion/sample-5.jpg",
+                "isNew": false,
+                "categoryId": 63,
+                "detailUrl": "https://www.winbet688.com/M_Promotion/Detail?ReceptionId=1129201816253369&CategoryId=63&app=1&language=zh-CN"
+            },
+            {
+                "id": 1129201817093371,
+                "title": "火速增援复活礼金8888元，高额反利",
+                "promotionStartTime": "2018-11-29 00:00:00",
+                "promotionEndTime": "2019-12-31 23:59:59",
+                "thumbUrl": "/sample/images/promotion/sample-6.jpg",
+                "isNew": false,
+                "categoryId": 43,
+                "detailUrl": "https://www.winbet688.com/M_Promotion/Detail?ReceptionId=1129201817093371&CategoryId=43&app=1&language=zh-CN"
+            },
+            {
+                "id": 1129201817093371,
+                "title": "火速增援复活礼金8888元，高额反利",
+                "promotionStartTime": "2018-11-29 00:00:00",
+                "promotionEndTime": "2019-12-31 23:59:59",
+                "thumbUrl": "/sample/images/promotion/sample-7.jpg",
+                "isNew": false,
+                "categoryId": 64,
+                "detailUrl": "https://www.winbet688.com/M_Promotion/Detail?ReceptionId=1129201817093371&CategoryId=64&app=1&language=zh-CN"
+            },
+            {
+                "id": 1129201817303373,
+                "title": "存款签到，周周大放送",
+                "promotionStartTime": "2018-11-29 00:00:00",
+                "promotionEndTime": "2019-12-31 23:59:59",
+                "thumbUrl": "/sample/images/promotion/sample-1.jpg",
+                "isNew": false,
+                "categoryId": 43,
+                "detailUrl": "https://www.winbet688.com/M_Promotion/Detail?ReceptionId=1129201817303373&CategoryId=43&app=1&language=zh-CN"
+            },
+            {
+                "id": 1129201817303373,
+                "title": "存款签到，周周大放送",
+                "promotionStartTime": "2018-11-29 00:00:00",
+                "promotionEndTime": "2019-12-31 23:59:59",
+                "thumbUrl": "/sample/images/promotion/sample-2.jpg",
+                "isNew": false,
+                "categoryId": 64,
+                "detailUrl": "https://www.winbet688.com/M_Promotion/Detail?ReceptionId=1129201817303373&CategoryId=64&app=1&language=zh-CN"
+            }
+        ],
+        "pageTotal": null
+    },
+    "newMemberToken": null
+}

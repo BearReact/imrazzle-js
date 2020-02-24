@@ -3,10 +3,9 @@
 import * as React from 'react';
 import styled from 'styled-components';
 import A from '@components/atoms/A';
-// import screen from '@themes/Screen';
 import {isEmpty} from '@utils/equal';
-
-// import LoaderContainer from '@components/atoms/Loader';
+import {media, Col, Container, GridThemeProvider, Row} from "styled-bootstrap-grid";
+import LoaderContainer from '@components/organisms/LoaderContainer';
 
 type Props = {
     isFetching?: boolean,
@@ -32,39 +31,33 @@ const List = (props: Props) => {
         }
     }, []);
 
+
     return (
-        <Section>
+        <Container>
+            <LoaderContainer isLoading={isFetching}>
 
-            {/*<LoaderContainer className="container" isLoading={isFetching}>*/}
-
-                 標題
-                <div className="row justify-content-center mb-4">
-                    <div className="col-lg-8">
+                <Row alignItems="center">
+                    <Col lg={8}>
                         <div className="text-center">
-                            {/*<PageSubTitle>{t('example:pageNews.subTitle')}</PageSubTitle>*/}
-                            <PageTitle dangerouslySetInnerHTML={{__html: i18n({id: 'example.pageNews.title'})}}/>
+                            <PageSubTitle>{i18n({id: 'page.news.subTitle'})}</PageSubTitle>
+                            <PageTitle dangerouslySetInnerHTML={{__html: i18n({id: 'page.news.title'})}}/>
                         </div>
-                    </div>
-                </div>
+                    </Col>
+                </Row>
 
-                <div className="row">
+                <Row alignItems="center">
                     {paginateData.map(row => (
-                        <div
-                            className="col-lg-8 col-md-12 col-sm-16 mb-5"
+                        <Col lg={8} md={12} sm={16}
                             key={row.id}
                         >
-                            <A route="example-news-detail" params={{id: row.id}}>
-                                <a>
-                                    <Thumb src={row.thumb} alt="news" className="mb-4"/>
-                                </a>
+                            <A href={`/news/${row.id}`}>
+                                <Thumb src={row.thumb} alt="news" className="mb-4"/>
                             </A>
                             <div>
                                 <Title className="mb-3">
 
-                                    <A route="example-news-detail" params={{id: row.id}}>
-                                        <a>
-                                            {row.title}
-                                        </a>
+                                    <A href={`/news/${row.id}`}>
+                                        {row.title}
                                     </A>
                                 </Title>
                                 <div className="blog-author d-flex align-items-center">
@@ -72,16 +65,17 @@ const List = (props: Props) => {
                                         <Avatar src={row.avatar} alt="author"/>
                                     </div>
                                     <div>
-                                        {/*<AuthorPosted>{t({id:'example.pageNews.postedBy'})}</AuthorPosted>*/}
+                                        <AuthorPosted>{i18n({id:'page.news.postedBy'})}</AuthorPosted>
                                         <AuthorText>{row.author}</AuthorText>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </Col>
                     ))}
-                </div>
-            {/*</LoaderContainer>*/}
-        </Section>
+                </Row>
+
+            </LoaderContainer>
+        </Container>
     );
 };
 
@@ -94,10 +88,6 @@ List.defaultProps = {
 
 export default List;
 
-
-const Section = styled.div`
-    flex: 1 1 auto;
-`;
 
 const Thumb = styled.img`
     width: 95%;
@@ -113,13 +103,13 @@ const Title = styled.h4`
     font-weight: 600;
     color: #222;
     
-    // @media ${screen.lg} {
-    //     font-size: 24px;
-    // }
+    ${media.lg`
+        font-size: 24px;
+    `}
 `;
 
 const AuthorPosted = styled.div`
-        font-size: 14px;
+    font-size: 14px;
     color: #f14836;
     font-weight: 400;
     

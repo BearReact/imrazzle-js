@@ -1,0 +1,13 @@
+{
+    "statusType": "success",
+    "statusCode": null,
+    "message": null,
+    "formMessage": null,
+    "data": {
+        "memberToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiQS1WVjVBIiwic3ViIjoidnY1YSIsImFjY291bnQiOiJWVjVBIiwiYWdlbnQiOiJWVjRBIiwic2l0ZUlkIjoiQSIsInZpcExldmVsIjoiMiIsInZpcE5hbWUiOiLmma7pgJoiLCJzaWduaW5UaW1lIjoiMTU0NjM4MjE5NDUxMyIsImxpZmVUaW1lIjoiMTU0NjQzOTc5NDUxMyIsInNpZ251cERhdGUiOiIxMzgzODM1ODQ1MTkwIiwicG9ydCI6IkNsaWVudCIsIm5iZiI6MTU0NjM4MjE5MSwiZXhwIjoxNTQ2Mzk2NTkxLCJpc3MiOiJpQkVUX0FwaVNlcnZpY2VfREVWIiwiYXVkIjoiMzU0Qzk2N0EyMEU0NDgxMUI0RDlFRjA4MDJDQzUyRjMifQ.xA_ru4mzmGpqeAbYW5CSORVcl1S88lA_mghm-ZXINjc",
+        "isHasFavorite": true,
+        "memberLevelCode": "2",
+        "memberLevelName": "普通"
+    },
+    "newMemberToken": null
+}

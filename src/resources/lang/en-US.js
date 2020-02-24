@@ -1,4 +1,56 @@
 export default {
-    'app.learn': 'Lern {name}',
-    'example.pageNews.title': 'News'
+    "errorForm.require": "The {{name}} not be between required",
+    "errorForm.tooShortString": "Not less than {{length}}",
+    "errorForm.tooLongString": "Not greater than {{length}}",
+    "errorForm.tooShortNumber": "Not less than {{length}}",
+    "errorForm.tooLongNumber": "Not greater than {{length}}",
+    "errorForm.tooRange": "The {{name}} must be between {{min}}-{{max}}",
+    "errorForm.invalid": "Please match the correct format of the {{name}}",
+
+    "errorHttp.401": "Please login before continuing",
+    "errorHttp.404": "Request Not Found/Route",
+    "errorHttp.500": "Internal Server Error",
+    "errorHttp.504": "Please check your network and try again",
+    "errorHttp.networkError": "Your mobile network connection is unstable. Please check your network connection status and try again.",
+    "errorHttp.timeoutError": "The server has not responded for more than {{sec}} seconds. Please confirm your network connection status or contact customer service.",
+
+    'common.language' : 'ENGLISH',
+
+    'menu.home': 'Home',
+    'menu.news': 'News',
+    'menu.contact': 'Contact',
+    'menu.profile': 'My Profile',
+
+    'button.signUp': 'SIGN UP',
+    'button.signIn': 'SIGN IN',
+    'button.signOut': 'SIGN OUT',
+    'button.menu': 'MENU',
+    'button.back': 'BACK',
+
+    'page.home.heroTitle': '<b>Server </b> <span>Side </span><b>Render </b>',
+    'page.home.heroText': 'React Out-of-the-box, integrated third-party suites required for website development',
+    'page.home.email': 'Email',
+
+    "page.news.title": "News",
+    'page.news.subTitle': 'OUR BLOG',
+    'page.news.postedBy': 'Posted By',
+    'page.news.categories': 'categories',
+
+    'page.contact.title': "Get In <span>Touch.</span>",
+    'page.contact.subTitle': "OUR CONTACT",
+    'page.contact.placeholder.name': 'Enter Your Name',
+    'page.contact.placeholder.email': 'Enter Your Email',
+    'page.contact.placeholder.message': 'Enter Your Message...',
+    'page.contact.label.name': 'Full Name',
+    'page.contact.label.email': 'Email',
+    'page.contact.label.message': 'Message',
+    'page.contact.sendNow': 'Send Now',
+    'page.contact.successMessage': 'We have received your message and will contact you as soon as possible',
+
+    'page.profile.title': 'My Profile',
+    'page.profile.subTitle': 'About {{email}}',
+    'page.profile.label.name': 'Full Name',
+    'page.profile.label.email': 'Email',
+    'page.profile.label.country': 'Country',
+    'page.profile.label.signUpDate': 'Sign Up Date',
 }

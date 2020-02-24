@@ -1,7 +1,7 @@
 import {
     call, put, takeLatest, delay, race, all,
 } from 'redux-saga/effects';
-// import ApiService from '@services/News';
+import ApiService from '@services/News';
 import Actions, {Types} from './Reducer';
 
 /**
@@ -14,13 +14,13 @@ export function* fetchPaginate(payload) {
 
         // 避免 API回傳時間過短, 會讓Loading畫面快速閃過
         // 故將時間設定回傳時間至少2秒
-        // const [response, nonTime] = yield all([
-        //     call(ApiService.getNewsList),
-        //     delay(1200),
-        // ]);
-        // const {data: responseData} = response;
+        const [response, nonTime] = yield all([
+            call(ApiService.getNewsList),
+            delay(1200),
+        ]);
+        const {data: responseData} = response;
 
-        // yield put(Actions.fetchPaginateSuccess(responseData.data.rows));
+        yield put(Actions.fetchPaginateSuccess(responseData.data.rows));
 
     } catch (e) {
         yield put(Actions.fetchPaginateFail(e.message));

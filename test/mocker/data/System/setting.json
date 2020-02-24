@@ -1,0 +1,31 @@
+{
+    "statusType": "success",
+    "statusCode": null,
+    "message": null,
+    "formMessage": null,
+    "data": {
+        "defaultLang": "th-th",
+        "isDisplayDepositDocUpload": true,
+        "signUpSetting": {
+            "isDisplayMobile": true,
+            "isValidateMobile": true,
+            "isDisplayRealName": true,
+            "isValidateRealName": false
+        },
+        "promotionUrl": "https://vv4a.6681086.com/FileUpload/promos-mobile-A-{{lang}}.html",
+        "isMaintain": false,
+        "maintainMessage": null,
+        "liveChatID": "9834250",
+        "appVersion": "1.0",
+        "appDownloadUrl": "https://vv4a.6681086.com/NoneLogin/ezAppDownloadApp",
+        "countryCodeList": [
+            "+66",
+            "+86",
+            "+886",
+            "+60"
+        ],
+        "instructionUrl": null,
+        "faqUrl": null
+    },
+    "newMemberToken": null
+}

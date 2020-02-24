@@ -1,0 +1,20 @@
+{
+    "statusType": "success",
+    "statusCode": null,
+    "message": null,
+    "formMessage": null,
+    "data": {
+        "defaultLang": "zh-cn",
+        "isVerificationPhone": false,
+        "promotionUrl": "https://www.winbet688.com/FileUpload/promos-mobile-F-{{lang}}.html",
+        "isMaintain": true,
+        "maintainMessage": "2019 年 1 月 24 日 10:00 至 14:00",
+        "liveChatID": "10271212",
+        "appVersion": "2.7",
+        "appDownloadUrl": "https://www.winbet688.com/NoneLogin/ezAppDownloadApp",
+        "countryCodeList": [
+            "+86"
+        ]
+    },
+    "newMemberToken": null
+}
