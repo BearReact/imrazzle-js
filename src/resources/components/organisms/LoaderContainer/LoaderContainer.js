@@ -24,7 +24,7 @@ type Props = {
 
 const LoaderContainer = (props: Props) => {
     const {
-        className, style, children, isLoading, size, backgroundColor, isFullMaskBody, isHasPanel, rollingAlign, rolling, visibleMode,
+        className, style, children, isLoading, size, isFullMaskBody, isHasPanel, rollingAlign, visibleMode,
     } = props;
     const isShowMask = (rollingAlign === 'full' || rollingAlign === 'area');
     return (
