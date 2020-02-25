@@ -1,9 +1,9 @@
 import React from 'react';
 import {storiesOf} from '@storybook/react';
-import Loader from '../Loader';
+import LoaderContainer from '../LoaderContainer';
 
 storiesOf('Atoms|Loader', module).add('default', () => (
-    <Loader isLoading>
+    <LoaderContainer isLoading>
         <div style={{height: '100vh', width: '100vw', backgroundColor: '#bdbdbd'}}>test loading</div>
-    </Loader>
+    </LoaderContainer>
 ));

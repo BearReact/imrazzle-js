@@ -8,18 +8,22 @@
     "test": "razzle test --env=jsdom",
     "start": "NODE_ENV=production node build/server.js",
     "test:mock": "mocker ./test/mocker",
-    "test:prod": "yarn build && yarn start"
+    "test:prod": "yarn build && yarn start",
+    "storybook": "start-storybook -p 6006 -c ./test/storybook",
+    "build-storybook": "build-storybook"
   },
   "dependencies": {
     "@formatjs/intl-pluralrules": "^1.5.2",
     "@formatjs/intl-relativetimeformat": "^4.5.9",
     "apisauce": "^1.1.1",
     "babel-plugin-styled-components": "^1.10.7",
+    "babel-plugin-transform-flow-strip-types": "6.22.0",
     "classnames": "^2.2.6",
     "connected-react-router": "6.7.0",
     "cookie-parser": "^1.4.4",
     "express": "^4.17.1",
     "history": "^4.10.1",
+    "http-proxy-middleware": "^1.0.0",
     "loadsh": "^0.0.4",
     "lodash": "^4.17.15",
     "prop-types": "^15.7.2",
@@ -41,13 +45,19 @@
     "styled-components": "5.0.1",
     "universal-cookie": "^4.0.3",
     "universal-cookie-express": "^4.0.3",
-    "xmldom": "^0.2.1",
-    "babel-plugin-transform-flow-strip-types": "6.22.0",
-    "http-proxy-middleware": "^1.0.0"
+    "xmldom": "^0.2.1"
   },
   "devDependencies": {
+    "@babel/core": "^7.8.4",
+    "@storybook/addon-actions": "^5.3.13",
+    "@storybook/addon-links": "^5.3.13",
+    "@storybook/addon-viewport": "^5.3.13",
+    "@storybook/addons": "^5.3.13",
+    "@storybook/react": "^5.3.13",
+    "babel-loader": "^8.0.6",
     "flow-bin": "0.118.0",
     "mocker-api": "^1.12.2",
-    "require-context": "^1.1.0"
+    "require-context": "^1.1.0",
+    "storybook-addon-i18n": "^5.1.13"
   }
 }
