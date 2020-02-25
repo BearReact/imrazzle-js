@@ -52,7 +52,7 @@ const HomeLayout = (props: Props) => {
     return (
         <div className="d-flex flex-column" style={{height: 'inherit'}}>
             <Header>
-                <Container>
+                <Container className="pt-3 pb-3">
                     <Row alignItems="center">
                         {/* LOGO */}
                         <Col md={2}>

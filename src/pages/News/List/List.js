@@ -26,56 +26,55 @@ const List = (props: Props) => {
     } = props;
 
     React.useEffect(() => {
-        if (isEmpty(paginateData)) {
+        // if (isEmpty(paginateData)) {
             fetchPaginate();
-        }
+        // }
     }, []);
 
 
     return (
-        <Container>
             <LoaderContainer isLoading={isFetching}>
+                <Container>
 
-                <Row alignItems="center">
-                    <Col lg={8}>
-                        <div className="text-center">
-                            <PageSubTitle>{i18n({id: 'page.news.subTitle'})}</PageSubTitle>
-                            <PageTitle dangerouslySetInnerHTML={{__html: i18n({id: 'page.news.title'})}}/>
-                        </div>
-                    </Col>
-                </Row>
-
-                <Row alignItems="center">
-                    {paginateData.map(row => (
-                        <Col lg={8} md={12} sm={16}
-                            key={row.id}
-                        >
-                            <A href={`/news/${row.id}`}>
-                                <Thumb src={row.thumb} alt="news" className="mb-4"/>
-                            </A>
-                            <div>
-                                <Title className="mb-3">
-
-                                    <A href={`/news/${row.id}`}>
-                                        {row.title}
-                                    </A>
-                                </Title>
-                                <div className="blog-author d-flex align-items-center">
-                                    <div className="pr-4">
-                                        <Avatar src={row.avatar} alt="author"/>
-                                    </div>
-                                    <div>
-                                        <AuthorPosted>{i18n({id:'page.news.postedBy'})}</AuthorPosted>
-                                        <AuthorText>{row.author}</AuthorText>
-                                    </div>
+                        <Row alignItems="center">
+                            <Col lg>
+                                <div className="text-center">
+                                    <PageSubTitle>{i18n({id: 'page.news.subTitle'})}</PageSubTitle>
+                                    <PageTitle dangerouslySetInnerHTML={{__html: i18n({id: 'page.news.title'})}}/>
                                 </div>
-                            </div>
-                        </Col>
-                    ))}
-                </Row>
+                            </Col>
+                        </Row>
 
+                        <Row alignItems="center">
+                            {paginateData.map(row => (
+                                <Col lg={8} md={12} sm={16}
+                                    key={row.id}
+                                >
+                                    <A href={`/news/${row.id}`}>
+                                        <Thumb src={row.thumb} alt="news" className="mb-4"/>
+                                    </A>
+                                    <div>
+                                        <Title className="mb-3">
+                                            <A href={`/news/${row.id}`}>
+                                                {row.title}
+                                            </A>
+                                        </Title>
+                                        <div className="blog-author d-flex align-items-center">
+                                            <div className="pr-4">
+                                                <Avatar src={row.avatar} alt="author"/>
+                                            </div>
+                                            <div>
+                                                <AuthorPosted>{i18n({id:'page.news.postedBy'})}</AuthorPosted>
+                                                <AuthorText>{row.author}</AuthorText>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </Col>
+                            ))}
+                        </Row>
+
+                    </Container>
             </LoaderContainer>
-        </Container>
     );
 };
 
