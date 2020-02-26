@@ -11,7 +11,6 @@ server.listen(port, error => {
     if (error) {
         console.log(error);
     }
-
     console.log(`🚀 Ready on http://localhost:${port}`); // eslint-disable-line no-console
 });
 

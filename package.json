@@ -12,7 +12,25 @@
     "storybook": "start-storybook -p 6006 -c ./test/storybook",
     "build-storybook": "build-storybook",
     "lint": "eslint .",
-    "lint:fix": "eslint . --fix"
+    "lint:fix": "eslint . --fix",
+    "cz": "./node_modules/cz-customizable/standalone.js"
+  },
+  "lint-staged": {
+    "*.js": [
+      "yarn lint:fix",
+      "git add --force"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "validate-commit-msg",
+      "pre-commit": "lint-staged"
+    }
+  },
+  "config": {
+    "cz-customizable": {
+      "config": "./internals/cz-customizable/config.js"
+    }
   },
   "dependencies": {
     "@formatjs/intl-pluralrules": "^1.5.2",
@@ -58,12 +76,8 @@
     "@storybook/addon-viewport": "5.3.14",
     "@storybook/addons": "5.3.14",
     "@storybook/react": "5.3.14",
-    "babel-loader": "^8.0.6",
-    "flow-bin": "0.118.0",
-    "mocker-api": "^1.12.2",
-    "require-context": "^1.1.0",
-    "storybook-addon-i18n": "^5.1.13",
     "babel-eslint": "10.0.1",
+    "babel-loader": "^8.0.6",
     "eslint": "5.14.1",
     "eslint-config-airbnb": "17.1.0",
     "eslint-config-airbnb-base": "13.1.0",
@@ -73,6 +87,15 @@
     "eslint-plugin-jsx-a11y": "6.2.1",
     "eslint-plugin-react": "7.12.4",
     "eslint-plugin-react-hooks": "^2.3.0",
-    "eslint-plugin-redux-saga": "1.0.0"
+    "eslint-plugin-redux-saga": "1.0.0",
+    "flow-bin": "0.118.0",
+    "husky": "^4.2.3",
+    "lint-staged": "^10.0.8",
+    "mocker-api": "^1.12.2",
+    "require-context": "^1.1.0",
+    "storybook-addon-i18n": "^5.1.13",
+    "validate-commit-msg": "^2.14.0",
+    "cz-conventional-changelog": "^3.1.0",
+    "cz-customizable": "^6.2.0"
   }
 }
