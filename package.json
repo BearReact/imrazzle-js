@@ -1,7 +1,12 @@
 {
-  "name": "my-razzle-app",
+  "name": "create-razzle-app",
   "version": "0.1.1",
+  "description": "A React framework for web artisans razzle.js",
+  "author": "imagine10255",
   "license": "MIT",
+  "engines": {
+    "node": ">=13.5.0"
+  },
   "scripts": {
     "dev": "razzle start",
     "build": "razzle build",
