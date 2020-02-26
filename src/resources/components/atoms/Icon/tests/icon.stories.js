@@ -1,10 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
-import {Col, Container, Row} from "styled-bootstrap-grid";
+import {Col, Container, Row} from 'styled-bootstrap-grid';
 import get from 'lodash/get';
 
-import Icon from '../Icon';
 import IconList from '@static/common/plugins/iconfont/iconfont.json';
+import Icon from '../Icon';
 
 export default {
     title: 'Atoms|Icon',
@@ -16,8 +16,8 @@ export default {
 
 > 一般情況請使用 default 即可, 若是需要多色的特殊圖標再使用 svg
 
-            `
-    }
+            `,
+    },
 };
 
 const DefaultStory = () => (
@@ -43,7 +43,6 @@ DefaultStory.story = {
     name: 'default',
 };
 
-
 const SVGStory = () => (
     <>
         <Container>
@@ -67,8 +66,7 @@ SVGStory.story = {
     name: 'svg',
 };
 
-
-export {DefaultStory, SVGStory}
+export {DefaultStory, SVGStory};
 
 const H2 = styled.h2`
     color: #fff;

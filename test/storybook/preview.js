@@ -1,36 +1,33 @@
 import React from 'react';
 import {MemoryRouter} from 'react-router-dom';
 import {ThemeProvider} from 'styled-components';
-import { GridThemeProvider } from "styled-bootstrap-grid";
-import {isEmpty} from "@utils/equal";
+import {GridThemeProvider} from 'styled-bootstrap-grid';
+import {isEmpty} from '@utils/equal';
 
 // storybook & plugin
 import {configure, addParameters, addDecorator} from '@storybook/react';
 import {themes} from '@storybook/theming';
-import {withI18n} from "storybook-addon-i18n";
-
+import {withI18n} from 'storybook-addon-i18n';
 
 // setting
 import gridConfig from '@config/grid';
+import {generateConfig} from '@config/utils/getConfig';
 import {viewports, i18n} from './addonConfig';
-import {generateConfig} from "@config/utils/getConfig";
 
 // Setting Global Styles
 import './styles/storybook.css';
 
-
 // Option defaults.
 addParameters({
     options: {
-        theme: themes.dark
+        theme: themes.dark,
     },
     viewport: viewports,
-    i18n: i18n
+    i18n: i18n,
 });
 
 // Set intl configuration
 addDecorator(withI18n);
-
 
 // Set Config
 const siteConfig = generateConfig();
@@ -48,7 +45,6 @@ if(!isEmpty(siteConfig)){
             </ThemeProvider>
         </MemoryRouter>
     ));
-
 
     configure([
         require.context('./examples', true, /\.stories\.(js|tsx?|mdx)$/),

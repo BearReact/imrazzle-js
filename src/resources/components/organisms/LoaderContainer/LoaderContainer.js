@@ -2,10 +2,10 @@
 
 import * as React from 'react';
 import styled,{css} from 'styled-components';
-import {media} from "styled-bootstrap-grid";
-import { HalfCircleSpinner } from 'react-epic-spinners'
+import {media} from 'styled-bootstrap-grid';
+import {HalfCircleSpinner} from 'react-epic-spinners';
 import px2vw from '@config/utils/getPx2vw';
-import {getConfig} from "@config/utils/getConfig";
+import {getConfig} from '@config/utils/getConfig';
 
 type Props = {
     style?: React.CSSProperties,
@@ -13,14 +13,11 @@ type Props = {
     children?: React.Node,
     isLoading?: boolean,
     size?: number,
-    backgroundColor?: string,
     isFullMaskBody?: boolean,
     rollingAlign?: 'full' | 'area',
     isHasPanel?: boolean,
-    rolling?: React.Node,
     visibleMode?: string,
 };
-
 
 const LoaderContainer = (props: Props) => {
     const {
@@ -56,14 +53,11 @@ LoaderContainer.defaultProps = {
     children: null,
     isLoading: false,
     size: 50,
-    backgroundColor: 'rgba(0,0,0,.1)',
     isFullMaskBody: false,
     isHasPanel: false,
     rollingAlign: 'full',
-    rolling: undefined,
     visibleMode: 'opacity',
 };
-
 
 export default LoaderContainer;
 

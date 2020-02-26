@@ -18,7 +18,6 @@ const langConfig = {
 // const DEFAULT_LOCALE = siteConfig.defaultLang || 'zh-CN';
 export const DEFAULT_LOCALE = 'en-US';
 
-
 const formatTranslationMessages = (locale, messages) => {
     const defaultFormattedMessages =
         locale !== DEFAULT_LOCALE ? formatTranslationMessages(DEFAULT_LOCALE, langConfig[DEFAULT_LOCALE]) : {};

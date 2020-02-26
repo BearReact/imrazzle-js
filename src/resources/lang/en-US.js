@@ -1,18 +1,18 @@
 export default {
-    "errorForm.require": "The {{name}} not be between required",
-    "errorForm.tooShortString": "Not less than {{length}}",
-    "errorForm.tooLongString": "Not greater than {{length}}",
-    "errorForm.tooShortNumber": "Not less than {{length}}",
-    "errorForm.tooLongNumber": "Not greater than {{length}}",
-    "errorForm.tooRange": "The {{name}} must be between {{min}}-{{max}}",
-    "errorForm.invalid": "Please match the correct format of the {{name}}",
+    'errorForm.require': 'The {{name}} not be between required',
+    'errorForm.tooShortString': 'Not less than {{length}}',
+    'errorForm.tooLongString': 'Not greater than {{length}}',
+    'errorForm.tooShortNumber': 'Not less than {{length}}',
+    'errorForm.tooLongNumber': 'Not greater than {{length}}',
+    'errorForm.tooRange': 'The {{name}} must be between {{min}}-{{max}}',
+    'errorForm.invalid': 'Please match the correct format of the {{name}}',
 
-    "errorHttp.401": "Please login before continuing",
-    "errorHttp.404": "Request Not Found/Route",
-    "errorHttp.500": "Internal Server Error",
-    "errorHttp.504": "Please check your network and try again",
-    "errorHttp.networkError": "Your mobile network connection is unstable. Please check your network connection status and try again.",
-    "errorHttp.timeoutError": "The server has not responded for more than {{sec}} seconds. Please confirm your network connection status or contact customer service.",
+    'errorHttp.401': 'Please login before continuing',
+    'errorHttp.404': 'Request Not Found/Route',
+    'errorHttp.500': 'Internal Server Error',
+    'errorHttp.504': 'Please check your network and try again',
+    'errorHttp.networkError': 'Your mobile network connection is unstable. Please check your network connection status and try again.',
+    'errorHttp.timeoutError': 'The server has not responded for more than {{sec}} seconds. Please confirm your network connection status or contact customer service.',
 
     'common.language' : 'ENGLISH',
 
@@ -31,13 +31,13 @@ export default {
     'page.home.heroText': 'React Out-of-the-box, integrated third-party suites required for website development',
     'page.home.email': 'Email',
 
-    "page.news.title": "News",
+    'page.news.title': 'News',
     'page.news.subTitle': 'OUR BLOG',
     'page.news.postedBy': 'Posted By',
     'page.news.categories': 'categories',
 
-    'page.contact.title': "Get In <span>Touch.</span>",
-    'page.contact.subTitle': "OUR CONTACT",
+    'page.contact.title': 'Get In <span>Touch.</span>',
+    'page.contact.subTitle': 'OUR CONTACT',
     'page.contact.placeholder.name': 'Enter Your Name',
     'page.contact.placeholder.email': 'Enter Your Email',
     'page.contact.placeholder.message': 'Enter Your Message...',
@@ -53,4 +53,4 @@ export default {
     'page.profile.label.email': 'Email',
     'page.profile.label.country': 'Country',
     'page.profile.label.signUpDate': 'Sign Up Date',
-}
+};

@@ -4,7 +4,7 @@ import * as React from 'react';
 import styled from 'styled-components';
 import A from '@components/atoms/A';
 import {isEmpty} from '@utils/equal';
-import {media, Col, Container, GridThemeProvider, Row} from "styled-bootstrap-grid";
+import {media, Col, Container, GridThemeProvider, Row} from 'styled-bootstrap-grid';
 import LoaderContainer from '@components/organisms/LoaderContainer';
 
 type Props = {
@@ -27,54 +27,56 @@ const List = (props: Props) => {
 
     React.useEffect(() => {
         // if (isEmpty(paginateData)) {
-            fetchPaginate();
+        fetchPaginate();
         // }
     }, []);
 
-
     return (
-            <LoaderContainer isLoading={isFetching}>
-                <Container>
+        <LoaderContainer isLoading={isFetching}>
+            <Container>
 
-                        <Row alignItems="center">
-                            <Col lg>
-                                <div className="text-center">
-                                    <PageSubTitle>{i18n({id: 'page.news.subTitle'})}</PageSubTitle>
-                                    <PageTitle dangerouslySetInnerHTML={{__html: i18n({id: 'page.news.title'})}}/>
-                                </div>
-                            </Col>
-                        </Row>
+                <Row alignItems="center">
+                    <Col lg>
+                        <div className="text-center">
+                            <PageSubTitle>{i18n({id: 'page.news.subTitle'})}</PageSubTitle>
+                            <PageTitle dangerouslySetInnerHTML={{__html: i18n({id: 'page.news.title'})}}/>
+                        </div>
+                    </Col>
+                </Row>
 
-                        <Row alignItems="center">
-                            {paginateData.map(row => (
-                                <Col lg={8} md={12} sm={16}
-                                    key={row.id}
-                                >
+                <Row alignItems="center">
+                    {paginateData.map(row => (
+                        <Col
+                            lg={8}
+                            md={12}
+                            sm={16}
+                            key={row.id}
+                        >
+                            <A href={`/news/${row.id}`}>
+                                <Thumb src={row.thumb} alt="news" className="mb-4"/>
+                            </A>
+                            <div>
+                                <Title className="mb-3">
                                     <A href={`/news/${row.id}`}>
-                                        <Thumb src={row.thumb} alt="news" className="mb-4"/>
+                                        {row.title}
                                     </A>
-                                    <div>
-                                        <Title className="mb-3">
-                                            <A href={`/news/${row.id}`}>
-                                                {row.title}
-                                            </A>
-                                        </Title>
-                                        <div className="blog-author d-flex align-items-center">
-                                            <div className="pr-4">
-                                                <Avatar src={row.avatar} alt="author"/>
-                                            </div>
-                                            <div>
-                                                <AuthorPosted>{i18n({id:'page.news.postedBy'})}</AuthorPosted>
-                                                <AuthorText>{row.author}</AuthorText>
-                                            </div>
-                                        </div>
+                                </Title>
+                                <div className="blog-author d-flex align-items-center">
+                                    <div className="pr-4">
+                                        <Avatar src={row.avatar} alt="author"/>
                                     </div>
-                                </Col>
-                            ))}
-                        </Row>
+                                    <div>
+                                        <AuthorPosted>{i18n({id:'page.news.postedBy'})}</AuthorPosted>
+                                        <AuthorText>{row.author}</AuthorText>
+                                    </div>
+                                </div>
+                            </div>
+                        </Col>
+                    ))}
+                </Row>
 
-                    </Container>
-            </LoaderContainer>
+            </Container>
+        </LoaderContainer>
     );
 };
 
@@ -83,10 +85,7 @@ List.defaultProps = {
     paginateData: [],
 };
 
-
-
 export default List;
-
 
 const Thumb = styled.img`
     width: 95%;

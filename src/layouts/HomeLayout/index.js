@@ -2,8 +2,8 @@ import {compose} from 'redux';
 import {connect} from 'react-redux';
 
 import LanguageActions from '@library/redux/store/Language/Reducer';
+import {injectIntl} from 'react-intl';
 import HomeLayout from './HomeLayout';
-import {injectIntl} from "react-intl";
 
 const mapDispatchToProps = {
     changeLocale: LanguageActions.changeLocale,

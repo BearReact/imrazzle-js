@@ -1,15 +1,17 @@
+/* eslint-disable no-underscore-dangle */
+
 import React from 'react';
-import {renderToString} from "react-dom/server";
+import {renderToString} from 'react-dom/server';
 import {StaticRouter} from 'react-router-dom';
-import {ServerStyleSheet} from "styled-components";
+import {ServerStyleSheet} from 'styled-components';
 import {DOMParser} from 'xmldom';
-import serialize from "serialize-javascript";
+import serialize from 'serialize-javascript';
 import get from 'lodash/get';
 import {isEmpty, isJSON} from '@utils/equal';
 
-
 // redux
 import {Provider} from 'react-redux';
+import {generateConfig} from '@config/utils/getConfig';
 import configureStore from '../library/redux/configureStore';
 
 // intl
@@ -17,14 +19,14 @@ import LanguageProvider from '../library/intl/provider';
 import {translationMessages} from '../library/intl/i18n';
 
 // site config
-import {generateConfig} from '@config/utils/getConfig';
 import {PRELOAD_STATE} from '../types';
 
 // start component
 import App from '../App';
 
-
 global.DOMParser = DOMParser;
+
+// eslint-disable-next-line import/no-dynamic-require
 const assets = require(process.env.RAZZLE_ASSETS_MANIFEST);
 
 export default (req, res) => {
@@ -59,7 +61,6 @@ export default (req, res) => {
             )
         );
         const styledComponentTags = sheet.getStyleTags();
-
 
         if (context.url) {
             res.redirect(context.url);
@@ -111,4 +112,4 @@ export default (req, res) => {
     } else {
         res.status(444).send(`throw Error: Site code could not find the site settings, please check SITE_CODE(${siteCode}) and src /config/site.js`);
     }
-}
+};

@@ -2,9 +2,8 @@
 
 const aliasConfig = require('./webpack.config');
 
-
 module.exports = {
-    modify(config, { target, dev }, webpack) {
+    modify(config, {target, dev}, webpack) {
         const appConfig = config; // stay immutable here
 
         // Change the name of the server output file in production
@@ -22,7 +21,6 @@ module.exports = {
         //
         //         break;
         // }
-
 
         appConfig.resolve.alias = aliasConfig.resolve.alias;
 

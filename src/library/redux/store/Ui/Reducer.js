@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {createReducer, createActions} from 'reduxsauce';
 import Immutable from 'seamless-immutable';
-// import {i18n} from '@library/intl/global';
+import {i18n} from '@library/intl/global';
 
 const PREFIX = 'ui';
 

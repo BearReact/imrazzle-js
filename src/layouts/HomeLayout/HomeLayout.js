@@ -1,20 +1,19 @@
 // @flow
 
 import React from 'react';
-import styled from 'styled-components';
-import {media, Col, Container, GridThemeProvider, Row} from "styled-bootstrap-grid";
+import styled, {css} from 'styled-components';
+import {media, Col, Container, GridThemeProvider, Row} from 'styled-bootstrap-grid';
 import {Route,Switch, Link} from 'react-router-dom';
 import A from '@components/atoms/A';
-import News from "@pages/News/List";
+import News from '@pages/News/List';
 import {asset} from '@config/utils/getAssetPrefix';
 import {getConfig} from '@config/utils/getConfig';
 
 const HomeLayout = (props: Props) => {
 
     const {
-        intl: {formatMessage: i18n}, changeLocale
+        intl: {formatMessage: i18n}, changeLocale,
     } = props;
-
 
     const isVisibleNavBar = false;
     const menu = [
@@ -23,7 +22,6 @@ const HomeLayout = (props: Props) => {
         {href: '/contact', text: i18n({id:'menu.contact'})},
         {href: '/profile', text: i18n({id:'menu.profile'})},
     ];
-
 
     /**
      * 更改語言
@@ -58,9 +56,11 @@ const HomeLayout = (props: Props) => {
                         <Col md>
                             <Nav as="ul">
                                 {menu.map(row => (
-                                    <NavItem auto
-                                             as="li"
-                                             key={row.href}>
+                                    <NavItem
+                                        auto
+                                        as="li"
+                                        key={row.href}
+                                    >
                                         <A href={row.href}>
                                             {row.text}
                                         </A>
@@ -68,7 +68,6 @@ const HomeLayout = (props: Props) => {
                                 ))}
                             </Nav>
                         </Col>
-
 
                         {/* Change Language */}
                         <Col auto className="d-none d-md-flex">
@@ -86,7 +85,7 @@ const HomeLayout = (props: Props) => {
                 <Switch>
                     {/*<Route exact path="/" component={Home} />*/}
                     {/*<Route exact path="/about" component={About} />*/}
-                    <Route exact path="/news" component={News} />
+                    <Route exact path="/news" component={News}/>
                 </Switch>
             </Section>
 
@@ -111,7 +110,6 @@ const HomeLayout = (props: Props) => {
 };
 
 export default HomeLayout;
-
 
 const Section = styled.div`
     flex: 1 1 auto;

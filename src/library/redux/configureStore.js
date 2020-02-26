@@ -36,9 +36,7 @@ export default function configureStore(preloadState = {}, history = null) {
         && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__)
         || compose;
 
-
     const store = createStore(createReducer(), preloadState, composeEnhancers(...enhancers));
-
 
     // Create an object for any later reducers
     store.asyncReducers = {};

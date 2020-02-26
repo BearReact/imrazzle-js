@@ -1,7 +1,7 @@
 // @flow
 import React from 'react';
 import {Switch, Route, Link} from 'react-router-dom';
-import HomeLayout from "../layouts/HomeLayout";
+import HomeLayout from '../layouts/HomeLayout';
 
 function RootRouter() {
 

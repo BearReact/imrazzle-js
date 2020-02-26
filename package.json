@@ -10,7 +10,9 @@
     "test:mock": "mocker ./test/mocker",
     "test:prod": "yarn build && yarn start",
     "storybook": "start-storybook -p 6006 -c ./test/storybook",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
   },
   "dependencies": {
     "@formatjs/intl-pluralrules": "^1.5.2",
@@ -60,6 +62,17 @@
     "flow-bin": "0.118.0",
     "mocker-api": "^1.12.2",
     "require-context": "^1.1.0",
-    "storybook-addon-i18n": "^5.1.13"
+    "storybook-addon-i18n": "^5.1.13",
+    "babel-eslint": "10.0.1",
+    "eslint": "5.14.1",
+    "eslint-config-airbnb": "17.1.0",
+    "eslint-config-airbnb-base": "13.1.0",
+    "eslint-import-resolver-webpack": "0.11.0",
+    "eslint-plugin-flowtype": "3.6.1",
+    "eslint-plugin-import": "2.16.0",
+    "eslint-plugin-jsx-a11y": "6.2.1",
+    "eslint-plugin-react": "7.12.4",
+    "eslint-plugin-react-hooks": "^2.3.0",
+    "eslint-plugin-redux-saga": "1.0.0"
   }
 }

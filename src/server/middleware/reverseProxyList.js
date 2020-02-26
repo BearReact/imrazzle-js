@@ -1,4 +1,4 @@
-const { createProxyMiddleware } = require('http-proxy-middleware');
+const {createProxyMiddleware} = require('http-proxy-middleware');
 
 const proxyMiddlewareApiBaseUrl = process.env.PROXY_MIDDLEWARE_API_BASE_URL;
 
@@ -14,7 +14,7 @@ const proxyMiddlewareApiBaseUrl = process.env.PROXY_MIDDLEWARE_API_BASE_URL;
  */
 
 const devProxy = [
-    createProxyMiddleware('/api', { target: proxyMiddlewareApiBaseUrl, changeOrigin: true, }),
+    createProxyMiddleware('/api', {target: proxyMiddlewareApiBaseUrl, changeOrigin: true}),
 ];
 
 export default devProxy;

@@ -9,7 +9,6 @@ import {isEmpty} from '@utils/equal';
 // import LoginActions from '@library/redux/store/Login/Reducer';
 // import {store} from '@library/redux/configureStore';
 
-
 const apiService = create({
     baseURL: get(process,'env.API_BASE_URL', '/api'),
     headers: {
@@ -56,21 +55,21 @@ apiService.addResponseTransform(response => {
 
         if (!isEmpty(status)) {
 
-            const message = get(responseData, 'message', i18n.t(`common:errorHttp.${status}`));
-            const statusCode = get(responseData, 'statusCode', status);
-
-            switch (response.status) {
-                case 401:
-                    // store.dispatch(LoginActions.kickSetGuest());
-                    throw new Error(message);
-
-                case 511:
-                    // store.dispatch(replace('/no-access'));
-                    throw new Error(message);
-
-                default:
-                    throw new Error(message);
-            }
+            // const message = get(responseData, 'message', i18n.t(`common:errorHttp.${status}`));
+            // const statusCode = get(responseData, 'statusCode', status);
+            //
+            // switch (response.status) {
+            //     case 401:
+            //         // store.dispatch(LoginActions.kickSetGuest());
+            //         throw new Error(message);
+            //
+            //     case 511:
+            //         // store.dispatch(replace('/no-access'));
+            //         throw new Error(message);
+            //
+            //     default:
+            //         throw new Error(message);
+            // }
 
         } else if (!isEmpty(problem)) {
             // switch (problem) {

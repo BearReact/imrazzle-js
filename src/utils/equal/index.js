@@ -1,4 +1,3 @@
-
 /**
  * 判定是否為空
  * @param value
@@ -62,22 +61,19 @@ export function isIp(ip) {
     return false;
 }
 
-
-
-
 /**
  * 判斷是否為JSON
- * @param json string
+ * @param jsonString string
  * @returns {boolean}
  */
-export function isJSON(string) {
+export function isJSON(jsonString) {
     try {
-        const obj = JSON.parse(string);
+        const obj = JSON.parse(jsonString);
         if (obj && typeof obj === 'object' && obj !== null) {
             return true;
         }
-    } catch (err) {}
+    } catch (err) {
+        return false;
+    }
     return false;
 }
-
-

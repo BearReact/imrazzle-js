@@ -6,7 +6,6 @@ import injectReducerSaga from '@library/redux/injectReducerSaga';
 import {action as PageAction, reducer, saga} from '../store';
 import List from './List';
 
-
 const mapDispatchToProps = {
     fetchPaginate: PageAction.fetchPaginate,
 };

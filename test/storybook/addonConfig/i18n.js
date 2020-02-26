@@ -3,7 +3,7 @@
 import React, {Suspense} from 'react';
 import {IntlProvider} from 'react-intl';
 // import LanguageProvider from "@library/intl/provider";
-import {translationMessages, DEFAULT_LOCALE} from "@library/intl/i18n";
+import {translationMessages, DEFAULT_LOCALE} from '@library/intl/i18n';
 
 type Props = {
     children?: React.Node,
@@ -11,8 +11,6 @@ type Props = {
     locale: string,
 };
 type State = {};
-
-
 
 if (!Intl.PluralRules) {
     require('@formatjs/intl-pluralrules/polyfill');
@@ -26,14 +24,12 @@ if (!Intl.RelativeTimeFormat) {
     require('@formatjs/intl-relativetimeformat/dist/locale-data/zh'); // Add locale data for de
 }
 
-
-const TranslationWrapper = ({ dangerouslySetInnerHTML, ...props }) =>
+const TranslationWrapper = ({dangerouslySetInnerHTML, ...props}) =>
     dangerouslySetInnerHTML ? (
-        <span dangerouslySetInnerHTML={dangerouslySetInnerHTML} {...props} />
+        <span dangerouslySetInnerHTML={dangerouslySetInnerHTML} {...props}/>
     ) : (
-        <React.Fragment {...props} />
+        <React.Fragment {...props}/>
     );
-
 
 /**
  * provider
