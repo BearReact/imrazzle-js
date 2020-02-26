@@ -1,8 +1,16 @@
 import React from 'react';
-import {storiesOf} from '@storybook/react';
 import BlockTitle from '../BlockTitle';
 
-storiesOf('Atoms|BlockTitle', module)
-    .add('default', () =>
-        <BlockTitle>Title</BlockTitle>
-    );
+export default {
+    title: 'Atoms|BlockTitle',
+    parameters: {
+        notes: 'some documentation here',
+    },
+};
+
+export const ToStorybook = () => <BlockTitle>Title</BlockTitle>;
+
+ToStorybook.story = {
+    name: 'default',
+};
+
