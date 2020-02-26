@@ -13,7 +13,7 @@
     "build-storybook": "build-storybook",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "cz": "git cz"
+    "cz": "./node_modules/cz-customizable/standalone.js"
   },
   "lint-staged": {
     "*.js": [

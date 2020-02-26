@@ -18,5 +18,6 @@ module.exports = {
         footer: '列出此更改可解決的問題單號 (optional). E.g.: #31, #34:\n',
         confirmCommit: '你確定使用以上回覆提交?'
     },
-    allowCustomScopes: true
+    allowCustomScopes: true,
+    skipQuestions: ['body'],
 };
