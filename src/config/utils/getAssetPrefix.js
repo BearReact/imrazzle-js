@@ -10,8 +10,7 @@ export function uploadUrl(path: string = '') {
     let fixPath = '';
 
     if (path) {
-        fixPath = path.charAt(0) === '/' ? path.substr(1) : path;
-        return `${getConfig('uploadPrefix')}/${fixPath}`;
+        return `${getConfig('uploadPrefix')}${fixPath}`;
     }
     return undefined;
 }
@@ -22,5 +21,5 @@ export function uploadUrl(path: string = '') {
  * @returns {string}
  */
 export function asset(path) {
-    return `${getConfig('staticPrefix')}/${path}`;
+    return `${getConfig('staticPrefix')}${path}`;
 }

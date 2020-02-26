@@ -82,8 +82,11 @@ export default (req, res) => {
         <meta http-equiv="X-UA-Compatible" content="IE=chrome,chrome=1" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
         
-        <link rel="stylesheet" href="/static/css/reset.css" />
-        <link rel="stylesheet" href="/static/css/bootstrap-base.min.css" />
+        <link rel="stylesheet" href="/static/common/css/reset.css" />
+        <link rel="stylesheet" href="/static/common/css/bootstrap-base.min.css" />
+        
+        <link rel="stylesheet" type="text/css" href="/static/common/plugins/iconfont/iconfont.css"/>
+        <script src="/static/common/plugins/iconfont/iconfont.js"></script>
 
         ${assets.client.css
                 ? `<link rel="stylesheet" href="${assets.client.css}">`

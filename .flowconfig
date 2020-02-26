@@ -21,9 +21,7 @@ esproposal.decorators=ignore
 
 ;自定義路徑
 module.name_mapper='^@static' ->'<PROJECT_ROOT>/static'
-module.name_mapper='^@lang' ->'<PROJECT_ROOT>/src/resources/lang'
 module.name_mapper='^@assets' ->'<PROJECT_ROOT>/src/resources/assets'
-module.name_mapper='^@themes' ->'<PROJECT_ROOT>/src/resources/themes'
 module.name_mapper='^@components' ->'<PROJECT_ROOT>/src/resources/components'
 module.name_mapper='^@utils' ->'<PROJECT_ROOT>/src/utils'
 module.name_mapper='^@library' ->'<PROJECT_ROOT>/src/library'

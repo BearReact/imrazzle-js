@@ -1,20 +1,13 @@
 // @flow
 
 import React from 'react';
-import {FormattedMessage} from 'react-intl';
 import styled from 'styled-components';
 import {media, Col, Container, GridThemeProvider, Row} from "styled-bootstrap-grid";
 import {Route,Switch, Link} from 'react-router-dom';
 import A from '@components/atoms/A';
-import cx from 'classnames';
-import get from 'lodash/get';
-import Home from "@pages/Home";
-import About from "@pages/About";
 import News from "@pages/News/List";
 import {asset} from '@config/utils/getAssetPrefix';
-import {version} from '../../../package';
-
-// import logo from './react.svg';
+import getConfig from '@config/utils/getConfig';
 
 const HomeLayout = (props: Props) => {
 
@@ -57,7 +50,7 @@ const HomeLayout = (props: Props) => {
                         {/* LOGO */}
                         <Col md={2}>
                             <A href="/">
-                                <Logo src={asset('images/react.svg')}/>
+                                <Logo src={asset('/common/images/react.svg')}/>
                             </A>
                         </Col>
 
@@ -108,7 +101,7 @@ const HomeLayout = (props: Props) => {
                                 Imagine
                             </a>
                             {' '}
-                            All Rights Reserved ({version}).
+                            All Rights Reserved ({getConfig('version')}).
                         </p>
                     </FooterCopyRight>
                 </Container>
@@ -125,7 +118,7 @@ const Section = styled.div`
 `;
 
 const Footer = styled(Col)`
-    background-image: url(${asset('images/example/footer-bg.jpg')});
+    background-image: url(${asset('/images/example/footer-bg.jpg')});
     background-position: center center;
     background-size: cover;
     background-repeat: no-repeat;

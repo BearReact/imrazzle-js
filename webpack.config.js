@@ -5,10 +5,8 @@ module.exports = {
         extensions: ['.js', '.jsx'],
         alias: {
             // CUSTOM PACKAGES:
-            '@static': path.resolve(__dirname, 'static'),
-            '@lang': path.resolve(__dirname, 'src/resources/lang'),
+            '@static': path.resolve(__dirname, 'public/static'),
             '@assets': path.resolve(__dirname, 'src/resources/assets'),
-            '@themes': path.resolve(__dirname, 'src/resources/themes'),
             '@pages': path.resolve(__dirname, 'src/pages'),
             '@components': path.resolve(__dirname, 'src/resources/components'),
             '@utils': path.resolve(__dirname, 'src/utils'),

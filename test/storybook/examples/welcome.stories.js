@@ -5,7 +5,7 @@ import { Welcome } from '@storybook/react/demo';
 export default {
     title: 'Others|Welcome',
     parameters: {
-        notes: 'some documentation here',
+        notes: 'This is sample doc',
     },
 };
 

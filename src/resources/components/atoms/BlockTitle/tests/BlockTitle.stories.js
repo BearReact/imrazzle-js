@@ -3,14 +3,11 @@ import BlockTitle from '../BlockTitle';
 
 export default {
     title: 'Atoms|BlockTitle',
-    parameters: {
-        notes: 'some documentation here',
-    },
 };
 
-export const ToStorybook = () => <BlockTitle>Title</BlockTitle>;
+export const BlockTitleStory = () => <BlockTitle>Title</BlockTitle>;
 
-ToStorybook.story = {
+BlockTitleStory.story = {
     name: 'default',
 };
 

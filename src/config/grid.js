@@ -1,3 +1,9 @@
+/**
+ * bootstrap grid setting
+ *
+ * row.padding === col.padding === container.padding
+ */
+
 export default {
     breakpoints: { // defaults below
         xs: 0,
@@ -11,11 +17,11 @@ export default {
         padding: 10, // default 15
     },
     col: {
-        padding: 5, // default 15
+        padding: 10, // default 15
         gridColumns: 24,
     },
     container: {
-        padding: 0, // default 15
+        padding: 10, // default 15
         maxWidth: { // defaults below
             xxl: 1141,
             xl: 1140,

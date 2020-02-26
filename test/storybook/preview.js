@@ -2,10 +2,18 @@
 import React from 'react';
 import {MemoryRouter} from 'react-router-dom';
 import {ThemeProvider} from 'styled-components';
+import { GridThemeProvider } from "styled-bootstrap-grid";
+
 import {configure, addParameters, addDecorator} from '@storybook/react';
-import {withI18n} from "storybook-addon-i18n";
 import {themes} from '@storybook/theming';
+import {withI18n} from "storybook-addon-i18n";
+
+import gridConfig from '@config/grid';
 import {viewports, i18n} from './addonConfig';
+
+// Setting Global Styles
+import './styles/storybook.css';
+
 
 // Option defaults.
 addParameters({
@@ -19,15 +27,16 @@ addParameters({
 // Set intl configuration
 addDecorator(withI18n);
 
-addParameters({
-    notes: 'Global Notes',
-});
 
 addDecorator(story => (
     <MemoryRouter initialEntries={['/']}>
         <ThemeProvider theme={{
             background: '#000'
-        }}>{story()}</ThemeProvider>
+        }}>
+            <GridThemeProvider gridTheme={gridConfig}>
+                {story()}
+            </GridThemeProvider>
+        </ThemeProvider>
     </MemoryRouter>
 ));
 
