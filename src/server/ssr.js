@@ -1,31 +1,34 @@
 import React from 'react';
-import get from 'lodash/get';
-import {StaticRouter} from 'react-router-dom';
-
-import {ServerStyleSheet} from "styled-components";
 import {renderToString} from "react-dom/server";
+import {StaticRouter} from 'react-router-dom';
+import {ServerStyleSheet} from "styled-components";
+import {DOMParser} from 'xmldom';
 import serialize from "serialize-javascript";
-import { DOMParser } from 'xmldom';
+import get from 'lodash/get';
+import {isEmpty, isJSON} from '@utils/equal';
+
+
+// redux
+import {Provider} from 'react-redux';
 import configureStore from '../library/redux/configureStore';
-import { Provider } from 'react-redux';
-import {isJSON} from '@utils/equal';
+
+// intl
 import LanguageProvider from '../library/intl/provider';
 import {translationMessages} from '../library/intl/i18n';
-import {version} from '../../package';
-import sites from '@config/site';
 
-import App from '../App';
+// site config
+import {generateConfig} from '@config/utils/getConfig';
 import {PRELOAD_STATE} from '../types';
 
-global.DOMParser = DOMParser;
+// start component
+import App from '../App';
 
+
+global.DOMParser = DOMParser;
 const assets = require(process.env.RAZZLE_ASSETS_MANIFEST);
 
-
 export default (req, res) => {
-
     const context = {};
-
     const sheet = new ServerStyleSheet();
 
     // React-Intl Pluralrules
@@ -35,21 +38,14 @@ export default (req, res) => {
     // Redux Store PreState
     const preloadState = get(req, `universalCookies.cookies.${PRELOAD_STATE}`, '{}');
 
+    // 站台設定
+    const siteCode = get(req, 'headers.sitecode');
+    const globalConfig = generateConfig(siteCode);
 
-    //站台設定
-    const siteCode = process.env.SITE_CODE || get(req, 'headers.sitecode', 'default');
-    const siteConfig = sites.find(row => row.siteCode === siteCode);
+    if (!isEmpty(globalConfig)) {
+        global.__global__ = globalConfig;
 
-    if(siteConfig){
-
-        global.__global__ = {
-            version: `${version}`,
-            uploadPrefix: `${get(process, 'env.UPLOAD_PREFIX_URL', '/uploads')}`,
-            staticPrefix: `${get(process, 'env.STATIC_PREFIX_URL', '/static')}`,
-            ...siteConfig
-        };
-
-        const store = configureStore(isJSON(preloadState) ? JSON.parse(preloadState): {});
+        const store = configureStore(isJSON(preloadState) ? JSON.parse(preloadState) : {});
 
         const markup = renderToString(
             sheet.collectStyles(
@@ -89,9 +85,9 @@ export default (req, res) => {
         <script src="/static/common/plugins/iconfont/iconfont.js"></script>
 
         ${assets.client.css
-                ? `<link rel="stylesheet" href="${assets.client.css}">`
-                : ''
-        }
+                    ? `<link rel="stylesheet" href="${assets.client.css}">`
+                    : ''
+                    }
         
        ${styledComponentTags}
 
@@ -101,18 +97,18 @@ export default (req, res) => {
         window.__global__ = ${JSON.stringify(global.__global__)};
         </script>
         ${
-                    process.env.NODE_ENV === 'production'
-                        ? `<script src="${assets.client.js}" defer></script>`
-                        : `<script src="${assets.client.js}" defer crossorigin></script>`
-                }
+                        process.env.NODE_ENV === 'production'
+                            ? `<script src="${assets.client.js}" defer></script>`
+                            : `<script src="${assets.client.js}" defer crossorigin></script>`
+                    }
     </head>
     <body>
         <div id="root">${markup}</div>
     </body>
 </html>`
                 );
-       }
-    }else{
-        res.status(444).send('error: siteCode not found in src/config/site.js');
+        }
+    } else {
+        res.status(444).send(`throw Error: Site code could not find the site settings, please check SITE_CODE(${siteCode}) and src /config/site.js`);
     }
 }

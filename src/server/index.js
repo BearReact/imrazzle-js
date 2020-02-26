@@ -3,8 +3,7 @@ import express from 'express';
 import get from 'lodash/get';
 import cookiesMiddleware from 'universal-cookie-express';
 import {isEmpty} from "@utils/equal";
-import renderHtml from './renderHtml';
-// import {version} from "../../package";
+import ssr from './ssr';
 
 
 const isDev = get(process, 'env.NODE_ENV', 'production') !== 'production';
@@ -25,6 +24,6 @@ if(isDev){
     }
 }
 
-server.get('/*', renderHtml);
+server.get('/*', ssr);
 
 export default server;

@@ -5,7 +5,7 @@ import styled,{css} from 'styled-components';
 import {media} from "styled-bootstrap-grid";
 import { HalfCircleSpinner } from 'react-epic-spinners'
 import px2vw from '@config/utils/getPx2vw';
-import getConfig from "@config/utils/getConfig";
+import {getConfig} from "@config/utils/getConfig";
 
 type Props = {
     style?: React.CSSProperties,

@@ -7,7 +7,7 @@ import {Route,Switch, Link} from 'react-router-dom';
 import A from '@components/atoms/A';
 import News from "@pages/News/List";
 import {asset} from '@config/utils/getAssetPrefix';
-import getConfig from '@config/utils/getConfig';
+import {getConfig} from '@config/utils/getConfig';
 
 const HomeLayout = (props: Props) => {
 

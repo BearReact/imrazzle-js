@@ -1,5 +1,5 @@
 // @flow
-import getConfig from '@config/utils/getConfig';
+import {getConfig} from '@config/utils/getConfig';
 
 /**
  * 串後端檔案上傳檔案的基礎網址
