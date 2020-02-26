@@ -1,6 +1,6 @@
 {
   "name": "my-razzle-app",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "license": "MIT",
   "scripts": {
     "dev": "razzle start",
@@ -13,7 +13,12 @@
     "build-storybook": "build-storybook",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "cz": "./node_modules/cz-customizable/standalone.js"
+    "cz": "./node_modules/cz-customizable/standalone.js",
+    "release": "standard-version -r patch",
+    "release:minor": "standard-version -r minor",
+    "release:major": "standard-version -r major",
+    "release:pre": "standard-version --prerelease alpha",
+    "release:push": "git push --follow-tags origin master"
   },
   "lint-staged": {
     "*.js": [
@@ -78,6 +83,8 @@
     "@storybook/react": "5.3.14",
     "babel-eslint": "10.0.1",
     "babel-loader": "^8.0.6",
+    "cz-conventional-changelog": "^3.1.0",
+    "cz-customizable": "^6.2.0",
     "eslint": "5.14.1",
     "eslint-config-airbnb": "17.1.0",
     "eslint-config-airbnb-base": "13.1.0",
@@ -93,9 +100,8 @@
     "lint-staged": "^10.0.8",
     "mocker-api": "^1.12.2",
     "require-context": "^1.1.0",
+    "standard-version": "^7.1.0",
     "storybook-addon-i18n": "^5.1.13",
-    "validate-commit-msg": "^2.14.0",
-    "cz-conventional-changelog": "^3.1.0",
-    "cz-customizable": "^6.2.0"
+    "validate-commit-msg": "^2.14.0"
   }
 }
