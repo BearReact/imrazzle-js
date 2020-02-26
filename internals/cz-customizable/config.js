@@ -8,7 +8,8 @@ module.exports = {
         {value: 'docs', name: '文件: 新增說明文件或程式碼註解'},
         {value: 'test', name: '測試: 新增測試案例'},
         {value: 'chore', name: '其他: 其他非代碼的修改 (流程建置, CI/CD設定...等)'},
-        {value: 'revert', name: '還原: 因版本異常而復原版本'}
+        {value: 'revert', name: '還原: 因版本異常而復原版本'},
+        {value: 'merge', name: '合併: 版本一般合併 或 衝突產生的合併'},
     ],
     messages: {
         type: '選擇您這次提交的更改類型:',
@@ -16,7 +17,7 @@ module.exports = {
         subject: '請輸入提交的內容:\n',
         body: '請輸入問題的完整描述 (可忽略). Use "|" to break new line:\n',
         footer: '列出此更改可解決的問題單號 (optional). E.g.: #31, #34:\n',
-        confirmCommit: '你確定使用以上回覆提交?'
+        confirmCommit: '你確定使用以上回覆提交?',
     },
     allowCustomScopes: true,
     skipQuestions: ['body'],
