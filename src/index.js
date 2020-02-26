@@ -1,18 +1,18 @@
 /* eslint-disable no-console */
 import http from 'http';
-
-let app = require('./server').default;
+import get from 'lodash/get';
+import app from './server';
 
 const server = http.createServer(app);
-
+const port = get(process, 'env.PORT', 3000);
 let currentApp = app;
 
-server.listen(process.env.PORT || 3000, error => {
+server.listen(port, error => {
     if (error) {
         console.log(error);
     }
 
-    console.log('🚀 started');
+    console.log(`🚀 Ready on http://localhost:${port}`); // eslint-disable-line no-console
 });
 
 if (module.hot) {
@@ -20,8 +20,6 @@ if (module.hot) {
 
     module.hot.accept('./server', () => {
         console.log('🔁  HMR Reloading `../server`...');
-
-        global.test22 = 'test';
 
         try {
             app = require('./server').default;
