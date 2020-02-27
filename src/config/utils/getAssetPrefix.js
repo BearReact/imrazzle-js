@@ -10,7 +10,7 @@ export function uploadUrl(path: string = '') {
     let fixPath = '';
 
     if (path) {
-        return `${getConfig('uploadPrefix')}${fixPath}`;
+        return `${getConfig('uploadPrefixUrl')}${fixPath}`;
     }
     return undefined;
 }
@@ -21,5 +21,5 @@ export function uploadUrl(path: string = '') {
  * @returns {string}
  */
 export function asset(path) {
-    return `${getConfig('staticPrefix')}${path}`;
+    return `${getConfig('staticPrefixUrl')}${path}`;
 }

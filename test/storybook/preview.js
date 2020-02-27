@@ -11,7 +11,7 @@ import {withI18n} from 'storybook-addon-i18n';
 
 // setting
 import gridConfig from '@config/grid';
-import {generateConfig} from '@config/utils/getConfig';
+import {serverGenerateConfig} from '@config/utils/getConfig';
 import {viewports, i18n} from './addonConfig';
 
 // Setting Global Styles
@@ -30,7 +30,7 @@ addParameters({
 addDecorator(withI18n);
 
 // Set Config
-const siteConfig = generateConfig();
+const siteConfig = serverGenerateConfig();
 if(!isEmpty(siteConfig)){
 
     // Get Site Global Config

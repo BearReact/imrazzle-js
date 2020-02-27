@@ -4,7 +4,7 @@ import sites from '@config/site';
 import {version} from '../../../package';
 
 /**
- * 取得站台設定
+ * Client & Server 取得站台設定
  * @param pathKey
  * @param defaultReturn
  */
@@ -19,21 +19,27 @@ export const getConfig = (pathKey, defaultReturn) => {
 };
 
 /**
- * 產生站台設定
+ * Server 產生站台設定
  * @param siteCode
- * @returns {{}|(T&{uploadPrefix: *, staticPrefix: *, version: *})}
+ * @returns {{}|(T&{uploadPrefixUrl: *, staticPrefixUrl: *, version: *})}
  */
-export const generateConfig = (siteCode = get(process,'env.SITE_CODE', 'default')) => {
+export const serverGenerateConfig = (siteCode = get(process,'env.SITE_CODE', 'default')) => {
     const siteConfig = sites.find(row => row.siteCode === siteCode);
 
     if(siteConfig === undefined){
-        return {};
+        return {errorMessage: `throw Error: Site code could not find the site settings, please check SITE_CODE(${siteCode}) and src config/site.js`};
+    }
+
+    const routePrefixPath = get(process,'env.ROUTE_PREFIX_PATH');
+    if(routePrefixPath === '/'){
+        return {errorMessage: 'throw Error: Env ROUTE_PREFIX_PATH please fix "/" to ""'};
     }
 
     return {
         version: version,
-        uploadPrefix: get(process, 'env.UPLOAD_PREFIX_URL', '/uploads'),
-        staticPrefix: get(process, 'env.STATIC_PREFIX_URL', '/static'),
+        uploadPrefixUrl: get(process, 'env.UPLOAD_PREFIX_URL', '/uploads'),
+        staticPrefixUrl: get(process, 'env.STATIC_PREFIX_URL', '/static'),
+        routePrefixPath: routePrefixPath,
         ...siteConfig,
     };
 };

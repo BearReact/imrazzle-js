@@ -11,7 +11,7 @@ import {isEmpty, isJSON} from '@utils/equal';
 
 // redux
 import {Provider} from 'react-redux';
-import {generateConfig} from '@config/utils/getConfig';
+import {serverGenerateConfig} from '@config/utils/getConfig';
 import configureStore from '../library/redux/configureStore';
 
 // intl
@@ -42,9 +42,9 @@ export default (req, res) => {
 
     // 站台設定
     const siteCode = get(req, 'headers.sitecode');
-    const globalConfig = generateConfig(siteCode);
+    const globalConfig = serverGenerateConfig(siteCode);
 
-    if (!isEmpty(globalConfig)) {
+    if (isEmpty(globalConfig.errorMessage)) {
         global.__global__ = globalConfig;
 
         const store = configureStore(isJSON(preloadState) ? JSON.parse(preloadState) : {});
@@ -53,7 +53,7 @@ export default (req, res) => {
             sheet.collectStyles(
                 <Provider store={store}>
                     <LanguageProvider messages={translationMessages}>
-                        <StaticRouter context={context} location={req.url} basename="/ap-main">
+                        <StaticRouter context={context} location={req.url} basename={globalConfig.routePrefixPath}>
                             <App/>
                         </StaticRouter>
                     </LanguageProvider>
@@ -110,6 +110,6 @@ export default (req, res) => {
                 );
         }
     } else {
-        res.status(444).send(`throw Error: Site code could not find the site settings, please check SITE_CODE(${siteCode}) and src /config/site.js`);
+        res.status(444).send(globalConfig.errorMessage);
     }
 };
