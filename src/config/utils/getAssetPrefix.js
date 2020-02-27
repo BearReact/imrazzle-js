@@ -23,3 +23,13 @@ export function uploadUrl(path: string = '') {
 export function asset(path) {
     return `${getConfig('staticPrefixUrl')}${path}`;
 }
+
+/**
+ * 串接前端的路由基礎網址
+ * @param path 檔案的網址路徑
+ * @returns {string}
+ */
+export function routePath(path) {
+
+    return (`${getConfig('routePrefixPath')}/${path}`).replace('//','/');
+}
