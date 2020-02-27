@@ -54,8 +54,8 @@ $ yarn dev
 
 > 🚀 Ready on http://localhost:3000
 
-# Run Mocker Api
-$ test:mock
+# In another terminal panel Run Mocker Api
+$ yarn test:mock
 
 ```
 open browser example in http://localhost:3000
