@@ -1,6 +1,7 @@
-const {createProxyMiddleware} = require('http-proxy-middleware');
+import {createProxyMiddleware} from 'http-proxy-middleware';
+import get from 'lodash/get';
 
-const proxyMiddlewareApiBaseUrl = process.env.PROXY_MIDDLEWARE_API_BASE_URL;
+const proxyMiddlewareApiBaseUrl = get(process, 'env.PROXY_MIDDLEWARE_API_BASE_URL', '/api');
 
 /**
  * 開發時需要的 ReProxy, 避免Cors問題
