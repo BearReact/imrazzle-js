@@ -71,10 +71,3 @@ $ docker-compose up --build
 
 > 🚀 Ready on http://localhost:3000
 ```
-
-
-#### Remove example
-
-```zsh
-$ rm -rf ./src/pages/example ./public/static/images/example ./src/container/example ./public/static/locales/*/example.json
-```
