@@ -1,7 +1,5 @@
 // @flow
 
-import {isEmpty} from '@utils/equal';
-
 /**
  * 千分位格式化
  * @param val 原數值
@@ -51,6 +49,17 @@ export function toDecimal2(x: number) {
 export function intersectionMin(...obj){
     let min = 0;
     let max = null;
+
+    function isEmpty(value, isCheckNumber0 = false) {
+        return (
+            value === undefined
+            || value === null
+            || value === false
+            || (isCheckNumber0 && value === 0)
+            || (!(value instanceof Date) && typeof value === 'object' && Object.keys(value).length === 0)
+            || (typeof value === 'string' && value.trim().length === 0)
+        );
+    }
 
     obj.map(o => {
         min = !isEmpty(o[0], true) && o[0] > min ? o[0] : min;
