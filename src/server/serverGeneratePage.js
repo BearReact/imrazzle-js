@@ -68,8 +68,8 @@ export default (req, res) => {
     <html lang="en">
     <head>
         <meta charset="utf-8" />
-        <title>${get(globalConfig, 'meta.title')}</title>
-        <meta name="description" content="${get(globalConfig, 'meta.description')}"/>
+        <title>${get(globalConfig, 'site.meta.title', '')}</title>
+        <meta name="description" content="${get(globalConfig, 'site.meta.description', '')}"/>
 
         <!-- Make the page mobile compatible -->
         <meta name="renderer" content="webkit" />

@@ -6,15 +6,12 @@
 import {createStore, applyMiddleware, compose} from 'redux';
 import {routerMiddleware} from 'connected-react-router';
 import createSagaMiddleware from 'redux-saga';
-// import StartupActions from '@library/redux/store/Startup/Reducer';
-// import {createApiService} from '@config/utils/configureApi';
-// import appConfig from '@config/app';
-// import reduxPersist from './config/reduxPersist';
+import {initApiMiddleware} from '@services';
 import createReducer from './reducers';
-// import Rehydration from './utils/rehydration';
 import rootSaga from './store/rootSaga';
 
 const sagaMiddleware = createSagaMiddleware();
+let store;
 
 export default function configureStore(preloadState = {}, history = null) {
     const isServer = typeof window === 'undefined';
@@ -36,7 +33,7 @@ export default function configureStore(preloadState = {}, history = null) {
         && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__)
         || compose;
 
-    const store = createStore(createReducer(), preloadState, composeEnhancers(...enhancers));
+    store = createStore(createReducer(), preloadState, composeEnhancers(...enhancers));
 
     // Create an object for any later reducers
     store.asyncReducers = {};
@@ -69,6 +66,9 @@ export default function configureStore(preloadState = {}, history = null) {
         // Save the task if we want to cancel it in the future
         store.asyncSagas[key] = key;
     };
+
+    // init api middleware
+    initApiMiddleware(store.getState, store.dispatch);
 
     return store;
 }

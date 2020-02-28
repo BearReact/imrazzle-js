@@ -9,12 +9,8 @@ import RootRouter from './pages/RootRouter';
 
 const App = () => {
     return (
-        <ThemeProvider
-            theme={getConfig('theme')}
-        >
-            <GridThemeProvider
-                gridTheme={gridConfig}
-            >
+        <ThemeProvider theme={getConfig('site.theme')}>
+            <GridThemeProvider gridTheme={gridConfig}>
                 <ScrollToTop>
                     <RootRouter/>
                 </ScrollToTop>

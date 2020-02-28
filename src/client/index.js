@@ -18,7 +18,7 @@ const Root = () => {
     return (
         <Provider store={store}>
             <LanguageProvider messages={translationMessages}>
-                <BrowserRouter basename={getConfig('routePrefixPath')}>
+                <BrowserRouter basename={getConfig('env.routePrefixPath')}>
                     <App/>
                 </BrowserRouter>
             </LanguageProvider>

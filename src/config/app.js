@@ -3,6 +3,7 @@ export default {
     defaultStaticPrefixUrl: '/static',
     defaultUploadPrefixUrl: '/upload',
     defaultApiBaseUrl: '/api',
+    defaultRoutePrefixPath: '',
 
     // sync redux & cookie key
     reduxPreloadWhileList: ['auth', 'language.locale'],

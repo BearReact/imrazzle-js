@@ -29,7 +29,7 @@ const LoaderContainer = (props: Props) => {
             {(visibleMode === 'render' && isLoading) && (
                 <Mask isLoading={isLoading} isFullSize={rollingAlign === 'full'} isHasPanel={isHasPanel}>
                     <MaskBody isFullMaskBody={isFullMaskBody}>
-                        <HalfCircleSpinner size={size} color={getConfig('theme.primaryColor')}/>
+                        <HalfCircleSpinner size={size} color={getConfig('site.theme.primaryColor')}/>
                     </MaskBody>
                 </Mask>
             )}
@@ -37,7 +37,7 @@ const LoaderContainer = (props: Props) => {
             {(isShowMask && visibleMode === 'opacity') && (
                 <Mask isLoading={isLoading} isFullSize={rollingAlign === 'full'} isHasPanel={isHasPanel}>
                     <MaskBody isFullMaskBody={isFullMaskBody}>
-                        <HalfCircleSpinner size={size} color={getConfig('theme.primaryColor')}/>
+                        <HalfCircleSpinner size={size} color={getConfig('site.theme.primaryColor')}/>
                     </MaskBody>
                 </Mask>
             )}

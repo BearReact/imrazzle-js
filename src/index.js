@@ -7,6 +7,11 @@ const server = http.createServer(app);
 const port = get(process, 'env.PORT', 3000);
 let currentApp = app;
 
+// Check route prefix
+if(get(process,'env.ROUTE_PREFIX_PATH') === '/'){
+    throw Error('throw Error: Env ROUTE_PREFIX_PATH please fix "/" to ""');
+}
+
 server.listen(port, error => {
     if (error) {
         console.log(error);

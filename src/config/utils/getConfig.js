@@ -5,10 +5,17 @@ import appConfig from '@config/app';
 import {version} from '../../../package';
 
 // env setting
-const env = {
-    staticPrefixUrl: get(process, 'env.STATIC_PREFIX_URL', appConfig.defaultStaticPrefixUrl),
-    uploadPrefixUrl: get(process, 'env.STATIC_PREFIX_URL', appConfig.defaultUploadPrefixUrl),
-    apiBaseUrl: get(process, 'env.API_BASE_URL', appConfig.defaultApiBaseUrl),
+const initConfig = {
+    version: version,
+    env: {
+        siteENV: get(process, 'env.SITE_ENV', 'production'),
+        staticPrefixUrl: get(process, 'env.STATIC_PREFIX_URL', appConfig.defaultStaticPrefixUrl),
+        uploadPrefixUrl: get(process, 'env.UPLOAD_PREFIX_URL', appConfig.defaultUploadPrefixUrl),
+        apiBaseUrl: get(process, 'env.API_BASE_URL', appConfig.defaultApiBaseUrl),
+        routePrefixPath: get(process, 'env.ROUTE_PREFIX_PATH', appConfig.defaultRoutePrefixPath),
+    },
+    // in serverGenerateConfig set, if your only one site, you can set here!
+    site: undefined,
 };
 
 /**
@@ -19,13 +26,13 @@ const env = {
 export const getConfig = (pathKey, defaultReturn) => {
     if(typeof window !== 'undefined'){
         // eslint-disable-next-line no-underscore-dangle
-        return get(window.__global__, pathKey, '');
+        return get(window.__global__, pathKey, defaultReturn);
     }else{
-        if(get(env, pathKey, false)){
-            return env[pathKey];
+        if(get(initConfig, pathKey, false)){
+            return get(initConfig, pathKey, defaultReturn);
         }
         // eslint-disable-next-line no-underscore-dangle
-        return get(global.__global__, pathKey, '');
+        return get(global.__global__, pathKey, defaultReturn);
     }
 };
 
@@ -41,20 +48,14 @@ export const serverGenerateConfig = siteCode => {
         return {errorMessage: `throw Error: Site code could not find the site settings, please check SITE_CODE(${siteCode}) and src config/site.js`};
     }
 
-    const routePrefixPath = get(process,'env.ROUTE_PREFIX_PATH');
-    if(routePrefixPath === '/'){
-        return {errorMessage: 'throw Error: Env ROUTE_PREFIX_PATH please fix "/" to ""'};
-    }
-
-    const config = {
-        version: version,
-        staticPrefixUrl: env.staticPrefixUrl,
-        uploadPrefixUrl: env.uploadPrefixUrl,
-        routePrefixPath: routePrefixPath,
-        ...siteConfig,
-    };
     // eslint-disable-next-line no-underscore-dangle
-    global.__global__ = config;
+    global.__global__ = Object.assign({}, initConfig, {
+        site: {
+            ...siteConfig,
+            siteId: get(siteConfig, `siteId.${initConfig.env.siteENV}`),
+        },
+    });
 
-    return config;
+    // eslint-disable-next-line no-underscore-dangle
+    return global.__global__;
 };
