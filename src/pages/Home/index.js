@@ -1,18 +1,22 @@
 import {compose} from 'redux';
 import {connect} from 'react-redux';
+import {injectIntl} from 'react-intl';
+import loginAction from '@library/redux/store/Login/Reducer';
 
-import LanguageActions from '@library/redux/store/Language/Reducer';
 import Home from './Home';
 
 const mapDispatchToProps = {
-    changeLocale: LanguageActions.changeLocale,
+    onSignIn: loginAction.submitLogin,
+    onSignOut: loginAction.submitLogout,
 };
 
 const mapStateToProps = state => ({
-    locale: state.language.locale,
+    isSubmitting: state.login.isSubmitting,
+    token: state.auth.memberToken,
 });
 
 export default compose(
+    injectIntl,
     connect(
         mapStateToProps,
         mapDispatchToProps

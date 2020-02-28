@@ -11,8 +11,12 @@ export default {
     'errorHttp.404': '請求找不到路徑/路由',
     'errorHttp.500': '内部服务器错误',
     'errorHttp.504': '请检查您的网路，并再尝试一次',
-    'errorHttp.networkError': '您的行动网路连线不稳定，请检查您的网路连线状态后再尝试一次',
-    'errorHttp.timeoutError': '伺服器逾时超出{sec}秒无回应，请确认您的网路连线状态或与客服联系',
+    'errorHttp.CLIENT_ERROR': 'CLIENT_ERROR: Any non-specific 400 series error',
+    'errorHttp.SERVER_ERROR': 'SERVER_ERROR: Any 500 series error',
+    'errorHttp.TIMEOUT_ERROR': 'TIMEOUT_ERROR: 伺服器逾时超出{sec}秒无回应，请确认您的网路连线状态或与客服联系',
+    'errorHttp.CONNECTION_ERROR': 'CONNECTION_ERROR: Server not available, bad dns',
+    'errorHttp.NETWORK_ERROR': 'NETWORK_ERROR: 您的行动网路连线不稳定，请检查您的网路连线状态后再尝试一次',
+    'errorHttp.CANCEL_ERROR': 'CANCEL_ERROR: Request has been cancelled. Only possible if `cancelToken` is provided in config, see axios `Cancellation`',
 
     'common.language' : '中文',
 

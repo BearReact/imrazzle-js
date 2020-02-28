@@ -11,6 +11,7 @@ const mapDispatchToProps = {
 
 const mapStateToProps = state => ({
     locale: state.language.locale,
+    token: state.auth.memberToken,
 });
 
 export default compose(

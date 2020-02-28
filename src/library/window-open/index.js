@@ -15,7 +15,7 @@ import {routePath} from '@config/utils/getAssetPrefix';
  * @param isMultipleOpen 是否需要可以多開子視窗
  * @returns {boolean}
  */
-export default class OpenWindow {
+export default class windowOpen {
     constructor(prefixName, isMultipleOpen) {
         this.openTargetId = isMultipleOpen ? uniqueId(`${prefixName}_`) : prefixName;
         this.isMultipleOpen = isMultipleOpen;

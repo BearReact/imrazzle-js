@@ -1,9 +1,9 @@
 export default [
     {
         siteCode: 'default',
-        siteName: 'IMNEXT-JS',
+        siteName: 'Imezaale-js',
         meta: {
-            title: 'IMNEXT-JS - React Out-of-the-box, integrated third-party suites required for website development',
+            title: 'Imezaale-js - React Out-of-the-box, integrated third-party suites required for website development',
             description: 'React Out-of-the-box, integrated third-party suites required for website development',
         },
         googleBot: {

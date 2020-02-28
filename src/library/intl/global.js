@@ -6,12 +6,11 @@
  */
 
 import React from 'react';
-import {InjectedIntl, InjectedIntlProps, injectIntl} from 'react-intl';
+import {IntlShape, injectIntl} from 'react-intl';
 
-// export let intl: InjectedIntl = null;
 export let i18n: Function = null;
 
-class LanguageGlobal extends React.PureComponent<InjectedIntlProps> {
+class LanguageGlobal extends React.PureComponent<IntlShape> {
 
     constructor(props: any) {
         super(props);

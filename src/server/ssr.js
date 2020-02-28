@@ -26,16 +26,16 @@ import App from '../App';
 
 global.DOMParser = DOMParser;
 
+// React-Intl Pluralrules
+require('@formatjs/intl-pluralrules/dist/locale-data/en'); // Add locale data for de
+require('@formatjs/intl-pluralrules/dist/locale-data/zh'); // Add locale data for de
+
 // eslint-disable-next-line import/no-dynamic-require
 const assets = require(process.env.RAZZLE_ASSETS_MANIFEST);
 
 export default (req, res) => {
     const context = {};
     const sheet = new ServerStyleSheet();
-
-    // React-Intl Pluralrules
-    require('@formatjs/intl-pluralrules/dist/locale-data/en'); // Add locale data for de
-    require('@formatjs/intl-pluralrules/dist/locale-data/zh'); // Add locale data for de
 
     // Redux Store PreState
     const preloadState = get(req, `universalCookies.cookies.${PRELOAD_STATE}`, '{}');
@@ -71,8 +71,9 @@ export default (req, res) => {
     <html lang="en">
     <head>
         <meta charset="utf-8" />
-        <title>Welcome to Razzle</title>
-        
+        <title>${get(globalConfig, 'meta.title')}</title>
+        <meta name="description" content="${get(globalConfig, 'meta.description')}"/>
+
         <!-- Make the page mobile compatible -->
         <meta name="renderer" content="webkit" />
         <meta name="force-rendering" content="webkit" />
@@ -95,7 +96,7 @@ export default (req, res) => {
         
         <script>
         window.${PRELOAD_STATE} = ${serialize(preloadState)};
-        window.__global__ = ${JSON.stringify(global.__global__)};
+        window.__global__ = ${JSON.stringify(globalConfig)};
         </script>
         ${
                         process.env.NODE_ENV === 'production'

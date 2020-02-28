@@ -10,6 +10,7 @@ import setWith from 'lodash/setWith';
 import Cookies from 'universal-cookie';
 import {PRELOAD_STATE} from '../../../../types';
 import serialize from "serialize-javascript";
+import appConfig from '@config/app';
 
 
 import {isEmpty} from '../../../../utils/equal';
@@ -61,9 +62,7 @@ export function* initializeFlow() {
 function* watchStateSyncCookie() {
     const cookies = new Cookies();
 
-    const reduxPreloadWhileList = [
-        'language.locale'
-    ];
+    const {reduxPreloadWhileList} = appConfig;
 
     while (true) {
         yield take('*');

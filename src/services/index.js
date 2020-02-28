@@ -4,10 +4,13 @@ import {create} from 'apisauce';
 import get from 'lodash/get';
 
 import {isEmpty} from '@utils/equal';
+import {autoMapper} from '@utils/format';
 // import {i18n} from '@library/i18next/configureI18Next';
 // import {Selectors as AuthSelectors} from '@library/redux/store/Auth/Reducer';
 // import LoginActions from '@library/redux/store/Login/Reducer';
-// import {store} from '@library/redux/configureStore';
+import store from '@library/redux/configureStore';
+import {i18n} from '@library/intl/global';
+import {replace} from 'connected-react-router';
 
 const apiService = create({
     baseURL: get(process,'env.API_BASE_URL', '/api'),
@@ -38,9 +41,13 @@ apiService.addRequestTransform(request => {
  * Response After Middleware
  */
 apiService.addResponseTransform(response => {
-    if (response.ok) {
-        const {headers} = response;
+    const reMappingResponse = autoMapper(response, {
+        data: 'body',
+    });
 
+    const {ok, headers, status, problem, originalError, config, body} = reMappingResponse;
+
+    if (ok) {
         /** 請求成功, 額外處理區塊 */
         // if (headers.Authentication) {
         // 設定認證
@@ -49,42 +56,43 @@ apiService.addResponseTransform(response => {
 
     } else {
         /** 請求失敗, 額外處理區塊 */
-        const {
-            status, problem, originalError, config, data: responseData,
-        } = response;
+        // - all saga call api not check res.ok, then use catch handle error
+        // - in here middleware throw error
 
-        if (!isEmpty(status)) {
+        let message = '';
+        if (status) {
+            message = get(body, 'message', i18n({id: `errorHttp.${status}`}));
 
-            // const message = get(responseData, 'message', i18n.t(`common:errorHttp.${status}`));
-            // const statusCode = get(responseData, 'statusCode', status);
-            //
-            // switch (response.status) {
-            //     case 401:
-            //         // store.dispatch(LoginActions.kickSetGuest());
-            //         throw new Error(message);
-            //
-            //     case 511:
-            //         // store.dispatch(replace('/no-access'));
-            //         throw new Error(message);
-            //
-            //     default:
-            //         throw new Error(message);
-            // }
+            switch (status) {
+                case 401:
+                    // store.dispatch(LoginActions.kickSetGuest());
+                    break;
+                case 511:
+                    store.dispatch(replace('/no-access'));
+                    break;
+            }
+            throw new Error(message);
 
-        } else if (!isEmpty(problem)) {
-            // switch (problem) {
-            //     case 'NETWORK_ERROR':
-            //         throw new Error(i18n.t('common:errorHttp.networkError'));
-            //
-            //     case 'TIMEOUT_ERROR':
-            //         throw new Error(i18n.t('common:errorHttp.networkError'));
-            //
-            //     default:
-            //         throw new Error(`${problem}: ${originalError}`);
-            // }
+        } else if (problem) {
+            message = i18n({id: `errorHttp.${problem}`, sec: {sec: config.timeout / 1000}});
+            throw new Error(message);
+
         }
     }
-    return response;
 });
 
-export default apiService;
+/**
+ * format rename response
+ * @param func
+ * @returns {{}}
+ */
+const reMapping = func => {
+    return autoMapper(func, {data: 'body'});
+};
+
+export default {
+    get: async (...params) => reMapping(await apiService.get(...params)),
+    post: async (...params) => reMapping(await apiService.post(...params)),
+    put: async (...params) => reMapping(await apiService.put(...params)),
+    delete: async (...params) => reMapping(await apiService.delete(...params)),
+};

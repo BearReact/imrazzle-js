@@ -21,10 +21,10 @@ if (module.hot) {
         console.log('🔁  HMR Reloading `../server`...');
 
         try {
-            app = require('./server').default;
+            const hotApp = require('./server').default;
             server.removeListener('request', currentApp);
-            server.on('request', app);
-            currentApp = app;
+            server.on('request', hotApp);
+            currentApp = hotApp;
         } catch (error) {
             console.error(error);
         }

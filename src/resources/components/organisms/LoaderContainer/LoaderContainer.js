@@ -106,6 +106,7 @@ const Mask = styled.div`
 
 const LoaderSelection = styled.div`
     position: relative;
+    width: 100%;
     
     ${props=> props.isFullSize && css`
         z-index: auto !important;

@@ -6,6 +6,8 @@
 const rootReducers = {
 
     language: require('./Language/Reducer').reducer,
+    auth: require('./Auth/Reducer').reducer,
+    login: require('./Login/Reducer').reducer,
     ui: require('./Ui/Reducer').reducer,
 
 };

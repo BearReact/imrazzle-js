@@ -2,17 +2,20 @@
 
 import React from 'react';
 import styled, {css} from 'styled-components';
-import {media, Col, Container, GridThemeProvider, Row} from 'styled-bootstrap-grid';
+import {media, Col, Container, Row} from 'styled-bootstrap-grid';
 import {Route,Switch, Link} from 'react-router-dom';
+import get from 'lodash/get';
 import A from '@components/atoms/A';
-import News from '@pages/News/List';
 import {asset} from '@config/utils/getAssetPrefix';
 import {getConfig} from '@config/utils/getConfig';
+
+import News from '@pages/News/List';
+import Home from '@pages/Home';
 
 const HomeLayout = (props: Props) => {
 
     const {
-        intl: {formatMessage: i18n}, changeLocale,
+        intl: {formatMessage: i18n}, changeLocale, token,
     } = props;
 
     const isVisibleNavBar = false;
@@ -20,7 +23,7 @@ const HomeLayout = (props: Props) => {
         {href: '/', text: i18n({id: 'menu.home'}), isHome: true},
         {href: '/news', text: i18n({id:'menu.news'})},
         {href: '/contact', text: i18n({id:'menu.contact'})},
-        {href: '/profile', text: i18n({id:'menu.profile'})},
+        {href: '/profile', text: i18n({id:'menu.profile'}), isVisible: token},
     ];
 
     /**
@@ -55,17 +58,21 @@ const HomeLayout = (props: Props) => {
                         {/* MENU */}
                         <Col md>
                             <Nav as="ul">
-                                {menu.map(row => (
-                                    <NavItem
-                                        auto
-                                        as="li"
-                                        key={row.href}
-                                    >
-                                        <A href={row.href}>
-                                            {row.text}
-                                        </A>
-                                    </NavItem>
-                                ))}
+                                {menu
+                                    .filter(row => {
+                                        return get(row, 'isVisible', true);
+                                    })
+                                    .map(row => (
+                                        <NavItem
+                                            auto
+                                            as="li"
+                                            key={row.href}
+                                        >
+                                            <A href={row.href}>
+                                                {row.text}
+                                            </A>
+                                        </NavItem>
+                                    ))}
                             </Nav>
                         </Col>
 
@@ -83,7 +90,7 @@ const HomeLayout = (props: Props) => {
             {/* Content */}
             <Section>
                 <Switch>
-                    {/*<Route exact path="/" component={Home} />*/}
+                    <Route exact path="/" component={Home}/>
                     {/*<Route exact path="/about" component={About} />*/}
                     <Route exact path="/news" component={News}/>
                 </Switch>
@@ -116,7 +123,7 @@ const Section = styled.div`
 `;
 
 const Footer = styled(Col)`
-    background-image: url(${asset('/images/example/footer-bg.jpg')});
+    background-image: url(${asset('/example/footer-bg.jpg')});
     background-position: center center;
     background-size: cover;
     background-repeat: no-repeat;

@@ -1,6 +1,8 @@
 /* eslint-disable global-require */
 
 import {all} from 'redux-saga/effects';
+import Startup from './Startup/Saga';
+import Login from './Login/Saga';
 
 /** -----------------------------------------
             Connect Types To Sagas
@@ -8,8 +10,8 @@ import {all} from 'redux-saga/effects';
 const rootSaga = function* root() {
     yield all([
         // ...require('@library/intl/store/Saga').default,
-        ...require('./Startup/Saga').default,
-        // ...require('./Login/Saga').default,
+        ...Startup,
+        ...Login,
         // ...require('./System/Saga').default,
         // ...require('./Notice/Saga').default,
         //
