@@ -13,14 +13,14 @@ export function* fetchPaginate(payload) {
         yield put(Actions.fetchPaginateBegin());
 
         // 避免 API回傳時間過短, 會讓Loading畫面快速閃過
-        // 故將時間設定回傳時間至少2秒
+        // 故將時間設定回傳時間至少0.4秒
         const [response, nonTime] = yield all([
             call(ApiService.getNewsList),
-            delay(1200),
+            delay(400),
         ]);
-        const {data: responseData} = response;
+        const {body} = response;
 
-        yield put(Actions.fetchPaginateSuccess(responseData.data.rows));
+        yield put(Actions.fetchPaginateSuccess(body.data.rows));
 
     } catch (e) {
         yield put(Actions.fetchPaginateFail(e.message));
