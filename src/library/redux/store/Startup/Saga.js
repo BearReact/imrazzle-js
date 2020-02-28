@@ -8,7 +8,7 @@ import setWith from 'lodash/setWith';
 // import jwtDecode from 'jwt-decode';
 // import dayjs from 'dayjs';
 import Cookies from 'universal-cookie';
-import {PRELOAD_STATE} from '../../../../types';
+import {PRELOAD_STATE} from '../../../../constants';
 import serialize from "serialize-javascript";
 import appConfig from '@config/app';
 

@@ -17,7 +17,7 @@ import LanguageProvider from '../library/intl/provider';
 import {translationMessages} from '../library/intl/i18n';
 
 // site config
-import {PRELOAD_STATE} from '../types';
+import {PRELOAD_STATE} from '../constants';
 
 // start component
 import App from '../App';

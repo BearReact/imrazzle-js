@@ -5,7 +5,7 @@ import get from 'loadsh/get';
 import {Provider} from 'react-redux';
 import Immutable from 'seamless-immutable';
 import {getConfig} from '@config/utils/getConfig';
-import {PRELOAD_STATE} from '../types';
+import {PRELOAD_STATE} from '../constants';
 import configureStore from '../library/redux/configureStore';
 import LanguageProvider from '../library/intl/provider';
 import {translationMessages} from '../library/intl/i18n';
