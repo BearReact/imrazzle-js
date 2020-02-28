@@ -23,7 +23,7 @@ export const getConfig = (pathKey, defaultReturn) => {
  * @param siteCode
  * @returns {{}|(T&{uploadPrefixUrl: *, staticPrefixUrl: *, version: *})}
  */
-export const serverGenerateConfig = (siteCode = get(process,'env.SITE_CODE', 'default')) => {
+export const serverGenerateConfig = siteCode => {
     const siteConfig = sites.find(row => row.siteCode === siteCode);
 
     if(siteConfig === undefined){
@@ -35,11 +35,15 @@ export const serverGenerateConfig = (siteCode = get(process,'env.SITE_CODE', 'de
         return {errorMessage: 'throw Error: Env ROUTE_PREFIX_PATH please fix "/" to ""'};
     }
 
-    return {
+    const config = {
         version: version,
         uploadPrefixUrl: get(process, 'env.UPLOAD_PREFIX_URL', '/uploads'),
         staticPrefixUrl: get(process, 'env.STATIC_PREFIX_URL', '/static'),
         routePrefixPath: routePrefixPath,
         ...siteConfig,
     };
+    // eslint-disable-next-line no-underscore-dangle
+    global.__global__ = config;
+
+    return config;
 };

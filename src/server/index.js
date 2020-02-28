@@ -4,7 +4,7 @@ import {resolve} from 'path';
 import get from 'lodash/get';
 import cookiesMiddleware from 'universal-cookie-express';
 import {isEmpty} from '@utils/equal';
-import ssr from './ssr';
+import serverGeneratePage from './serverGeneratePage';
 
 const isDev = get(process, 'env.NODE_ENV', 'production') !== 'production';
 
@@ -25,6 +25,9 @@ if(isDev){
     }
 }
 
-server.get('/', ssr);
+server.get('/', serverGeneratePage);
+server.get('*', function(req, res){
+    res.status(404).send('404: Request Not Found/Route');
+});
 
 export default server;

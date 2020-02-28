@@ -7,12 +7,7 @@ import {getConfig} from '@config/utils/getConfig';
  * @returns {*}
  */
 export function uploadUrl(path: string = '') {
-    let fixPath = '';
-
-    if (path) {
-        return `${getConfig('uploadPrefixUrl')}${fixPath}`;
-    }
-    return undefined;
+    return `${getConfig('uploadPrefixUrl')}${path}`;
 }
 
 /**
@@ -30,6 +25,5 @@ export function asset(path) {
  * @returns {string}
  */
 export function routePath(path) {
-
     return (`${getConfig('routePrefixPath')}/${path}`).replace('//','/');
 }

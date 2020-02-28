@@ -8,6 +8,7 @@ module.exports = {
             '@static': path.resolve(__dirname, 'public/static'),
             '@assets': path.resolve(__dirname, 'src/resources/assets'),
             '@pages': path.resolve(__dirname, 'src/pages'),
+            '@layouts': path.resolve(__dirname, 'src/layouts'),
             '@components': path.resolve(__dirname, 'src/resources/components'),
             '@utils': path.resolve(__dirname, 'src/utils'),
             '@library': path.resolve(__dirname, 'src/library'),

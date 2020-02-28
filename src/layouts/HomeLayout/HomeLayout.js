@@ -11,6 +11,7 @@ import {getConfig} from '@config/utils/getConfig';
 
 import News from '@pages/News/List';
 import Home from '@pages/Home';
+import NotFound from '@pages/NotFound';
 
 const HomeLayout = (props: Props) => {
 
@@ -93,6 +94,7 @@ const HomeLayout = (props: Props) => {
                     <Route exact path="/" component={Home}/>
                     {/*<Route exact path="/about" component={About} />*/}
                     <Route exact path="/news" component={News}/>
+                    <Route path="*" component={NotFound}/>
                 </Switch>
             </Section>
 

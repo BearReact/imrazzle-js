@@ -104,7 +104,7 @@ Home.defaultProps = {
 export default Home;
 
 const HeaderHero = styled.div`
-    background-image: url(${asset('/example/header-bg.jpg')});
+    background-image: ${props => `url(${asset('/example/header-bg.jpg')})`};
     background-position: center center;
     background-size: cover;
     background-repeat: no-repeat;

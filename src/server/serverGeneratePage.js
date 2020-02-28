@@ -1,5 +1,3 @@
-/* eslint-disable no-underscore-dangle */
-
 import React from 'react';
 import {renderToString} from 'react-dom/server';
 import {StaticRouter} from 'react-router-dom';
@@ -41,11 +39,10 @@ export default (req, res) => {
     const preloadState = get(req, `universalCookies.cookies.${PRELOAD_STATE}`, '{}');
 
     // 站台設定
-    const siteCode = get(req, 'headers.sitecode');
+    const siteCode = get(process,'env.SITE_CODE') || get(req, 'headers.sitecode', 'default');
     const globalConfig = serverGenerateConfig(siteCode);
 
     if (isEmpty(globalConfig.errorMessage)) {
-        global.__global__ = globalConfig;
 
         const store = configureStore(isJSON(preloadState) ? JSON.parse(preloadState) : {});
 
