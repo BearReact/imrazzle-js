@@ -6,7 +6,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: razzle-app
+    container_name: imezaale-js
     ports:
       - '3000:3000'
 
