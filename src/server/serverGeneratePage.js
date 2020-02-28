@@ -50,7 +50,7 @@ export default (req, res) => {
             sheet.collectStyles(
                 <Provider store={store}>
                     <LanguageProvider messages={translationMessages}>
-                        <StaticRouter context={context} location={req.url} basename={globalConfig.routePrefixPath}>
+                        <StaticRouter context={context} location={req.url} basename={get(globalConfig, 'env.routePrefixPath')}>
                             <App/>
                         </StaticRouter>
                     </LanguageProvider>
