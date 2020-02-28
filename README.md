@@ -4,13 +4,13 @@
 
 Imrazzle is a web application framework with razzle, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Imrazzle takes the pain out of development by easing common tasks used in many web projects, such as:
 
-- [Simple, fast routing engine](https://nextjs.org).
+- [Simple, fast React Route Dom](https://reacttraining.com/react-router).
 - [Powerful dependency injection redux](https://redux.js.org).
 - [Aims to make application side effects library redux-saga](https://redux-saga.js.org).
 - [Internationalization-framework intl Language](https://github.com/formatjs/react-intl).
 - [Expressive, intuitive Storybook](https://storybook.js.org).
 - [delightful JavaScript Testing Framework with a focus on simplicity Jest](https://jestjs.io).
-- [Form controller Formlk](https://jaredpalmer.com/formik/docs/overview).
+- [Form controller React Hook Form](https://react-hook-form.com).
 - [Form validation Yup](https://github.com/jquense/yup).
 - [Find and fix problems in your JavaScript code ESLint](https://eslint.org).
 - [Quickly build your entire app with our Grid Bootstrap & Styled-component](https://github.com/imagine10255/styled-bootstrap-grid/tree/master).
@@ -47,7 +47,10 @@ Imrazzle is accessible, powerful, and provides tools required for large, robust 
 $ clone git@github.com:imagine10255/Imrazzle-js.git my-razzle-project
 
 # Enter folder and Install, then copy environment setting
-$ cd my-razzle-project && yarn && cp .env.locale .env
+$ cd my-razzle-project && yarn
+
+# option: if you custom env (default: .env.locale)
+$ cp .env.locale .env
 
 # Start develop
 $ yarn dev
