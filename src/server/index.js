@@ -26,9 +26,6 @@ if(isDev){
     }
 }
 
-server.get('/', serverGeneratePage);
-server.get('*', function(req, res){
-    res.status(404).send('404: Request Not Found/Route');
-});
+server.get('/*', serverGeneratePage);
 
 export default server;
