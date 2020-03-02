@@ -30,7 +30,7 @@ addParameters({
 addDecorator(withI18n);
 
 // Set Config
-const siteConfig = serverGenerateConfig();
+const siteConfig = serverGenerateConfig(process.env.SITE_CODE);
 if(!isEmpty(siteConfig)){
 
     // Get Site Global Config
@@ -38,7 +38,7 @@ if(!isEmpty(siteConfig)){
 
     addDecorator(story => (
         <MemoryRouter initialEntries={['/']}>
-            <ThemeProvider theme={siteConfig.theme}>
+            <ThemeProvider theme={siteConfig.site.theme}>
                 <GridThemeProvider gridTheme={gridConfig}>
                     {story()}
                 </GridThemeProvider>
