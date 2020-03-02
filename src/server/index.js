@@ -14,7 +14,6 @@ const server = express();
 
 server.disable('x-powered-by');
 server.use(cookiesMiddleware());
-//server.use(express.static(process.env.RAZZLE_PUBLIC_DIR));
 
 server.use(routePath('/static'), express.static(resolve(process.cwd(), isDev ? 'public/static' : 'build/public/static')));
 if(isDev){

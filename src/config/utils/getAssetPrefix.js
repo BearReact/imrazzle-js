@@ -7,7 +7,7 @@ import {getConfig} from '@config/utils/getConfig';
  * @returns {string}
  */
 export function asset(path) {
-    return `${getConfig('env.staticPrefixUrl')}${path}`;
+    return `${getConfig('env.staticPrefixUrl', '')}${path}`;
 }
 
 /**
@@ -16,7 +16,7 @@ export function asset(path) {
  * @returns {*}
  */
 export function uploadUrl(path: string = '') {
-    return `${getConfig('env.uploadPrefixUrl')}${path}`;
+    return `${getConfig('env.uploadPrefixUrl', '')}${path}`;
 }
 
 /**
@@ -25,5 +25,5 @@ export function uploadUrl(path: string = '') {
  * @returns {string}
  */
 export function routePath(path) {
-    return (`${getConfig('env.routePrefixPath')}/${path}`).replace('//','/');
+    return (`${getConfig('env.routePrefixPath', '')}/${path}`).replace('//','/');
 }
