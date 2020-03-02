@@ -38,6 +38,15 @@ Imrazzle is accessible, powerful, and provides tools required for large, robust 
 - ROUTE_PREFIX_PATH: route prefix path (ex: /ap-main)
 - STATIC_BASE_URL: Static file base url (ex: http://static.com/static, /static)
 - API_BASE_URL: API Base path (ex: http://static.com, /api)
+- REACT_BUNDLE_PATH: is {assets.client.js} path
+
+`not setting env in:`
+- RAZZLE_PUBLIC_DIR: {root is os path}
+> /Users/imagine10255/Project/ycgroup/200218-member-v4/build/public
+> ./build/public
+> if you set error path, you can't render success!
+- RAZZLE_ASSETS_MANIFEST
+
 
 
 #### Quick Start
@@ -49,8 +58,8 @@ $ clone git@github.com:imagine10255/Imrazzle-js.git my-razzle-project
 # Enter folder and Install, then copy environment setting
 $ cd my-razzle-project && yarn
 
-# option: if you custom env (default: .env.locale)
-$ cp .env.locale .env
+# use env variable
+$ cp .env.locale.example .env
 
 # Start develop
 $ yarn dev
@@ -66,6 +75,8 @@ open browser example in http://localhost:3000
 #### Develop
 
 ```zsh
+$ cp .env.production.example .env
+
 # Ready Release Build Docker Image
 $ docker-compose build
 

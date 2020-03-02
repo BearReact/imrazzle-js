@@ -10,6 +10,7 @@ import {isEmpty, isJSON} from '@utils/equal';
 // redux
 import {Provider} from 'react-redux';
 import {serverGenerateConfig} from '@config/utils/getConfig';
+import {asset} from '@config/utils/getAssetPrefix';
 import configureStore from '../library/redux/configureStore';
 
 // intl
@@ -77,11 +78,11 @@ export default (req, res) => {
         <meta http-equiv="X-UA-Compatible" content="IE=chrome,chrome=1" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
         
-        <link rel="stylesheet" href="/static/common/css/reset.css" />
-        <link rel="stylesheet" href="/static/common/css/bootstrap-base.min.css" />
+        <link rel="stylesheet" href="${asset('/common/css/reset.css')}" />
+        <link rel="stylesheet" href="${asset('/common/css/bootstrap-base.min.css')}" />
         
-        <link rel="stylesheet" type="text/css" href="/static/common/plugins/iconfont/iconfont.css"/>
-        <script src="/static/common/plugins/iconfont/iconfont.js"></script>
+        <link rel="stylesheet" type="text/css" href="${asset('/common/plugins/iconfont/iconfont.css')}"/>
+        <script src="${asset('/common/plugins/iconfont/iconfont.js')}"></script>
 
         ${assets.client.css
                     ? `<link rel="stylesheet" href="${assets.client.css}">`
