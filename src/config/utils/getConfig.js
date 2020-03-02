@@ -1,8 +1,11 @@
 // @flow
 import get from 'lodash/get';
+import dotenv from 'dotenv';
 import sites from '@config/site';
 import appConfig from '@config/app';
 import {version} from '../../../package';
+
+dotenv.config();
 
 // env setting
 const initConfig = {

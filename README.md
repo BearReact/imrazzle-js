@@ -38,6 +38,15 @@ Imrazzle is accessible, powerful, and provides tools required for large, robust 
 - ROUTE_PREFIX_PATH: route prefix path (ex: /ap-main)
 - STATIC_BASE_URL: Static file base url (ex: http://static.com/static, /static)
 - API_BASE_URL: API Base path (ex: http://static.com, /api)
+- REACT_BUNDLE_PATH: is {assets.client.js} path
+
+`not setting env in:`
+- RAZZLE_PUBLIC_DIR: {root is os path}
+> /Users/imagine10255/Project/ycgroup/200218-member-v4/build/public
+> ./build/public
+> if you set error path, you can't render success!
+- RAZZLE_ASSETS_MANIFEST
+
 
 
 #### Quick Start
