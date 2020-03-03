@@ -26,9 +26,7 @@ const List = (props: Props) => {
     } = props;
 
     React.useEffect(() => {
-        // if (isEmpty(paginateData)) {
         fetchPaginate();
-        // }
     }, []);
 
     return (

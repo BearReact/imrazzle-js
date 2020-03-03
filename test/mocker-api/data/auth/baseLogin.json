@@ -1,0 +1,13 @@
+{
+    "statusType": "success",
+    "statusCode": null,
+    "message": null,
+    "formMessage": null,
+    "data": {
+        "memberToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ2djVhIiwiZW1haWwiOiJpbWFnaW5lMTAyNTVAZ21haWwuY29tIiwibmFtZSI6ImltYWdpbmUiLCJjb3VudHJ5IjoidGFpd2FuIiwic2lnbmluVGltZSI6IjE1NDYzODIxOTQ1MTMiLCJsaWZlVGltZSI6IjE1NDY0Mzk3OTQ1MTMiLCJzaWdudXBEYXRlIjoiMTM4MzgzNTg0NTE5MCIsInBvcnQiOiJDbGllbnQiLCJuYmYiOjE1NDYzODIxOTEsImV4cCI6MTU0NjM5NjU5MSwiaXNzIjoiaUJFVF9BcGlTZXJ2aWNlX0RFViIsImF1ZCI6IjM1NEM5NjdBMjBFNDQ4MTFCNEQ5RUYwODAyQ0M1MkYzIn0.AVMdLS0f-Z9qn1rBUaILi1JbcsQzglrx9x3J7JdCQm8",
+        "isHasFavorite": true,
+        "memberLevelCode": "2",
+        "memberLevelName": "普通"
+    },
+    "newMemberToken": null
+}

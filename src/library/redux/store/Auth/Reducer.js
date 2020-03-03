@@ -16,7 +16,13 @@ export const INITIAL_STATE = Immutable({
  /** --------------------------------------*/
 export const Selectors = {
     memberToken: state => state[PREFIX].memberToken,
-    tokenInfo: state => jwtDecode(state[PREFIX].memberToken),
+    tokenInfo: state => {
+        try {
+            return jwtDecode(state[PREFIX].memberToken);
+        } catch(e) {
+            return {};
+        }
+    },
 };
 
 /** -----------------------------------------
