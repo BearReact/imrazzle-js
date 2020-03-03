@@ -14,7 +14,6 @@ class LanguageGlobal extends React.PureComponent<IntlShape> {
 
     constructor(props: any) {
         super(props);
-        // intl = this.props.intl;
         i18n = this.props.intl.formatMessage;
     }
     render() {
