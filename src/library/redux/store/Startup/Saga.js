@@ -3,55 +3,11 @@ import {
     put, fork, take, call, select,
 } from 'redux-saga/effects';
 import get from 'lodash/get';
-// import cookie from 'js-cookie';
 import setWith from 'lodash/setWith';
-// import jwtDecode from 'jwt-decode';
-// import dayjs from 'dayjs';
 import Cookies from 'universal-cookie';
-import {PRELOAD_STATE} from '../../../../constants';
-import serialize from "serialize-javascript";
 import appConfig from '@config/app';
-
-
-import {isEmpty} from '../../../../utils/equal';
-// import config from '@config/app';
-import Actions, {Types} from './Reducer';
-// import SystemActions, {Types as SystemType} from '../System/Reducer';
-import AuthActions, {Selectors as AuthSelectors} from '../Auth/Reducer';
-// import {submitLogin} from '@library/redux/store/Login/Saga';
-
-/**
- * 初始化流程控制
- * @returns {IterableIterator<*>}
- */
-export function* initializeFlow() {
-    try {
-        yield take(Types.CHECKING);
-
-        yield put(Actions.checkingBegin());
-
-        // Get Site Setting
-        yield put(SystemActions.fetchSetting());
-        yield take(SystemType.FETCH_SETTING_SUCCESS);
-
-
-        // Check token expired
-        let isAuth = yield select(AuthSelectors.isAuth);
-        if (isAuth) {
-            const isAuth = yield select(AuthSelectors.isAuth);
-            if (!isAuth) {
-                yield put(AuthActions.handleClearAuth());
-            }
-        }
-
-        // Done
-        yield put(Actions.checkingSuccess());
-
-    } catch (e) {
-        yield put(Actions.checkingFail());
-        console.error(e.message);
-    }
-}
+import {isEmpty} from '@utils/equal';
+import {PRELOAD_STATE} from '../../../../constants';
 
 
 /**
@@ -95,6 +51,5 @@ function* watchStateSyncCookie() {
 
 
 export default [
-    // fork(initializeFlow),
     call(watchStateSyncCookie),
 ];
