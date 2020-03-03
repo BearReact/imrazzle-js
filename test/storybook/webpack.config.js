@@ -1,5 +1,3 @@
-const path = require('path');
-// const webpack = require('webpack');
 const webpackBase = require('../../webpack.config');
 
 module.exports = {
@@ -20,6 +18,7 @@ module.exports = {
             // },
         ],
     },
+    node: webpackBase.node,
     resolve: {
         alias: {
             ...webpackBase.resolve.alias,

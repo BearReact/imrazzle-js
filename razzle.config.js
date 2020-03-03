@@ -22,10 +22,7 @@ module.exports = {
                 break;
         }
 
-        appConfig.node = {
-            fs: 'empty',
-        };
-
+        appConfig.node = aliasConfig.node;
         appConfig.resolve.alias = aliasConfig.resolve.alias;
 
         return appConfig;

@@ -1,6 +1,9 @@
 const path = require('path');
 
 module.exports = {
+    node: {
+        fs: 'empty',
+    },
     resolve: {
         extensions: ['.js', '.jsx'],
         alias: {
