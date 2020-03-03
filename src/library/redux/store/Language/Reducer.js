@@ -16,7 +16,7 @@ export const INITIAL_STATE = Immutable({
  Selectors
  /** --------------------------------------*/
 export const Selectors = {
-    selectLanguage: state => state.language.locale,
+    selectLanguage: state => state[PREFIX].locale,
 };
 
 /** -----------------------------------------

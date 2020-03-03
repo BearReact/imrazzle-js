@@ -17,7 +17,7 @@ import {isEmpty} from '../../../../utils/equal';
 // import config from '@config/app';
 import Actions, {Types} from './Reducer';
 // import SystemActions, {Types as SystemType} from '../System/Reducer';
-// import AuthActions, {Selectors as AuthSelectors} from '../Auth/Reducer';
+import AuthActions, {Selectors as AuthSelectors} from '../Auth/Reducer';
 // import {submitLogin} from '@library/redux/store/Login/Saga';
 
 /**
@@ -38,9 +38,8 @@ export function* initializeFlow() {
         // Check token expired
         let isAuth = yield select(AuthSelectors.isAuth);
         if (isAuth) {
-            const token = yield select(AuthSelectors.token);
-            const expiredTime = get(jwtDecode(token), 'exp', new Date());
-            if (expiredTime && dayjs(expiredTime).diff(dayjs()) >= 0) {
+            const isAuth = yield select(AuthSelectors.isAuth);
+            if (!isAuth) {
                 yield put(AuthActions.handleClearAuth());
             }
         }

@@ -1,17 +1,17 @@
 import {compose} from 'redux';
 import {connect} from 'react-redux';
-
-import LanguageActions from '@library/redux/store/Language/Reducer';
-import {Selectors as AuthSelectors} from '@library/redux/store/Auth/Reducer';
 import {injectIntl} from 'react-intl';
-import HomeLayout from './HomeLayout';
+import loginAction from '@library/redux/store/Login/Reducer';
+import {Selectors as AuthSelectors} from '@library/redux/store/Auth/Reducer';
+
+import PrivateRoute from './PrivateRoute';
 
 const mapDispatchToProps = {
-    changeLocale: LanguageActions.changeLocale,
+    onSignIn: loginAction.submitLogin,
+    onSignOut: loginAction.submitLogout,
 };
 
 const mapStateToProps = state => ({
-    locale: state.language.locale,
     isAuth: AuthSelectors.isAuth(state),
 });
 
@@ -21,5 +21,4 @@ export default compose(
         mapStateToProps,
         mapDispatchToProps
     )
-)(HomeLayout);
-
+)(PrivateRoute);

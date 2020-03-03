@@ -15,7 +15,7 @@ const mapStateToProps = state => ({
     isFetching: state.profile.isFetching,
     currentData: state.profile.currentData,
     memberToken: state.auth.memberToken,
-    tokenInfo: AuthSelectors.tokenInfo(state),
+    payload: AuthSelectors.payload(state),
 });
 
 export default compose(

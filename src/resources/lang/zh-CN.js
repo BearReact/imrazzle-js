@@ -57,4 +57,5 @@ export default {
     'page.profile.label.email': '电子邮件',
     'page.profile.label.country': '城市',
     'page.profile.label.signUpDate': '注册日期',
+    'page.profile.label.expiredTime': '过期时间',
 };

@@ -9,7 +9,7 @@ import LoaderContainer from '@components/organisms/LoaderContainer';
 
 const Profile = (props: Props) => {
     const {
-        intl: {formatMessage: i18n}, fetchCurrent, currentData, isFetching, memberToken, tokenInfo,
+        intl: {formatMessage: i18n}, fetchCurrent, currentData, isFetching, payload,
     } = props;
 
     React.useEffect(() => {
@@ -20,7 +20,8 @@ const Profile = (props: Props) => {
         {key: 'email', column: i18n({id: 'page.profile.label.email'}), value: currentData.email},
         {key: 'name', column: i18n({id: 'page.profile.label.name'}), value: currentData.name},
         {key: 'country', column: i18n({id: 'page.profile.label.country'}), value: currentData.country},
-        {key: 'signUpDate', column: i18n({id: 'page.profile.label.signUpDate'}), value: dayjs(currentData.signUpDate).format('YYYY-MM-DD')},
+        {key: 'signUpDate', column: i18n({id: 'page.profile.label.signUpDate'}), value: dayjs(payload.signUpDate).format('YYYY-MM-DD')},
+        {key: 'expiredTime', column: i18n({id: 'page.profile.label.expiredTime'}), value: dayjs(payload.exp).format('YYYY-MM-DD')},
     ] : [];
 
     return (
@@ -30,7 +31,7 @@ const Profile = (props: Props) => {
                 <Row alignItems="center">
                     <Col lg>
                         <div className="text-center">
-                            <PageSubTitle>{i18n({id: 'page.profile.subTitle'}, {email: get(tokenInfo, 'email', '')})}</PageSubTitle>
+                            <PageSubTitle>{i18n({id: 'page.profile.subTitle'}, {email: get(payload, 'email', '')})}</PageSubTitle>
                             <PageTitle dangerouslySetInnerHTML={{__html: i18n({id: 'page.profile.title'})}}/>
                         </div>
                     </Col>

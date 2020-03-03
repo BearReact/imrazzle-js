@@ -1,6 +1,8 @@
 import {createReducer, createActions} from 'reduxsauce';
 import Immutable from 'seamless-immutable';
 import jwtDecode from 'jwt-decode';
+import dayjs from 'dayjs';
+import get from 'lodash/get';
 
 const PREFIX = 'auth';
 
@@ -16,11 +18,22 @@ export const INITIAL_STATE = Immutable({
  /** --------------------------------------*/
 export const Selectors = {
     memberToken: state => state[PREFIX].memberToken,
-    tokenInfo: state => {
+    payload: state => {
         try {
             return jwtDecode(state[PREFIX].memberToken);
         } catch(e) {
             return {};
+        }
+    },
+    isAuth: state => {
+        try {
+            const payload = jwtDecode(state[PREFIX].memberToken);
+            const expiredTime = get(payload, 'exp', 0);
+
+            // 比對現在時間是否超出過期時間
+            return dayjs(expiredTime).diff(dayjs()) <= 0;
+        }catch(e) {
+            return false;
         }
     },
 };

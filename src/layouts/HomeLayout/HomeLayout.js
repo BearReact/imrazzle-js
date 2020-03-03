@@ -13,15 +13,13 @@ import Router from '@layouts/HomeLayout/Router';
 const HomeLayout = (props: Props) => {
 
     const {
-        intl: {formatMessage: i18n}, changeLocale, token,
+        intl: {formatMessage: i18n}, changeLocale, isAuth,
     } = props;
 
-    const isVisibleNavBar = false;
     const menu = [
         {href: '/', text: i18n({id: 'menu.home'}), isHome: true},
         {href: '/news', text: i18n({id:'menu.news'})},
-        {href: '/contact', text: i18n({id:'menu.contact'})},
-        {href: '/profile', text: i18n({id:'menu.profile'}), isVisible: token},
+        {href: '/profile', text: i18n({id:'menu.profile'}), isHidden: !isAuth},
     ];
 
     /**
@@ -57,18 +55,16 @@ const HomeLayout = (props: Props) => {
                         <Col md>
                             <Nav as="ul">
                                 {menu
-                                    .filter(row => {
-                                        return get(row, 'isVisible', true);
-                                    })
                                     .map(row => (
                                         <NavItem
                                             auto
                                             as="li"
                                             key={row.href}
+                                            isHidden={get(row, 'isHidden', false)}
                                         >
-                                            <A href={row.href}>
+                                            <NavItemLink href={row.href}>
                                                 {row.text}
-                                            </A>
+                                            </NavItemLink>
                                         </NavItem>
                                     ))}
                             </Nav>
@@ -134,6 +130,10 @@ const FooterCopyRight = styled.div`
     }
 `;
 
+const NavItemLink = styled(A)`
+
+`;
+
 const NavItem = styled(Col)`
     position: relative;
     padding: 5px 0;
@@ -149,6 +149,10 @@ const NavItem = styled(Col)`
     &.active > a, :hover > a {
         color: ${props => props.theme.primaryColor};
     }
+    
+    ${props => props.isHidden && css`
+        opacity: .3;
+    `}
 
 
     ${media.md`
@@ -156,33 +160,9 @@ const NavItem = styled(Col)`
     `}
 `;
 
-const NavBarCollapse = styled.div`
-    display: none;
-
-    width: 100%;
-    background-color: rgba(255,255,255,.9);
-    z-index: 9;
-    box-shadow: 0 15px 20px 0 rgba(0, 0, 0, 0.1);
-    padding: 5px 12px;
-
-    ${media.md`
-        position: static;
-        top: auto;
-        left: auto;
-        box-shadow: none;
-        background-color: transparent;
-    `}
-`;
-
 const Nav = styled(Row)`
     position: absolute;
     top: 45px;
-
-    ${props => props.isVisible && css`
-        ${NavBarCollapse}{
-            display: block;
-        }
-    `}
 
     ${media.md`
         position: static;

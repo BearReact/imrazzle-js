@@ -57,4 +57,5 @@ export default {
     'page.profile.label.email': 'Email',
     'page.profile.label.country': 'Country',
     'page.profile.label.signUpDate': 'Sign Up Date',
+    'page.profile.label.expiredTime': 'Expired Time',
 };

@@ -6,19 +6,17 @@ const BASE_URL = '/api/profile';
 
 module.exports = {
     [`GET ${BASE_URL}`]: (req, res) => {
-        console.log('xxx');
         const authToken = get(req, 'headers.authorization', 'default');
-        console.log(authToken);
         try{
-            const tokenInfo = jwtDecode(authToken);
+            const payload = jwtDecode(authToken);
             return res.json({
                 statusCode: null,
                 message: 'success',
                 data: {
-                    email: tokenInfo.email,
-                    name: tokenInfo.name,
-                    country: tokenInfo.country,
-                    signUpDate: tokenInfo.signUpDate,
+                    email: payload.email,
+                    name: payload.name,
+                    country: payload.country,
+                    signUpDate: payload.signUpDate,
                 },
             });
         }catch(e){
