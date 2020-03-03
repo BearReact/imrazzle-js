@@ -1,10 +1,12 @@
 'use strict';
 
-const aliasConfig = require('./webpack.config');
+const merge = require('lodash/merge');
+const webpackBase = require('./webpack.config');
 
 module.exports = {
     modify(config, {target, dev}, webpack) {
-        const appConfig = config; // stay immutable here
+
+        const appConfig = merge(config, webpackBase);
 
         switch (target){
             case 'web':
@@ -21,9 +23,6 @@ module.exports = {
                 }
                 break;
         }
-
-        appConfig.node = aliasConfig.node;
-        appConfig.resolve.alias = aliasConfig.resolve.alias;
 
         return appConfig;
     },
