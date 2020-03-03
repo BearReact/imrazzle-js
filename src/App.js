@@ -1,7 +1,7 @@
 import React from 'react';
 import {ThemeProvider} from 'styled-components';
 import {GridThemeProvider} from 'styled-bootstrap-grid';
-import ScrollToTop from '@library/react-router/ScrollToTop';
+import ScrollTopProvider from '@library/react-router/ScrollTopProvider';
 import gridConfig from '@config/grid';
 import {getConfig} from '@config/utils/getConfig';
 
@@ -11,9 +11,9 @@ const App = () => {
     return (
         <ThemeProvider theme={getConfig('site.theme')}>
             <GridThemeProvider gridTheme={gridConfig}>
-                <ScrollToTop>
+                <ScrollTopProvider>
                     <RootRouter/>
-                </ScrollToTop>
+                </ScrollTopProvider>
             </GridThemeProvider>
         </ThemeProvider>
     );
