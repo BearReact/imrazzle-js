@@ -11,7 +11,7 @@ type Props = {
     shapeBorder?: number,
     style?: React.CSSProperties,
     className?: string,
-    type?: 'fontclass' | 'svg',
+    type?: 'fontClass' | 'svg',
     isInline?: boolean,
     onClick?: Function,
     size?: number,
@@ -93,7 +93,7 @@ const Icon = (props: Props) => {
 
 Icon.defaultProps = {
     className: '',
-    type: 'fontclass',
+    type: 'fontClass',
     style: {},
     shapeType: '',
     shapeSize: 34,

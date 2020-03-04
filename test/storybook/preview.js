@@ -5,8 +5,7 @@ import {GridThemeProvider} from 'styled-bootstrap-grid';
 import {isEmpty} from '@utils/equal';
 
 // storybook & plugin
-import {configure, addParameters, addDecorator} from '@storybook/react';
-import {themes} from '@storybook/theming';
+import {addParameters, addDecorator} from '@storybook/react';
 import {withI18n} from 'storybook-addon-i18n';
 
 // setting
@@ -17,17 +16,6 @@ import {viewports, i18n} from './addonConfig';
 // Setting Global Styles
 import './styles/storybook.css';
 
-// Option defaults.
-addParameters({
-    options: {
-        theme: themes.dark,
-    },
-    viewport: viewports,
-    i18n: i18n,
-});
-
-// Set intl configuration
-addDecorator(withI18n);
 
 // Set Config
 const siteConfig = serverGenerateConfig(process.env.SITE_CODE);
@@ -35,6 +23,17 @@ if(!isEmpty(siteConfig)){
 
     // Get Site Global Config
     window.__global__ = siteConfig;
+
+
+    // Option defaults.
+    addParameters({
+        viewport: viewports,
+        i18n: i18n,
+        inlineStories: false,
+    });
+
+    // Set intl configuration
+    addDecorator(withI18n);
 
     addDecorator(story => (
         <MemoryRouter initialEntries={['/']}>
@@ -45,13 +44,6 @@ if(!isEmpty(siteConfig)){
             </ThemeProvider>
         </MemoryRouter>
     ));
-
-    configure([
-        require.context('./examples', true, /\.stories\.(js|tsx?|mdx)$/),
-        require.context('../../src/resources/components/atoms', true, /\.stories\.(js|tsx?|mdx)$/),
-        require.context('../../src/resources/components/molecules', true, /\.stories\.(js|tsx?|mdx)$/),
-        require.context('../../src/resources/components/organisms', true, /\.stories\.(js|tsx?|mdx)$/),
-    ], module);
 
 }else{
     throw Error('Site code could not find the site settings, please check .env SITE_CODE and src /config/site.js');

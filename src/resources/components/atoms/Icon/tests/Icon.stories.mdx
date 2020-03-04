@@ -1,0 +1,36 @@
+import { Meta, Story, Props, Preview } from '@storybook/addon-docs/blocks';
+import styled from 'styled-components';
+import {Col, Container, Row} from 'styled-bootstrap-grid';
+import get from 'lodash/get';
+
+import IconList from '@static/common/plugins/iconfont/iconfont.json';
+import Icon from '../Icon';
+
+
+<Meta title="Atoms|Icon" component={Icon} />
+
+# Icon
+
+IconFont+ 是阿里巴巴提供的輕量矢量图标库，能夠讓我們能夠快速使用
+- [查詢圖標列表與代碼](http://localhost:6006/static/common/plugins/iconfont/demo_index.html)
+- [管理圖標項目網址](https://www.iconfont.cn/manage/index?manage_type=myprojects&projectId=1629149)
+
+一般情況請使用 default 即可 (效能較好)
+
+<Preview>
+    <Story name="basic">
+        <Icon code="gem-blue" size={40} color="#9ea2b0"/>
+    </Story>
+</Preview>
+
+若是需要多色的特殊圖標再使用 svg
+
+<Preview>
+    <Story name="svg">
+        <Icon code="gem-blue" size={40} color="#9ea2b0" type="svg"/>
+    </Story>
+</Preview>
+
+## Props
+
+<Props of={Icon} />
