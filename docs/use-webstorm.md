@@ -24,3 +24,9 @@ Flow package or exectable set {your path}/node_modules/flow-bin
 > Preferences / Languages & Frameworks / javascript / styled-components
 - add the `media`
 
+
+## use storybook docs by mdx
+1. Download the [sources](https://github.com/silvenon/vscode-mdx) of the vscode-mdx plugin
+2. In WebStorm, open Preferences/Settings | Editor | TextMate Bundles
+3. Click on the Add button and select the folder with the downloaded plugin
+4. Apply changes and close the settings dialog.
