@@ -93,9 +93,9 @@ const HookFormStory = () => {
         mode: 'onChange',
     });
 
-    const onSubmit = data => {
+    const onSubmit = formData => {
         // eslint-disable-next-line no-console
-        console.log('data', data);
+        console.log('onSubmit', formData);
     };
 
     return (
@@ -104,11 +104,10 @@ const HookFormStory = () => {
                 <Container style={{backgroundColor: '#fff', paddingBottom: '50px'}}>
                     <Row>
                         <Col>
-                            <input type="submit"/>
+                            <button type="submit">Submit</button>
                         </Col>
                     </Row>
 
-                    <H2>error (模擬需6-12個字元)</H2>
                     <Row>
                         <Col className="pb-3 pt-3">
                             <Input
@@ -125,24 +124,6 @@ const HookFormStory = () => {
                         </Col>
                     </Row>
 
-                    <H2>normal</H2>
-                    <Row>
-                        <Col className="pb-3 pt-3">
-                            <Input
-                                ref={register}
-                                name="testName1"
-                                type="text"
-                                inputType="normal"
-                                placeholder="Enter the message here…"
-                                beforeIconCode="camera"
-                                beforeIconOnClick={() => alert('beforeIcon clicked')}
-                                afterIconCode="paper-plane"
-                                afterIconOnClick={() => alert('afterIcon clicked')}
-                            />
-                        </Col>
-                    </Row>
-
-                    <H2>material</H2>
                     <Row>
                         <Col className="pb-3 pt-3">
                             <Input
@@ -159,31 +140,6 @@ const HookFormStory = () => {
                                 placeholder="Email"
                                 afterIconCode="paper-plane"
                                 afterIconOnClick={() => alert('afterIcon clicked')}
-                            />
-                        </Col>
-                    </Row>
-
-                    <H2>readOnly</H2>
-                    <Row>
-                        <Col className="pb-3 pt-3">
-                            <Input
-                                ref={register}
-                                name="testName4"
-                                placeholder="Real Name"
-                                defaultValue="YangChunMian"
-                                readonly
-                            />
-                        </Col>
-
-                        <Col className="pb-3 pt-3">
-                            <Input
-                                ref={register}
-                                name="testName5"
-                                placeholder="Starting time to Settlement time"
-                                defaultValue="2019-10-10 21:33 ~ 2019-10-10 21:33"
-                                afterIconCode="lock"
-                                readonly
-                                remarkMessage="Once you create your real name, all of your cash withdrawal bank names will be constrained."
                             />
                         </Col>
                     </Row>

@@ -6,6 +6,7 @@ import {isEmpty} from '@utils/equal';
 
 // storybook & plugin
 import {addParameters, addDecorator} from '@storybook/react';
+import {withConsole} from '@storybook/addon-console';
 import {withI18n} from 'storybook-addon-i18n';
 
 // setting
@@ -44,6 +45,8 @@ if(!isEmpty(siteConfig)){
             </ThemeProvider>
         </MemoryRouter>
     ));
+
+    addDecorator((storyFn, context) => withConsole()(storyFn)(context));
 
 }else{
     throw Error('Site code could not find the site settings, please check .env SITE_CODE and src /config/site.js');
