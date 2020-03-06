@@ -22,9 +22,11 @@ export const BasicStory = () => {
     // const tet = extractProps(SecurityCode);
 
     return (
-        <Container>
+        <Container className="pt-3">
+            <h2 className="story-title">Basic SecurityCode</h2>
+
             <Row>
-                <Col className="py-3">
+                <Col col className="py-3">
                     <SecurityCode
                         length={4}
                         onChange={val => setCount(val)}
@@ -51,8 +53,9 @@ export const UseHookForm = () => {
     };
 
     return (
-        <form onSubmit={handleSubmit(onSubmit)}>
-            <Container>
+        <Container className="pt-3">
+            <form onSubmit={handleSubmit(onSubmit)}>
+                <h2 className="story-title">Use Hook-Form</h2>
                 <Row>
                     <Col className="py-3">
                         <SecurityCode
@@ -62,7 +65,6 @@ export const UseHookForm = () => {
                             })}
                             name="securityCode"
                             length={4}
-                            // onChange={val => setCount(val)}
                         />
                         {get(errors, 'test1.message')}
                     </Col>
@@ -73,8 +75,8 @@ export const UseHookForm = () => {
                         <button type="submit">Submit</button>
                     </Col>
                 </Row>
-            </Container>
-        </form>
+            </form>
+        </Container>
     );
 };
 

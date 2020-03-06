@@ -16,73 +16,74 @@ export default {
 };
 
 const DefaultStory = () => (
-    <>
-        <Container style={{backgroundColor: '#fff', paddingBottom: '50px'}}>
-            <H2>error</H2>
-            <Row>
-                <Col className="pb-3 pt-3">
-                    <Input
-                        placeholder="Email"
-                        afterIconCode="check"
-                        errorMessage="The email field is blank"
-                    />
-                </Col>
-            </Row>
+    <Container className="pt-3" style={{backgroundColor: '#fff'}}>
 
-            <H2>normal</H2>
-            <Row>
-                <Col className="pb-3 pt-3">
-                    <Input
-                        type="text"
-                        inputType="normal"
-                        placeholder="Enter the message here…"
-                        beforeIconCode="camera"
-                        beforeIconOnClick={() => alert('beforeIcon clicked')}
-                        afterIconCode="paper-plane"
-                        afterIconOnClick={() => alert('afterIcon clicked')}
-                    />
-                </Col>
-            </Row>
+        <h2 className="story-title">Basic Input</h2>
 
-            <H2>material</H2>
-            <Row>
-                <Col className="pb-3 pt-3">
-                    <Input
-                        placeholder="Real Name"
-                    />
-                </Col>
+        <H2>Error</H2>
+        <Row>
+            <Col col className="pb-3 pt-3">
+                <Input
+                    placeholder="Email"
+                    afterIconCode="check"
+                    errorMessage="The email field is blank"
+                />
+            </Col>
+        </Row>
 
-                <Col className="pb-3 pt-3">
-                    <Input
-                        placeholder="Email"
-                        afterIconCode="paper-plane"
-                        afterIconOnClick={() => alert('afterIcon clicked')}
-                    />
-                </Col>
-            </Row>
+        <H2>Normal</H2>
+        <Row>
+            <Col col className="pb-3 pt-3">
+                <Input
+                    type="text"
+                    inputType="normal"
+                    placeholder="Enter the message here…"
+                    beforeIconCode="camera"
+                    beforeIconOnClick={() => alert('beforeIcon clicked')}
+                    afterIconCode="paper-plane"
+                    afterIconOnClick={() => alert('afterIcon clicked')}
+                />
+            </Col>
+        </Row>
 
-            <H2>readOnly</H2>
-            <Row>
-                <Col className="pb-3 pt-3">
-                    <Input
-                        placeholder="Real Name"
-                        defaultValue="YangChunMian"
-                        readonly
-                    />
-                </Col>
+        <H2>Material</H2>
+        <Row>
+            <Col col className="pb-3 pt-3">
+                <Input
+                    placeholder="Real Name"
+                />
+            </Col>
 
-                <Col className="pb-3 pt-3">
-                    <Input
-                        placeholder="Starting time to Settlement time"
-                        defaultValue="2019-10-10 21:33 ~ 2019-10-10 21:33"
-                        afterIconCode="lock"
-                        readonly
-                        remarkMessage="Once you create your real name, all of your cash withdrawal bank names will be constrained."
-                    />
-                </Col>
-            </Row>
-        </Container>
-    </>
+            <Col col className="pb-3 pt-3">
+                <Input
+                    placeholder="Email"
+                    afterIconCode="paper-plane"
+                    afterIconOnClick={() => alert('afterIcon clicked')}
+                />
+            </Col>
+        </Row>
+
+        <H2>ReadOnly</H2>
+        <Row>
+            <Col col className="pb-3 pt-3">
+                <Input
+                    placeholder="Real Name"
+                    defaultValue="YangChunMian"
+                    readonly
+                />
+            </Col>
+
+            <Col col className="pb-3 pt-3">
+                <Input
+                    placeholder="Starting time to Settlement time"
+                    defaultValue="2019-10-10 21:33 ~ 2019-10-10 21:33"
+                    afterIconCode="lock"
+                    readonly
+                    remarkMessage="Once you create your real name, all of your cash withdrawal bank names will be constrained."
+                />
+            </Col>
+        </Row>
+    </Container>
 );
 
 DefaultStory.story = {
@@ -100,53 +101,54 @@ const HookFormStory = () => {
     };
 
     return (
-        <>
+        <Container className="pt-3" style={{backgroundColor: '#fff'}}>
+
+            <h2 className="story-title">Use Hook</h2>
+
             <form onSubmit={handleSubmit(onSubmit)}>
-                <Container style={{backgroundColor: '#fff', paddingBottom: '50px'}}>
-                    <Row>
-                        <Col>
-                            <button type="submit">Submit</button>
-                        </Col>
-                    </Row>
+                <Row>
+                    <Col>
+                        <button type="submit">Submit</button>
+                    </Col>
+                </Row>
 
-                    <Row>
-                        <Col className="pb-3 pt-3">
-                            <Input
-                                ref={register({
-                                    minLength: {value: 6, message: 'The value maxLength 6'},
-                                    maxLength: {value: 12, message: 'The value maxLength 12'},
-                                })}
-                                name="test1"
-                                type="text"
-                                placeholder="name"
-                                afterIconCode="check"
-                                errorMessage={get(errors, 'test1.message')}
-                            />
-                        </Col>
-                    </Row>
+                <Row>
+                    <Col className="pb-3 pt-3">
+                        <Input
+                            ref={register({
+                                minLength: {value: 6, message: 'The value maxLength 6'},
+                                maxLength: {value: 12, message: 'The value maxLength 12'},
+                            })}
+                            name="test1"
+                            type="text"
+                            placeholder="name"
+                            afterIconCode="check"
+                            errorMessage={get(errors, 'test1.message')}
+                        />
+                    </Col>
+                </Row>
 
-                    <Row>
-                        <Col className="pb-3 pt-3">
-                            <Input
-                                // ref={register}
-                                name="testName2"
-                                placeholder="Real Name"
-                            />
-                        </Col>
+                <Row>
+                    <Col className="pb-3 pt-3">
+                        <Input
+                            // ref={register}
+                            name="testName2"
+                            placeholder="Real Name"
+                        />
+                    </Col>
 
-                        <Col className="pb-3 pt-3">
-                            <Input
-                                ref={register}
-                                name="testName3"
-                                placeholder="Email"
-                                afterIconCode="paper-plane"
-                                afterIconOnClick={() => alert('afterIcon clicked')}
-                            />
-                        </Col>
-                    </Row>
-                </Container>
+                    <Col className="pb-3 pt-3">
+                        <Input
+                            ref={register}
+                            name="testName3"
+                            placeholder="Email"
+                            afterIconCode="paper-plane"
+                            afterIconOnClick={() => alert('afterIcon clicked')}
+                        />
+                    </Col>
+                </Row>
             </form>
-        </>
+        </Container>
     );
 };
 

@@ -1,8 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import {Container, Row, Col} from 'styled-bootstrap-grid/dist/index';
+import {Container, Row, Col} from 'styled-bootstrap-grid';
 
-import BlockTitle from '@components/atoms/BlockTitle';
 import renderPropsTable from '@test/storybook/addonConfig/renderPropsTable';
 import readeMe from './Tooltips.stories.md';
 import Tooltips from '../Tooltips';
@@ -14,7 +13,7 @@ export default {
     },
 };
 
-class StateComponent extends React.Component {
+class StateComponent extends React.PureComponent {
     static defaultProps = {
         position: 'topCenter',
         isTopAnimate: false,
@@ -48,25 +47,21 @@ class StateComponent extends React.Component {
 }
 
 export const TooltipsStory = () => (
-    <Container>
-        <CustomBlockTitle>Basic Tooltips Style</CustomBlockTitle>
+    <Container className="pt-3">
+        <Title>Basic Tooltips Style</Title>
 
-        <Row style={{flexWrap: 'noWrap'}}>
-            <Col>
+        <Row style={{marginBottom: 100}}>
+            <Col col>
                 <TooltipsContainer>
-                    <Tooltips
-                        position="topLeft"
-                    >
+                    <Tooltips position="topLeft">
                         Tooltips Test Style
                     </Tooltips>
                 </TooltipsContainer>
             </Col>
         </Row>
 
-        <hr style={{marginTop: 50, marginBottom: 50}}/>
-
-        <Row style={{flexWrap: 'noWrap'}}>
-            <Col>
+        <Row style={{marginBottom: 50}}>
+            <Col col>
                 <TooltipsContainer>
                     <Tooltips
                         position="topLeft"
@@ -75,7 +70,7 @@ export const TooltipsStory = () => (
                     </Tooltips>
                 </TooltipsContainer>
             </Col>
-            <Col>
+            <Col col>
                 <TooltipsContainer>
                     <Tooltips
                         position="topCenter"
@@ -84,7 +79,7 @@ export const TooltipsStory = () => (
                     </Tooltips>
                 </TooltipsContainer>
             </Col>
-            <Col>
+            <Col col>
                 <TooltipsContainer>
                     <Tooltips
                         position="topRight"
@@ -95,10 +90,8 @@ export const TooltipsStory = () => (
             </Col>
         </Row>
 
-        <hr style={{marginTop: 50, marginBottom: 50}}/>
-
-        <Row style={{flexWrap: 'noWrap'}}>
-            <Col>
+        <Row style={{marginBottom: 100}}>
+            <Col col>
                 <TooltipsContainer>
                     <Tooltips
                         position="bottomLeft"
@@ -107,7 +100,7 @@ export const TooltipsStory = () => (
                     </Tooltips>
                 </TooltipsContainer>
             </Col>
-            <Col>
+            <Col col>
                 <TooltipsContainer>
                     <Tooltips
                         position="bottomCenter"
@@ -116,7 +109,7 @@ export const TooltipsStory = () => (
                     </Tooltips>
                 </TooltipsContainer>
             </Col>
-            <Col>
+            <Col col>
                 <TooltipsContainer>
                     <Tooltips
                         position="bottomRight"
@@ -134,25 +127,25 @@ TooltipsStory.story = {
 };
 
 export const TooltipsAnimateStory = () => (
-    <Container>
-        <CustomBlockTitle>Animate Tooltips Style</CustomBlockTitle>
+    <Container className="pt-3">
+        <Title>Animate Tooltips Style</Title>
 
-        <Row style={{flexWrap: 'noWrap'}}>
-            <Col>
+        <Row style={{marginBottom: 50}}>
+            <Col col>
                 <StateComponent
                     position='topLeft'
                     isTopAnimate
                 />
             </Col>
 
-            <Col>
+            <Col col>
                 <StateComponent
                     position='topCenter'
                     isTopAnimate
                 />
             </Col>
 
-            <Col>
+            <Col col>
                 <StateComponent
                     position='topRight'
                     isTopAnimate
@@ -160,18 +153,16 @@ export const TooltipsAnimateStory = () => (
             </Col>
         </Row>
 
-        <hr style={{marginTop: 50, marginBottom: 50}}/>
-
-        <Row style={{flexWrap: 'noWrap'}}>
-            <Col>
+        <Row>
+            <Col col>
                 <StateComponent position='bottomLeft'/>
             </Col>
 
-            <Col>
+            <Col col>
                 <StateComponent position='bottomCenter'/>
             </Col>
 
-            <Col>
+            <Col col>
                 <StateComponent position='bottomRight'/>
             </Col>
         </Row>
@@ -182,25 +173,21 @@ TooltipsAnimateStory.story = {
     name: 'Use Animate',
 };
 
-const CustomBlockTitle = styled(BlockTitle)`
-    border: none;
-    border-bottom: solid 1px cornflowerblue;
-    font-size: 24px;
-    color: cornflowerblue;
-    padding-top: 50px;
-    margin-bottom: 100px;
+const Title = styled.h2`
+    color: #1EA7FD;
+    border-bottom: solid 1px #1EA7FD;
+    margin-bottom: 80px;
 `;
 
 // for your page divName
 const TooltipsContainer = styled.div`
     width: 100%;
     height: 50px;
-    background-color: cornflowerblue;
+    background-color: #bdbdbd;
     position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
     color: #fff;
     font-weight: 900;
-    border: solid 2px blue;
 `;
