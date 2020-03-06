@@ -18,6 +18,7 @@ module.exports = {
             '@services': path.resolve(__dirname, 'src/services'),
             '@config': path.resolve(__dirname, 'src/config'),
             '@middleware': path.resolve(__dirname, 'src/middleware'),
+            '@test': path.resolve(__dirname, 'test'),
         },
     },
 };

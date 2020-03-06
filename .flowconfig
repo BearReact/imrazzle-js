@@ -30,6 +30,7 @@ module.name_mapper='^@pages' ->'<PROJECT_ROOT>/src/pages'
 module.name_mapper='^@layouts' ->'<PROJECT_ROOT>/src/layouts'
 module.name_mapper='^@config' ->'<PROJECT_ROOT>/src/config'
 module.name_mapper='^@middleware' ->'<PROJECT_ROOT>/src/middleware'
+module.name_mapper='^@test' ->'<PROJECT_ROOT>/test'
 
 [version]
 ^0.86.0

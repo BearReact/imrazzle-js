@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import {Col, Container, Row} from 'styled-bootstrap-grid';
 import {useForm} from 'react-hook-form';
 import get from 'lodash/get';
+import renderPropsTable from '@test/storybook/addonConfig/renderPropsTable';
 import readeMe from './Input.stories.md';
 
 import Input from '../Input';
@@ -10,7 +11,7 @@ import Input from '../Input';
 export default {
     title: 'Atoms|Input',
     parameters: {
-        notes: readeMe,
+        notes: readeMe + renderPropsTable(Input),
     },
 };
 

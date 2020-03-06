@@ -1,7 +1,7 @@
 # Input
 
 ## 樣式
-input元件分為 `material`(預設) 與 `normal` 兩種風格樣式, 依照 `inputType` 屬性進行設定
+input元件分為 material(預設) 與 normal 兩種風格樣式, 依照 `inputType` 屬性進行設定
         
 *Material*
         
@@ -24,7 +24,7 @@ input元件分為 `material`(預設) 與 `normal` 兩種風格樣式, 依照 `in
 ## 圖標
 可藉由 props 帶入 code 呈現圖標圖示 `beforeIcon` 和 `afterIcon`
 
-`beforeIcon` 只支援 `normal` 樣式使用
+`beforeIcon` 只支援 normal 樣式使用
 
         
 ```javascript
@@ -38,7 +38,7 @@ input元件分為 `material`(預設) 與 `normal` 兩種風格樣式, 依照 `in
 ```
 
 ## Readonly
-使用 `readonly` 後，`input` 將無法點擊、更改值，可搭配 `defaultValue`
+使用 `readonly` 後，Input 將無法點擊、更改值，可搭配 `defaultValue`
 
 ## Error
 屬性 `errorMessage` 有值時，則會呈現其錯誤之樣式
