@@ -86,7 +86,7 @@ const DefaultStory = () => (
 );
 
 DefaultStory.story = {
-    name: 'default',
+    name: 'Basic',
 };
 
 const HookFormStory = () => {
@@ -151,7 +151,7 @@ const HookFormStory = () => {
 };
 
 HookFormStory.story = {
-    name: 'use Hook-Form',
+    name: 'Use Hook-Form',
 };
 
 export {DefaultStory, HookFormStory};

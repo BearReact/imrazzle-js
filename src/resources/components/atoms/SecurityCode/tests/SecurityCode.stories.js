@@ -22,18 +22,22 @@ export const BasicStory = () => {
     // const tet = extractProps(SecurityCode);
 
     return (
-        <>
-            <SecurityCode
-                length={4}
-                onChange={val => setCount(val)}
-            />
-            <Content className="pt-3">Preview Code: {count}</Content>
-        </>
+        <Container>
+            <Row>
+                <Col className="py-3">
+                    <SecurityCode
+                        length={4}
+                        onChange={val => setCount(val)}
+                    />
+                    <Content className="pt-3">Preview Code: {count}</Content>
+                </Col>
+            </Row>
+        </Container>
     );
 };
 
 BasicStory.story = {
-    name: 'basic',
+    name: 'Basic',
 };
 
 export const UseHookForm = () => {
@@ -48,7 +52,7 @@ export const UseHookForm = () => {
 
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
-            <Container fluid>
+            <Container>
                 <Row>
                     <Col className="py-3">
                         <SecurityCode
@@ -75,7 +79,7 @@ export const UseHookForm = () => {
 };
 
 UseHookForm.story = {
-    name: 'use Hook-Form',
+    name: 'Use Hook-Form',
 };
 
 const Content = styled.div`

@@ -18,7 +18,7 @@ export default {
 const DefaultStory = () => (
     <>
         <Container>
-            <H2>Default (Font Class)</H2>
+            <H2>Basic (Font Class)</H2>
             <Row>
                 {IconList.glyphs.map(code => {
                     let minCode = get(code, 'font_class', '');
@@ -35,7 +35,7 @@ const DefaultStory = () => (
 );
 
 DefaultStory.story = {
-    name: 'default',
+    name: 'FontClass',
 };
 
 const SVGStory = () => (
@@ -58,7 +58,7 @@ const SVGStory = () => (
 );
 
 SVGStory.story = {
-    name: 'svg',
+    name: 'Svg',
 };
 
 export {DefaultStory, SVGStory};
