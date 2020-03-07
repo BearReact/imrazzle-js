@@ -5,9 +5,13 @@ export default {
     title: 'Atoms|BlockTitle',
 };
 
-export const BlockTitleStory = () => <BlockTitle>Title</BlockTitle>;
+export const Basic = () => <BlockTitle>Title</BlockTitle>;
 
-BlockTitleStory.story = {
-    name: 'default',
+Basic.story = {
+    parameters: {
+        backgrounds: [
+            {name: 'light', value: '#fff', default: true},
+        ],
+    },
 };
 

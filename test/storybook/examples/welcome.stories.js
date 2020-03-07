@@ -13,4 +13,9 @@ export const ToStorybook = () => <Welcome showApp={linkTo('Button')}/>;
 
 ToStorybook.story = {
     name: 'to Storybook',
+    parameters: {
+        backgrounds: [
+            {name: 'light', value: '#fff', default: true},
+        ],
+    },
 };

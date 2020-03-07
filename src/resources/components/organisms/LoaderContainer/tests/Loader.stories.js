@@ -8,12 +8,9 @@ export default {
     },
 };
 
-export const ToStorybook = () => (
+export const Basic = () => (
     <LoaderContainer isLoading>
         <div style={{height: '100vh', width: '100vw', backgroundColor: '#bdbdbd'}}>test loading</div>
     </LoaderContainer>
 );
 
-ToStorybook.story = {
-    name: 'default',
-};

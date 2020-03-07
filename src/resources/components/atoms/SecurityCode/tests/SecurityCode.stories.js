@@ -16,7 +16,7 @@ export default {
     },
 };
 
-export const BasicStory = () => {
+export const Basic = () => {
     const [count, setCount] = useState('');
 
     // const tet = extractProps(SecurityCode);
@@ -36,10 +36,6 @@ export const BasicStory = () => {
             </Row>
         </Container>
     );
-};
-
-BasicStory.story = {
-    name: 'Basic',
 };
 
 export const UseHookForm = () => {
@@ -78,10 +74,6 @@ export const UseHookForm = () => {
             </form>
         </Container>
     );
-};
-
-UseHookForm.story = {
-    name: 'Use Hook-Form',
 };
 
 const Content = styled.div`

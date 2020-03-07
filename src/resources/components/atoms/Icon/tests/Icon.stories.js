@@ -15,7 +15,7 @@ export default {
     },
 };
 
-const DefaultStory = () => (
+export const Basic = () => (
     <Container className="pt-3">
         <h2 className="story-title">Basic (Font Class)</h2>
         <Row>
@@ -32,11 +32,7 @@ const DefaultStory = () => (
     </Container>
 );
 
-DefaultStory.story = {
-    name: 'FontClass',
-};
-
-const SVGStory = () => (
+export const Svg = () => (
     <Container className="py-3">
         <h2 className="story-title">SVG (Symbol)</h2>
         <Row>
@@ -52,12 +48,6 @@ const SVGStory = () => (
         </Row>
     </Container>
 );
-
-SVGStory.story = {
-    name: 'Svg',
-};
-
-export {DefaultStory, SVGStory};
 
 const Text = styled.div`
     font-size: 12px;

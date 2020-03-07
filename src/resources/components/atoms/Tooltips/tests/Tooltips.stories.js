@@ -46,7 +46,7 @@ class StateComponent extends React.PureComponent {
     }
 }
 
-export const TooltipsStory = () => (
+export const Basic = () => (
     <Container className="pt-3">
         <Title>Basic Tooltips Style</Title>
 
@@ -122,11 +122,7 @@ export const TooltipsStory = () => (
     </Container>
 );
 
-TooltipsStory.story = {
-    name: 'Basic',
-};
-
-export const TooltipsAnimateStory = () => (
+export const UseAnimate = () => (
     <Container className="pt-3">
         <Title>Animate Tooltips Style</Title>
 
@@ -168,10 +164,6 @@ export const TooltipsAnimateStory = () => (
         </Row>
     </Container>
 );
-
-TooltipsAnimateStory.story = {
-    name: 'Use Animate',
-};
 
 const Title = styled.h2`
     color: #1EA7FD;

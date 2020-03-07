@@ -1,5 +1,5 @@
 #root{height: inherit;}
-body{background-color: #333;background-image: repeating-linear-gradient(0deg, transparent, transparent 7px, rgba(81 ,83 ,87 , 0.2) 1px, transparent 8px), repeating-linear-gradient(90deg, transparent, transparent 7px, rgba(81 ,83 , 87 , 0.2) 1px, transparent 8px);background-size: 8px 8px;margin: 8px;}
+body{background-color: inherit; margin: 8px;}
 .token.plain-text{color: #fff;}
 .sbdocs.sbdocs-li{list-style-type: disc;}
 .story-title{

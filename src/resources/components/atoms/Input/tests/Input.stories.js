@@ -12,12 +12,11 @@ export default {
     title: 'Atoms|Input',
     parameters: {
         notes: readeMe + renderPropsTable(Input),
-        info: {inline: true},
     },
 };
 
-const DefaultStory = () => (
-    <Container className="pt-3" style={{backgroundColor: '#fff'}}>
+export const Basic = () => (
+    <Container className="pt-3">
 
         <h2 className="story-title">Basic Input</h2>
 
@@ -87,11 +86,15 @@ const DefaultStory = () => (
     </Container>
 );
 
-DefaultStory.story = {
-    name: 'Basic',
+Basic.story = {
+    parameters: {
+        backgrounds: [
+            {name: 'light', value: '#fff', default: true},
+        ],
+    },
 };
 
-const HookFormStory = () => {
+export const UseHookForm = () => {
     const {register, handleSubmit, errors} = useForm({
         mode: 'onChange',
     });
@@ -102,7 +105,7 @@ const HookFormStory = () => {
     };
 
     return (
-        <Container className="pt-3" style={{backgroundColor: '#fff'}}>
+        <Container className="pt-3">
 
             <h2 className="story-title">Use Hook</h2>
 
@@ -153,11 +156,13 @@ const HookFormStory = () => {
     );
 };
 
-HookFormStory.story = {
-    name: 'Use Hook-Form',
+UseHookForm.story = {
+    parameters: {
+        backgrounds: [
+            {name: 'light', value: '#fff', default: true},
+        ],
+    },
 };
-
-export {DefaultStory, HookFormStory};
 
 const H2 = styled.h2`
     color: #000;

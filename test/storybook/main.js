@@ -9,5 +9,6 @@ module.exports = {
         '@storybook/addon-viewport/register',
         '@storybook/addon-notes/register',
         'storybook-addon-i18n/register',
+        '@storybook/addon-backgrounds/register',
     ],
 };

@@ -8,7 +8,6 @@ import {isEmpty} from '@utils/equal';
 import {addParameters, addDecorator} from '@storybook/react';
 import {withConsole} from '@storybook/addon-console';
 import {withI18n} from 'storybook-addon-i18n';
-import { withInfo } from '@storybook/addon-info';
 
 // setting
 import gridConfig from '@config/grid';
@@ -32,11 +31,15 @@ if(!isEmpty(siteConfig)){
         viewport: viewports,
         i18n: i18n,
         inlineStories: false,
+        backgrounds: [
+            { name: 'Dark', value: '#333', default: true },
+            { name: 'Bright ', value: '#fff' },
+            { name: 'Facebook', value: '#3b5998' },
+        ],
     });
 
     // Set intl configuration
     addDecorator(withI18n);
-    addDecorator(withInfo);
 
     addDecorator(story => (
         <MemoryRouter initialEntries={['/']}>
