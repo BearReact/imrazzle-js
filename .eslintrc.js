@@ -42,6 +42,7 @@ module.exports = {
             afterOpening: 'never',
             beforeClosing: 'never'
         }],
+        'react/display-name': 'off',
         'react/jsx-filename-extension': [1, {extensions: ['.js', '.jsx']}],
         'react/jsx-one-expression-per-line': 'off',
         'react/no-danger': 'off',

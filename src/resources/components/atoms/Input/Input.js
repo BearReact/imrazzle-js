@@ -1,7 +1,5 @@
 // @flow
-/**
- * Input
- */
+
 import React, {useRef} from 'react';
 import styled, {css} from 'styled-components';
 import {media} from 'styled-bootstrap-grid';
@@ -23,7 +21,16 @@ type Props = {
     afterIconOnClick?: Function,
 };
 
-const Input = React.forwardRef((props: Props, ref) => {
+/**
+ * Input Component
+ * form type in text...
+ *
+ * @param props
+ * @param ref
+ * @returns {*}
+ * @constructor
+ */
+const Input = (props: Props, ref) => {
 
     const {
         type,
@@ -127,7 +134,7 @@ const Input = React.forwardRef((props: Props, ref) => {
 
         </InputContainer>
     );
-});
+};
 
 Input.defaultProps = {
     name: undefined,
@@ -144,7 +151,7 @@ Input.defaultProps = {
     afterIconOnClick: undefined,
 };
 
-export default Input;
+export default React.forwardRef((props, ref) => Input(props, ref));
 
 const Remark = styled.div`
     font-size: ${px2vw(12)};

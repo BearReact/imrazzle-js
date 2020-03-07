@@ -132,25 +132,6 @@ export const UseHookForm = () => {
                     </Col>
                 </Row>
 
-                <Row>
-                    <Col className="pb-3 pt-3">
-                        <Input
-                            // ref={register}
-                            name="testName2"
-                            placeholder="Real Name"
-                        />
-                    </Col>
-
-                    <Col className="pb-3 pt-3">
-                        <Input
-                            ref={register}
-                            name="testName3"
-                            placeholder="Email"
-                            afterIconCode="paper-plane"
-                            afterIconOnClick={() => alert('afterIcon clicked')}
-                        />
-                    </Col>
-                </Row>
             </form>
         </Container>
     );
