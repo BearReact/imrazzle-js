@@ -8,6 +8,7 @@ import {isEmpty} from '@utils/equal';
 import {addParameters, addDecorator} from '@storybook/react';
 import {withConsole} from '@storybook/addon-console';
 import {withI18n} from 'storybook-addon-i18n';
+import { withInfo } from '@storybook/addon-info';
 
 // setting
 import gridConfig from '@config/grid';
@@ -35,6 +36,7 @@ if(!isEmpty(siteConfig)){
 
     // Set intl configuration
     addDecorator(withI18n);
+    addDecorator(withInfo);
 
     addDecorator(story => (
         <MemoryRouter initialEntries={['/']}>

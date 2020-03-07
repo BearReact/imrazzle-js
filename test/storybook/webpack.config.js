@@ -6,7 +6,7 @@ module.exports = merge(webpackBase, {
         rules: [
             {
                 test: /\.css$/,
-                exclude: /node_modules/,
+                exclude: /node_modules(?!\/@storybook\/addon-info)/,
                 use: ['style-loader', 'css-loader'],
             },
         ],

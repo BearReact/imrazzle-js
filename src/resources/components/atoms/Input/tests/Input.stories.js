@@ -12,6 +12,7 @@ export default {
     title: 'Atoms|Input',
     parameters: {
         notes: readeMe + renderPropsTable(Input),
+        info: {inline: true},
     },
 };
 
