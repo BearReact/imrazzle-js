@@ -151,7 +151,7 @@ Input.defaultProps = {
     afterIconOnClick: undefined,
 };
 
-export default React.forwardRef((props, ref) => Input(props, ref));
+export default React.forwardRef<Props, HTMLDivElement>((props, ref) => Input(props, ref));
 
 const Remark = styled.div`
     font-size: ${px2vw(12)};
