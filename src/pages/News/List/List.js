@@ -4,7 +4,7 @@ import * as React from 'react';
 import styled from 'styled-components';
 import A from '@components/atoms/A';
 import {isEmpty} from '@utils/equal';
-import {media, Col, Container, GridThemeProvider, Row} from 'styled-bootstrap-grid';
+import {media, Col, Container, GridThemeProvider, Row} from 'styled-bs-grid';
 import LoaderContainer from '@components/organisms/LoaderContainer';
 
 type Props = {

@@ -13,7 +13,7 @@ Imrazzle is a web application framework with razzle, elegant syntax. We believe 
 - [Form controller React Hook Form](https://react-hook-form.com).
 - [Form validation Yup](https://github.com/jquense/yup).
 - [Find and fix problems in your JavaScript code ESLint](https://eslint.org).
-- [Quickly build your entire app with our Grid Bootstrap & Styled-component](https://github.com/imagine10255/styled-bootstrap-grid/tree/master).
+- [Quickly build your entire app with our Grid Bootstrap & Styled-component](https://github.com/imagine10255/styled-bs-grid/tree/master).
 - [Immutable JS data structures which are backwards-compatible with normal Arrays and Objects.](https://github.com/rtfeldman/seamless-immutable).
 
 Imrazzle is accessible, powerful, and provides tools required for large, robust applications.

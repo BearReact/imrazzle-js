@@ -2,7 +2,7 @@
 
 import React from 'react';
 import styled, {css} from 'styled-components';
-import {media, Col, Container, Row} from 'styled-bootstrap-grid';
+import {media, Col, Container, Row} from 'styled-bs-grid';
 import get from 'lodash/get';
 import A from '@components/atoms/A';
 import {asset} from '@config/utils/getAssetPrefix';

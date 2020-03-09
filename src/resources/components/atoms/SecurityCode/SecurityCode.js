@@ -2,7 +2,7 @@
 
 import React, {useRef, useEffect} from 'react';
 import styled from 'styled-components';
-import {media} from 'styled-bootstrap-grid';
+import {media} from 'styled-bs-grid';
 import px2vw from '@config/utils/getPx2vw';
 
 /**

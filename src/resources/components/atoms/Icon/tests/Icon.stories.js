@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import {Col, Container, Row} from 'styled-bootstrap-grid';
+import {Col, Container, Row} from 'styled-bs-grid';
 import get from 'lodash/get';
 
 import IconList from '@static/common/plugins/iconfont/iconfont.json';
