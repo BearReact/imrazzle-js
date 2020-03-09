@@ -58,7 +58,6 @@
     "history": "^4.10.1",
     "http-proxy-middleware": "^1.0.0",
     "jwt-decode": "^2.2.0",
-    "loadsh": "^0.0.4",
     "lodash": "^4.17.15",
     "prop-types": "^15.7.2",
     "razzle": "3.0.0",
