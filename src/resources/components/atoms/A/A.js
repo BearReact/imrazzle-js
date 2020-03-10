@@ -1,7 +1,7 @@
 // @flow
 import * as React from 'react';
 import {Link} from 'react-router-dom';
-import styled, {css} from 'styled-components';
+import styled from 'styled-components';
 
 type Props = {
     href: string,
@@ -13,6 +13,14 @@ type Props = {
     onClick?: Function,
 };
 
+/**
+ * 路由超連結
+ * fake react-route <Linkt to="/about"/>
+ *
+ * @param props
+ * @returns {*}
+ * @constructor
+ */
 const A = (props: Props) => {
     const {href, as, alt, style, className, children, onClick} = props;
 
@@ -27,9 +35,7 @@ const A = (props: Props) => {
     };
 
     return (
-        <LinkRoot {...params}>
-            {children}
-        </LinkRoot>
+        <LinkRoot {...params}>{children}</LinkRoot>
     );
 };
 
