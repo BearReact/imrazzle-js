@@ -7,26 +7,29 @@ type Props = {
     className?: string,
     children?: React.Node,
 };
-type State = {};
 
-class BlockTitle extends React.PureComponent<Props, State> {
-    static defaultProps = {
-        style: undefined,
-        className: undefined,
-        children: null,
-    };
+/**
+ * Block Title
+ *
+ * @param props
+ * @returns {*}
+ * @constructor
+ */
+const BlockTitle = (props: Props) => {
+    const {children, style, className} = props;
+    return <BlockTitleRoot style={style} className={className}>{children}</BlockTitleRoot>;
 
-    render() {
-        const {children, style, className} = this.props;
+};
 
-        return <BlockTitleRoot style={style} className={className}>{children}</BlockTitleRoot>;
-    }
-}
+BlockTitle.defaultProps = {
+    style: undefined,
+    className: undefined,
+    children: null,
+};
 
 export default BlockTitle;
 
 const BlockTitleRoot = styled.div`
-
     position: relative;
     overflow: hidden;
     white-space: nowrap;
