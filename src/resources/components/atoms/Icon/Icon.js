@@ -102,7 +102,7 @@ const Icon = (props: Props) => {
 Icon.defaultProps = {
     className: '',
     type: 'fontClass',
-    style: {},
+    style: undefined,
     shapeType: '',
     shapeSize: 34,
     shapeColor: '#fff',
