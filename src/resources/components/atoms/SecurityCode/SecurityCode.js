@@ -1,6 +1,6 @@
 // @flow
 
-import React, {useRef, useEffect} from 'react';
+import React, {useRef} from 'react';
 import styled from 'styled-components';
 import {media} from 'styled-bs-grid';
 import px2vw from '@config/utils/getPx2vw';
@@ -11,115 +11,119 @@ import px2vw from '@config/utils/getPx2vw';
 type Props = {
     style?: React.CSSProperties,
     className?: string,
-    length?: {
-        type: 'name',
-    },
+    name?: string,
+    length?: number,
+    forwardRef?: Function,
     onChange?: Function,
 };
 
 /**
  * SecurityCode
  * 安全認證碼輸入框
+ *
  * @param props
  * @returns {*}
  * @constructor
  */
 const SecurityCode = (props: Props) => {
-    const {className, style, length} = props;
+
+    const {className, style, length, name, onChange, forwardRef} = props;
 
     const serialRef = useRef([]);
+    const inputRef = useRef();
 
-    useEffect(() => {
-        serialRef.current = serialRef.current.slice(0, length);
-    }, [length]);
+    const maxLastPosition = length - 1;
 
     /**
-    * 異動事件(提供父元件取值)
+    * 同步資料 (Parent & Real Input)
     */
-    const handleChange = () => {
-        const {onChange, length} = props;
-
-        if(onChange){
-            let valueArray = [];
-            for(let i = 0; i < length; i += 1) {
-                valueArray.push(serialRef.current[i].value);
-            }
-
-            onChange(valueArray.join(''));
-        }
+    const handleSyncValue = () => {
+        const inputValue = serialRef.current.map(element => element.value).join('');
+        onChange(inputValue);
+        inputRef.current.value = inputValue;
     };
 
     /**
      * 移標自動移動到最後一個未填寫的位置
      */
-    const handleFocusLast = () => {
-        const {length} = props;
-        let last = -1;
-        serialRef.current.map((o, index) => {
-            if(o.value !== ''){
-                last = index;
-            }
-            return true;
-        });
-
-        const focusIndex = last+1 === length ? last : last + 1;
-        serialRef.current[focusIndex].focus();
+    const handleFocusNext = () => {
+        const currentPosition = inputRef.current.value.length - 1;
+        const nextPosition = currentPosition >= maxLastPosition ? maxLastPosition : currentPosition + 1;
+        serialRef.current[nextPosition].focus();
     };
 
     /**
      * 敲入內容前進
-     * @param index
+     * @param currentIndex 目前位置
      */
-    const handleNextInput = index => {
-        const {length} = props;
-        if(index+1 < length){
-            serialRef.current[index+1].focus();
-            serialRef.current[index+1].value = '';
+    const handleMoveToNextInput = currentIndex => {
+        const nextPosition = currentIndex + 1;
+        if(nextPosition <= maxLastPosition){
+            serialRef.current[nextPosition].focus();
+            serialRef.current[nextPosition].value = '';
         }
     };
 
     /**
      * 刪除內容倒退
      * @param e
-     * @param index
+     * @param currentIndex
      */
-    const handleBackInput = (e, index) => {
-        const {length} = props;
+    const handleBackInput = (e, currentIndex) => {
         if(e.keyCode === 8){
             e.preventDefault();
-            if(index > 0) {
-                if (index + 1 === length && serialRef.current[index].value !== '') {
-                    serialRef.current[index].value = '';
+
+            if(currentIndex > 0) {
+                // 若為最後一碼, 並且有值, 則把最後一碼值清空
+                if (currentIndex === maxLastPosition && serialRef.current[currentIndex].value !== '') {
+                    serialRef.current[currentIndex].value = '';
                 } else {
-                    serialRef.current[index - 1].focus();
-                    serialRef.current[index - 1].value = '';
+                    const prePosition = currentIndex - 1;
+                    serialRef.current[prePosition].focus();
+                    serialRef.current[prePosition].value = '';
                 }
             }
         }
     };
 
-    let input = [];
-    for(let i = 0; i < length; i += 1){
-        const component = (
-            <Col key={`SerialInput_${i}`}>
-                <SerialInput
-                    ref={el => serialRef.current[i] = el}
-                    maxLength={1}
-                    onClick={handleFocusLast}
-                    onKeyUp={handleChange}
-                    onChange={()=>handleNextInput(i)}
-                    onKeyDown={e => handleBackInput(e, i)}
-                    placeholder=" "
-                />
-            </Col>
-        );
-
-        input.push(component);
-    }
+    /**
+     * 產生驗證碼欄位
+     */
+    const generateSerialInput = () => {
+        const serialInputList = [];
+        for(let i = 0; i < length; i += 1){
+            serialInputList[i] = (
+                <Col key={`serialInput_${i}`}>
+                    <SerialInput
+                        ref={e => {
+                            serialRef.current[i] = e;
+                        }}
+                        maxLength={1}
+                        onClick={handleFocusNext}
+                        onKeyUp={handleSyncValue}
+                        onChange={()=>handleMoveToNextInput(i)}
+                        onKeyDown={e => handleBackInput(e, i)}
+                        placeholder=" "
+                        type="text"
+                    />
+                </Col>
+            );
+        }
+        return serialInputList;
+    };
 
     return (
         <SecurityCodeRoot className={className} style={style} length={length}>
-            {input}
+            {generateSerialInput()}
+
+            <input
+                ref={e => {
+                    forwardRef(e);
+                    inputRef.current = e;
+                }}
+                name={name}
+                type="hidden"
+            />
         </SecurityCodeRoot>
     );
 };
@@ -127,8 +131,10 @@ const SecurityCode = (props: Props) => {
 SecurityCode.defaultProps = {
     style: undefined,
     className: undefined,
+    name: undefined,
     length: 4,
-    onChange: undefined,
+    forwardRef: () => {},
+    onChange: () => {},
 };
 
 export default SecurityCode;
@@ -137,31 +143,31 @@ const SerialInput = styled.input`
     color: ${props => props.theme.primaryColor};
     width: ${px2vw(30)};
     font-size: ${px2vw(20)};
-    
+
     background-color: transparent;
     border: none;
     border-radius: 0;
     border-bottom: solid 2px #fff;
     text-align: center;
-    
+
     ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
       color: transparent;
       opacity: 1; /* Firefox */
     }
-    
+
     :-ms-input-placeholder { /* Internet Explorer 10-11 */
       color: transparent;
     }
-    
+
     ::-ms-input-placeholder { /* Microsoft Edge */
       color: transparent;
     }
 
-    
+
     &:not(:placeholder-shown) {
         border-bottom-color: ${props => props.theme.primaryColor};
     }
-    
+
     ${media.lg`
         font-size: 20px;
         width: 30px;
@@ -184,7 +190,7 @@ const SecurityCodeRoot = styled.div`
     flex-wrap: wrap;
     justify-content: flex-start;
     margin: 0 -10px;
-    
+
     ${media.lg`
         width: calc(${props => props.length} * 50px);
     `}

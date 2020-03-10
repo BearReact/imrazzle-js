@@ -3,8 +3,8 @@ import React, {useState} from 'react';
 import styled from 'styled-components';
 import {Col, Container, Row} from 'styled-bs-grid';
 import {useForm} from 'react-hook-form';
-import get from 'lodash/get';
 import renderPropsTable from '@test/storybook/addonConfig/renderPropsTable';
+import {isEmpty} from '@utils/equal';
 
 import readeMe from './SecurityCode.stories.md';
 import SecurityCode from '../SecurityCode';
@@ -19,8 +19,6 @@ export default {
 export const Basic = () => {
     const [count, setCount] = useState('');
 
-    // const tet = extractProps(SecurityCode);
-
     return (
         <Container className="pt-3">
             <h2 className="story-title">Basic SecurityCode</h2>
@@ -28,8 +26,7 @@ export const Basic = () => {
             <Row>
                 <Col col className="py-3">
                     <SecurityCode
-                        length={4}
-                        onChange={val => setCount(val)}
+                        onChange={setCount}
                     />
                     <Content className="pt-3">Preview Code: {count}</Content>
                 </Col>
@@ -44,9 +41,18 @@ export const UseHookForm = () => {
     });
 
     const onSubmit = formData => {
+        // 此處回傳的為4個input各自的值
         // eslint-disable-next-line no-console
-        console.log('onSubmit', formData);
+        console.log('onSubmit', formData.securityCode);
     };
+
+    // 此處為監控錯誤訊息
+    if(!isEmpty(errors)){
+        // eslint-disable-next-line no-console
+        console.log('errors', errors);
+    }
+
+    const codeLength = 4;
 
     return (
         <Container className="pt-3">
@@ -55,14 +61,24 @@ export const UseHookForm = () => {
                 <Row>
                     <Col className="py-3">
                         <SecurityCode
-                            ref={register({
-                                minLength: {value: 4, message: 'The value maxLength 4'},
-                                maxLength: {value: 4, message: 'The value maxLength 4'},
+                            forwardRef={register({
+                                required: 'required error',
+                                minLength : {
+                                    value: 4,
+                                    message: 'length is not 4',
+                                },
+                                maxLength : {
+                                    value: 4,
+                                    message: 'length is not 4',
+                                },
+                                pattern: {
+                                    value: /[A-Za-z0-9]/,
+                                    message: 'pattern error',
+                                },
                             })}
                             name="securityCode"
-                            length={4}
+                            length={codeLength}
                         />
-                        {get(errors, 'test1.message')}
                     </Col>
                 </Row>
 
