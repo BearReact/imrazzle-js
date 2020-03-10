@@ -1,55 +1,30 @@
 # DatePicker
 
-## 基本樣式
-附上`class component`與`Hook`使用方法
 
+ref: [带你开发一个日历控件](https://juejin.im/post/5a2f0e63f265da43294e01ec)
+
+## How to use 
 ```javascript
-//React Hook
+
 const [selectedDate, setSelectedDate] = useState(null);
 
-const handleChange = value => {
-    setSelectedDate(value);
-};
-
-return (
-    <DatePicker
-        value={selectedDate}
-        onChange={handleChange}
-    />
-)
-```
-
-```javascript
-//React Class Component
-state = {
-    selectedDate: null,
-};
-
-render(){
-    const {selectedDate} = this.state;
-
+const FComponent = () => {
+    const handleChange = value => {
+        setSelectedDate(value);
+    };
+    
     return (
         <DatePicker
             value={selectedDate}
-            onChange={this.handleChange}
+            onChange={handleChange}
         />
-    );
+    )
 }
 ```
 
-## isSetTodayVisible
-非必填props，布林值，使用後可藉由點擊按鈕將日期設為當日
+## 客製化日期顯示
 
-```javascript
-<DatePicker
-    value={selectedDate}
-    onChange={this.handleChange}
-    isSetTodayVisible
-/>
-```
-
-## customLocaleWeekDay、customLocaleMonth
-非必填props，陣列，可藉由傳入的陣列客製化顯示月份以及一到日的名稱
+可藉由傳入的陣列客製化顯示月份以及一到日的名稱 customLocaleWeekDay、customLocaleMonth
 
 ```javascript
 <DatePicker
@@ -59,3 +34,5 @@ render(){
     customLocaleMonth={['1月', '二月', '3月', '四月', '5月', '六月', '7月', '八月', '9月', '十月', '11月', '十二月']}
 />
 ```
+
+isSetTodayVisible 使用後可藉由點擊按鈕將日期設為當日

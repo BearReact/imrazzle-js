@@ -1,14 +1,10 @@
 // @flow
-/**
- * DatePicker
- * https://juejin.im/post/5a2f0e63f265da43294e01ec
- */
 import React, {useState, useEffect} from 'react';
 import styled, {css} from 'styled-components';
 import dayjs from 'dayjs';
 import {FormattedMessage  as I18N, injectIntl} from 'react-intl';
-
 import {isEmpty} from '@utils/equal';
+
 import Icon from '@components/atoms/Icon';
 
 type Props = {
@@ -24,6 +20,14 @@ type Props = {
     onClose: Function,
 };
 
+/**
+ * DatePicker
+ * 日期選擇器
+ *
+ * @param props
+ * @returns {*}
+ * @constructor
+ */
 const DatePicker = (props: Props) => {
 
     const {
@@ -248,7 +252,7 @@ const DatePicker = (props: Props) => {
             const day = preMonthFirstDay + d + 1;
             preMonFirstDayList[d] = (
                 <PreDay
-                    key={`preMonthDay-${d}`}
+                    key={`preMonthDay_${d}`}
                     isSelected={currentDate.isSame(preMonth.set('date', day), 'date')}
                     onClick={() => handleSelectedDate(preMonth.year(), preMonth.month(), day)}
                 >
