@@ -7,6 +7,7 @@ import px2vw from '@config/utils/getPx2vw';
 import Icon from '@components/atoms/Icon';
 
 type Props = {
+    forwardRef?: Function,
     type?: 'text' | 'number' | 'password' | 'tel',
     inputType?: 'normal' | 'material',
     name?: string,
@@ -33,6 +34,7 @@ type Props = {
 const Input = (props: Props, ref) => {
 
     const {
+        forwardRef,
         type,
         name,
         inputType,
@@ -62,9 +64,7 @@ const Input = (props: Props, ref) => {
                 {/* Input */}
                 <TextBox
                     ref={e => {
-                        if(ref){
-                            ref(e);
-                        }
+                        forwardRef(e);
                         textBoxRef.current = e;
                     }}
                     name={name}
@@ -137,6 +137,7 @@ const Input = (props: Props, ref) => {
 };
 
 Input.defaultProps = {
+    forwardRef: () => {},
     name: undefined,
     type: null,
     inputType: null,
@@ -151,7 +152,7 @@ Input.defaultProps = {
     afterIconOnClick: undefined,
 };
 
-export default React.forwardRef<Props, HTMLDivElement>((props, ref) => Input(props, ref));
+export default Input;
 
 const Remark = styled.div`
     font-size: ${px2vw(12)};

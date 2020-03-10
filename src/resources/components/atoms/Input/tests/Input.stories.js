@@ -101,7 +101,7 @@ export const UseHookForm = () => {
 
     const onSubmit = formData => {
         // eslint-disable-next-line no-console
-        console.log('onSubmit', formData);
+        console.log('onSubmit', formData.realName);
     };
 
     return (
@@ -119,15 +119,15 @@ export const UseHookForm = () => {
                 <Row>
                     <Col className="pb-3 pt-3">
                         <Input
-                            ref={register({
+                            forwardRef={register({
                                 minLength: {value: 6, message: 'The value maxLength 6'},
                                 maxLength: {value: 12, message: 'The value maxLength 12'},
                             })}
-                            name="test1"
+                            name="realName"
                             type="text"
-                            placeholder="name"
+                            placeholder="Real Name"
                             afterIconCode="check"
-                            errorMessage={get(errors, 'test1.message')}
+                            errorMessage={get(errors, 'realName.message')}
                         />
                     </Col>
                 </Row>
