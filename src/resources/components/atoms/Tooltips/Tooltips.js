@@ -1,7 +1,4 @@
 // @flow
-/**
- * Tooltips
- */
 import * as React from 'react';
 import styled, {css} from 'styled-components';
 import px2vw from '@config/utils/getPx2vw';
@@ -16,42 +13,46 @@ type Props = {
     isVisibleTips?: boolean,
     isAnimation?: boolean,
 };
-type State = {};
 
-class Tooltips extends React.PureComponent<Props, State> {
-    static defaultProps = {
-        style: undefined,
-        className: undefined,
-        position: 'topCenter',
-        children: undefined,
-        isTopAnimate: false,
-        isVisibleTips: true,
-        isAnimation: false,
-    };
+/**
+ * Tooltips
+ *
+ * @param props
+ * @returns {*}
+ * @constructor
+ */
+const Tooltips = (props: Props) => {
+    const {className, style, position, children, isTopAnimate, isVisibleTips, isAnimation} = props;
 
-    render() {
-        const {className, style, position, children, isTopAnimate, isVisibleTips, isAnimation} = this.props;
-
-        return (
-            <AnimationContainer
-                isVisibleTips={isVisibleTips}
-                isAnimation={isAnimation}
-                isTopAnimate={isTopAnimate}
+    return (
+        <AnimationContainer
+            isVisibleTips={isVisibleTips}
+            isAnimation={isAnimation}
+            isTopAnimate={isTopAnimate}
+        >
+            <TooltipsRoot
+                className={className}
+                style={style}
+                position={position}
             >
-                <TooltipsRoot
-                    className={className}
-                    style={style}
-                    position={position}
-                >
-                    <TooltipsArrow position={position}/>
-                    <Container>
-                        {children}
-                    </Container>
-                </TooltipsRoot>
-            </AnimationContainer>
-        );
-    }
-}
+                <TooltipsArrow position={position}/>
+                <Container>
+                    {children}
+                </Container>
+            </TooltipsRoot>
+        </AnimationContainer>
+    );
+};
+
+Tooltips.defaultProps = {
+    style: undefined,
+    className: undefined,
+    position: 'topCenter',
+    children: undefined,
+    isTopAnimate: false,
+    isVisibleTips: true,
+    isAnimation: false,
+};
 
 export default Tooltips;
 
