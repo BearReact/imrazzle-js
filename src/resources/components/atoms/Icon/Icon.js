@@ -30,6 +30,14 @@ const shapeSetting = {
     vertical: '1px',
 };
 
+/**
+ * Icon
+ * 依賴阿里巴巴Iconfont服務
+ *
+ * @param props
+ * @returns {*}
+ * @constructor
+ */
 const Icon = (props: Props) => {
     const {
         shapeType,

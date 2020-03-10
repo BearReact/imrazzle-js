@@ -1,13 +1,9 @@
 // @flow
-
 import React, {useRef} from 'react';
 import styled from 'styled-components';
 import {media} from 'styled-bs-grid';
 import px2vw from '@config/utils/getPx2vw';
 
-/**
- * length 長度,
- */
 type Props = {
     style?: React.CSSProperties,
     className?: string,
