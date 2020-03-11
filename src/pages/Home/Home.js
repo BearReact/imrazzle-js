@@ -125,7 +125,7 @@ const Button = styled.button`
     background-color: #f14836;
     font-size: 14px;
     padding: 10px 25px;
-    
+
     :hover{
         color: #f14836;
         background-color: #e7e7e7;
