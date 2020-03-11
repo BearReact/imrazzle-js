@@ -1,3 +1,1 @@
-import BlockTitle from './BlockTitle';
-
-export default BlockTitle;
+export {default} from './BlockTitle';

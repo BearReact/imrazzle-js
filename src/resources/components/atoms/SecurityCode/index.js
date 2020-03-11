@@ -1,3 +1,1 @@
-import SecurityCode from './SecurityCode';
-
-export default SecurityCode;
+export {default} from './SecurityCode';

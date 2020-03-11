@@ -1,3 +1,1 @@
-import LoaderContainer from './LoaderContainer';
-
-export default LoaderContainer;
+export {default} from './LoaderContainer';
