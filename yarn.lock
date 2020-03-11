@@ -11676,16 +11676,6 @@ react-docgen@^5.0.0:
     node-dir "^0.1.10"
     strip-indent "^3.0.0"
 
-react-dom@16.13.0, react-dom@^16.8.3:
-  version "16.13.0"
-  resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-16.13.0.tgz#cdde54b48eb9e8a0ca1b3dc9943d9bb409b81866"
-  integrity sha512-y09d2c4cG220DzdlFkPTnVvGTszVvNpC73v+AaLGLHbkpy3SSgvYq8x0rNwPJ/Rk/CicTNgk0hbHNw1gMEZAXg==
-  dependencies:
-    loose-envify "^1.1.0"
-    object-assign "^4.1.1"
-    prop-types "^15.6.2"
-    scheduler "^0.19.0"
-
 react-dom@^16.12.0:
   version "16.12.0"
   resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-16.12.0.tgz#0da4b714b8d13c2038c9396b54a92baea633fe11"
@@ -11695,6 +11685,16 @@ react-dom@^16.12.0:
     object-assign "^4.1.1"
     prop-types "^15.6.2"
     scheduler "^0.18.0"
+
+react-dom@^16.8.3:
+  version "16.13.0"
+  resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-16.13.0.tgz#cdde54b48eb9e8a0ca1b3dc9943d9bb409b81866"
+  integrity sha512-y09d2c4cG220DzdlFkPTnVvGTszVvNpC73v+AaLGLHbkpy3SSgvYq8x0rNwPJ/Rk/CicTNgk0hbHNw1gMEZAXg==
+  dependencies:
+    loose-envify "^1.1.0"
+    object-assign "^4.1.1"
+    prop-types "^15.6.2"
+    scheduler "^0.19.0"
 
 react-draggable@^4.0.3:
   version "4.2.0"
@@ -11919,19 +11919,19 @@ react-textarea-autosize@^7.1.0:
     "@babel/runtime" "^7.1.2"
     prop-types "^15.6.0"
 
-react@16.13.0, react@^16.8.1, react@^16.8.3:
-  version "16.13.0"
-  resolved "https://registry.yarnpkg.com/react/-/react-16.13.0.tgz#d046eabcdf64e457bbeed1e792e235e1b9934cf7"
-  integrity sha512-TSavZz2iSLkq5/oiE7gnFzmURKZMltmi193rm5HEoUDAXpzT9Kzw6oNZnGoai/4+fUnm7FqS5dwgUL34TujcWQ==
+react@>=0.14.x, react@^16.12.0:
+  version "16.12.0"
+  resolved "https://registry.yarnpkg.com/react/-/react-16.12.0.tgz#0c0a9c6a142429e3614834d5a778e18aa78a0b83"
+  integrity sha512-fglqy3k5E+81pA8s+7K0/T3DBCF0ZDOher1elBFzF7O6arXJgzyu/FW+COxFvAWXJoJN9KIZbT2LXlukwphYTA==
   dependencies:
     loose-envify "^1.1.0"
     object-assign "^4.1.1"
     prop-types "^15.6.2"
 
-react@>=0.14.x, react@^16.12.0:
-  version "16.12.0"
-  resolved "https://registry.yarnpkg.com/react/-/react-16.12.0.tgz#0c0a9c6a142429e3614834d5a778e18aa78a0b83"
-  integrity sha512-fglqy3k5E+81pA8s+7K0/T3DBCF0ZDOher1elBFzF7O6arXJgzyu/FW+COxFvAWXJoJN9KIZbT2LXlukwphYTA==
+react@^16.8.1, react@^16.8.3:
+  version "16.13.0"
+  resolved "https://registry.yarnpkg.com/react/-/react-16.13.0.tgz#d046eabcdf64e457bbeed1e792e235e1b9934cf7"
+  integrity sha512-TSavZz2iSLkq5/oiE7gnFzmURKZMltmi193rm5HEoUDAXpzT9Kzw6oNZnGoai/4+fUnm7FqS5dwgUL34TujcWQ==
   dependencies:
     loose-envify "^1.1.0"
     object-assign "^4.1.1"
@@ -13486,17 +13486,12 @@ style-loader@^1.0.0:
     loader-utils "^1.2.3"
     schema-utils "^2.6.4"
 
-styled-bs-grid@1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/styled-bs-grid/-/styled-bs-grid-1.0.0.tgz#d01263a9bf1d8f37ea5074544c0d781096ffc380"
-  integrity sha512-zqJ7W1cIoEBuyRe+VLlsb5XR6i9sTAJkZ9JpVftcYK6vCP9SeFxvaT5m4RodSGp5NVGOWrUzdsAtvT8tmKVGRA==
-  dependencies:
-    lodash "^4.17.15"
-    react "16.13.0"
-    react-dom "16.13.0"
-    styled-components "^5.0.1"
+styled-bs-grid@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/styled-bs-grid/-/styled-bs-grid-1.0.1.tgz#4c93142c5447cd94f738f27f6b1b4005642ba454"
+  integrity sha512-mKmlRGSJgs4WUAr3+k8B8PwxuXCwKOToJzMqFQYQGC4PfTtN2VsV9CfmmUpaoPLASsanUsafD061fgYDsfFSCA==
 
-styled-components@5.0.1, styled-components@>=2.4.0, styled-components@^5.0.1:
+styled-components@5.0.1, styled-components@>=2.4.0:
   version "5.0.1"
   resolved "https://registry.yarnpkg.com/styled-components/-/styled-components-5.0.1.tgz#57782a6471031abefb2db5820a1876ae853bc619"
   integrity sha512-E0xKTRIjTs4DyvC1MHu/EcCXIj6+ENCP8hP01koyoADF++WdBUOrSGwU1scJRw7/YaYOhDvvoad6VlMG+0j53A==

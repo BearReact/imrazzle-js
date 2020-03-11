@@ -43,7 +43,7 @@ const HomeLayout = (props: Props) => {
         <div className="d-flex flex-column" style={{height: 'inherit'}}>
             <Header>
                 <Container className="pt-3 pb-3">
-                    <Row alignItems="center">
+                    <Row className="align-items-center">
                         {/* LOGO */}
                         <Col md={2}>
                             <A href="/">
@@ -57,7 +57,7 @@ const HomeLayout = (props: Props) => {
                                 {menu
                                     .map(row => (
                                         <NavItem
-                                            auto
+                                            col="auto"
                                             as="li"
                                             key={row.href}
                                             isHidden={get(row, 'isHidden', false)}
@@ -71,7 +71,7 @@ const HomeLayout = (props: Props) => {
                         </Col>
 
                         {/* Change Language */}
-                        <Col auto className="d-none d-md-flex">
+                        <Col col="auto" className="d-none d-md-flex">
                             <Button type="button" onClick={handleChangeLocale}>
                                 {i18n({id:'common.language'})}
                             </Button>
@@ -87,7 +87,7 @@ const HomeLayout = (props: Props) => {
             </Section>
 
             {/* Footer */}
-            <Footer auto as="footer">
+            <Footer col="auto" as="footer">
                 <Container>
                     <FooterCopyRight className="footer-copyright text-center">
                         <p className="text">

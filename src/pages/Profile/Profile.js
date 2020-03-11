@@ -39,7 +39,7 @@ const Profile = (props: Props) => {
 
                 {
                     columnLust.map(row => (
-                        <Row key={row.key} justifyContent="center">
+                        <Row key={row.key} className="justify-content-center">
                             <Col col={6}>
                                 <div>{row.column}</div>
                             </Col>

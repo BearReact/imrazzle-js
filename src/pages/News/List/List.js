@@ -33,7 +33,7 @@ const List = (props: Props) => {
         <LoaderContainer isLoading={isFetching}>
             <Container>
 
-                <Row alignItems="center">
+                <Row className="align-items-center">
                     <Col lg>
                         <div className="text-center">
                             <PageSubTitle>{i18n({id: 'page.news.subTitle'})}</PageSubTitle>
@@ -42,7 +42,7 @@ const List = (props: Props) => {
                     </Col>
                 </Row>
 
-                <Row alignItems="center">
+                <Row className="align-items-center">
                     {paginateData.map(row => (
                         <Col
                             lg={8}
