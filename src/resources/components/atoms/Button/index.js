@@ -1,4 +1,3 @@
-import Button from './Button';
-import PlayButton from './PlayButton';
-
-export default {Button, PlayButton};
+export {default as Button} from './Button';
+export {default as PlayButton} from './PlayButton';
+export {default as HeartButton} from './HeartButton';

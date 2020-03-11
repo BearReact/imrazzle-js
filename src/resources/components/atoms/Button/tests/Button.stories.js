@@ -3,9 +3,10 @@ import styled from 'styled-components';
 import {Container, Row, Col} from 'styled-bs-grid';
 
 import Icon from '@components/atoms/Icon';
-import PlayButton from '@components/atoms/Button/PlayButton';
 import renderPropsTable from '@test/storybook/addonConfig/renderPropsTable';
 import Button from '../Button';
+import PlayButton from '../PlayButton';
+import HeartButton from '../HeartButton';
 import readeMe from './Button.stories.md';
 
 export default {
@@ -107,14 +108,6 @@ export const Basic = () => {
     );
 };
 
-Basic.story = {
-    parameters: {
-        backgrounds: [
-            // {name: 'light', value: 'lightgreen', default: true},
-        ],
-    },
-};
-
 export const Play = () => {
     return (
         <>
@@ -149,7 +142,20 @@ export const Play = () => {
     );
 };
 
-Play.story = {
+export const Heart = () => {
+    return (
+        <>
+            <Container className="pt-3">
+                <h2 className="story-title">Heart Button</h2>
+
+                <Row>
+                    <Col col={24} lg={6} className="mb-4">
+                        <HeartButton size={100}/>
+                    </Col>
+                </Row>
+            </Container>
+        </>
+    );
 };
 
 const CustomIcon = styled(Icon)`
