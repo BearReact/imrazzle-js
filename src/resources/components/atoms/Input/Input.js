@@ -26,11 +26,10 @@ type Props = {
  * form type in text...
  *
  * @param props
- * @param ref
  * @returns {*}
  * @constructor
  */
-const Input = (props: Props, ref) => {
+const Input = (props: Props) => {
 
     const {
         forwardRef,
@@ -138,8 +137,8 @@ const Input = (props: Props, ref) => {
 Input.defaultProps = {
     forwardRef: () => {},
     name: undefined,
-    type: null,
-    inputType: null,
+    type: 'text',
+    inputType: 'material',
     placeholder: '',
     defaultValue: undefined,
     readonly: false,

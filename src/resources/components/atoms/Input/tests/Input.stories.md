@@ -1,9 +1,12 @@
 # Input
 
 ## 樣式
-input元件分為 material(預設) 與 normal 兩種風格樣式, 依照 `inputType` 屬性進行設定
+input元件分為 material(預設) 與 normal 兩種風格樣式, 依照 `inputType` 屬性進行設定,
+
         
 *Material*
+
+> [參考作法](https://material-ui.com/components/text-fields/) 
         
 ```javascript
 <Input
