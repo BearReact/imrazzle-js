@@ -13,7 +13,7 @@ import Router from '@layouts/HomeLayout/Router';
 const HomeLayout = (props: Props) => {
 
     const {
-        intl: {formatMessage: i18n}, changeLocale, isAuth,
+        intl: {formatMessage: i18n}, changeLocale, isAuth, locale,
     } = props;
 
     const menu = [
@@ -27,7 +27,7 @@ const HomeLayout = (props: Props) => {
      */
     const handleChangeLocale = () => {
 
-        switch (props.locale) {
+        switch (locale) {
             case 'zh-CN':
                 changeLocale('en-US');
                 break;

@@ -2,7 +2,7 @@
 import React from 'react';
 // eslint-disable-next-line import/no-unresolved
 import styled, {css} from 'styled-components';
-import {ContainerProps} from './types';
+import type {ContainerProps} from './types';
 
 import {themeName} from '../../config';
 import media from '../../media';

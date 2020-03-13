@@ -6,7 +6,7 @@ import {getConfig} from '@config/utils/getConfig';
  * @param path 檔案的網址路徑
  * @returns {string}
  */
-export function asset(path) {
+export function asset(path: string) {
     return `${getConfig('env.staticPrefixUrl', '')}${path}`;
 }
 
@@ -15,7 +15,7 @@ export function asset(path) {
  * @param path 檔案的網址路徑
  * @returns {*}
  */
-export function uploadUrl(path: string = '') {
+export function uploadUrl(path: string) {
     return `${getConfig('env.uploadPrefixUrl', '')}${path}`;
 }
 
@@ -24,6 +24,6 @@ export function uploadUrl(path: string = '') {
  * @param path 檔案的網址路徑
  * @returns {string}
  */
-export function routePath(path) {
+export function routePath(path: string) {
     return (`${getConfig('env.routePrefixPath', '')}/${path}`).replace('//','/');
 }

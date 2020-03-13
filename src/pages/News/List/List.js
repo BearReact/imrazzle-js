@@ -8,14 +8,15 @@ import {media, Col, Container, GridThemeProvider, Row} from '@library/styled-bs-
 import LoaderContainer from '@components/organisms/LoaderContainer';
 
 type Props = {
+    intl: any,
     isFetching?: boolean,
     fetchPaginate: Function,
     paginateData?: Array<{
         id: number,
-        title: number,
-        author: number,
-        thumb: number,
-        avatar: number,
+        title: string,
+        author: string,
+        thumb: string,
+        avatar: string,
     }>,
 };
 
@@ -43,7 +44,7 @@ const List = (props: Props) => {
                 </Row>
 
                 <Row className="align-items-center">
-                    {paginateData.map(row => (
+                    {paginateData && paginateData.map(row => (
                         <Col
                             lg={8}
                             md={12}

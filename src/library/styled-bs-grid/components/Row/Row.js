@@ -2,9 +2,9 @@
 
 import React from 'react';
 import styled, {css} from 'styled-components';
-import {RowProps} from './types';
 import getDataName from './getDataName';
 import {themeName} from '../../config';
+import type {RowProps} from './types';
 
 /**
  * Get Row Margin

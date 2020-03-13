@@ -16,7 +16,11 @@ import {routePath} from '@config/utils/getAssetPrefix';
  * @returns {boolean}
  */
 export default class windowOpen {
-    constructor(prefixName, isMultipleOpen) {
+    openTargetId: string;
+    isMultipleOpen: boolean;
+    targetWindow: any;
+
+    constructor(prefixName: string, isMultipleOpen: boolean) {
         this.openTargetId = isMultipleOpen ? uniqueId(`${prefixName}_`) : prefixName;
         this.isMultipleOpen = isMultipleOpen;
         this.targetWindow = null;
@@ -34,7 +38,7 @@ export default class windowOpen {
      * 開啟視窗
      * @param url 開啟目標的Url
      */
-    open(url){
+    open(url: string){
         // 單一顯示模式中, 如果子視窗未關閉, 則使用子視窗導頁
         if(!this.isMultipleOpen && this.targetWindow){
             this.targetWindow.location.href = url;

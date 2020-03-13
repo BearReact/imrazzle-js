@@ -1,9 +1,16 @@
 [ignore]
-/node_modules/*
-/test/*
+.*/test/.*
+
+[untyped]
+.*/node_modules/**/.*
+.*/internals/flow/.*
+
 
 [libs]
 internals/flow/
+
+[include]
+./src/
 
 [options]
 module.file_ext=.js
@@ -33,4 +40,4 @@ module.name_mapper='^@middleware' ->'<PROJECT_ROOT>/src/middleware'
 module.name_mapper='^@test' ->'<PROJECT_ROOT>/test'
 
 [version]
-^0.86.0
+^0.118.0

@@ -8,9 +8,18 @@ import {useForm} from 'react-hook-form';
 import * as yup from 'yup';
 import LoaderContainer from '@components/organisms/LoaderContainer';
 
+type Props = {
+    intl: any,
+    onSignIn: Function,
+    onSignOut: Function,
+    isSubmitting?: boolean,
+    token?: string,
+    isAuth?: boolean,
+};
+
 const Home = (props: Props) => {
     const {
-        intl: {formatMessage: i18n}, onSignIn, isSubmitting, isAuth, token,
+        intl: {formatMessage: i18n}, onSignIn, isSubmitting, isAuth, token, onSignOut
     } = props;
 
     const {handleSubmit, register, reset} = useForm();
@@ -32,7 +41,6 @@ const Home = (props: Props) => {
     };
 
     const renderForm = () => {
-        const {onSignOut} = props;
         if (token) {
             return (
                 <div>
@@ -87,13 +95,6 @@ const Home = (props: Props) => {
     );
 };
 
-type Props = {
-    onSignIn: Function,
-    onSignOut: Function,
-    isSubmitting?: boolean,
-    token?: string,
-    isAuth?: boolean,
-};
 
 Home.defaultProps = {
     isSubmitting: false,

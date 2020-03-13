@@ -1,6 +1,6 @@
 // @flow
 
-type gridTheme = {
+export type gridProps = {
     gridGutterWidth?: number,
     gridColumns: number,
     gridBreakpoints?: {
@@ -19,4 +19,8 @@ type gridTheme = {
         xl: number,
         xxl: number,
     },
+}
+
+export type themeProps = {
+    gridTheme: gridProps,
 }

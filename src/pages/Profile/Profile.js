@@ -7,6 +7,10 @@ import dayjs from 'dayjs';
 import get from 'lodash/get';
 import LoaderContainer from '@components/organisms/LoaderContainer';
 
+type Props = {
+    fetchCurrent: Function,
+};
+
 const Profile = (props: Props) => {
     const {
         intl: {formatMessage: i18n}, fetchCurrent, currentData, isFetching, payload,
@@ -53,14 +57,6 @@ const Profile = (props: Props) => {
             </Container>
         </LoaderContainer>
     );
-};
-
-type Props = {
-    onSignIn: Function,
-    onSignOut: Function,
-    isSubmitting?: boolean,
-    token?: string,
-    isAuth?: boolean,
 };
 
 Profile.defaultProps = {
