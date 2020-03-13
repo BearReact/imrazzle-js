@@ -4,7 +4,7 @@
  */
 import React, {useState} from 'react';
 import styled, {css} from 'styled-components';
-import {media} from 'styled-bs-grid';
+import {media} from '@library/styled-bs-grid';
 import px2vw from '@config/utils/getPx2vw';
 import DatePicker from '@components/atoms/DatePicker';
 import Icon from '@components/atoms/Icon';
@@ -14,7 +14,7 @@ type Props = {
     isSetTodayVisible?: boolean,
 };
 
-const DatePickerInput = (props: Props) => {
+const DateInput = (props: Props) => {
     const {label, isSetTodayVisible} = props;
 
     const [selectedDate, setSelectedDate] = useState(null);
@@ -58,12 +58,12 @@ const DatePickerInput = (props: Props) => {
     );
 };
 
-DatePickerInput.defaultProps = {
+DateInput.defaultProps = {
     label: '',
     isSetTodayVisible: false,
 };
 
-export default DatePickerInput;
+export default DateInput;
 
 const CloseArea = styled.div`
     position: fixed;

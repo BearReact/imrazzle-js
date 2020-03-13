@@ -20,7 +20,7 @@ export const Basic = () => {
     };
 
     return (
-        <Container>
+        <Container className="pt-3">
             <h2 className="story-title">Date Picker</h2>
 
             <Row>
@@ -56,7 +56,7 @@ export const UseHookForm = () => {
 
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
-            <Container>
+            <Container className="pt-3">
                 <h2 className="story-title">Use Hook-From</h2>
 
                 <Row>
