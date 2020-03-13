@@ -2,7 +2,7 @@
 
 import React from 'react';
 import styled from 'styled-components';
-import {media, Col, Container, Row} from 'styled-bs-grid';
+import {Container, Col, Row} from '@library/styled-bs-grid';
 import dayjs from 'dayjs';
 import get from 'lodash/get';
 import LoaderContainer from '@components/organisms/LoaderContainer';

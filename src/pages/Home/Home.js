@@ -2,7 +2,7 @@
 
 import React from 'react';
 import styled from 'styled-components';
-import {media, Col, Container, Row} from 'styled-bs-grid';
+import {media, Col, Container, Row} from '@library/styled-bs-grid';
 import {asset} from '@config/utils/getAssetPrefix';
 import {useForm} from 'react-hook-form';
 import * as yup from 'yup';

@@ -1,7 +1,7 @@
 // @flow
 import React, {useRef} from 'react';
 import styled from 'styled-components';
-import {media} from 'styled-bs-grid';
+import {media} from '@library/styled-bs-grid';
 import px2vw from '@config/utils/getPx2vw';
 
 type Props = {

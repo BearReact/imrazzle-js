@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import {Container, Row, Col} from 'styled-bs-grid';
+import {Container, Row, Col} from '@library/styled-bs-grid';
 
 import Icon from '@components/atoms/Icon';
 import renderPropsTable from '@test/storybook/addonConfig/renderPropsTable';

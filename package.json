@@ -75,7 +75,6 @@
     "seamless-immutable": "7.1.4",
     "seamless-immutable-mergers": "7.1.0",
     "serialize-javascript": "^3.0.0",
-    "styled-bs-grid": "^1.0.1",
     "styled-components": "5.0.1",
     "universal-cookie": "^4.0.3",
     "universal-cookie-express": "^4.0.3",

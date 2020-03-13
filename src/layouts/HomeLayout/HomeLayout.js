@@ -2,7 +2,7 @@
 
 import React from 'react';
 import styled, {css} from 'styled-components';
-import {media, Col, Container, Row} from 'styled-bs-grid';
+import {media, Col, Container, Row} from '@library/styled-bs-grid';
 import get from 'lodash/get';
 import A from '@components/atoms/A';
 import {asset} from '@config/utils/getAssetPrefix';
@@ -53,12 +53,12 @@ const HomeLayout = (props: Props) => {
 
                         {/* MENU */}
                         <Col md>
-                            <Nav as="ul">
+                            <Nav forwardedAs="ul">
                                 {menu
                                     .map(row => (
                                         <NavItem
                                             col="auto"
-                                            as="li"
+                                            forwardedAs="li"
                                             key={row.href}
                                             isHidden={get(row, 'isHidden', false)}
                                         >

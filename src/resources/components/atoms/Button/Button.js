@@ -1,7 +1,7 @@
 // @flow
 import * as React from 'react';
 import styled from 'styled-components';
-import {media} from 'styled-bs-grid';
+import {media} from '@library/styled-bs-grid';
 import {getConfig} from '@config/utils/getConfig';
 import px2vw from '@config/utils/getPx2vw';
 

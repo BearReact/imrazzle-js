@@ -1,7 +1,7 @@
 import React from 'react';
 import {MemoryRouter} from 'react-router-dom';
 import {ThemeProvider} from 'styled-components';
-import {GridThemeProvider} from 'styled-bs-grid';
+import {GridThemeProvider} from '@library/styled-bs-grid';
 import {isEmpty} from '@utils/equal';
 
 // storybook & plugin

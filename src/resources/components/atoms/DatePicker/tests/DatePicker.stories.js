@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Container, Row, Col} from 'styled-bs-grid';
+import {Container, Row, Col} from '@library/styled-bs-grid';
 import {useForm} from 'react-hook-form';
 import renderPropsTable from '@test/storybook/addonConfig/renderPropsTable';
 import DatePicker from '../DatePicker';

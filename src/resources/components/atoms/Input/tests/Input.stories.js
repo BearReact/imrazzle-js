@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import {Col, Container, Row} from 'styled-bs-grid';
+import {Col, Container, Row} from '@library/styled-bs-grid';
 import {useForm} from 'react-hook-form';
 import get from 'lodash/get';
 import renderPropsTable from '@test/storybook/addonConfig/renderPropsTable';
