@@ -26,7 +26,7 @@ const initConfig = {
  * @param pathKey
  * @param defaultReturn
  */
-export const getConfig = (pathKey, defaultReturn) => {
+export const getConfig = (pathKey: string, defaultReturn?: string) => {
     if(typeof window !== 'undefined'){
         // eslint-disable-next-line no-underscore-dangle
         return get(window.__global__, pathKey, defaultReturn);
@@ -42,9 +42,9 @@ export const getConfig = (pathKey, defaultReturn) => {
 /**
  * Server 產生站台設定
  * @param siteCode
- * @returns {{}|(T&{uploadPrefixUrl: *, staticPrefixUrl: *, version: *})}
+ * @returns {{errorMessage: string}|*}
  */
-export const serverGenerateConfig = siteCode => {
+export const serverGenerateConfig = (siteCode: string) => {
     const siteConfig = sites.find(row => row.siteCode === siteCode);
 
     if(siteConfig === undefined){

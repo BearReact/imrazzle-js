@@ -2,10 +2,20 @@
 
 import React from 'react';
 import styled from 'styled-components';
-import {Container, Col, Row} from '@library/styled-bs-grid';
+import {Container, Col, Row} from '@styled-bs-grid';
 import dayjs from 'dayjs';
 import get from 'lodash/get';
 import LoaderContainer from '@components/organisms/LoaderContainer';
+import type {payloadType} from '@store/Auth/type';
+import type {currentDataType, isFetchingType} from './store/type';
+
+type Props = {
+    intl: any,
+    fetchCurrent?: Function,
+    currentData?: currentDataType,
+    isFetching?: isFetchingType,
+    payload?: payloadType,
+};
 
 const Profile = (props: Props) => {
     const {
@@ -55,18 +65,11 @@ const Profile = (props: Props) => {
     );
 };
 
-type Props = {
-    onSignIn: Function,
-    onSignOut: Function,
-    isSubmitting?: boolean,
-    token?: string,
-    isAuth?: boolean,
-};
-
 Profile.defaultProps = {
-    isSubmitting: false,
-    token: null,
-    isAuth: false,
+    isFetching: false,
+    payload: {},
+    currentData: {},
+    fetchCurrent: () => {},
 };
 
 export default Profile;

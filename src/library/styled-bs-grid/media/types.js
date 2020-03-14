@@ -1,8 +1,8 @@
 // @flow
 export type mediaType = {
-  sm: string,
-  md: string,
-  lg: string,
-  xl: string;
-  xxl: string,
+  sm: number,
+  md: number,
+  lg: number,
+  xl: number;
+  xxl: number,
 };

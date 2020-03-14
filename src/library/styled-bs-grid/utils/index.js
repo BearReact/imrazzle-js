@@ -1,9 +1,9 @@
 // @flow
-import {IsNumberFn, SuffixFn} from './types';
+import type {IsNumberFn, SuffixFn} from './types';
 
-export const isNumber: IsNumberFn = value => !Number.isNaN(parseInt(value + ''));
+export const isNumber: IsNumberFn = value => !Number(value) !== true;
 export const suffix: SuffixFn = value => (isNumber(value) ? `-${value}` : '');
-export const isEmpty = (value, isCheckNumber0 = false) => {
+export const isEmpty = (value: any, isCheckNumber0: boolean = false) => {
     return (
         value === undefined
         || value === null

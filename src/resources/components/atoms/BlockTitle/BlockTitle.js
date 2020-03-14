@@ -3,7 +3,7 @@ import * as React from 'react';
 import styled from 'styled-components';
 
 type Props = {
-    style?: React.CSSProperties,
+    style?: $Shape<CSSStyleDeclaration>,
     className?: string,
     children?: React.Node,
 };

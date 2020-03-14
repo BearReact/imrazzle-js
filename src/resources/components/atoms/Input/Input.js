@@ -1,7 +1,7 @@
 // @flow
 import React, {useRef} from 'react';
 import styled, {css} from 'styled-components';
-import {media} from '@library/styled-bs-grid';
+import {media} from '@styled-bs-grid';
 import px2vw from '@config/utils/getPx2vw';
 import Icon from '@components/atoms/Icon';
 
@@ -47,7 +47,7 @@ const Input = (props: Props) => {
         afterIconOnClick,
     } = props;
 
-    const textBoxRef = useRef();
+    const textBoxRef: any = useRef();
 
     const handleClearInput = () => {
         textBoxRef.current.value = '';
@@ -78,10 +78,10 @@ const Input = (props: Props) => {
                 <Border>
                     {
                         inputType !== 'normal' && (
-                            <>
-                                <Title>{placeholder}</Title>
-                                <MovePlaceholder>{placeholder}</MovePlaceholder>
-                            </>
+                        <>
+                            <Title>{placeholder}</Title>
+                            <MovePlaceholder>{placeholder}</MovePlaceholder>
+                        </>
                         )
                     }
                 </Border>

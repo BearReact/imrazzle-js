@@ -9,7 +9,6 @@ const PREFIX = 'profile';
 export const INITIAL_STATE = Immutable({
     isFetching: false,
     message: '',
-    paginateData: [],
     currentData: null,
 });
 
@@ -23,7 +22,7 @@ export const Selectors = {
 /** -----------------------------------------
  Types and Action Creators
  /** ---------------------------------------*/
-export const {Types, Creators} = createActions(
+export const {Types, Creators: Action} = createActions(
     {
         // 取明細
         fetchCurrent: null,
@@ -34,34 +33,11 @@ export const {Types, Creators} = createActions(
     {prefix: `${PREFIX}/`}
 );
 
-export default Creators;
-
 /** -----------------------------------------
  Reducers
  /** ---------------------------------------*/
 
 const Reducers = {
-    // 查詢列表
-    FetchPaginate: {
-        begin(state) {
-            return state.merge({
-                isFetching: true,
-            });
-        },
-        success(state, action) {
-            return state.merge({
-                isFetching: false,
-                paginateData: action.data,
-                message: null,
-            });
-        },
-        fail(state, action) {
-            return state.merge({
-                isFetching: false,
-                message: action.message,
-            });
-        },
-    },
     // 查詢明細
     FetchCurrent: {
         begin(state) {

@@ -2,8 +2,7 @@
 import React, {useState, useEffect} from 'react';
 import styled, {css} from 'styled-components';
 import dayjs from 'dayjs';
-import get from 'lodash/get';
-import {FormattedMessage  as I18N, injectIntl} from 'react-intl';
+import {FormattedMessage as I18N, injectIntl} from 'react-intl';
 
 import {isEmpty} from '@utils/equal';
 
@@ -11,15 +10,46 @@ import Icon from '@components/atoms/Icon';
 
 type Props = {
     intl: { formatMessage: Function },
-    customLocaleWeekDay?: Array<string>,
-    customLocaleMonth?: Array<string>,
     isSetTodayVisible?: boolean,
     value?: string,
     format?: string,
     name?: string,
-    forwardRef?: Function,
+    forwardRef?: any,
     onChange: Function,
-    onClose: Function,
+};
+
+const config = {
+    weekDay: [1,2,3,4,5,6,7],
+    month: [1,2,3,4,5,6,7,8,9,10,11,12],
+};
+
+const getLocaleWeekDay = () => {
+    return config.weekDay.map(w => {
+        return <I18N key={`calendarWeekDay-${w}`} id={`calendar.weekDay.${w}`} defaultMessage={w}/>;
+    });
+};
+
+const getLocaleMonth = () => {
+    return config.month.map(m => {
+        return (
+            <I18N
+                id={`calendar.month.${m}`}
+                defaultMessage={m}
+                key={`calendarLocaleMonth-${m}`}
+                // eslint-disable-next-line react/no-children-prop
+                children={formatedMessage => <option value={m-1} key={`month-${m}`}>{formatedMessage}</option>}
+            />
+        );
+    });
+};
+
+/**
+ * 取得 value的 Dayjs 物件
+ * @param sourceDate
+ * @returns {dayjs.Dayjs}
+ */
+const getConvertDayjs = (sourceDate: any) =>{
+    return dayjs(sourceDate);
 };
 
 /**
@@ -37,11 +67,8 @@ const DatePicker = (props: Props) => {
         value,
         format,
         onChange,
-        onClose,
         name,
         forwardRef,
-        customLocaleWeekDay,
-        customLocaleMonth,
         isSetTodayVisible,
     } = props;
 
@@ -49,42 +76,9 @@ const DatePicker = (props: Props) => {
 
     const [inputValue, setInputValue] = useState('');
     const [panelYearMonth, setPanelYearMonth] = useState(value ? dayjs(value) : today);
-    const [localeWeekDay, setLocaleWeekDay] = useState(customLocaleWeekDay);
-    const [localeMonth, setLocaleMonth] = useState(customLocaleMonth);
 
-    if (isEmpty(localeWeekDay)) {
-        for(let w=1; w<=7; w+=1){
-            localeWeekDay.push(<I18N id={`calendar.weekDay.${w}`} defaultMessage={w}/>);
-        }
-    }
-
-    if (isEmpty(localeMonth)) {
-        for(let m=1; m<=12; m+=1){
-            localeMonth.push(<I18N
-                id={`calendar.month.${m}`}
-                defaultMessage={m}
-                key={`month-${m}`}
-                // eslint-disable-next-line react/no-children-prop
-                children={formatedMessage => <option value={m-1} key={`month-${m}`}>{formatedMessage}</option>}
-            />);
-        }
-    }
-
-    useEffect(() => {
-        setLocaleWeekDay(localeWeekDay);
-    }, [localeWeekDay]);
-
-    useEffect(() => {
-        setLocaleMonth(localeMonth);
-    }, [localeMonth]);
-
-    /**
-     * 取得 value的 Dayjs 物件
-     * @returns {dayjs.Dayjs}
-     */
-    const getConvertDayjs = () =>{
-        return dayjs(value);
-    };
+    const localeWeekDay = getLocaleWeekDay();
+    const localeMonth = getLocaleMonth();
 
     /**
      * 處理選擇日期
@@ -119,7 +113,7 @@ const DatePicker = (props: Props) => {
      * @param month
      * @param day
      */
-    const handleSelectedDate = (year: number = null, month: number = null, day: number = null) => {
+    const handleSelectedDate = (year: number | null = null, month: number | null = null, day: number | null = null) => {
         let newDate = panelYearMonth;
         if(year){
             newDate = newDate.set('year', year);
@@ -128,19 +122,19 @@ const DatePicker = (props: Props) => {
         if(!isEmpty(month)){
             newDate = newDate.set('month', month);
         }
+
         if(day){
             newDate = newDate.set('date', day);
         }
 
-        const value = getConvertDayjs();
-        if(newDate.isSame(value, 'date')){
+        const currentDate = getConvertDayjs(value);
+        if(newDate.isSame(currentDate, 'date')){
             onChange(null);
         }else{
             const formatDate = newDate.format(format);
             onChange(formatDate);
             setInputValue(formatDate);
         }
-        onClose && onClose();
     };
 
     /**
@@ -234,7 +228,7 @@ const DatePicker = (props: Props) => {
      * @returns {Array}
      */
     const renderPreMonthDay = () => {
-        const currentDate = getConvertDayjs();
+        const currentDate = getConvertDayjs(value);
 
         // 取得指定年月的第一天是星期幾 (0, 1-6)
         const currentMonFirstWeek = panelYearMonth.set('date', 1).day();
@@ -274,7 +268,7 @@ const DatePicker = (props: Props) => {
      * @returns {Array}
      */
     const renderNextMonthDay = () => {
-        const currentDate = getConvertDayjs();
+        const currentDate = getConvertDayjs(value);
 
         // 取得指定年月的第一天是星期幾 (0, 1-6)
         const currentMonFirstWeek = panelYearMonth.set('date', 1).day();
@@ -315,7 +309,7 @@ const DatePicker = (props: Props) => {
      * @returns {*}
      */
     const renderCurrentMonthDay = () => {
-        const currentDate = getConvertDayjs();
+        const currentDate = getConvertDayjs(value);
 
         // 取 Panel年月 的最後一天
         const currentMonthLastDay = panelYearMonth.endOf('month').get('date');
@@ -367,9 +361,7 @@ const DatePicker = (props: Props) => {
             {isSetTodayVisible && renderTodayButton()}
 
             <input
-                ref={e => {
-                    forwardRef(e);
-                }}
+                ref={e => forwardRef && forwardRef(e)}
                 name={name}
                 type="hidden"
                 value={inputValue}
@@ -384,8 +376,6 @@ DatePicker.defaultProps = {
     format: 'YYYY-MM-DD',
     name: undefined,
     forwardRef: () => {},
-    customLocaleWeekDay: [],
-    customLocaleMonth: [],
     isSetTodayVisible: false,
 };
 

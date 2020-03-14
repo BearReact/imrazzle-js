@@ -1,4 +1,2 @@
-import action, {reducer} from './Reducer';
-import saga from './Saga';
-
-export {action, reducer, saga};
+export * from './Reducer';
+export {default as saga} from './Saga';

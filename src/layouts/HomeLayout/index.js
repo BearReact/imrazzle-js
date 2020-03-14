@@ -1,8 +1,8 @@
 import {compose} from 'redux';
 import {connect} from 'react-redux';
 
-import LanguageActions from '@library/redux/store/Language/Reducer';
-import {Selectors as AuthSelectors} from '@library/redux/store/Auth/Reducer';
+import LanguageActions from '@store/Language/Reducer';
+import {Selectors as AuthSelectors} from '@store/Auth/Reducer';
 import {injectIntl} from 'react-intl';
 import HomeLayout from './HomeLayout';
 

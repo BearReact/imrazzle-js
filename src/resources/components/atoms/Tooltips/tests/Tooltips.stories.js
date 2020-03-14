@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import {Container, Row, Col} from '@library/styled-bs-grid';
+import {Container, Row, Col} from '@styled-bs-grid';
 
 import renderPropsTable from '@test/storybook/addonConfig/renderPropsTable';
 import readeMe from './Tooltips.stories.md';

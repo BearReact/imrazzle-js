@@ -1,5 +1,5 @@
 import React from 'react';
-import {Container, Row, Col} from '@library/styled-bs-grid';
+import {Container, Row, Col} from '@styled-bs-grid';
 import renderPropsTable from '@test/storybook/addonConfig/renderPropsTable';
 import readeMe from './DateInput.stories.md';
 import DateInput from '../DateInput';

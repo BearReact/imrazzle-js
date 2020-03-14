@@ -1,8 +1,8 @@
 import {compose} from 'redux';
 import {connect} from 'react-redux';
 import {injectIntl} from 'react-intl';
-import loginAction from '@library/redux/store/Login/Reducer';
-import {Selectors as AuthSelectors} from '@library/redux/store/Auth/Reducer';
+import loginAction from '@store/Login/Reducer';
+import {Selectors as AuthSelectors} from '@store/Auth/Reducer';
 
 import PrivateRoute from './PrivateRoute';
 

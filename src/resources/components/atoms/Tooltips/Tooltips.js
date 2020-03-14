@@ -2,10 +2,10 @@
 import * as React from 'react';
 import styled, {css} from 'styled-components';
 import px2vw from '@config/utils/getPx2vw';
-import {media} from '@library/styled-bs-grid';
+import {media} from '@styled-bs-grid';
 
 type Props = {
-    style?: React.CSSProperties,
+    style?: $Shape<CSSStyleDeclaration>,
     children?: React.Node,
     className?: string,
     position?: 'topRight' | 'topLeft' | 'bottomRight' | 'bottomLeft' | 'topCenter' | 'bottomCenter',

@@ -2,15 +2,24 @@
 
 import React from 'react';
 import styled from 'styled-components';
-import {media, Col, Container, Row} from '@library/styled-bs-grid';
+import {media, Col, Container, Row} from '@styled-bs-grid';
 import {asset} from '@config/utils/getAssetPrefix';
 import {useForm} from 'react-hook-form';
 import * as yup from 'yup';
 import LoaderContainer from '@components/organisms/LoaderContainer';
 
+type Props = {
+    intl: any,
+    onSignIn: Function,
+    onSignOut: Function,
+    isSubmitting?: boolean,
+    token?: string,
+    isAuth?: boolean,
+};
+
 const Home = (props: Props) => {
     const {
-        intl: {formatMessage: i18n}, onSignIn, isSubmitting, isAuth, token,
+        intl: {formatMessage: i18n}, onSignIn, isSubmitting, isAuth, token, onSignOut,
     } = props;
 
     const {handleSubmit, register, reset} = useForm();
@@ -32,7 +41,6 @@ const Home = (props: Props) => {
     };
 
     const renderForm = () => {
-        const {onSignOut} = props;
         if (token) {
             return (
                 <div>
@@ -85,14 +93,6 @@ const Home = (props: Props) => {
             </LoaderContainer>
         </HeaderHero>
     );
-};
-
-type Props = {
-    onSignIn: Function,
-    onSignOut: Function,
-    isSubmitting?: boolean,
-    token?: string,
-    isAuth?: boolean,
 };
 
 Home.defaultProps = {

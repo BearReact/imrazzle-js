@@ -1,6 +1,6 @@
 // @flow
 
-import {ColCss} from './types';
+import type {ColCss} from './types';
 
 const css: ColCss = {
     col: (column: any, gridColumns: number) => {

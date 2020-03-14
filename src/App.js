@@ -1,7 +1,7 @@
 import React from 'react';
 import {ThemeProvider} from 'styled-components';
-import {GridThemeProvider} from '@library/styled-bs-grid';
-import ScrollTopProvider from '@library/react-router/ScrollTopProvider';
+import {GridThemeProvider} from '@styled-bs-grid';
+import ScrollTopProvider from '@router/ScrollTopProvider';
 import gridConfig from '@config/grid';
 import {getConfig} from '@config/utils/getConfig';
 

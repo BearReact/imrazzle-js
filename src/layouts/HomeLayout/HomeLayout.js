@@ -2,7 +2,7 @@
 
 import React from 'react';
 import styled, {css} from 'styled-components';
-import {media, Col, Container, Row} from '@library/styled-bs-grid';
+import {media, Col, Container, Row} from '@styled-bs-grid';
 import get from 'lodash/get';
 import A from '@components/atoms/A';
 import {asset} from '@config/utils/getAssetPrefix';
@@ -10,10 +10,17 @@ import {getConfig} from '@config/utils/getConfig';
 
 import Router from '@layouts/HomeLayout/Router';
 
+type Props = {
+    intl: any,
+    changeLocale: Function,
+    isAuth: boolean,
+    locale: string,
+}
+
 const HomeLayout = (props: Props) => {
 
     const {
-        intl: {formatMessage: i18n}, changeLocale, isAuth,
+        intl: {formatMessage: i18n}, changeLocale, isAuth, locale,
     } = props;
 
     const menu = [
@@ -27,7 +34,7 @@ const HomeLayout = (props: Props) => {
      */
     const handleChangeLocale = () => {
 
-        switch (props.locale) {
+        switch (locale) {
             case 'zh-CN':
                 changeLocale('en-US');
                 break;

@@ -2,9 +2,9 @@ import {compose} from 'redux';
 import {connect} from 'react-redux';
 import {injectIntl} from 'react-intl';
 
-import injectReducerSaga from '@library/redux/injectReducerSaga';
-import {Selectors as AuthSelectors} from '@library/redux/store/Auth/Reducer';
-import {action as PageAction, reducer, saga} from './store';
+import injectReducerSaga from '@store/injectReducerSaga';
+import {Selectors as AuthSelectors} from '@store/Auth/Reducer';
+import {Action as PageAction, reducer, saga} from './store';
 import Profile from './Profile';
 
 const mapDispatchToProps = {
