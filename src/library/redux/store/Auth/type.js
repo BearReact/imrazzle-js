@@ -1,6 +1,1 @@
-// @flow
-
-export type payloadType = {
-    signUpDate: string,
-    exp: string,
-}
+//# sourceMappingURL=type.js.map

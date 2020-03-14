@@ -4,9 +4,8 @@ export default {
     defaultUploadPrefixUrl: '/upload',
     defaultApiBaseUrl: '/api',
     defaultRoutePrefixPath: '',
-
     // sync redux & cookie key
     reduxPreloadWhileList: ['auth', 'language.locale'],
-    currencySymbol: {malaysia: 'RM', china: '¥', thailand: '฿', vietnam: '₫'},
-
+    currencySymbol: { malaysia: 'RM', china: '¥', thailand: '฿', vietnam: '₫' },
 };
+//# sourceMappingURL=app.js.map

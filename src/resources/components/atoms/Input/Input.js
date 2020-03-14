@@ -1,26 +1,8 @@
-// @flow
-import React, {useRef} from 'react';
-import styled, {css} from 'styled-components';
-import {media} from '@styled-bs-grid';
+import React, { useRef } from 'react';
+import styled, { css } from 'styled-components';
+import { media } from '@styled-bs-grid';
 import px2vw from '@config/utils/getPx2vw';
 import Icon from '@components/atoms/Icon';
-
-type Props = {
-    forwardRef?: Function,
-    type?: 'text' | 'number' | 'password' | 'tel',
-    inputType?: 'normal' | 'material',
-    name?: string,
-    placeholder?: string,
-    defaultValue?: string,
-    readonly?: boolean,
-    errorMessage?: string,
-    remarkMessage?: string,
-    beforeIconCode?: string,
-    beforeIconOnClick?: Function,
-    afterIconCode?: string,
-    afterIconOnClick?: Function,
-};
-
 /**
  * Input Component
  * form type in text...
@@ -29,113 +11,33 @@ type Props = {
  * @returns {*}
  * @constructor
  */
-const Input = (props: Props) => {
-
-    const {
-        forwardRef,
-        type,
-        name,
-        inputType,
-        placeholder,
-        defaultValue,
-        readonly,
-        errorMessage,
-        remarkMessage,
-        beforeIconCode,
-        beforeIconOnClick,
-        afterIconCode,
-        afterIconOnClick,
-    } = props;
-
-    const textBoxRef: any = useRef();
-
+const Input = (props) => {
+    const { forwardRef, type, name, inputType, placeholder, defaultValue, readonly, errorMessage, remarkMessage, beforeIconCode, beforeIconOnClick, afterIconCode, afterIconOnClick, } = props;
+    const textBoxRef = useRef();
     const handleClearInput = () => {
         textBoxRef.current.value = '';
     };
-
     const isVisibleBeforeIcon = beforeIconCode && inputType === 'normal';
     const isVisibleCleanButton = !readonly && !afterIconCode; //當可寫(非唯獨) 並且 沒有設定 AfterIcon 時
-
-    return (
-        <InputContainer>
-            <InputRoot>
-                {/* Input */}
-                <TextBox
-                    ref={e => {
-                        forwardRef(e);
-                        textBoxRef.current = e;
-                    }}
-                    name={name}
-                    type={type}
-                    inputType={inputType}
-                    isError={errorMessage}
-                    defaultValue={defaultValue}
-                    placeholder={placeholder}
-                    readonly={readonly}
-                />
-
-                {/* 外框 */}
-                <Border>
-                    {
-                        inputType !== 'normal' && (
-                        <>
-                            <Title>{placeholder}</Title>
-                            <MovePlaceholder>{placeholder}</MovePlaceholder>
-                        </>
-                        )
-                    }
-                </Border>
-
-                {/* 前面的Icon (一般主題樣式) */}
-                {isVisibleBeforeIcon && (
-                    <BeforeIcon
-                        code={beforeIconCode}
-                        onClick={beforeIconOnClick}
-                        color="#8d8d8d"
-                        size={20}
-                    />
-                )}
-
-                {/* 後面的Icon */}
-                {afterIconCode && (
-                    <CustomIcon
-                        code={afterIconCode}
-                        onClick={afterIconOnClick}
-                        color="#8d8d8d"
-                        size={20}
-                    />
-                )}
-
-                {/* 清除按鈕 */}
-                {isVisibleCleanButton && (
-                    <CloseIcon
-                        code="times-circle"
-                        onClick={() => handleClearInput()}
-                        color="#8d8d8d"
-                        size={20}
-                    />
-                )}
-            </InputRoot>
-
-            {/* 錯誤訊息提示 */}
-            {errorMessage && (
-                <Remark isError={errorMessage}>
-                    <Icon code="exclamation-circle" right={5} color='#ff4b4b' size={12}/>
-                    {errorMessage}
-                </Remark>
-            )}
-
-            {/* 填寫備註 */}
-            {remarkMessage && (
-                <Remark>{remarkMessage}</Remark>
-            )}
-
-        </InputContainer>
-    );
+    return (React.createElement(InputContainer, null,
+        React.createElement(InputRoot, null,
+            React.createElement(TextBox, { ref: (e) => {
+                    forwardRef(e);
+                    textBoxRef.current = e;
+                }, name: name, type: type, inputType: inputType, isError: errorMessage, defaultValue: defaultValue, placeholder: placeholder, readonly: readonly }),
+            React.createElement(Border, null, inputType !== 'normal' && (React.createElement(React.Fragment, null,
+                React.createElement(Title, null, placeholder),
+                React.createElement(MovePlaceholder, null, placeholder)))),
+            isVisibleBeforeIcon && (React.createElement(BeforeIcon, { code: beforeIconCode, onClick: beforeIconOnClick, color: "#8d8d8d", size: 20 })),
+            afterIconCode && (React.createElement(CustomIcon, { code: afterIconCode, onClick: afterIconOnClick, color: "#8d8d8d", size: 20 })),
+            isVisibleCleanButton && (React.createElement(CloseIcon, { code: "times-circle", onClick: () => handleClearInput(), color: "#8d8d8d", size: 20 }))),
+        errorMessage && (React.createElement(Remark, { isError: errorMessage },
+            React.createElement(Icon, { code: "exclamation-circle", right: 5, color: '#ff4b4b', size: 12 }),
+            errorMessage)),
+        remarkMessage && (React.createElement(Remark, null, remarkMessage))));
 };
-
 Input.defaultProps = {
-    forwardRef: () => {},
+    forwardRef: () => { },
     name: undefined,
     type: 'text',
     inputType: 'material',
@@ -149,23 +51,20 @@ Input.defaultProps = {
     afterIconCode: '',
     afterIconOnClick: undefined,
 };
-
 export default Input;
-
-const Remark = styled.div`
+const Remark = styled.div `
     font-size: ${px2vw(12)};
     padding-top: ${px2vw(5)};
-    color: ${props => props.isError ? '#ff4b4b' : '#c4c4c4'};
+    color: ${(props) => props.isError ? '#ff4b4b' : '#c4c4c4'};
     display: flex;
     align-items: center;
     
-    ${media.lg`
+    ${media.lg `
         font-size: 12px;
         padding-top: 5px;
     `}
 `;
-
-const MovePlaceholder = styled.div`
+const MovePlaceholder = styled.div `
     font-size: ${px2vw(16)};
     padding: 0 0 0 20px;
     color: #c4c4c4;
@@ -175,12 +74,11 @@ const MovePlaceholder = styled.div`
     transform: translateY(-50%);
     transition: all .3s ease;
     
-    ${media.lg`
+    ${media.lg `
         font-size: 16px;
     `}
 `;
-
-const Title = styled.legend`
+const Title = styled.legend `
     font-size: ${px2vw(14)};
     width: auto;
     max-width: 0.01px;
@@ -190,12 +88,11 @@ const Title = styled.legend`
     visibility: hidden;
     transition: max-width 50ms cubic-bezier(0.0, 0, 0.2, 1) 0ms;
     
-    ${media.lg`
+    ${media.lg `
         font-size: 14px;
     `}
 `;
-
-const Border = styled.fieldset`
+const Border = styled.fieldset `
     position: absolute;
     left: 0;
     right: 0;
@@ -205,36 +102,32 @@ const Border = styled.fieldset`
     border: solid 1px #8d8d8d;
     pointer-events: none;
 `;
-
-const CustomIcon = styled(Icon)`
+const CustomIcon = styled(Icon) `
     padding: ${px2vw(20)};
     max-height: ${px2vw(50)};
     color: #c3c3c3;
     order: 2;
     
     &:hover {
-        color: ${props => props.theme.primaryColor};
+        color: ${(props) => props.theme.primaryColor};
     }
     
     >i {
         color: inherit;
     }
     
-    ${media.lg`
+    ${media.lg `
         padding: 20px;
         max-height: 50px;
     `}
 `;
-
-const CloseIcon = styled(CustomIcon)`
+const CloseIcon = styled(CustomIcon) `
     visibility: hidden;
 `;
-
-const BeforeIcon = styled(CustomIcon)`
+const BeforeIcon = styled(CustomIcon) `
     order: 0;
 `;
-
-const TextBox = styled.input`
+const TextBox = styled.input `
     font-size: ${px2vw(16)};
     height: ${px2vw(60)};
     max-height: ${px2vw(60)};
@@ -258,13 +151,13 @@ const TextBox = styled.input`
       color: #c4c4c4;
     }
     
-    ${media.lg`
+    ${media.lg `
         font-size: 16px;
         height: 60px;
         max-height: 60px;
     `}
     
-    ${props => props.inputType !== 'normal' && css`
+    ${(props) => props.inputType !== 'normal' && css `
         padding-left: 20px;
         
         ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
@@ -290,14 +183,14 @@ const TextBox = styled.input`
                 
                 ${MovePlaceholder} {
                     font-size: ${px2vw(14)};
-                    color: ${props => props.readonly ? '#c4c4c4' : props => props.theme.primaryColor};
+                    color: ${(props) => props.readonly ? '#c4c4c4' : props => props.theme.primaryColor};
                     top: 0;
                 }
             }
         } 
         
         &:focus~${Border} {
-            border-color: ${props => props.theme.primaryColor};
+            border-color: ${(props) => props.theme.primaryColor};
         }
        
         //input有值的情況需搭配placeholder
@@ -307,7 +200,7 @@ const TextBox = styled.input`
             }
         }
         
-        ${media.lg`
+        ${media.lg `
             &:focus~${Border} ${MovePlaceholder}, 
             &:not(:placeholder-shown)&~${Border} ${MovePlaceholder} {
                 font-size: 14px;
@@ -315,14 +208,14 @@ const TextBox = styled.input`
         `}
     `}
     
-    ${props => props.readonly && css`
+    ${(props) => props.readonly && css `
         &~${Border} {
             border-color: #c4c4c4;
             pointer-events: auto;
         }
     `}
     
-    ${props => props.isError && css`
+    ${(props) => props.isError && css `
         &~${Border} {
             border-color: #ff4b4b !important;
             
@@ -332,13 +225,12 @@ const TextBox = styled.input`
         }
     `}
 `;
-
-const InputRoot = styled.div`
+const InputRoot = styled.div `
     position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
 `;
-
-const InputContainer = styled.div`
+const InputContainer = styled.div `
 `;
+//# sourceMappingURL=Input.js.map

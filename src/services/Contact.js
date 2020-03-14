@@ -1,6 +1,4 @@
-// @flow
 import api from './index';
-
 export default {
     /**
      * 送出聯絡我們
@@ -9,5 +7,5 @@ export default {
     submitContact() {
         return api.post('contact');
     },
-
 };
+//# sourceMappingURL=Contact.js.map

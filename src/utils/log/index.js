@@ -1,5 +1,3 @@
-/* eslint-disable no-console */
-
 const baseStyles = [
     'color: #fff',
     'display: block',

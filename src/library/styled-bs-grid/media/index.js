@@ -1,1 +1,2 @@
-export {default} from './media';
+export { default } from './media';
+//# sourceMappingURL=index.js.map

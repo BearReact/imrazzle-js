@@ -1,18 +1,5 @@
-// @flow
 import * as React from 'react';
-import {Link} from 'react-router-dom';
-import styled from 'styled-components';
-
-type Props = {
-    href: string,
-    as?: string,
-    alt?: string,
-    style?: {},
-    className?: string,
-    children?: React.Node,
-    onClick?: Function,
-};
-
+import { Link } from 'react-router-dom';
 /**
  * 路由超連結
  * fake react-route <Linkt to="/about"/>
@@ -21,24 +8,21 @@ type Props = {
  * @returns {*}
  * @constructor
  */
-const A = (props: Props) => {
-    const {href, as, alt, style, className, children, onClick} = props;
-
+const A = (props) => {
+    const { href, as, alt, style, className, children, onClick } = props;
     const params = {
         to: as === 'a' ? undefined : href,
-        href:as === 'a' ? href : undefined,
+        href: as === 'a' ? href : undefined,
         as: as,
-        alt:alt,
+        alt: alt,
         style: style,
-        className:className,
+        className: className,
         onClick: onClick,
     };
-
     return (
-        <Link {...params}>{children}</Link>
-    );
+    // @ts-ignore
+    React.createElement(Link, Object.assign({}, params), children));
 };
-
 A.defaultProps = {
     className: undefined,
     style: undefined,
@@ -47,5 +31,5 @@ A.defaultProps = {
     children: '',
     onClick: undefined,
 };
-
 export default A;
+//# sourceMappingURL=A.js.map

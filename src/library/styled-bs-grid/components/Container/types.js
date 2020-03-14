@@ -1,4 +1,1 @@
-// @flow
-export type ContainerProps = {
-  fluid?: boolean;
-};
+//# sourceMappingURL=types.js.map

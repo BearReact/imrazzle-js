@@ -1,2 +1,2 @@
-// @flow
-export {default} from './Col';
+export { default } from './Col';
+//# sourceMappingURL=index.js.map

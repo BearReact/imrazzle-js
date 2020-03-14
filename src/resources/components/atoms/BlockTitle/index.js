@@ -1,1 +1,2 @@
-export {default} from './BlockTitle';
+export { default } from './BlockTitle';
+//# sourceMappingURL=index.js.map

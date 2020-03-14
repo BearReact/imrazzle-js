@@ -1,12 +1,7 @@
-// @flow
-
-import type {ColCss} from './types';
-
-const css: ColCss = {
-    col: (column: any, gridColumns: number) => {
-        let colFlexBasis: number = 0;
-
-        switch(column){
+const css = {
+    col: (column, gridColumns) => {
+        let colFlexBasis = 0;
+        switch (column) {
             case true:
                 return `
           -ms-flex-preferred-size: 0;
@@ -32,5 +27,5 @@ const css: ColCss = {
         }
     },
 };
-
 export default css;
+//# sourceMappingURL=css.js.map

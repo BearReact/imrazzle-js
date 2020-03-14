@@ -1,30 +1,18 @@
-// @flow
-
-/**
- * NotFound
- */
-
 import React from 'react';
 import styled from 'styled-components';
-
+/**
+ * Not Found
+ * @constructor
+ */
 function NotFound() {
-
-    return (
-        <Container>
-            <div>
-                <Tiele>404</Tiele>
-                <Content>
-                    <H2>This page could not be found.</H2>
-                </Content>
-            </div>
-        </Container>
-    );
-
+    return (React.createElement(Container, null,
+        React.createElement("div", null,
+            React.createElement(Title, null, "404"),
+            React.createElement(Content, null,
+                React.createElement(H2, null, "This page could not be found.")))));
 }
-
 export default NotFound;
-
-const Tiele = styled.h1`
+const Title = styled.h1 `
     display:inline-block;
     border-right:1px solid rgba(0, 0, 0,.3);
     margin:0;
@@ -34,16 +22,14 @@ const Tiele = styled.h1`
     font-weight:500;
     vertical-align:top;
 `;
-
-const H2 = styled.h2`
+const H2 = styled.h2 `
     font-size:14px;
     font-weight:normal;
     line-height:inherit;
     margin:0;
     padding:0;
 `;
-
-const Content = styled.div`
+const Content = styled.div `
     display:inline-block;
     margin:0;
     margin-right:20px;
@@ -52,8 +38,7 @@ const Content = styled.div`
     font-weight:500;
     vertical-align:top;
 `;
-
-const Container = styled.div`
+const Container = styled.div `
     width: 100%;
     color:#000;
     background:#fff;
@@ -65,3 +50,4 @@ const Container = styled.div`
     align-items:center;
     justify-content:center;
 `;
+//# sourceMappingURL=NotFound.js.map

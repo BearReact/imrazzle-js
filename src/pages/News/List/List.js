@@ -1,131 +1,71 @@
-// @flow
-
 import * as React from 'react';
 import styled from 'styled-components';
 import A from '@components/atoms/A';
-import {isEmpty} from '@utils/equal';
-import {media, Col, Container, GridThemeProvider, Row} from '@styled-bs-grid';
-import LoaderContainer from '@components/organisms/LoaderContainer';
-
-type Props = {
-    intl: any,
-    isFetching?: boolean,
-    fetchPaginate: Function,
-    paginateData?: Array<{
-        id: number,
-        title: string,
-        author: string,
-        thumb: string,
-        avatar: string,
-    }>,
-};
-
-const List = (props: Props) => {
-
-    const {
-        intl: {formatMessage: i18n}, isFetching, paginateData, fetchPaginate,
-    } = props;
-
+import { media, Col, Container, Row } from '@styled-bs-grid';
+const List = (props) => {
+    const { intl: { formatMessage: i18n }, isFetching, paginateData, fetchPaginate, } = props;
     React.useEffect(() => {
         fetchPaginate();
     }, []);
-
-    return (
-        <LoaderContainer isLoading={isFetching}>
-            <Container>
-
-                <Row className="align-items-center">
-                    <Col lg>
-                        <div className="text-center">
-                            <PageSubTitle>{i18n({id: 'page.news.subTitle'})}</PageSubTitle>
-                            <PageTitle dangerouslySetInnerHTML={{__html: i18n({id: 'page.news.title'})}}/>
-                        </div>
-                    </Col>
-                </Row>
-
-                <Row className="align-items-center">
-                    {paginateData && paginateData.map(row => (
-                        <Col
-                            lg={8}
-                            md={12}
-                            sm={16}
-                            key={row.id}
-                        >
-                            <A href={`/news/${row.id}`}>
-                                <Thumb src={row.thumb} alt="news" className="mb-4"/>
-                            </A>
-                            <div>
-                                <Title className="mb-3">
-                                    <A href={`/news/${row.id}`}>
-                                        {row.title}
-                                    </A>
-                                </Title>
-                                <div className="blog-author d-flex align-items-center">
-                                    <div className="pr-4">
-                                        <Avatar src={row.avatar} alt="author"/>
-                                    </div>
-                                    <div>
-                                        <AuthorPosted>{i18n({id:'page.news.postedBy'})}</AuthorPosted>
-                                        <AuthorText>{row.author}</AuthorText>
-                                    </div>
-                                </div>
-                            </div>
-                        </Col>
-                    ))}
-                </Row>
-
-            </Container>
-        </LoaderContainer>
-    );
+    return (React.createElement(Container, null,
+        React.createElement(Row, { className: "align-items-center" },
+            React.createElement(Col, { lg: true },
+                React.createElement("div", { className: "text-center" },
+                    React.createElement(PageSubTitle, null, i18n({ id: 'page.news.subTitle' })),
+                    React.createElement(PageTitle, { dangerouslySetInnerHTML: { __html: i18n({ id: 'page.news.title' }) } })))),
+        React.createElement(Row, { className: "align-items-center" }, paginateData && paginateData.map((row) => (React.createElement(Col, { lg: 8, md: 12, sm: 16, key: row.id },
+            React.createElement(A, { href: `/news/${row.id}` },
+                React.createElement(Thumb, { src: row.thumb, alt: "news", className: "mb-4" })),
+            React.createElement("div", null,
+                React.createElement(Title, { className: "mb-3" },
+                    React.createElement(A, { href: `/news/${row.id}` }, row.title)),
+                React.createElement("div", { className: "blog-author d-flex align-items-center" },
+                    React.createElement("div", { className: "pr-4" },
+                        React.createElement(Avatar, { src: row.avatar, alt: "author" })),
+                    React.createElement("div", null,
+                        React.createElement(AuthorPosted, null, i18n({ id: 'page.news.postedBy' })),
+                        React.createElement(AuthorText, null, row.author))))))))));
 };
-
 List.defaultProps = {
     isFetching: false,
     paginateData: [],
 };
-
 export default List;
-
-const Thumb = styled.img`
+const Thumb = styled.img `
     width: 95%;
 `;
-
-const Avatar = styled.img`
+const Avatar = styled.img `
     width: 65px;
     border-radius: 50%;
 `;
-
-const Title = styled.h4`
+const Title = styled.h4 `
     font-size: 20px;
     font-weight: 600;
     color: #222;
     
-    ${media.lg`
+    ${media.lg `
         font-size: 24px;
     `}
 `;
-
-const AuthorPosted = styled.div`
+const AuthorPosted = styled.div `
     font-size: 14px;
     color: #f14836;
     font-weight: 400;
     
 `;
-
-const AuthorText = styled.div`
+const AuthorText = styled.div `
     font-size: 16px;
     font-weight: 600;
     margin-top: 5px;
     color: #798795;
 `;
-
-const PageSubTitle = styled.h6`
+const PageSubTitle = styled.h6 `
     font-size: 18px;
     font-weight: 400;
     color: #f14836;
     text-transform: uppercase;
 `;
-const PageTitle = styled.h4`
+const PageTitle = styled.h4 `
     font-size: 32px;
     
     span{
@@ -133,3 +73,4 @@ const PageTitle = styled.h4`
         display: contents;  
     }
 `;
+//# sourceMappingURL=List.js.map

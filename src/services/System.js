@@ -1,6 +1,4 @@
-// @flow
 import api from './index';
-
 export default {
     /**
      * 取得系統設定
@@ -10,3 +8,4 @@ export default {
         return api.get('system/setting');
     },
 };
+//# sourceMappingURL=System.js.map

@@ -1,68 +1,50 @@
 import React from 'react';
-import {renderToString} from 'react-dom/server';
-import {StaticRouter} from 'react-router-dom';
-import {ServerStyleSheet} from 'styled-components';
-import {DOMParser} from 'xmldom';
+import { renderToString } from 'react-dom/server';
+import { StaticRouter } from 'react-router-dom';
+import { ServerStyleSheet } from 'styled-components';
+import { DOMParser } from 'xmldom';
 import serialize from 'serialize-javascript';
 import get from 'lodash/get';
-import {isEmpty, isJSON} from '@utils/equal';
-
+import { isEmpty, isJSON } from '@utils/equal';
 // redux
-import {Provider} from 'react-redux';
-import {serverGenerateConfig} from '@config/utils/getConfig';
-import {asset} from '@config/utils/getAssetPrefix';
+import { Provider } from 'react-redux';
+import { serverGenerateConfig } from '@config/utils/getConfig';
+import { asset } from '@config/utils/getAssetPrefix';
 import configureStore from '../library/redux/configureStore';
-
 // intl
-import LanguageProvider from '../library/intl/provider';
-import {translationMessages} from '../library/intl/i18n';
-
+import { LanguageProvider, translationMessages } from '@i18n';
 // site config
-import {PRELOAD_STATE} from '../constants';
-
+import { PRELOAD_STATE } from '../constants';
 // start component
 import App from '../App';
-
+// @ts-ignore
 global.DOMParser = DOMParser;
-
 // React-Intl Pluralrules
 require('@formatjs/intl-pluralrules/dist/locale-data/en'); // Add locale data for de
 require('@formatjs/intl-pluralrules/dist/locale-data/zh'); // Add locale data for de
-
-// eslint-disable-next-line import/no-dynamic-require
+// @ts-ignore
 const assets = require(process.env.RAZZLE_ASSETS_MANIFEST);
-
 export default (req, res) => {
     const context = {};
     const sheet = new ServerStyleSheet();
-
     // Redux Store PreState
     const preloadState = get(req, `universalCookies.cookies.${PRELOAD_STATE}`, '{}');
-
     // 站台設定
-    const siteCode = get(process,'env.SITE_CODE') || get(req, 'headers.sitecode', 'default');
+    const siteCode = get(process, 'env.SITE_CODE') || get(req, 'headers.sitecode', 'default');
     const globalConfig = serverGenerateConfig(siteCode);
-
     if (isEmpty(globalConfig.errorMessage)) {
-
         const store = configureStore(isJSON(preloadState) ? JSON.parse(preloadState) : {});
-
-        const markup = renderToString(
-            sheet.collectStyles(
-                <Provider store={store}>
-                    <LanguageProvider messages={translationMessages}>
-                        <StaticRouter context={context} location={req.url} basename={get(globalConfig, 'env.routePrefixPath')}>
-                            <App/>
-                        </StaticRouter>
-                    </LanguageProvider>
-                </Provider>
-            )
-        );
+        const markup = renderToString(sheet.collectStyles(React.createElement(Provider, { store: store },
+            React.createElement(LanguageProvider, { messages: translationMessages },
+                React.createElement(StaticRouter, { context: context, location: req.url, basename: get(globalConfig, 'env.routePrefixPath') },
+                    React.createElement(App, null))))));
         const styledComponentTags = sheet.getStyleTags();
-
+        // @ts-ignore
         if (context.url) {
+            // @ts-ignore
             res.redirect(context.url);
-        } else {
+        }
+        else {
             res.status(200)
                 .send(`
 <!doctype html>
@@ -85,9 +67,8 @@ export default (req, res) => {
         <script src="${asset('/common/plugins/iconfont/iconfont.js')}"></script>
 
         ${assets.client.css
-                    ? `<link rel="stylesheet" href="${assets.client.css}">`
-                    : ''
-                    }
+                ? `<link rel="stylesheet" href="${assets.client.css}">`
+                : ''}
         
        ${styledComponentTags}
 
@@ -96,19 +77,18 @@ export default (req, res) => {
         window.${PRELOAD_STATE} = ${serialize(preloadState)};
         window.__global__ = ${JSON.stringify(globalConfig)};
         </script>
-        ${
-                        process.env.NODE_ENV === 'production'
-                            ? `<script src="${assets.client.js}" defer></script>`
-                            : `<script src="${assets.client.js}" defer crossorigin></script>`
-                    }
+        ${process.env.NODE_ENV === 'production'
+                ? `<script src="${assets.client.js}" defer></script>`
+                : `<script src="${assets.client.js}" defer crossorigin></script>`}
     </head>
     <body>
         <div id="root">${markup}</div>
     </body>
-</html>`
-                );
+</html>`);
         }
-    } else {
+    }
+    else {
         res.status(444).send(globalConfig.errorMessage);
     }
 };
+//# sourceMappingURL=serverGeneratePage.js.map

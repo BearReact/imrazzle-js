@@ -1,1 +1,2 @@
-export {default} from './ThemeProvider';
+export { default } from './ThemeProvider';
+//# sourceMappingURL=index.js.map

@@ -1,4 +1,3 @@
-/* eslint-disable global-require */
 /**
  * i18n.js
  *
@@ -11,27 +10,19 @@
 const langConfig = {
     'zh-CN': require('../../resources/lang/zh-CN.js').default,
     'en-US': require('../../resources/lang/en-US.js').default,
-    // 'th-TH': require('../../resources/lang/th-TH.json'),
-    // 'vi-VN': require('../../resources/lang/vi-VN.json'),
 };
-
 // const DEFAULT_LOCALE = siteConfig.defaultLang || 'zh-CN';
 export const DEFAULT_LOCALE = 'en-US';
-
 const formatTranslationMessages = (locale, messages) => {
-    const defaultFormattedMessages =
-        locale !== DEFAULT_LOCALE ? formatTranslationMessages(DEFAULT_LOCALE, langConfig[DEFAULT_LOCALE]) : {};
+    const defaultFormattedMessages = locale !== DEFAULT_LOCALE ? formatTranslationMessages(DEFAULT_LOCALE, langConfig[DEFAULT_LOCALE]) : {};
     const flattenFormattedMessages = (formattedMessages, key) => {
-        const formattedMessage =
-            !messages[key] && locale !== DEFAULT_LOCALE ? defaultFormattedMessages[key] : messages[key];
-        return Object.assign(formattedMessages, {[key]: formattedMessage});
+        const formattedMessage = !messages[key] && locale !== DEFAULT_LOCALE ? defaultFormattedMessages[key] : messages[key];
+        return Object.assign(formattedMessages, { [key]: formattedMessage });
     };
     return Object.keys(messages).reduce(flattenFormattedMessages, {});
 };
-
 export const translationMessages = {
     'en-US': formatTranslationMessages('en-US', langConfig['en-US']),
     'zh-CN': formatTranslationMessages('zh-CN', langConfig['zh-CN']),
-    // 'th-TH': formatTranslationMessages('th-TH', langConfig['th-TH']),
-    // 'vi-VN': formatTranslationMessages('vi-VN', langConfig['vi-VN']),
 };
+//# sourceMappingURL=i18n.js.map

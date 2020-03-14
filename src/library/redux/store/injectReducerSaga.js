@@ -1,13 +1,6 @@
-// @flow
 import React from 'react';
-import {object} from 'prop-types';
-import {useStore} from 'react-redux';
-
-type injectStoreProps = {
-    reducer: any,
-    saga: any,
-}
-
+import { object } from 'prop-types';
+import { useStore } from 'react-redux';
 /**
  * HOC for adding dynamic reducers to the global store.
  *
@@ -23,30 +16,26 @@ type injectStoreProps = {
  *   access to store, you have access to injectReducer. That's the
  *   main goal, get access to the store object.
  */
-const injectReducerSaga = (key: string, injectStore: injectStoreProps) => (WrappedComponent: any) => {
-    const Extended = (props: any, context: any) => {
+const injectReducerSaga = (key, injectStore) => (WrappedComponent) => {
+    const Extended = (props, context) => {
         // Here's where we add the new reducer.
         // See initilizeStore for details on how this works.
         const store = useStore();
         if (injectStore.reducer) {
             store.injectReducer(key, injectStore.reducer);
         }
-
         if (injectStore.saga) {
             store.injectSaga(key, injectStore.saga);
         }
-
-        return <WrappedComponent {...props}/>;
+        return React.createElement(WrappedComponent, Object.assign({}, props));
     };
-
     // To use context, you must define contextTypes
     // https://reactjs.org/docs/context.html
     Extended.contextTypes = {
         // eslint-disable-next-line react/forbid-prop-types
         store: object,
     };
-
     return Extended;
 };
-
 export default injectReducerSaga;
+//# sourceMappingURL=injectReducerSaga.js.map

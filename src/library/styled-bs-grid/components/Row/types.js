@@ -1,5 +1,1 @@
-// @flow
-
-export type RowProps = {
-  noGutters?: boolean;
-};
+//# sourceMappingURL=types.js.map

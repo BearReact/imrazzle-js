@@ -1,19 +1,7 @@
-// @flow
 import * as React from 'react';
-import styled, {css} from 'styled-components';
+import styled, { css } from 'styled-components';
 import px2vw from '@config/utils/getPx2vw';
-import {media} from '@styled-bs-grid';
-
-type Props = {
-    style?: $Shape<CSSStyleDeclaration>,
-    children?: React.Node,
-    className?: string,
-    position?: 'topRight' | 'topLeft' | 'bottomRight' | 'bottomLeft' | 'topCenter' | 'bottomCenter',
-    isTopAnimate?: boolean,
-    isVisibleTips?: boolean,
-    isAnimation?: boolean,
-};
-
+import { media } from '@styled-bs-grid';
 /**
  * Tooltips
  *
@@ -21,29 +9,13 @@ type Props = {
  * @returns {*}
  * @constructor
  */
-const Tooltips = (props: Props) => {
-    const {className, style, position, children, isTopAnimate, isVisibleTips, isAnimation} = props;
-
-    return (
-        <AnimationContainer
-            isVisibleTips={isVisibleTips}
-            isAnimation={isAnimation}
-            isTopAnimate={isTopAnimate}
-        >
-            <TooltipsRoot
-                className={className}
-                style={style}
-                position={position}
-            >
-                <TooltipsArrow position={position}/>
-                <Container>
-                    {children}
-                </Container>
-            </TooltipsRoot>
-        </AnimationContainer>
-    );
+const Tooltips = (props) => {
+    const { className, style, position, children, isTopAnimate, isVisibleTips, isAnimation } = props;
+    return (React.createElement(AnimationContainer, { isVisibleTips: isVisibleTips, isAnimation: isAnimation, isTopAnimate: isTopAnimate },
+        React.createElement(TooltipsRoot, { className: className, style: style, position: position },
+            React.createElement(TooltipsArrow, null),
+            React.createElement(Container, null, children))));
 };
-
 Tooltips.defaultProps = {
     style: undefined,
     className: undefined,
@@ -53,10 +25,8 @@ Tooltips.defaultProps = {
     isVisibleTips: true,
     isAnimation: false,
 };
-
 export default Tooltips;
-
-const Container = styled.div`
+const Container = styled.div `
     display: flex;
     justify-content: center;
     align-items: center;
@@ -66,13 +36,12 @@ const Container = styled.div`
     min-height: ${px2vw(40)};
     width: 100%;
     
-    ${media.lg`
+    ${media.lg `
         padding: 5px 65px;
         min-height: 40px;
     `}
 `;
-
-const AnimationContainer = styled.div`
+const AnimationContainer = styled.div `
     width: 100%;
     height: 100%;
     position: absolute;
@@ -124,26 +93,25 @@ const AnimationContainer = styled.div`
     }
     
     // 預設顯不顯示
-    opacity: ${props => props.isVisibleTips ? 1 : 0};
+    opacity: ${(props) => props.isVisibleTips ? 1 : 0};
      
-    ${props => props.isVisibleTips && props.isAnimation && css`
+    ${(props) => props.isVisibleTips && props.isAnimation && css `
         animation: slide-in-top 0.3s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
     `};
     
-    ${props => !props.isVisibleTips && props.isAnimation && css`
+    ${(props) => !props.isVisibleTips && props.isAnimation && css `
         animation: slide-out-top 0.3s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
     `};
 
-    ${props => props.isVisibleTips && props.isAnimation && props.isTopAnimate && css`
+    ${(props) => props.isVisibleTips && props.isAnimation && props.isTopAnimate && css `
         animation: slide-in-bottom 0.3s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
     `};
     
-    ${props => !props.isVisibleTips && props.isAnimation && props.isTopAnimate && css`
+    ${(props) => !props.isVisibleTips && props.isAnimation && props.isTopAnimate && css `
         animation: slide-out-bottom 0.3s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
     `};
 `;
-
-const TooltipsRoot = styled.div`
+const TooltipsRoot = styled.div `
     position: absolute;
     justify-content: center;
     border-radius: ${px2vw(2)};
@@ -153,7 +121,7 @@ const TooltipsRoot = styled.div`
     white-space: nowrap;
     box-shadow: ${px2vw(1)} ${px2vw(1)} ${px2vw(3)} rgba(0, 0, 0, 0.3);
        
-    ${props => props.position === 'topCenter' && css `
+    ${(props) => props.position === 'topCenter' && css `
         left: 50%;
         top: 0;
           
@@ -166,7 +134,7 @@ const TooltipsRoot = styled.div`
         }
     `};   
     
-    ${props => props.position === 'topRight' && css `
+    ${(props) => props.position === 'topRight' && css `
         right: 0;
         top: 0;
         transform: translateY(calc(-100% - 12px));
@@ -178,7 +146,7 @@ const TooltipsRoot = styled.div`
         }
     `};
     
-    ${props => props.position === 'topLeft' && css `
+    ${(props) => props.position === 'topLeft' && css `
         left: 0;
         top: 0;
         transform: translateY(calc(-100% - 12px));
@@ -192,7 +160,7 @@ const TooltipsRoot = styled.div`
     `};
     
     
-    ${props => props.position === 'bottomLeft' && css `
+    ${(props) => props.position === 'bottomLeft' && css `
         bottom: 0;
         left: 0;
         transform: translateY(calc(100% + 12px)); 
@@ -204,7 +172,7 @@ const TooltipsRoot = styled.div`
         }
     `};
     
-    ${props => props.position === 'bottomCenter' && css `
+    ${(props) => props.position === 'bottomCenter' && css `
         left: 50%;
         bottom: 0;
         transform: translate(-50%, calc(100% + 12px));
@@ -218,7 +186,7 @@ const TooltipsRoot = styled.div`
         }
     `};
     
-    ${props => props.position === 'bottomRight' && css `
+    ${(props) => props.position === 'bottomRight' && css `
         bottom: 0;
         right: 0;
         transform: translateY(calc(100% + 12px)); 
@@ -230,11 +198,11 @@ const TooltipsRoot = styled.div`
         }
     `};
     
-    ${media.lg`
+    ${media.lg `
         font-size: 14px;
         border-radius: 2px;
         
-        ${props => props.position === 'topRight' && css `
+        ${(props) => props.position === 'topRight' && css `
             transform: translateY(-100%) translateY(-12px);
             
             ${TooltipsArrow}{
@@ -243,7 +211,7 @@ const TooltipsRoot = styled.div`
             }
         `};
          
-        ${props => props.position === 'topCenter' && css `
+        ${(props) => props.position === 'topCenter' && css `
             transform: translateX(-50%) translateY(-100%) translateY(-12px);
             
             ${TooltipsArrow}{
@@ -255,7 +223,7 @@ const TooltipsRoot = styled.div`
             }
         `};
                 
-        ${props => props.position === 'topLeft' && css `
+        ${(props) => props.position === 'topLeft' && css `
             transform: translateY(-100%) translateY(-12px);
             
             ${TooltipsArrow}{
@@ -264,21 +232,20 @@ const TooltipsRoot = styled.div`
         `};
         
         
-        ${props => props.position === 'bottomLeft' && css `
+        ${(props) => props.position === 'bottomLeft' && css `
             transform: translateY(100%) translateY(12px); 
         `};
        
-        ${props => props.position === 'bottomCenter' && css `
+        ${(props) => props.position === 'bottomCenter' && css `
             transform: translateX(-50%) translateY(100%) translateY(12px);
         `};
         
-        ${props => props.position === 'bottomRight' && css `
+        ${(props) => props.position === 'bottomRight' && css `
             transform: translateY(100%) translateY(12px); 
         `};
     `}
 `;
-
-const TooltipsArrow = styled.div`
+const TooltipsArrow = styled.div `
     position: absolute;
     display: inline-block;
     width: 0;
@@ -287,7 +254,8 @@ const TooltipsArrow = styled.div`
     border-width: ${px2vw(12)} ${px2vw(10)} 0;
     border-color: #ff4b4b transparent transparent ;
     
-    ${media.lg`
+    ${media.lg `
         border-width: 12px 10px 0;
     `}
 `;
+//# sourceMappingURL=Tooltips.js.map

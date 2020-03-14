@@ -3,7 +3,6 @@
  *
  * row.padding === col.padding === container.padding
  */
-
 export default {
     gridGutterWidth: 10,
     gridColumns: 24,
@@ -23,3 +22,4 @@ export default {
         xxl: 1141,
     },
 };
+//# sourceMappingURL=grid.js.map

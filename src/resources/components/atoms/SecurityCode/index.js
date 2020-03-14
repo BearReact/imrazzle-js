@@ -1,1 +1,2 @@
-export {default} from './SecurityCode';
+export { default } from './SecurityCode';
+//# sourceMappingURL=index.js.map

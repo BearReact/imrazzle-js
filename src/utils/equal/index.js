@@ -5,16 +5,13 @@
  * @returns {boolean}
  */
 export function isEmpty(value, isCheckNumber0 = false) {
-    return (
-        value === undefined
+    return (value === undefined
         || value === null
         || value === false
         || (isCheckNumber0 && value === 0)
         || (!(value instanceof Date) && typeof value === 'object' && Object.keys(value).length === 0)
-        || (typeof value === 'string' && value.trim().length === 0)
-    );
+        || (typeof value === 'string' && value.trim().length === 0));
 }
-
 /**
  * 驗證日期格式為 YYYY-MM-DD
  * @param str
@@ -23,7 +20,6 @@ export function isEmpty(value, isCheckNumber0 = false) {
 export function isDate(str) {
     const re = new RegExp('^([0-9]{4})[.-]{1}([0-9]{1,2})[.-]{1}([0-9]{1,2})$');
     let infoValidation = true;
-
     const strDataValue = re.exec(str);
     if (strDataValue !== null) {
         let i;
@@ -42,12 +38,12 @@ export function isDate(str) {
             /* 日 */
             infoValidation = false;
         }
-    } else {
+    }
+    else {
         infoValidation = false;
     }
     return infoValidation;
 }
-
 /**
  * 判斷是否為IP
  * @param ip
@@ -55,12 +51,12 @@ export function isDate(str) {
  */
 export function isIp(ip) {
     const reg = /^(\d+)\.(\d+)\.(\d+)\.(\d+)$/;
+    // @ts-ignore
     if (reg.test(ip) && RegExp.$1 < 256 && RegExp.$2 < 256 && RegExp.$3 < 256 && RegExp.$4 < 256) {
         return true;
     }
     return false;
 }
-
 /**
  * 判斷是否為JSON
  * @param jsonString string
@@ -72,8 +68,10 @@ export function isJSON(jsonString) {
         if (obj && typeof obj === 'object' && obj !== null) {
             return true;
         }
-    } catch (err) {
+    }
+    catch (err) {
         return false;
     }
     return false;
 }
+//# sourceMappingURL=index.js.map

@@ -1,6 +1,4 @@
-// @flow
 import api from './index';
-
 export default {
     /**
      * 查詢 會員個人資料
@@ -10,3 +8,4 @@ export default {
         return api.get('profile');
     },
 };
+//# sourceMappingURL=Profile.js.map

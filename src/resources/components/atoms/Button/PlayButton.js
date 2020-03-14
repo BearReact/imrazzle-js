@@ -1,21 +1,10 @@
-// @flow
 import * as React from 'react';
-import styled, {css} from 'styled-components';
+import styled, { css } from 'styled-components';
 import get from 'lodash/get';
-import {media} from '@styled-bs-grid';
-import {getConfig} from '@config/utils/getConfig';
+import { media } from '@styled-bs-grid';
+import { getConfig } from '@config/utils/getConfig';
 import px2vw from '@config/utils/getPx2vw';
-
 import Icon from '@components/atoms/Icon';
-
-type Props = {
-    style?: $Shape<CSSStyleDeclaration>,
-    className?: string,
-    children?: React.Node,
-    theme?: 'default' | 'square',
-    type?: 'button' | 'submit',
-};
-
 const themeConfig = {
     default: {
         iconColor: getConfig('site.theme.primaryColor'),
@@ -45,7 +34,6 @@ const themeConfig = {
         fontSize: '15px',
     },
 };
-
 /**
  * PlayButton
  *
@@ -53,24 +41,13 @@ const themeConfig = {
  * @returns {*}
  * @constructor
  */
-const PlayButton = (props: Props) => {
-    const {className, style, children, theme, type} = props;
-
-    const activeTheme = get(themeConfig, theme,  {});
-
-    return (
-        <PlayButtonRoot
-            className={className}
-            style={style}
-            type={type}
-            baseTheme={activeTheme}
-        >
-            {children}
-            <CustomIcon code="play" size="20"/>
-        </PlayButtonRoot>
-    );
+const PlayButton = (props) => {
+    const { className, style, children, theme, type } = props;
+    const activeTheme = get(themeConfig, theme, {});
+    return (React.createElement(PlayButtonRoot, { className: className, style: style, type: type, baseTheme: activeTheme },
+        children,
+        React.createElement(CustomIcon, { code: "play", size: "20" })));
 };
-
 PlayButton.defaultProps = {
     style: undefined,
     theme: 'default',
@@ -78,27 +55,24 @@ PlayButton.defaultProps = {
     children: '',
     className: '',
 };
-
 export default PlayButton;
-
-const CustomIcon = styled(Icon)`
+const CustomIcon = styled(Icon) `
     padding: 0 ${px2vw(5)};
 
     // 視覺置中
     transform: translateX(${px2vw(2)});
 
-    ${media.lg`
+    ${media.lg `
         padding: 0 5px;
         transform: translateX(2px);
     `}
 `;
-
-const PlayButtonRoot = styled.button`
+const PlayButtonRoot = styled.button `
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
-    padding: ${props => props.baseTheme.padding || `${px2vw(2)} ${px2vw(10)}`};
+    padding: ${(props) => props.baseTheme.padding || `${px2vw(2)} ${px2vw(10)}`};
 
     transition:
         background-color .3s ease-out,
@@ -110,19 +84,19 @@ const PlayButtonRoot = styled.button`
 
     color: #fff;
     text-shadow: 0 0 2px rgba(0, 0, 0, 0.35);
-    -webkit-text-stroke: ${props => props.baseTheme.textStroke};
+    -webkit-text-stroke: ${(props) => props.baseTheme.textStroke};
     font-size: ${px2vw(16)};
     font-weight: bold;
     
-    ${props => props.baseTheme.shape === '50%' && css`
+    ${(props) => props.baseTheme.shape === '50%' && css `
         box-shadow: inset 0 -6px rgba(0, 0, 0, 0.3);
     `}
 
-    border-color: ${props => props.baseTheme.borderColor};
-    background: ${props => props.baseTheme.background};
-    border-radius: ${props => props.baseTheme.shape};
-    width: ${props => props.baseTheme.width};
-    height: ${props => props.baseTheme.height};
+    border-color: ${(props) => props.baseTheme.borderColor};
+    background: ${(props) => props.baseTheme.background};
+    border-radius: ${(props) => props.baseTheme.shape};
+    width: ${(props) => props.baseTheme.width};
+    height: ${(props) => props.baseTheme.height};
     overflow: hidden;
 
 
@@ -135,7 +109,7 @@ const PlayButtonRoot = styled.button`
         background-color: rgba(255, 255, 255, 0.2);
         transition: background-color .3s ease-out;
         
-        ${props => props.baseTheme.shape === '50%' && css`
+        ${(props) => props.baseTheme.shape === '50%' && css `
             box-shadow: ${props.baseTheme.width} ${props.baseTheme.height} 0 0
         `}
     }
@@ -144,33 +118,34 @@ const PlayButtonRoot = styled.button`
     ${CustomIcon} {
         i {
             transition: color .3s ease-out, border .3s ease-out;
-            color: ${props => props.baseTheme.iconColor};
+            color: ${(props) => props.baseTheme.iconColor};
 
           &:before {
-                font-size: ${props => props.baseTheme.fontSize};
+                font-size: ${(props) => props.baseTheme.fontSize};
             }
         }
     }
 
     &:hover {
-        border-color: ${props => props.baseTheme.hoverBorderColor};
+        border-color: ${(props) => props.baseTheme.hoverBorderColor};
         ${CustomIcon} {
             i {
-                color: ${props => props.baseTheme.hoverColor || props.baseTheme.iconColor};
+                color: ${(props) => props.baseTheme.hoverColor || props.baseTheme.iconColor};
             }
         }
-        box-shadow: ${props => props.baseTheme.shape === '50%' ? '0 0 20px 0 rgba(0, 0, 0, 0.2), inset 0 -6px rgba(0, 0, 0, 0.39)' : '0 0 20px 0 rgba(0, 0, 0, 0.2), inset 0 -6px rgba(0, 0, 0, 0.3)'};
+        box-shadow: ${(props) => props.baseTheme.shape === '50%' ? '0 0 20px 0 rgba(0, 0, 0, 0.2), inset 0 -6px rgba(0, 0, 0, 0.39)' : '0 0 20px 0 rgba(0, 0, 0, 0.2), inset 0 -6px rgba(0, 0, 0, 0.3)'};
         transform: translateY(-5px);
-        background: ${props => props.baseTheme.hoverBackground || props.baseTheme.background};
-        -webkit-text-stroke: ${props => props.baseTheme.hoverTextStroke};
+        background: ${(props) => props.baseTheme.hoverBackground || props.baseTheme.background};
+        -webkit-text-stroke: ${(props) => props.baseTheme.hoverTextStroke};
 
         &:before {
             background-color: rgba(255, 255, 255, 0.2);
         }
     }
 
-    ${media.lg`
+    ${media.lg `
         font-size: 16px;
         padding: 0 10px;
     `}
 `;
+//# sourceMappingURL=PlayButton.js.map

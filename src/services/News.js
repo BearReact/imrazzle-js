@@ -1,6 +1,4 @@
-// @flow
 import api from './index';
-
 export default {
     /**
      * 查詢 優惠活動/活動任務/資料列表
@@ -17,3 +15,4 @@ export default {
         return api.get(`news/${id}`);
     },
 };
+//# sourceMappingURL=News.js.map

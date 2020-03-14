@@ -4,6 +4,7 @@ const merge = require('lodash/merge');
 const webpackBase = require('./webpack.config');
 
 module.exports = {
+    plugins: ['typescript'],
     modify(config, {target, dev}, webpack) {
 
         const appConfig = merge(config, webpackBase);

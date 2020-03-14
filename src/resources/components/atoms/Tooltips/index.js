@@ -1,1 +1,2 @@
-export {default} from './Tooltips';
+export { default } from './Tooltips';
+//# sourceMappingURL=index.js.map

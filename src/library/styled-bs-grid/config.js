@@ -1,5 +1,3 @@
-// @flow
-
 export const themeName = 'styledBsGrid';
 export const defaultTheme = {
     gridGutterWidth: 10,
@@ -20,3 +18,4 @@ export const defaultTheme = {
         xxl: 1141,
     },
 };
+//# sourceMappingURL=config.js.map

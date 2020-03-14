@@ -1,22 +1,9 @@
-// @flow
 import * as React from 'react';
 import styled from 'styled-components';
 import get from 'lodash/get';
-import {media} from '@styled-bs-grid';
-import {getConfig} from '@config/utils/getConfig';
+import { media } from '@styled-bs-grid';
+import { getConfig } from '@config/utils/getConfig';
 import px2vw from '@config/utils/getPx2vw';
-
-type Props = {
-    style?: $Shape<CSSStyleDeclaration>,
-    className?: string,
-    children?: React.Node,
-    theme?: 'default' | 'pureBorder' | 'primaryBorder' | 'hoverBorder' | 'hoverBgColor' | 'primary' | 'white' | 'darkBlue' | 'darkBlueBorder' | 'gray' | 'danger',
-    size?: 'default' | 'small' | 'normal' | 'large',
-    shape?: 'default' | 'circle' | 'raised',
-    block?: boolean,
-    type?: 'button' | 'submit',
-};
-
 const themeConfig = {
     default: {
         bgColor: 'transparent',
@@ -113,7 +100,6 @@ const themeConfig = {
         fontColor: '#fff',
     },
 };
-
 const sizeConfig = {
     default: {
         fontSize: 13,
@@ -136,7 +122,6 @@ const sizeConfig = {
         minHeight: '50px',
     },
 };
-
 const shapeConfig = {
     default: {
         shape: '4px',
@@ -148,7 +133,6 @@ const shapeConfig = {
         shape: '18px',
     },
 };
-
 /**
  * Button 一般按鈕
  *
@@ -156,27 +140,13 @@ const shapeConfig = {
  * @returns {*}
  * @constructor
  */
-const Button = (props: Props) => {
-    const {className, style, children, theme, size, shape, type, block} = props;
-
+const Button = (props) => {
+    const { className, style, children, theme, size, shape, type, block } = props;
     const activeTheme = get(themeConfig, theme, {});
     const activeSizeConfig = get(sizeConfig, size, {});
     const activeShapeConfig = get(shapeConfig, shape, {});
-
-    return (
-        <ButtonRoot
-            className={className}
-            type={type}
-            style={style}
-
-            baseTheme={{...activeTheme, ...activeSizeConfig, ...activeShapeConfig}}
-            block={block}
-        >
-            {children}
-        </ButtonRoot>
-    );
+    return (React.createElement(ButtonRoot, { className: className, type: type, style: style, baseTheme: Object.assign(Object.assign(Object.assign({}, activeTheme), activeSizeConfig), activeShapeConfig), block: block }, children));
 };
-
 Button.defaultProps = {
     style: undefined,
     theme: 'default',
@@ -187,26 +157,24 @@ Button.defaultProps = {
     children: '',
     className: '',
 };
-
 export default Button;
-
-const ButtonRoot = styled.button`
+const ButtonRoot = styled.button `
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
-    padding: ${props => props.baseTheme.padding || `${px2vw(2)} ${px2vw(10)}`};
+    padding: ${(props) => props.baseTheme.padding || `${px2vw(2)} ${px2vw(10)}`};
 
-    width: ${props => (props.baseTheme.block ? '100%' : 'auto')};
+    width: ${(props) => (props.baseTheme.block ? '100%' : 'auto')};
     max-width: 100%;
 
-    background-color: ${props => props.baseTheme.bgColor};
-    color: ${props => props.baseTheme.fontColor};
-    border-color: ${props => props.baseTheme.borderColor};
-    border-radius: ${props => props.baseTheme.shape};
-    font-size: ${props => px2vw(props.baseTheme.fontSize)};
-    font-weight: ${props => props.baseTheme.fontWeight};
-    min-height: ${props => px2vw(props.baseTheme.minHeight)};
+    background-color: ${(props) => props.baseTheme.bgColor};
+    color: ${(props) => props.baseTheme.fontColor};
+    border-color: ${(props) => props.baseTheme.borderColor};
+    border-radius: ${(props) => props.baseTheme.shape};
+    font-size: ${(props) => px2vw(props.baseTheme.fontSize)};
+    font-weight: ${(props) => props.baseTheme.fontWeight};
+    min-height: ${(props) => px2vw(props.baseTheme.minHeight)};
     transition: background-color .3s ease-out, color .3s ease-out, border-color .3s ease-out, box-shadow .3s ease-out;
 
 
@@ -218,15 +186,15 @@ const ButtonRoot = styled.button`
     };
 
     &:not([disabled]):hover {
-        background-color: ${props => props.baseTheme.hoverBgColor};
-        border-color: ${props => props.baseTheme.hoverBorderColor};
-        color: ${props => props.baseTheme.hoverFontColor};
-        box-shadow: ${props => props.baseTheme.hoverBoxShadow || '0 0 20px 0 rgba(0, 0, 0, 0.2)'};
+        background-color: ${(props) => props.baseTheme.hoverBgColor};
+        border-color: ${(props) => props.baseTheme.hoverBorderColor};
+        color: ${(props) => props.baseTheme.hoverFontColor};
+        box-shadow: ${(props) => props.baseTheme.hoverBoxShadow || '0 0 20px 0 rgba(0, 0, 0, 0.2)'};
     }
 
-    ${media.lg`
-        font-size: ${props => props.baseTheme.fontSize}px;
-        min-height: ${props => props.baseTheme.minHeight};
+    ${media.lg `
+        font-size: ${(props) => props.baseTheme.fontSize}px;
+        min-height: ${(props) => props.baseTheme.minHeight};
         padding: 0 10px;
 
         // fix ie11
@@ -237,4 +205,4 @@ const ButtonRoot = styled.button`
         }
     `}
 `;
-
+//# sourceMappingURL=Button.js.map

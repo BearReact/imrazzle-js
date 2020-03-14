@@ -1,7 +1,5 @@
-// @flow
 import uniqueId from 'lodash/uniqueId';
-import {routePath} from '@config/utils/getAssetPrefix';
-
+import { routePath } from '@config/utils/getAssetPrefix';
 /**
  * 開啟視窗功能
  * mobile
@@ -16,42 +14,36 @@ import {routePath} from '@config/utils/getAssetPrefix';
  * @returns {boolean}
  */
 export default class windowOpen {
-    openTargetId: string;
-    isMultipleOpen: boolean;
-    targetWindow: any;
-
-    constructor(prefixName: string, isMultipleOpen: boolean) {
+    constructor(prefixName, isMultipleOpen) {
         this.openTargetId = isMultipleOpen ? uniqueId(`${prefixName}_`) : prefixName;
         this.isMultipleOpen = isMultipleOpen;
         this.targetWindow = null;
     }
-
     /**
      * 準備開啟視窗的前置作業
      */
-    ready(){
+    ready() {
         const url = routePath('static/modules/loading-window/index.html');
         this.targetWindow = window.open(url, this.openTargetId);
     }
-
     /**
      * 開啟視窗
      * @param url 開啟目標的Url
      */
-    open(url: string){
+    open(url) {
         // 單一顯示模式中, 如果子視窗未關閉, 則使用子視窗導頁
-        if(!this.isMultipleOpen && this.targetWindow){
+        if (!this.isMultipleOpen && this.targetWindow) {
             this.targetWindow.location.href = url;
-        }else{
+        }
+        else {
             window.open(url, this.openTargetId);
         }
     }
-
     /**
      * 關閉視窗
      */
     close() {
         this.targetWindow.close();
     }
-
 }
+//# sourceMappingURL=index.js.map
