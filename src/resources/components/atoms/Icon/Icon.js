@@ -1,7 +1,7 @@
 // @flow
 import * as React from 'react';
 import styled, {css, keyframes} from 'styled-components';
-import {media} from '@library/styled-bs-grid';
+import {media} from '@styled-bs-grid';
 import px2vw from '@config/utils/getPx2vw';
 
 type Props = {
@@ -9,7 +9,7 @@ type Props = {
     shapeSize?: number,
     shapeColor?: string,
     shapeBorder?: number,
-    style?: React.CSSProperties,
+    style?: $Shape<CSSStyleDeclaration>,
     className?: string,
     type?: 'fontClass' | 'svg',
     isInline?: boolean,

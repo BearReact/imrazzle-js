@@ -1,5 +1,5 @@
 import React from 'react';
-import {Container, Row, Col} from '@library/styled-bs-grid';
+import {Container, Row, Col} from '@styled-bs-grid';
 import BlockTitle from '../BlockTitle';
 
 export default {

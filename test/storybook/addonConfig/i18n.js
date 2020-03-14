@@ -2,8 +2,8 @@
 
 import React, {Suspense} from 'react';
 import {IntlProvider} from 'react-intl';
-// import LanguageProvider from "@library/intl/provider";
-import {translationMessages, DEFAULT_LOCALE} from '@library/intl/i18n';
+// import LanguageProvider from "@i18n/provider";
+import {translationMessages, DEFAULT_LOCALE} from '@i18n/i18n';
 
 type Props = {
     children?: React.Node,

@@ -2,7 +2,7 @@ import {connect} from 'react-redux';
 import {injectIntl} from 'react-intl';
 import {compose} from 'redux';
 
-import injectReducerSaga from '@library/redux/injectReducerSaga';
+import injectReducerSaga from '@store/injectReducerSaga';
 import {action as PageAction, reducer, saga} from '../store';
 import List from './List';
 

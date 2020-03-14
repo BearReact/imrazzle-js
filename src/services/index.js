@@ -4,10 +4,10 @@ import {create} from 'apisauce';
 import get from 'lodash/get';
 
 import {autoMapper} from '@utils/format';
-import {Selectors as LanguageSelectors} from '@library/redux/store/Language/Reducer';
-import {Selectors as AuthSelectors} from '@library/redux/store/Auth/Reducer';
-import LoginActions from '@library/redux/store/Login/Reducer';
-import {i18n} from '@library/intl/global';
+import {Selectors as LanguageSelectors} from '@store/Language/Reducer';
+import {Selectors as AuthSelectors} from '@store/Auth/Reducer';
+import LoginActions from '@store/Login/Reducer';
+import {i18n} from '@i18n/global';
 import {replace} from 'connected-react-router';
 import {getConfig} from '@config/utils/getConfig';
 

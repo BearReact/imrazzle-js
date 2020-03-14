@@ -13,7 +13,6 @@ export const defaultTheme = {
         xxl: 1540,
     },
     containerMaxWidths: {
-        xs: 540,
         sm: 540,
         md: 720,
         lg: 960,

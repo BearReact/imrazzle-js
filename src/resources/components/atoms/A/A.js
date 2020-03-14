@@ -35,7 +35,7 @@ const A = (props: Props) => {
     };
 
     return (
-        <LinkRoot {...params}>{children}</LinkRoot>
+        <Link {...params}>{children}</Link>
     );
 };
 
@@ -49,5 +49,3 @@ A.defaultProps = {
 };
 
 export default A;
-
-const LinkRoot = styled(Link)``;

@@ -1,5 +1,5 @@
 // @flow
-import {RowProps} from './types';
+import type {RowProps} from './types';
 
 export default (p: RowProps) =>
     process.env.NODE_ENV === 'production'

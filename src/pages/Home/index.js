@@ -1,7 +1,7 @@
 import {compose} from 'redux';
 import {connect} from 'react-redux';
 import {injectIntl} from 'react-intl';
-import loginAction from '@library/redux/store/Login/Reducer';
+import loginAction from '@store/Login/Reducer';
 
 import Home from './Home';
 

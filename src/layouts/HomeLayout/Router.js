@@ -5,7 +5,7 @@ import NotFound from '@pages/NotFound';
 import Home from '@pages/Home';
 import News from '@pages/News/List';
 import Profile from '@pages/Profile';
-import PrivateRoute from '@library/react-router/PrivateRoute';
+import PrivateRoute from '@router/PrivateRoute';
 
 function Router() {
 

@@ -14,11 +14,16 @@ module.exports = {
             '@layouts': path.resolve(__dirname, 'src/layouts'),
             '@components': path.resolve(__dirname, 'src/resources/components'),
             '@utils': path.resolve(__dirname, 'src/utils'),
-            '@library': path.resolve(__dirname, 'src/library'),
             '@services': path.resolve(__dirname, 'src/services'),
             '@config': path.resolve(__dirname, 'src/config'),
             '@middleware': path.resolve(__dirname, 'src/middleware'),
             '@test': path.resolve(__dirname, 'test'),
+            // library
+            // '@library': path.resolve(__dirname, 'src/library'),
+            '@store': path.resolve(__dirname, 'src/library/redux/store'),
+            '@router': path.resolve(__dirname, 'src/library/react-router'),
+            '@styled-bs-grid': path.resolve(__dirname, 'src/library/styled-bs-grid'),
+            '@i18n': path.resolve(__dirname, 'src/library/intl'),
         },
     },
 };

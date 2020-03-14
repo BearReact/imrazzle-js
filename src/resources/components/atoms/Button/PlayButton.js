@@ -1,14 +1,15 @@
 // @flow
 import * as React from 'react';
-import styled from 'styled-components';
-import {media} from '@library/styled-bs-grid';
+import styled, {css} from 'styled-components';
+import get from 'lodash/get';
+import {media} from '@styled-bs-grid';
 import {getConfig} from '@config/utils/getConfig';
 import px2vw from '@config/utils/getPx2vw';
 
 import Icon from '@components/atoms/Icon';
 
 type Props = {
-    style?: React.CSSProperties,
+    style?: $Shape<CSSStyleDeclaration>,
     className?: string,
     children?: React.Node,
     theme?: 'default' | 'square',
@@ -53,12 +54,17 @@ const themeConfig = {
  * @constructor
  */
 const PlayButton = (props: Props) => {
-    const {className, children, theme, ...buttonProps} = props;
+    const {className, style, children, theme, type} = props;
 
-    const themeProps = theme ? themeConfig[theme] : {};
+    const activeTheme = get(themeConfig, theme,  {});
 
     return (
-        <PlayButtonRoot className={className} {...buttonProps} config={{...themeProps}}>
+        <PlayButtonRoot
+            className={className}
+            style={style}
+            type={type}
+            baseTheme={activeTheme}
+        >
             {children}
             <CustomIcon code="play" size="20"/>
         </PlayButtonRoot>
@@ -92,7 +98,7 @@ const PlayButtonRoot = styled.button`
     justify-content: center;
     align-items: center;
     position: relative;
-    padding: ${props => props.config.padding || `${px2vw(2)} ${px2vw(10)}`};
+    padding: ${props => props.baseTheme.padding || `${px2vw(2)} ${px2vw(10)}`};
 
     transition:
         background-color .3s ease-out,
@@ -104,16 +110,19 @@ const PlayButtonRoot = styled.button`
 
     color: #fff;
     text-shadow: 0 0 2px rgba(0, 0, 0, 0.35);
-    -webkit-text-stroke: ${props => props.config.textStroke};
+    -webkit-text-stroke: ${props => props.baseTheme.textStroke};
     font-size: ${px2vw(16)};
     font-weight: bold;
-    box-shadow: ${props => props.config.shape === '50%' ? '' : 'inset 0 -6px rgba(0, 0, 0, 0.3)'};
+    
+    ${props => props.baseTheme.shape === '50%' && css`
+        box-shadow: inset 0 -6px rgba(0, 0, 0, 0.3);
+    `}
 
-    border-color: ${props => props.config.borderColor};
-    background: ${props => props.config.background};
-    border-radius: ${props => props.config.shape};
-    width: ${props => props.config.width};
-    height: ${props => props.config.height};
+    border-color: ${props => props.baseTheme.borderColor};
+    background: ${props => props.baseTheme.background};
+    border-radius: ${props => props.baseTheme.shape};
+    width: ${props => props.baseTheme.width};
+    height: ${props => props.baseTheme.height};
     overflow: hidden;
 
 
@@ -124,32 +133,36 @@ const PlayButtonRoot = styled.button`
         width: 100%;
         height: 50%;
         background-color: rgba(255, 255, 255, 0.2);
-        border-radius: ${props => props.config.shape === '50%' ? `${props.config.width} ${props => props.config.height} 0 0` : ''};
         transition: background-color .3s ease-out;
+        
+        ${props => props.baseTheme.shape === '50%' && css`
+            box-shadow: ${props.baseTheme.width} ${props.baseTheme.height} 0 0
+        `}
     }
+    
 
     ${CustomIcon} {
         i {
             transition: color .3s ease-out, border .3s ease-out;
-            color: ${props => props.config.iconColor};
+            color: ${props => props.baseTheme.iconColor};
 
           &:before {
-                font-size: ${props => props.config.fontSize};
+                font-size: ${props => props.baseTheme.fontSize};
             }
         }
     }
 
     &:hover {
-        border-color: ${props => props.config.hoverBorderColor};
+        border-color: ${props => props.baseTheme.hoverBorderColor};
         ${CustomIcon} {
             i {
-                color: ${props => props.config.hoverColor || props.config.iconColor};
+                color: ${props => props.baseTheme.hoverColor || props.baseTheme.iconColor};
             }
         }
-        box-shadow: ${props => props.config.shape === '50%' ? '0 0 20px 0 rgba(0, 0, 0, 0.2), inset 0 -6px rgba(0, 0, 0, 0.39)' : '0 0 20px 0 rgba(0, 0, 0, 0.2), inset 0 -6px rgba(0, 0, 0, 0.3)'};
+        box-shadow: ${props => props.baseTheme.shape === '50%' ? '0 0 20px 0 rgba(0, 0, 0, 0.2), inset 0 -6px rgba(0, 0, 0, 0.39)' : '0 0 20px 0 rgba(0, 0, 0, 0.2), inset 0 -6px rgba(0, 0, 0, 0.3)'};
         transform: translateY(-5px);
-        background: ${props => props.config.hoverBackground || props.config.background};
-        -webkit-text-stroke: ${props => props.config.hoverTextStroke};
+        background: ${props => props.baseTheme.hoverBackground || props.baseTheme.background};
+        -webkit-text-stroke: ${props => props.baseTheme.hoverTextStroke};
 
         &:before {
             background-color: rgba(255, 255, 255, 0.2);

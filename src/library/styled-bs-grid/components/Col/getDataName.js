@@ -1,19 +1,18 @@
 // @flow
 
-import {ColProps} from './types';
 import {suffix} from '../../utils';
+import type {ColProps} from './types';
 
-export default (p: ColProps) =>
+export default (props: ColProps) =>
     process.env.NODE_ENV === 'production'
         ? undefined
         : [
-            p.col && `col${suffix(p.col)}`,
-            p.xs && `col-xs${suffix(p.xs)}`,
-            p.sm && `col-sm${suffix(p.sm)}`,
-            p.md && `col-md${suffix(p.md)}`,
-            p.lg && `col-lg${suffix(p.lg)}`,
-            p.xl && `col-xl${suffix(p.xl)}`,
-            p.xxl && `col-xl${suffix(p.xxl)}`,
+            props.col && `col${suffix(props.col)}`,
+            props.sm && `col-sm${suffix(props.sm)}`,
+            props.md && `col-md${suffix(props.md)}`,
+            props.lg && `col-lg${suffix(props.lg)}`,
+            props.xl && `col-xl${suffix(props.xl)}`,
+            props.xxl && `col-xl${suffix(props.xxl)}`,
         ]
             .filter(Boolean)
             .join(' ');

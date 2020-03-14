@@ -3,6 +3,11 @@ import React from 'react';
 import {object} from 'prop-types';
 import {useStore} from 'react-redux';
 
+type injectStoreProps = {
+    reducer: any,
+    saga: any,
+}
+
 /**
  * HOC for adding dynamic reducers to the global store.
  *
@@ -18,8 +23,8 @@ import {useStore} from 'react-redux';
  *   access to store, you have access to injectReducer. That's the
  *   main goal, get access to the store object.
  */
-const injectReducerSaga = (key, injectStore) => WrappedComponent => {
-    const Extended = (props, context) => {
+const injectReducerSaga = (key: string, injectStore: injectStoreProps) => (WrappedComponent: any) => {
+    const Extended = (props: any, context: any) => {
         // Here's where we add the new reducer.
         // See initilizeStore for details on how this works.
         const store = useStore();

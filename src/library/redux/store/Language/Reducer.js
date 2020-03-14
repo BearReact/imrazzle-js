@@ -1,7 +1,7 @@
 import {createReducer, createActions} from 'reduxsauce';
 import Immutable from 'seamless-immutable';
-// import {DEFAULT_LOCALE} from '@library/intl/i18n';
-// import {CHANGE_LOCALE} from '@library/intl/LanguageProvider/constants';
+// import {DEFAULT_LOCALE} from '@i18n/i18n';
+// import {CHANGE_LOCALE} from '@i18n/LanguageProvider/constants';
 
 const PREFIX = 'language';
 

@@ -1,12 +1,13 @@
 // @flow
 import * as React from 'react';
 import styled from 'styled-components';
-import {media} from '@library/styled-bs-grid';
+import get from 'lodash/get';
+import {media} from '@styled-bs-grid';
 import {getConfig} from '@config/utils/getConfig';
 import px2vw from '@config/utils/getPx2vw';
 
 type Props = {
-    style?: React.CSSProperties,
+    style?: $Shape<CSSStyleDeclaration>,
     className?: string,
     children?: React.Node,
     theme?: 'default' | 'pureBorder' | 'primaryBorder' | 'hoverBorder' | 'hoverBgColor' | 'primary' | 'white' | 'darkBlue' | 'darkBlueBorder' | 'gray' | 'danger',
@@ -156,14 +157,21 @@ const shapeConfig = {
  * @constructor
  */
 const Button = (props: Props) => {
-    const {className, children, theme, size, shape, block, ...buttonProps} = props;
+    const {className, style, children, theme, size, shape, type, block} = props;
 
-    const themeProps = theme ? themeConfig[theme] : {};
-    const sizeProps = size ? sizeConfig[size] : {};
-    const shapeProps = shape ? shapeConfig[shape] : {};
+    const activeTheme = get(themeConfig, theme, {});
+    const activeSizeConfig = get(sizeConfig, size, {});
+    const activeShapeConfig = get(shapeConfig, shape, {});
 
     return (
-        <ButtonRoot className={className} {...buttonProps} config={{block, ...sizeProps, ...shapeProps, ...themeProps}}>
+        <ButtonRoot
+            className={className}
+            type={type}
+            style={style}
+
+            baseTheme={{...activeTheme, ...activeSizeConfig, ...activeShapeConfig}}
+            block={block}
+        >
             {children}
         </ButtonRoot>
     );
@@ -187,18 +195,18 @@ const ButtonRoot = styled.button`
     justify-content: center;
     align-items: center;
     position: relative;
-    padding: ${props => props.config.padding || `${px2vw(2)} ${px2vw(10)}`};
+    padding: ${props => props.baseTheme.padding || `${px2vw(2)} ${px2vw(10)}`};
 
-    width: ${props => (props.config.block ? '100%' : 'auto')};
+    width: ${props => (props.baseTheme.block ? '100%' : 'auto')};
     max-width: 100%;
 
-    background-color: ${props => props.config.bgColor};
-    color: ${props => props.config.fontColor};
-    border-color: ${props => props.config.borderColor};
-    border-radius: ${props => props.config.shape};
-    font-size: ${props => px2vw(props.config.fontSize)};
-    font-weight: ${props => props.config.fontWeight};
-    min-height: ${props => px2vw(props.config.minHeight)};
+    background-color: ${props => props.baseTheme.bgColor};
+    color: ${props => props.baseTheme.fontColor};
+    border-color: ${props => props.baseTheme.borderColor};
+    border-radius: ${props => props.baseTheme.shape};
+    font-size: ${props => px2vw(props.baseTheme.fontSize)};
+    font-weight: ${props => props.baseTheme.fontWeight};
+    min-height: ${props => px2vw(props.baseTheme.minHeight)};
     transition: background-color .3s ease-out, color .3s ease-out, border-color .3s ease-out, box-shadow .3s ease-out;
 
 
@@ -210,15 +218,15 @@ const ButtonRoot = styled.button`
     };
 
     &:not([disabled]):hover {
-        background-color: ${props => props.config.hoverBgColor};
-        border-color: ${props => props.config.hoverBorderColor};
-        color: ${props => props.config.hoverFontColor};
-        box-shadow: ${props => props.config.hoverBoxShadow || '0 0 20px 0 rgba(0, 0, 0, 0.2)'};
+        background-color: ${props => props.baseTheme.hoverBgColor};
+        border-color: ${props => props.baseTheme.hoverBorderColor};
+        color: ${props => props.baseTheme.hoverFontColor};
+        box-shadow: ${props => props.baseTheme.hoverBoxShadow || '0 0 20px 0 rgba(0, 0, 0, 0.2)'};
     }
 
     ${media.lg`
-        font-size: ${props => props.config.fontSize}px;
-        min-height: ${props => props.config.minHeight};
+        font-size: ${props => props.baseTheme.fontSize}px;
+        min-height: ${props => props.baseTheme.minHeight};
         padding: 0 10px;
 
         // fix ie11
