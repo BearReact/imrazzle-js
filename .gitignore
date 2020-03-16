@@ -11,3 +11,7 @@ npm-debug.log
 .idea
 yarn-error.log
 build
+
+# ts
+src/**/*.js
+src/**/*.js.map

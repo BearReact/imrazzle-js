@@ -1,12 +1,10 @@
 module.exports = {
-    parser: 'babel-eslint',
+    root: true,
+    parser: '@typescript-eslint/parser',
     extends: [
-        'airbnb',
-        'eslint:recommended',
-        'plugin:react/recommended',
-        'plugin:flowtype/recommended'
+        'airbnb-typescript',
     ],
-    plugins: ['redux-saga', 'react', 'react-hooks', 'jsx-a11y', 'flowtype'],
+    plugins: ['@typescript-eslint', 'redux-saga', 'react', 'react-hooks', 'jsx-a11y'],
     env: {
         jest: true,
         browser: true,
@@ -14,11 +12,7 @@ module.exports = {
         es6: true
     },
     parserOptions: {
-        ecmaVersion: 6,
-        sourceType: 'module',
-        ecmaFeatures: {
-            jsx: true
-        }
+        project: './tsconfig.json',
     },
     rules: {
         'class-methods-use-this': 'off',
@@ -35,6 +29,7 @@ module.exports = {
         indent: ['error', 4, {SwitchCase: 1, ignoredNodes: ['TemplateLiteral', 'TemplateLiteral *']}],
         semi: 'error',
         'react/jsx-indent': [2, 4],
+        '@typescript-eslint/indent': [2, 4],
         'react/jsx-indent-props': ['error', 'first'],
         'react/jsx-tag-spacing': ['error', {
             closingSlash: 'never',
@@ -43,7 +38,8 @@ module.exports = {
             beforeClosing: 'never'
         }],
         'react/display-name': 'off',
-        'react/jsx-filename-extension': [1, {extensions: ['.js', '.jsx']}],
+        'react/no-children-prop': 'off',
+        'react/jsx-filename-extension': [1, {extensions: ['.js', '.jsx', '.ts', '.tsx']}],
         'react/jsx-one-expression-per-line': 'off',
         'react/no-danger': 'off',
         'react/prefer-stateless-function': 'off',
@@ -68,8 +64,9 @@ module.exports = {
         'global-require': 'off',
         'space-in-brackets': 'off',
         'no-plusplus': 'off',
-        'flowtype/delimiter-dangle': ['error', 'always-multiline'],
         'no-use-before-define': 'off',
+        '@typescript-eslint/no-use-before-define': 'off',
+        '@typescript-eslint/no-unused-vars': 'off',
         'func-names': 'off',
         'radix': ['error', 'as-needed'],
         'arrow-parens': ['error', 'as-needed'],
@@ -78,22 +75,23 @@ module.exports = {
         'padded-blocks': 'off',
         'prefer-object-spread': 'off',
     },
-    settings: {
-        'import/resolver': {
-            webpack: {
-                config: './webpack.config.js'
-            }
+    "settings": {
+        "import/parsers": {
+            "@typescript-eslint/parser": [".ts", ".tsx"]
+        },
+        "import/resolver": {
+            // use <root>/tsconfig.json
+            "typescript": {
+                "alwaysTryTypes": true,
+                "directory": "./tsconfig.json",
+            },
         },
         react: {
             createClass: 'createReactClass', // Regex for Component Factory to use,
             // default to "createReactClass"
             pragma: 'React', // Pragma to use, default to "React"
-            version: '16.8.6', // React version, default to the latest React stable release
-            flowVersion: '0.97' // Flow version
+            version: '16.13.0', // React version, default to the latest React stable release
         },
-        flowtype: {
-            onlyFilesWithFlowAnnotation: true //只在添加flow註釋的文件才做檢查
-        }
     },
     globals: {
         window: true,
