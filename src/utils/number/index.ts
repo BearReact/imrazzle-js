@@ -21,7 +21,7 @@ export function toDecimal2(x: any) {
     if (isNaN(f)) {
         return false;
     }
-    f = Math.round(x*100)/100;
+    f = Math.round( x * 100) / 100;
     let s = f.toString();
     let rs = s.indexOf('.');
     if (rs < 0) {

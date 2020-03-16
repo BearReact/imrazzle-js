@@ -3,7 +3,15 @@
     "tslint:latest",
     "tslint-react"
   ],
+  "linterOptions": {
+    "exclude": [
+      "node_modules/**/*",
+      "build/**/*.js",
+      "src/**/*.js"
+    ]
+  },
   "rules": {
+    "no-implicit-dependencies": [false],
     "align": [
       true,
       "parameters",
@@ -34,14 +42,9 @@
     "label-position": true,
     "max-line-length": [
       true,
-      120
+      180
     ],
-    "member-ordering": [
-      true,
-      "private-before-public",
-      "static-before-instance",
-      "variables-before-functions"
-    ],
+    "no-var-requires": false,
     "no-any": false,
     "no-arg": true,
     "no-bitwise": true,

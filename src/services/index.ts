@@ -1,13 +1,14 @@
-import {create} from 'apisauce';
+import { create } from 'apisauce';
 import get from 'lodash/get';
 
-import {autoMapper} from '@utils/format';
-import {Selectors as LanguageSelectors} from '@store/Language/Reducer';
-import {Selectors as AuthSelectors} from '@store/Auth/Reducer';
+import { autoMapper } from '@utils/format';
+import { Selectors as LanguageSelectors } from '@store/Language/Reducer';
+import { Selectors as AuthSelectors } from '@store/Auth/Reducer';
 import LoginActions from '@store/Login/Reducer';
-import {i18n} from '@i18n';
-import {replace} from 'connected-react-router';
-import {getConfig} from '@config/utils/getConfig';
+import { i18n } from '@i18n';
+
+import { replace } from 'connected-react-router';
+import { getConfig } from '@config/utils/getConfig';
 
 const apiService: any = create({
     baseURL: getConfig('env.apiBaseUrl'),
@@ -68,8 +69,9 @@ export const initApiMiddleware = (getState: any, dispatch: any) => {
                     case 511:
                         dispatch(replace('/no-access'));
                         break;
+                    default:
+                    throw new Error(message);
                 }
-                throw new Error(message);
 
             } else if (problem) {
                 message = i18n({id: `errorHttp.${problem}`, sec: {sec: config.timeout / 1000}});

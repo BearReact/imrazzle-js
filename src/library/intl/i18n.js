@@ -8,8 +8,8 @@
  *   You CANNOT use import/export in this file.
  */
 const langConfig = {
-    'zh-CN': require('../../resources/lang/zh-CN.js').default,
-    'en-US': require('../../resources/lang/en-US.js').default,
+    'zh-CN': require('../../resources/lang/zh-CN').default,
+    'en-US': require('../../resources/lang/en-US').default,
 };
 // const DEFAULT_LOCALE = siteConfig.defaultLang || 'zh-CN';
 export const DEFAULT_LOCALE = 'en-US';

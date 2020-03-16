@@ -11,7 +11,7 @@ const baseStyles = [
  * @param styles 顯示樣式
  * @param watchData 需要印出的訊息
  */
-function messageConsole(title, styles, watchData = '') {
+function messageConsole(title: string, styles: any, watchData = '') {
     console.log(`%c ${title}`, styles, watchData);
 }
 
@@ -20,7 +20,7 @@ function messageConsole(title, styles, watchData = '') {
  * @param title
  * @param watchData
  */
-function primary(title, watchData = '') {
+function primary(title: string, watchData: string = '') {
     const styles = baseStyles.concat([
         'background-color: #007bff',
     ]).join(';');
@@ -33,7 +33,7 @@ function primary(title, watchData = '') {
  * @param title
  * @param watchData
  */
-function success(title, watchData = '') {
+function success(title: string, watchData: string = '') {
     const styles = baseStyles.concat([
         'background-color: #28a745',
     ]).join(';');
@@ -46,7 +46,7 @@ function success(title, watchData = '') {
  * @param title
  * @param watchData
  */
-function info(title, watchData = '') {
+function info(title: string, watchData: string = '') {
     const styles = baseStyles.concat([
         'background-color: #17a2b8',
     ]).join(';');
@@ -59,7 +59,7 @@ function info(title, watchData = '') {
  * @param title
  * @param watchData
  */
-function warning(title, watchData = '') {
+function warning(title: string, watchData: string = '') {
     const styles = baseStyles.concat([
         'background-color: #ffc107',
     ]).join(';');
@@ -72,7 +72,7 @@ function warning(title, watchData = '') {
  * @param title
  * @param watchData
  */
-function danger(title, watchData = '') {
+function danger(title: string, watchData: string = '') {
     const styles = baseStyles.concat([
         'background-color: #ec2127',
     ]).join(';');
