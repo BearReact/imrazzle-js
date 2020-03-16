@@ -21,7 +21,7 @@ export const Selectors = {
     payload: (state: any) => {
         try {
             return jwtDecode(state[PREFIX].memberToken);
-        } catch(e) {
+        } catch (e) {
             return {};
         }
     },
@@ -32,7 +32,7 @@ export const Selectors = {
 
             // 比對現在時間是否超出過期時間
             return dayjs(expiredTime).diff(dayjs()) <= 0;
-        }catch(e) {
+        } catch (e) {
             return false;
         }
     },
@@ -43,7 +43,7 @@ export const Selectors = {
  /** ---------------------------------------*/
 export const {Types, Creators}: any = createActions(
     {
-        // 登入系統
+    // 登入系統
         handleSetAuth: ['memberToken'],
 
         // 登出系統
@@ -51,7 +51,7 @@ export const {Types, Creators}: any = createActions(
     },
     {
         prefix: `${PREFIX}/`,
-    }
+    },
 );
 
 export default Creators;

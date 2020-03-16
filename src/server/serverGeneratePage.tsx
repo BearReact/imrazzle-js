@@ -11,10 +11,10 @@ import {isEmpty, isJSON} from '@utils/equal';
 import {Provider} from 'react-redux';
 import {serverGenerateConfig} from '@config/utils/getConfig';
 import {asset} from '@config/utils/getAssetPrefix';
+import {LanguageProvider, translationMessages} from '@i18n';
 import configureStore from '../library/redux/configureStore';
 
 // intl
-import {LanguageProvider, translationMessages} from '@i18n';
 
 // site config
 import {PRELOAD_STATE} from '../constants';
@@ -30,6 +30,7 @@ require('@formatjs/intl-pluralrules/dist/locale-data/en'); // Add locale data fo
 require('@formatjs/intl-pluralrules/dist/locale-data/zh'); // Add locale data for de
 
 // @ts-ignore
+// eslint-disable-next-line import/no-dynamic-require
 const assets = require(process.env.RAZZLE_ASSETS_MANIFEST);
 
 export default (req: any, res: any) => {
@@ -40,7 +41,7 @@ export default (req: any, res: any) => {
     const preloadState = get(req, `universalCookies.cookies.${PRELOAD_STATE}`, '{}');
 
     // 站台設定
-    const siteCode = get(process,'env.SITE_CODE') || get(req, 'headers.sitecode', 'default');
+    const siteCode = get(process, 'env.SITE_CODE') || get(req, 'headers.sitecode', 'default');
     const globalConfig = serverGenerateConfig(siteCode);
 
     if (isEmpty(globalConfig.errorMessage)) {
@@ -55,8 +56,8 @@ export default (req: any, res: any) => {
                             <App/>
                         </StaticRouter>
                     </LanguageProvider>
-                </Provider>
-            )
+                </Provider>,
+            ),
         );
         const styledComponentTags = sheet.getStyleTags();
 
@@ -87,9 +88,9 @@ export default (req: any, res: any) => {
         <script src="${asset('/common/plugins/iconfont/iconfont.js')}"></script>
 
         ${assets.client.css
-                    ? `<link rel="stylesheet" href="${assets.client.css}">`
-                    : ''
-                    }
+        ? `<link rel="stylesheet" href="${assets.client.css}">`
+        : ''
+}
         
        ${styledComponentTags}
 
@@ -99,16 +100,15 @@ export default (req: any, res: any) => {
         window.__global__ = ${JSON.stringify(globalConfig)};
         </script>
         ${
-                        process.env.NODE_ENV === 'production'
-                            ? `<script src="${assets.client.js}" defer></script>`
-                            : `<script src="${assets.client.js}" defer crossorigin></script>`
-                    }
+    process.env.NODE_ENV === 'production'
+        ? `<script src="${assets.client.js}" defer></script>`
+        : `<script src="${assets.client.js}" defer crossorigin></script>`
+}
     </head>
     <body>
         <div id="root">${markup}</div>
     </body>
-</html>`
-                );
+</html>`);
         }
     } else {
         res.status(444).send(globalConfig.errorMessage);

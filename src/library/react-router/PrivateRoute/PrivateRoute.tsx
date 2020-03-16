@@ -11,7 +11,9 @@ import {
 
 // A wrapper for <Route> that redirects to the login
 // screen if you're not yet authenticated.
-const PrivateRoute = ({isAuth, intl, component: Component, children, ...rest}: any) => {
+const PrivateRoute = ({
+    isAuth, intl, component: Component, children, ...rest
+}: any) => {
     const isClient = typeof window !== 'undefined';
 
     const {formatMessage: i18n} = intl;
@@ -20,11 +22,11 @@ const PrivateRoute = ({isAuth, intl, component: Component, children, ...rest}: a
         <Route
             {...rest}
             render={({location, ...props}) => {
-                if(isAuth){
+                if (isAuth) {
                     return <Component {...props}/>;
                 }
 
-                if(isClient) window.alert(i18n({id: 'errorHttp.401'}));
+                if (isClient) window.alert(i18n({id: 'errorHttp.401'}));
 
                 return (
                     <Redirect

@@ -8,8 +8,8 @@
  *   You CANNOT use import/export in this file.
  */
 const langConfig = {
-    'zh-CN': require('../../resources/lang/zh-CN.js').default,
-    'en-US': require('../../resources/lang/en-US.js').default,
+    'zh-CN': require('../../resources/lang/zh-CN').default,
+    'en-US': require('../../resources/lang/en-US').default,
     // 'th-TH': require('../../resources/lang/th-TH.json'),
     // 'vi-VN': require('../../resources/lang/vi-VN.json'),
 };
@@ -18,11 +18,9 @@ const langConfig = {
 export const DEFAULT_LOCALE = 'en-US';
 
 const formatTranslationMessages: any = (locale: string, messages: any) => {
-    const defaultFormattedMessages =
-        locale !== DEFAULT_LOCALE ? formatTranslationMessages(DEFAULT_LOCALE, langConfig[DEFAULT_LOCALE]) : {};
+    const defaultFormattedMessages = locale !== DEFAULT_LOCALE ? formatTranslationMessages(DEFAULT_LOCALE, langConfig[DEFAULT_LOCALE]) : {};
     const flattenFormattedMessages = (formattedMessages: any, key: string) => {
-        const formattedMessage =
-            !messages[key] && locale !== DEFAULT_LOCALE ? defaultFormattedMessages[key] : messages[key];
+        const formattedMessage = !messages[key] && locale !== DEFAULT_LOCALE ? defaultFormattedMessages[key] : messages[key];
         return Object.assign(formattedMessages, {[key]: formattedMessage});
     };
     return Object.keys(messages).reduce(flattenFormattedMessages, {});

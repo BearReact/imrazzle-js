@@ -19,8 +19,8 @@ const ComposeComponent: any = compose(
     injectIntl,
     connect(
         mapStateToProps,
-        mapDispatchToProps
-    )
+        mapDispatchToProps,
+    ),
 )(HomeLayout);
 export default ComposeComponent;
 

@@ -26,7 +26,7 @@ export const {Types, Creators}: any = createActions(
     {
         changeLocale: ['locale'],
     },
-    {prefix: `${PREFIX}/`}
+    {prefix: `${PREFIX}/`},
 );
 
 export default Creators;

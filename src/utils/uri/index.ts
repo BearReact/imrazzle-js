@@ -43,15 +43,15 @@ export function parseQueryString(val: string = '') {
  */
 export function getMainDomain(hostName: string): string {
 
-    if(hostName){
+    if (hostName) {
         const lastString = hostName.length - 1;
-        if(hostName.substr(lastString, 1) === '/'){
+        if (hostName.substr(lastString, 1) === '/') {
             hostName = hostName.substr(0, lastString);
         }
         // eslint-disable-next-line no-useless-escape
         const regexParse = new RegExp('[a-z\-0-9]{2,63}\.[a-z\.]{2,5}$');
         const urlParts = regexParse.exec(hostName);
-        if(urlParts){
+        if (urlParts) {
             // @ts-ignore
             return get(urlParts, 0, null);
         }
@@ -66,14 +66,16 @@ export function getMainDomain(hostName: string): string {
  * @param hostName
  */
 export function getSubDomain(hostName: string): string {
+    // eslint-disable-next-line no-useless-escape
     const regexParse = new RegExp('[a-z\-0-9]{2,63}\.[a-z\.]{2,5}$');
     const urlParts = regexParse.exec(hostName);
-    if(urlParts){
-        const regexFilter = new RegExp('[a-z\-0-9]{2,63}').exec(hostName.replace(urlParts[0],'').slice(0, -1));
+    if (urlParts) {
+        // eslint-disable-next-line no-useless-escape
+        const regexFilter = new RegExp('[a-z\-0-9]{2,63}').exec(hostName.replace(urlParts[0], '').slice(0, -1));
         // @ts-ignore
         return get(regexFilter, 0, null);
-    }else{
-        // @ts-ignore
-        return null;
     }
+    // @ts-ignore
+    return null;
+
 }

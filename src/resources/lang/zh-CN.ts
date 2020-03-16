@@ -18,7 +18,7 @@ export default {
     'errorHttp.NETWORK_ERROR': 'NETWORK_ERROR: 您的行动网路连线不稳定，请检查您的网路连线状态后再尝试一次',
     'errorHttp.CANCEL_ERROR': 'CANCEL_ERROR: Request has been cancelled. Only possible if `cancelToken` is provided in config, see axios `Cancellation`',
 
-    'common.language' : '中文',
+    'common.language': '中文',
 
     'menu.home': '主页',
     'menu.news': '最新消息',

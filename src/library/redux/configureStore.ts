@@ -21,8 +21,8 @@ export default function configureStore(preloadState = {}, history = null) {
     // 2. routerMiddleware: Syncs the location/URL path to the state
     const middlewares = [sagaMiddleware];
 
-    if(history){
-        // @ts-ignore
+    if (history) {
+    // @ts-ignore
         middlewares.push(routerMiddleware(history));
     }
     const enhancers = [applyMiddleware(...middlewares)];
@@ -54,7 +54,7 @@ export default function configureStore(preloadState = {}, history = null) {
     // runSaga is middleware.run function
     // rootSaga is a your root saga for static saagas
     store.injectSaga = (key: any, saga: any) => {
-        // Create a dictionary to keep track of injected sagas
+    // Create a dictionary to keep track of injected sagas
         const isInjected = (checkKey: any) => typeof store.asyncSagas[checkKey] !== 'undefined';
 
         // We won't run saga if it is already injected

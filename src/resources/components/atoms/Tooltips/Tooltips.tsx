@@ -23,7 +23,9 @@ type Props = {
  * @constructor
  */
 const Tooltips = (props: Props) => {
-    const {className, style, position, children, isTopAnimate, isVisibleTips, isAnimation}: any = props;
+    const {
+        className, style, position, children, isTopAnimate, isVisibleTips, isAnimation,
+    }: any = props;
 
     return (
         <AnimationContainer
@@ -125,7 +127,7 @@ const AnimationContainer: any = styled.div`
     }
     
     // 預設顯不顯示
-    opacity: ${(props: any) => props.isVisibleTips ? 1 : 0};
+    opacity: ${(props: any) => (props.isVisibleTips ? 1 : 0)};
      
     ${(props: any) => props.isVisibleTips && props.isAnimation && css`
         animation: slide-in-top 0.3s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
@@ -154,7 +156,7 @@ const TooltipsRoot: any = styled.div`
     white-space: nowrap;
     box-shadow: ${px2vw(1)} ${px2vw(1)} ${px2vw(3)} rgba(0, 0, 0, 0.3);
        
-    ${(props: any) => props.position === 'topCenter' && css `
+    ${(props: any) => props.position === 'topCenter' && css`
         left: 50%;
         top: 0;
           
@@ -167,7 +169,7 @@ const TooltipsRoot: any = styled.div`
         }
     `};   
     
-    ${(props: any) => props.position === 'topRight' && css `
+    ${(props: any) => props.position === 'topRight' && css`
         right: 0;
         top: 0;
         transform: translateY(calc(-100% - 12px));
@@ -179,7 +181,7 @@ const TooltipsRoot: any = styled.div`
         }
     `};
     
-    ${(props: any) => props.position === 'topLeft' && css `
+    ${(props: any) => props.position === 'topLeft' && css`
         left: 0;
         top: 0;
         transform: translateY(calc(-100% - 12px));
@@ -193,7 +195,7 @@ const TooltipsRoot: any = styled.div`
     `};
     
     
-    ${(props: any) => props.position === 'bottomLeft' && css `
+    ${(props: any) => props.position === 'bottomLeft' && css`
         bottom: 0;
         left: 0;
         transform: translateY(calc(100% + 12px)); 
@@ -205,7 +207,7 @@ const TooltipsRoot: any = styled.div`
         }
     `};
     
-    ${(props: any) => props.position === 'bottomCenter' && css `
+    ${(props: any) => props.position === 'bottomCenter' && css`
         left: 50%;
         bottom: 0;
         transform: translate(-50%, calc(100% + 12px));
@@ -219,7 +221,7 @@ const TooltipsRoot: any = styled.div`
         }
     `};
     
-    ${(props: any) => props.position === 'bottomRight' && css `
+    ${(props: any) => props.position === 'bottomRight' && css`
         bottom: 0;
         right: 0;
         transform: translateY(calc(100% + 12px)); 
@@ -235,7 +237,7 @@ const TooltipsRoot: any = styled.div`
         font-size: 14px;
         border-radius: 2px;
         
-        ${(props: any) => props.position === 'topRight' && css `
+        ${(props: any) => props.position === 'topRight' && css`
             transform: translateY(-100%) translateY(-12px);
             
             ${TooltipsArrow}{
@@ -244,7 +246,7 @@ const TooltipsRoot: any = styled.div`
             }
         `};
          
-        ${(props: any) => props.position === 'topCenter' && css `
+        ${(props: any) => props.position === 'topCenter' && css`
             transform: translateX(-50%) translateY(-100%) translateY(-12px);
             
             ${TooltipsArrow}{
@@ -256,7 +258,7 @@ const TooltipsRoot: any = styled.div`
             }
         `};
                 
-        ${(props: any) => props.position === 'topLeft' && css `
+        ${(props: any) => props.position === 'topLeft' && css`
             transform: translateY(-100%) translateY(-12px);
             
             ${TooltipsArrow}{
@@ -265,15 +267,15 @@ const TooltipsRoot: any = styled.div`
         `};
         
         
-        ${(props: any) => props.position === 'bottomLeft' && css `
+        ${(props: any) => props.position === 'bottomLeft' && css`
             transform: translateY(100%) translateY(12px); 
         `};
        
-        ${(props: any) => props.position === 'bottomCenter' && css `
+        ${(props: any) => props.position === 'bottomCenter' && css`
             transform: translateX(-50%) translateY(100%) translateY(12px);
         `};
         
-        ${(props: any) => props.position === 'bottomRight' && css `
+        ${(props: any) => props.position === 'bottomRight' && css`
             transform: translateY(100%) translateY(12px); 
         `};
     `}

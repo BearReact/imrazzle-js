@@ -24,13 +24,13 @@ export const Selectors = {
  /** ---------------------------------------*/
 export const {Types, Creators: Action}: any = createActions(
     {
-        // 取明細
+    // 取明細
         fetchCurrent: null,
         fetchCurrentBegin: null,
         fetchCurrentSuccess: ['data'],
         fetchCurrentFail: ['message'],
     },
-    {prefix: `${PREFIX}/`}
+    {prefix: `${PREFIX}/`},
 );
 
 /** -----------------------------------------

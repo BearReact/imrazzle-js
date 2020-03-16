@@ -22,7 +22,7 @@ export const Selectors = {};
  /** ---------------------------------------*/
 export const {Types, Creators}: any = createActions(
     {
-        // 登入系統
+    // 登入系統
         submitLogin: ['formParam'],
         submitLoginBegin: null,
         submitLoginSuccess: null,
@@ -48,7 +48,7 @@ export const {Types, Creators}: any = createActions(
     },
     {
         prefix: `${PREFIX}/`,
-    }
+    },
 );
 
 export default Creators;

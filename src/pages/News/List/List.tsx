@@ -1,10 +1,11 @@
 
-
 import * as React from 'react';
 import styled from 'styled-components';
 import A from '@components/atoms/A';
 import {isEmpty} from '@utils/equal';
-import {media, Col, Container, GridThemeProvider, Row} from '@styled-bs-grid';
+import {
+    media, Col, Container, GridThemeProvider, Row,
+} from '@styled-bs-grid';
 
 type Props = {
     intl: any,
@@ -30,49 +31,49 @@ const List = (props: Props) => {
     }, []);
 
     return (
-            <Container>
+        <Container>
 
-                <Row className="align-items-center">
-                    <Col lg>
-                        <div className="text-center">
-                            <PageSubTitle>{i18n({id: 'page.news.subTitle'})}</PageSubTitle>
-                            <PageTitle dangerouslySetInnerHTML={{__html: i18n({id: 'page.news.title'})}}/>
-                        </div>
-                    </Col>
-                </Row>
+            <Row className="align-items-center">
+                <Col lg>
+                    <div className="text-center">
+                        <PageSubTitle>{i18n({id: 'page.news.subTitle'})}</PageSubTitle>
+                        <PageTitle dangerouslySetInnerHTML={{__html: i18n({id: 'page.news.title'})}}/>
+                    </div>
+                </Col>
+            </Row>
 
-                <Row className="align-items-center">
-                    {paginateData && paginateData.map((row: any) => (
-                        <Col
-                            lg={8}
-                            md={12}
-                            sm={16}
-                            key={row.id}
-                        >
-                            <A href={`/news/${row.id}`}>
-                                <Thumb src={row.thumb} alt="news" className="mb-4"/>
-                            </A>
-                            <div>
-                                <Title className="mb-3">
-                                    <A href={`/news/${row.id}`}>
-                                        {row.title}
-                                    </A>
-                                </Title>
-                                <div className="blog-author d-flex align-items-center">
-                                    <div className="pr-4">
-                                        <Avatar src={row.avatar} alt="author"/>
-                                    </div>
-                                    <div>
-                                        <AuthorPosted>{i18n({id:'page.news.postedBy'})}</AuthorPosted>
-                                        <AuthorText>{row.author}</AuthorText>
-                                    </div>
+            <Row className="align-items-center">
+                {paginateData && paginateData.map((row: any) => (
+                    <Col
+                        lg={8}
+                        md={12}
+                        sm={16}
+                        key={row.id}
+                    >
+                        <A href={`/news/${row.id}`}>
+                            <Thumb src={row.thumb} alt="news" className="mb-4"/>
+                        </A>
+                        <div>
+                            <Title className="mb-3">
+                                <A href={`/news/${row.id}`}>
+                                    {row.title}
+                                </A>
+                            </Title>
+                            <div className="blog-author d-flex align-items-center">
+                                <div className="pr-4">
+                                    <Avatar src={row.avatar} alt="author"/>
+                                </div>
+                                <div>
+                                    <AuthorPosted>{i18n({id: 'page.news.postedBy'})}</AuthorPosted>
+                                    <AuthorText>{row.author}</AuthorText>
                                 </div>
                             </div>
-                        </Col>
-                    ))}
-                </Row>
+                        </div>
+                    </Col>
+                ))}
+            </Row>
 
-            </Container>
+        </Container>
     );
 };
 

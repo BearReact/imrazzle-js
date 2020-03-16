@@ -5,7 +5,7 @@ import {useStore} from 'react-redux';
 type injectStoreProps = {
     reducer: any,
     saga: any,
-}
+};
 
 /**
  * HOC for adding dynamic reducers to the global store.
@@ -24,8 +24,8 @@ type injectStoreProps = {
  */
 const injectReducerSaga = (key: string, injectStore: injectStoreProps) => (WrappedComponent: any) => {
     const Extended = (props: any, context: any) => {
-        // Here's where we add the new reducer.
-        // See initilizeStore for details on how this works.
+    // Here's where we add the new reducer.
+    // See initilizeStore for details on how this works.
         const store: any = useStore();
         if (injectStore.reducer) {
             store.injectReducer(key, injectStore.reducer);
@@ -41,7 +41,7 @@ const injectReducerSaga = (key: string, injectStore: injectStoreProps) => (Wrapp
     // To use context, you must define contextTypes
     // https://reactjs.org/docs/context.html
     Extended.contextTypes = {
-        // eslint-disable-next-line react/forbid-prop-types
+    // eslint-disable-next-line react/forbid-prop-types
         store: object,
     };
 

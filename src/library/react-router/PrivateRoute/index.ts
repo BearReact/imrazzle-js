@@ -17,10 +17,10 @@ const mapStateToProps = (state: any) => ({
 
 const composeComponent: any = compose(
     injectIntl,
-        connect(
-            mapStateToProps,
-            mapDispatchToProps
-        )
+    connect(
+        mapStateToProps,
+        mapDispatchToProps,
+    ),
 )(PrivateRoute);
 
 export default composeComponent;

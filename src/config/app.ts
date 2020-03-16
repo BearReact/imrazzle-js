@@ -7,6 +7,8 @@ export default {
 
     // sync redux & cookie key
     reduxPreloadWhileList: ['auth', 'language.locale'],
-    currencySymbol: {malaysia: 'RM', china: '¥', thailand: '฿', vietnam: '₫'},
+    currencySymbol: {
+        malaysia: 'RM', china: '¥', thailand: '฿', vietnam: '₫',
+    },
 
 };

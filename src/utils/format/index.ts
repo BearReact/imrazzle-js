@@ -3,11 +3,9 @@
  * @param str
  * @returns {string}
  */
-export function toCapitalize(str: string){
+export function toCapitalize(str: string) {
     // return str.charAt(0).toUpperCase() + str.slice(1);
-    return str.replace(/\b(\w)/g, function($1){
-        return $1.toUpperCase();
-    });
+    return str.replace(/\b(\w)/g, $1 => $1.toUpperCase());
 }
 
 /**
@@ -15,16 +13,12 @@ export function toCapitalize(str: string){
  * @param str
  * @returns {string}
  */
-export function toLocaleUpCase(str: string){
+export function toLocaleUpCase(str: string) {
     // eslint-disable-next-line no-useless-escape
-    const result = str.replace(/\-(.*)/g, function($1) {
-        return $1.toUpperCase();
-    });
+    const result = str.replace(/\-(.*)/g, $1 => $1.toUpperCase());
 
     // eslint-disable-next-line no-useless-escape
-    return result.replace(/(.*)+\-/g, function($1){
-        return $1.toLowerCase();
-    });
+    return result.replace(/(.*)+\-/g, $1 => $1.toLowerCase());
 }
 
 /**
@@ -32,10 +26,11 @@ export function toLocaleUpCase(str: string){
  * @param rgb
  * @returns {*}
  */
-export function RGBToHex(rgb: string){
-    const hexDigits = new Array('0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f');
-    const hex = function(x: any){
-        return isNaN(x) ? '00' : hexDigits[(x - x % 16) / 16] + hexDigits[x % 16];
+export function RGBToHex(rgb: string) {
+    const hexDigits = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'];
+    const hex = function (x: any) {
+        // eslint-disable-next-line no-mixed-operators
+        return Number.isNaN(x) ? '00' : hexDigits[(x - x % 16) / 16] + hexDigits[x % 16];
     };
     const tmp: any = rgb.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/);
     return hex(tmp[1]) + hex(tmp[2]) + hex(tmp[3]);
@@ -46,10 +41,10 @@ export function RGBToHex(rgb: string){
  * @param hex 色碼
  * @returns {*}
  */
-export function HEXToRGB(hex: any){
-    hex = hex.replace('#','');
+export function HEXToRGB(hex: any) {
+    hex = hex.replace('#', '');
     if (/^[0-9A-F]{3}$|^[0-9A-F]{6}$/.test(hex.toUpperCase())) {
-        if (hex.length == 3) {
+        if (hex.length === 3) {
             hex = hex.match(/[0-9A-F]/g);
             hex = hex[0] + hex[0] + hex[1] + hex[1] + hex[2] + hex[2];
         }
@@ -69,14 +64,14 @@ export function HEXToRGB(hex: any){
  * @returns {Object|number[]}
  * @constructor
  */
-export function HEXToRGBA(hex: string, opacity: number = 1){
+export function HEXToRGBA(hex: string, opacity: number = 1) {
     const rgba = HEXToRGB(hex);
-    if (typeof rgba === 'object'){
+    if (typeof rgba === 'object') {
         rgba.push(opacity);
         return rgba;
-    } else {
-        return [0,0,0,1];
     }
+    return [0, 0, 0, 1];
+
 }
 
 /**

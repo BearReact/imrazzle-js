@@ -1,8 +1,9 @@
 
-
 import React from 'react';
 import styled, {css} from 'styled-components';
-import {media, Col, Container, Row} from '@styled-bs-grid';
+import {
+    media, Col, Container, Row,
+} from '@styled-bs-grid';
 import get from 'lodash/get';
 import A from '@components/atoms/A';
 import {asset} from '@config/utils/getAssetPrefix';
@@ -15,7 +16,7 @@ type Props = {
     changeLocale: Function,
     isAuth: boolean,
     locale: string,
-}
+};
 
 const HomeLayout = (props: Props) => {
 
@@ -25,8 +26,8 @@ const HomeLayout = (props: Props) => {
 
     const menu = [
         {href: '/', text: i18n({id: 'menu.home'}), isHome: true},
-        {href: '/news', text: i18n({id:'menu.news'})},
-        {href: '/profile', text: i18n({id:'menu.profile'}), isHidden: !isAuth},
+        {href: '/news', text: i18n({id: 'menu.news'})},
+        {href: '/profile', text: i18n({id: 'menu.profile'}), isHidden: !isAuth},
     ];
 
     /**
@@ -80,7 +81,7 @@ const HomeLayout = (props: Props) => {
                         {/* Change Language */}
                         <Col col="auto" className="d-none d-md-flex">
                             <Button type="button" onClick={handleChangeLocale}>
-                                {i18n({id:'common.language'})}
+                                {i18n({id: 'common.language'})}
                             </Button>
                         </Col>
 
@@ -133,7 +134,7 @@ const FooterCopyRight = styled.div`
     color: #798795;
 
     a{
-        color: ${(props : any) =>props.theme.primaryColor};
+        color: ${(props : any) => props.theme.primaryColor};
     }
 `;
 
@@ -154,10 +155,10 @@ const NavItem: any = styled(Col)`
     }
 
     &.active > a, :hover > a {
-        color: ${(props : any) =>props.theme.primaryColor};
+        color: ${(props : any) => props.theme.primaryColor};
     }
     
-    ${(props : any) =>props.isHidden && css`
+    ${(props : any) => props.isHidden && css`
         opacity: .3;
     `}
 

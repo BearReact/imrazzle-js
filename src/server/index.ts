@@ -1,11 +1,11 @@
 import React from 'react';
 import express from 'express';
-import { resolve } from 'path';
+import {resolve} from 'path';
 import get from 'lodash/get';
 import cookiesMiddleware from 'universal-cookie-express';
-import { isEmpty } from '@utils/equal';
+import {isEmpty} from '@utils/equal';
 import appConfig from '@config/app';
-import { routePath } from '@config/utils/getAssetPrefix';
+import {routePath} from '@config/utils/getAssetPrefix';
 import serverGeneratePage from './serverGeneratePage';
 
 const isDev = get(process, 'env.NODE_ENV', 'production') !== 'production';
@@ -21,6 +21,7 @@ if (isDev) {
     if (!isEmpty(reverseProxyList)) {
         reverseProxyList.map((proxy: any) => {
             server.use(proxy);
+            return false;
         });
     }
 }

@@ -37,7 +37,7 @@ const DateInput = (props: Props) => {
             selectedDate={selectedDate}
         >
             <FakeInput onClick={() => handleDatePickerVisible(true)}>
-                <Label>{selectedDate ? selectedDate : label}</Label>
+                <Label>{selectedDate || label}</Label>
 
                 <CalendarIcon code="calendar-alt" color="#c3c3c3"/>
 
@@ -71,7 +71,7 @@ const CloseArea: any = styled.div`
     left: 0;
     right: 0;
     bottom: 0;
-    z-index: ${(props : any) =>props.isVisible ? 0 : -1};
+    z-index: ${(props : any) => (props.isVisible ? 0 : -1)};
 `;
 
 const CustomIcon = styled(Icon)`
@@ -106,9 +106,9 @@ const DatePickerContainer: any = styled.div`
     left: 0;
     right: 0;
     top: calc(100% + 1px);
-    visibility: ${(props : any) =>props.isVisible ? 'visible' : 'hidden'};
-    opacity: ${(props : any) =>props.isVisible ? 1 : 0};
-    z-index: ${(props : any) =>props.isVisible ? 1 : -1};
+    visibility: ${(props : any) => (props.isVisible ? 'visible' : 'hidden')};
+    opacity: ${(props : any) => (props.isVisible ? 1 : 0)};
+    z-index: ${(props : any) => (props.isVisible ? 1 : -1)};
     transition: opacity .5s ease;
 `;
 
@@ -135,8 +135,8 @@ const InputContainer: any = styled.div`
         padding-left: 20px;
     `}
 
-    ${(props : any) =>props.selectedDate && css`
-        border: solid 1px ${(props : any) =>props.theme.primaryColor};
+    ${(props : any) => props.selectedDate && css`
+        border: solid 1px ${props.theme.primaryColor};
 
         &:hover {
             ${ClearIcon} {

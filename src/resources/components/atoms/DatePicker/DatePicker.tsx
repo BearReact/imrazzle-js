@@ -19,37 +19,27 @@ type Props = {
 };
 
 const config = {
-    weekDay: [1,2,3,4,5,6,7],
-    month: [1,2,3,4,5,6,7,8,9,10,11,12],
+    weekDay: [1, 2, 3, 4, 5, 6, 7],
+    month: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
 };
 
-const getLocaleWeekDay = () => {
-    return config.weekDay.map((w: any) => {
-        return <I18N key={`calendarWeekDay-${w}`} id={`calendar.weekDay.${w}`} defaultMessage={w}/>;
-    });
-};
+const getLocaleWeekDay = () => config.weekDay.map((w: any) => <I18N key={`calendarWeekDay-${w}`} id={`calendar.weekDay.${w}`} defaultMessage={w}/>);
 
-const getLocaleMonth = () => {
-    return config.month.map((m: any) => {
-        return (
-            <I18N
-                id={`calendar.month.${m}`}
-                defaultMessage={m}
-                key={`calendarLocaleMonth-${m}`}
-                children={formatedMessage => <option value={m-1} key={`month-${m}`}>{formatedMessage}</option>}
-            />
-        );
-    });
-};
+const getLocaleMonth = () => config.month.map((m: any) => (
+    <I18N
+        id={`calendar.month.${m}`}
+        defaultMessage={m}
+        key={`calendarLocaleMonth-${m}`}
+        children={formatedMessage => <option value={m - 1} key={`month-${m}`}>{formatedMessage}</option>}
+    />
+));
 
 /**
  * 取得 value的 Dayjs 物件
  * @param sourceDate
  * @returns {dayjs.Dayjs}
  */
-const getConvertDayjs = (sourceDate: any) =>{
-    return dayjs(sourceDate);
-};
+const getConvertDayjs = (sourceDate: any) => dayjs(sourceDate);
 
 /**
  * DatePicker
@@ -86,10 +76,10 @@ const DatePicker = (props: Props) => {
      */
     const handleChangePanel = (year: any = null, month: any = null) => {
         let newPanelDate = panelYearMonth;
-        if(year){
+        if (year) {
             newPanelDate = newPanelDate.set('year', year);
         }
-        if(!isEmpty(month)){
+        if (!isEmpty(month)) {
             newPanelDate = newPanelDate.set('month', month);
         }
 
@@ -99,10 +89,10 @@ const DatePicker = (props: Props) => {
     const handleConformYear = () => {
         const currentYear = panelYearMonth.get('year');
 
-        const localeText = i18n({id: 'calendar.pleaseInputYear', defaultMessage:'请输入西元年'});
+        const localeText = i18n({id: 'calendar.pleaseInputYear', defaultMessage: '请输入西元年'});
         // @ts-ignore
         const newYear = parseInt(prompt(localeText, panelYearMonth.get('year')));
-        if(newYear !== currentYear){
+        if (newYear !== currentYear) {
             handleChangePanel(newYear, null);
         }
     };
@@ -115,22 +105,22 @@ const DatePicker = (props: Props) => {
      */
     const handleSelectedDate = (year: number | null = null, month: number | null = null, day: number | null = null) => {
         let newDate = panelYearMonth;
-        if(year){
+        if (year) {
             newDate = newDate.set('year', year);
         }
 
-        if(!isEmpty(month)){
+        if (!isEmpty(month)) {
             newDate = newDate.set('month', month);
         }
 
-        if(day){
+        if (day) {
             newDate = newDate.set('date', day);
         }
 
         const currentDate = getConvertDayjs(value);
-        if(newDate.isSame(currentDate, 'date')){
+        if (newDate.isSame(currentDate, 'date')) {
             onChange(null);
-        }else{
+        } else {
             const formatDate = newDate.format(format);
             onChange(formatDate);
             setInputValue(formatDate);
@@ -164,7 +154,7 @@ const DatePicker = (props: Props) => {
                     <MonthButton
                         onClick={() => handleChangePanel(
                             panelPreYearMonth.get('year'),
-                            panelPreYearMonth.get('month')
+                            panelPreYearMonth.get('month'),
                         )}
                     >
                         <Icon code="arrow-left" color="rgba(0, 0, 0, 0.25)" size={12}/>
@@ -178,8 +168,7 @@ const DatePicker = (props: Props) => {
                             <Month>
                                 {
                                     localeMonth[panelYearMonth.get('month')]
-                                    &&
-                                    <I18N id={localeMonth[panelYearMonth.get('month')].props.id} defaultMessage={localeMonth[panelYearMonth.get('month')].props.defaultMessage}/>
+                                    && <I18N id={localeMonth[panelYearMonth.get('month')].props.id} defaultMessage={localeMonth[panelYearMonth.get('month')].props.defaultMessage}/>
                                 }
                             </Month>
 
@@ -196,7 +185,7 @@ const DatePicker = (props: Props) => {
                     <MonthButton
                         onClick={() => handleChangePanel(
                             panelNextYearMonth.get('year'),
-                            panelNextYearMonth.get('month')
+                            panelNextYearMonth.get('month'),
                         )}
                     >
                         <Icon code="arrow-right" color="rgba(0, 0, 0, 0.25)" size={12}/>
@@ -211,17 +200,11 @@ const DatePicker = (props: Props) => {
      * 產生週標題
      * @returns {*}
      */
-    const renderWeek = () => {
-        // 產生週標題
-        return (
-            <WeekRow>
-                {localeWeekDay.map((week,index) =>{
-                    // eslint-disable-next-line react/no-array-index-key
-                    return <Week key={`week-${index}`}>{week}</Week>;
-                })}
-            </WeekRow>
-        );
-    };
+    const renderWeek = () => (
+        <WeekRow>
+            {localeWeekDay.map(week => <Week key={`week-${week}`}>{week}</Week>)}
+        </WeekRow>
+    );
 
     /**
      * 產生上個月的剩餘日期表
@@ -245,7 +228,7 @@ const DatePicker = (props: Props) => {
 
         // 產生 Panel年月 上個月的剩餘日期表
         const preMonFirstDayList = new Array(preMonthLastDay);
-        for(let d = 0; d < preMonthFirstContainer; d++){
+        for (let d = 0; d < preMonthFirstContainer; d++) {
             const day = preMonthFirstDay + d + 1;
             preMonFirstDayList[d] = (
                 <PreDay
@@ -286,7 +269,7 @@ const DatePicker = (props: Props) => {
 
         // 產生上個月的剩餘日期表
         const nextMonEndDayList = new Array(nextMonthEndContainer);
-        for(let d = 0; d < nextMonthEndContainer; d++){
+        for (let d = 0; d < nextMonthEndContainer; d++) {
             const day = d + 1;
             nextMonEndDayList[d] = (
                 <PreDay
@@ -316,7 +299,7 @@ const DatePicker = (props: Props) => {
 
         // 產生 Panel年月 當月日期表
         const currentDayList = new Array(currentMonthLastDay);
-        for(let d = 0; d < currentMonthLastDay; d++){
+        for (let d = 0; d < currentMonthLastDay; d++) {
             const dayNumber = d + 1;
             const eachDate = panelYearMonth.set('date', dayNumber);
             currentDayList[d] = (
@@ -343,15 +326,13 @@ const DatePicker = (props: Props) => {
         );
     };
 
-    const renderTodayButton = () => {
-        return (
-            <LabelCheckCardCreate>
-                <TodayButton size="small" onClick={handleSelectedToday}>
-                    <span><I18N id="calendar.setToday" defaultMessage="设定为今天"/></span>
-                </TodayButton>
-            </LabelCheckCardCreate>
-        );
-    };
+    const renderTodayButton = () => (
+        <LabelCheckCardCreate>
+            <TodayButton size="small" onClick={handleSelectedToday}>
+                <span><I18N id="calendar.setToday" defaultMessage="设定为今天"/></span>
+            </TodayButton>
+        </LabelCheckCardCreate>
+    );
 
     return (
         <DatePickerRoot>
@@ -383,7 +364,7 @@ DatePicker.defaultProps = {
 export default injectIntl(DatePicker);
 
 const TodayButton: any = styled.button`
-    color: ${(props : any) =>props.theme.primaryColor};
+    color: ${(props : any) => props.theme.primaryColor};
     background-color: transparent;
     flex: 1 1 auto;
     border: none;
@@ -440,16 +421,16 @@ const Day: any = styled(Week)`
         cursor: pointer;
     }
 
-    ${(props : any) =>props.isToday && css`
-        color: ${(props : any) =>props.theme.primaryColor};
+    ${(props : any) => props.isToday && css`
+        color: ${props.theme.primaryColor};
     `};
 
 
-    ${(props : any) =>props.isSelected && css`
+    ${(props : any) => props.isSelected && css`
         color: #fff;
 
         :before{
-            background-color: ${(props : any) =>props.theme.primaryColor};
+            background-color: ${props.theme.primaryColor};
         }
 
         :hover{
@@ -464,11 +445,11 @@ const PreDay: any = styled(Day)`
         z-index: 1;
     }
 
-    ${(props : any) =>props.isSelected && css`
+    ${(props : any) => props.isSelected && css`
         color: #fff;
 
         :before{
-            background-color: ${(props : any) =>props.theme.primaryColor};
+            background-color: ${props.theme.primaryColor};
         }
 
         :hover{

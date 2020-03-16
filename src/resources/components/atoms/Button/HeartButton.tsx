@@ -10,7 +10,7 @@ type Props = {
     size?: number,
 };
 
-function HeartButton (props: Props) {
+function HeartButton(props: Props) {
 
     const {className, style, size}: any = props;
     const [active, setActive] = useState(false);
@@ -27,7 +27,7 @@ function HeartButton (props: Props) {
 
     return (
         <HeartRoot style={style} className={className}>
-            <HeartSvg size={size} viewBox="467 392 58 57" onClick={()=> setActive(!active)}>
+            <HeartSvg size={size} viewBox="467 392 58 57" onClick={() => setActive(!active)}>
                 <HeartContainer>
                     <HeartPath
                         d="M29.144 20.773c-.063-.13-4.227-8.67-11.44-2.59C7.63 28.795 28.94 43.256 29.143 43.394c.204-.138 21.513-14.6 11.44-25.213-7.214-6.08-11.377 2.46-11.44 2.59z"
@@ -66,12 +66,12 @@ const SecondCircle: any = styled.circle``;
 const EffectCircle: any = styled.g`
     opacity: 0;
     
-    ${(props : any) =>props.active && css`  
+    ${(props : any) => props.active && css`  
         opacity:1; 
         transition:.1s all .3s;
     `}
     
-    ${(props : any) =>props.position === 'top' && css`
+    ${(props : any) => props.position === 'top' && css`
         transform: translate(24px);
         
         ${FirstCircle} {
@@ -80,7 +80,7 @@ const EffectCircle: any = styled.g`
             cy: 3; 
             r: 2;
             
-            ${(props : any) =>props.active && css`
+            ${props.active && css`
                 transform:scale(0) translate(0, -30px);
                 transform-origin:0 0 0;
                 transition:.5s transform .3s;
@@ -91,14 +91,14 @@ const EffectCircle: any = styled.g`
             cx: 7.5;
             cy: 2; 
             r: 2;
-            ${(props : any) =>props.active && css`
+            ${props.active && css`
                 transform:scale(0) translate(10px, -50px);
                 transform-origin:0 0 0;
                 transition:1.5s transform .3s;
             `};
         }
     `};
-    ${(props : any) =>props.position === 'rightTop' && css`
+    ${(props : any) => props.position === 'rightTop' && css`
         transform: translate(44px, 6px);
         
         ${FirstCircle} {
@@ -106,7 +106,7 @@ const EffectCircle: any = styled.g`
             cx: 5;
             cy: 6; 
             r: 2;
-            ${(props : any) =>props.active && css`
+            ${props.active && css`
                 transform:scale(0) translate(30px, -15px); 
                 transform-origin:0 0 0;
                 transition:.5s transform .3s;
@@ -117,14 +117,14 @@ const EffectCircle: any = styled.g`
             cx: 2;
             cy: 2; 
             r: 2;
-            ${(props : any) =>props.active && css`
+            ${props.active && css`
                 transform:scale(0) translate(60px, -15px); 
                 transform-origin:0 0 0;
                 transition:1.5s transform .3s;
             `};
         }
     `};
-    ${(props : any) =>props.position === 'right' && css`
+    ${(props : any) => props.position === 'right' && css`
         transform: translate(52px, 28px);
         
         ${FirstCircle} {
@@ -132,7 +132,7 @@ const EffectCircle: any = styled.g`
             cx: 2;
             cy: 7; 
             r: 2;
-            ${(props : any) =>props.active && css`
+            ${props.active && css`
                 transform:scale(0) translate(30px, 0px);
                 transform-origin:0 0 0;
                 transition:.5s transform .3s;
@@ -143,14 +143,14 @@ const EffectCircle: any = styled.g`
             cx: 4;
             cy: 2; 
             r: 2;
-            ${(props : any) =>props.active && css`
+            ${props.active && css`
                 transform:scale(0) translate(60px, 10px);
                 transform-origin:0 0 0;
                 transition:1.5s transform .3s;
             `};
         }
     `};
-    ${(props : any) =>props.position === 'rightBottom' && css`
+    ${(props : any) => props.position === 'rightBottom' && css`
         transform: translate(35px, 50px);
         
         ${FirstCircle} {
@@ -158,7 +158,7 @@ const EffectCircle: any = styled.g`
             cx: 6;
             cy: 5; 
             r: 2;
-            ${(props : any) =>props.active && css`
+            ${props.active && css`
                 transform:scale(0) translate(30px, 15px);
                 transform-origin:0 0 0;
                 transition:.5s transform .3s;
@@ -169,14 +169,14 @@ const EffectCircle: any = styled.g`
             cx: 2;
             cy: 2; 
             r: 2;
-            ${(props : any) =>props.active && css`
+            ${props.active && css`
                 transform:scale(0) translate(40px, 50px);
                 transform-origin:0 0 0;
                 transition:1.5s transform .3s;
             `};
         }
     `};
-    ${(props : any) =>props.position === 'leftBottom' && css`
+    ${(props : any) => props.position === 'leftBottom' && css`
         transform: translate(14px, 50px);
         
         ${FirstCircle} {
@@ -184,7 +184,7 @@ const EffectCircle: any = styled.g`
             cx: 6;
             cy: 5; 
             r: 2;
-            ${(props : any) =>props.active && css`
+            ${props.active && css`
                 transform:scale(0) translate(-10px, 20px);
                 transform-origin:0 0 0;
                 transition:.5s transform .3s;
@@ -195,14 +195,14 @@ const EffectCircle: any = styled.g`
             cx: 2;
             cy: 2; 
             r: 2;
-            ${(props : any) =>props.active && css`
+            ${props.active && css`
                 transform:scale(0) translate(-60px, 30px);
                 transform-origin:0 0 0;
                 transition:1.5s transform .3s;
             `};
         }
     `};
-    ${(props : any) =>props.position === 'left' && css`
+    ${(props : any) => props.position === 'left' && css`
         transform: translate(0, 28px);
         
         ${FirstCircle} {
@@ -210,7 +210,7 @@ const EffectCircle: any = styled.g`
             cx: 2;
             cy: 7; 
             r: 2;
-            ${(props : any) =>props.active && css`
+            ${props.active && css`
                 transform:scale(0) translate(-30px, 0px);
                 transform-origin:0 0 0;
                 transition:.5s transform .3s;
@@ -221,14 +221,14 @@ const EffectCircle: any = styled.g`
             cx: 3;
             cy: 2; 
             r: 2;
-            ${(props : any) =>props.active && css`
+            ${props.active && css`
                 transform:scale(0) translate(-60px, -5px);
                 transform-origin:0 0 0;
                 transition:1.5s transform .3s;
             `};
         }
     `};
-    ${(props : any) =>props.position === 'leftTop' && css`
+    ${(props : any) => props.position === 'leftTop' && css`
         transform: translate(7px, 6px);
         
         ${FirstCircle} {
@@ -236,7 +236,7 @@ const EffectCircle: any = styled.g`
             cx: 2;
             cy: 6; 
             r: 2;
-            ${(props : any) =>props.active && css`
+            ${props.active && css`
                 transform:scale(0) translate(-30px, -15px);
                 transform-origin:0 0 0;
                 transition:.5s transform .3s;
@@ -247,7 +247,7 @@ const EffectCircle: any = styled.g`
             cx: 5;
             cy: 2; 
             r: 2;
-            ${(props : any) =>props.active && css`
+            ${props.active && css`
                 transform:scale(0) translate(-55px, -30px);
                 transform-origin:0 0 0;
                 transition:1.5s transform .3s;
@@ -261,7 +261,7 @@ const Circle: any = styled.circle`
     fill: #E2264D; 
     opacity: 0;
     
-    ${(props : any) =>props.active && css`
+    ${(props : any) => props.active && css`
         transition:all 2s;
         animation:animateCircle .3s linear forwards;
         opacity:1;
@@ -285,7 +285,7 @@ const HeartPath: any = styled.path`
     transform-origin:center;
     animation:animateHeartOut .3s linear forwards;
     
-    ${(props : any) =>props.active && css`
+    ${(props : any) => props.active && css`
         transform:scale(.2); 
         fill:#E2264D; 
         animation:animateHeart .3s linear forwards .25s;
@@ -322,10 +322,10 @@ const HeartContainer = styled.g`
 const HeartSvg: any = styled.svg`
     cursor:pointer;
     overflow:visible;
-    width:${(props : any) =>px2vw(props.size)};
+    width:${(props : any) => px2vw(props.size)};
     
     ${media.lg`
-        width:${(props : any) =>props.size}px;
+        width:${(props : any) => props.size}px;
     `}
 `;
 

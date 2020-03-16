@@ -41,7 +41,7 @@ export const {Types, Creators}: any = createActions(
         blockOpen: ['message'],
         blockClose: null,
     },
-    {prefix: `${PREFIX}/`}
+    {prefix: `${PREFIX}/`},
 );
 
 export default Creators;
@@ -77,21 +77,25 @@ const Reducers = {
                 isModalVisible: true,
                 modalProps: {
                     type: 'success',
-                    title: i18n({id:'action.success', defaultMessage:'成功'}),
-                    buttons: [{text: i18n({id:'action.ok', defaultMessage:'确定'}), type: 'primary', onClick: onClickOk, effectType: 'MODAL_CLICK_OK'}],
+                    title: i18n({id: 'action.success', defaultMessage: '成功'}),
+                    buttons: [{
+                        text: i18n({id: 'action.ok', defaultMessage: '确定'}), type: 'primary', onClick: onClickOk, effectType: 'MODAL_CLICK_OK',
+                    }],
                     children: action.message,
                 },
             });
         },
         openError(state: any, action: any) {
             const {onClickOk} = action;
-            if(!state.isModalVisible){
+            if (!state.isModalVisible) {
                 return state.merge({
                     isModalVisible: true,
                     modalProps: {
                         type: 'error',
-                        title: i18n({id:'action.failed', defaultMessage:'失败'}),
-                        buttons: [{text: i18n({id:'action.ok', defaultMessage:'确定'}), type: 'danger', onClick: onClickOk, effectType: 'MODAL_CLICK_OK'}],
+                        title: i18n({id: 'action.failed', defaultMessage: '失败'}),
+                        buttons: [{
+                            text: i18n({id: 'action.ok', defaultMessage: '确定'}), type: 'danger', onClick: onClickOk, effectType: 'MODAL_CLICK_OK',
+                        }],
                         children: action.message,
                         statusCode: action.statusCode,
                     },
@@ -105,10 +109,12 @@ const Reducers = {
                 isModalVisible: true,
                 modalProps: {
                     type: 'confirm',
-                    title: i18n({id:'action.confirm', defaultMessage:'确认'}),
+                    title: i18n({id: 'action.confirm', defaultMessage: '确认'}),
                     buttons: [
-                        {text: i18n({id:'action.cancel', defaultMessage:'取消'}), type: 'danger', effectType: 'MODAL_CLICK_CANCEL'},
-                        {text: i18n({id:'action.ok', defaultMessage:'确定'}), type: 'primary', onClick: onClickOk, effectType: 'MODAL_CLICK_OK'},
+                        {text: i18n({id: 'action.cancel', defaultMessage: '取消'}), type: 'danger', effectType: 'MODAL_CLICK_CANCEL'},
+                        {
+                            text: i18n({id: 'action.ok', defaultMessage: '确定'}), type: 'primary', onClick: onClickOk, effectType: 'MODAL_CLICK_OK',
+                        },
                     ],
                     children: action.message,
                 },

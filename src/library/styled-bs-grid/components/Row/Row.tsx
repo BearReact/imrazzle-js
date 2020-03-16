@@ -9,14 +9,12 @@ import type {RowProps} from './types';
  * @param props
  * @returns {*}
  */
-const getRowMargin = (props: any) => {
-    return props.noGutters ? 0: `-${props.theme[themeName].gridGutterWidth}px`;
-};
+const getRowMargin = (props: any) => (props.noGutters ? 0 : `-${props.theme[themeName].gridGutterWidth}px`);
 
 /**
  * Row Component
  */
-const Row: any = styled.div.attrs((props: any)  => ({
+const Row: any = styled.div.attrs((props: any) => ({
     'data-grid': 'row',
     'data-debug': getDataName(props),
 }))`

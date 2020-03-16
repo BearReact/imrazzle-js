@@ -54,7 +54,7 @@ const Input = (props: Props) => {
     };
 
     const isVisibleBeforeIcon = beforeIconCode && inputType === 'normal';
-    const isVisibleCleanButton = !readonly && !afterIconCode; //當可寫(非唯獨) 並且 沒有設定 AfterIcon 時
+    const isVisibleCleanButton = !readonly && !afterIconCode; // 當可寫(非唯獨) 並且 沒有設定 AfterIcon 時
 
     return (
         <InputContainer>
@@ -78,10 +78,10 @@ const Input = (props: Props) => {
                 <Border>
                     {
                         inputType !== 'normal' && (
-                        <>
-                            <Title>{placeholder}</Title>
-                            <MovePlaceholder>{placeholder}</MovePlaceholder>
-                        </>
+                            <>
+                                <Title>{placeholder}</Title>
+                                <MovePlaceholder>{placeholder}</MovePlaceholder>
+                            </>
                         )
                     }
                 </Border>
@@ -120,7 +120,7 @@ const Input = (props: Props) => {
             {/* 錯誤訊息提示 */}
             {errorMessage && (
                 <Remark isError={errorMessage}>
-                    <Icon code="exclamation-circle" right={5} color='#ff4b4b' size={12}/>
+                    <Icon code="exclamation-circle" right={5} color="#ff4b4b" size={12}/>
                     {errorMessage}
                 </Remark>
             )}
@@ -155,7 +155,7 @@ export default Input;
 const Remark: any = styled.div`
     font-size: ${px2vw(12)};
     padding-top: ${px2vw(5)};
-    color: ${(props : any) =>props.isError ? '#ff4b4b' : '#c4c4c4'};
+    color: ${(props : any) => (props.isError ? '#ff4b4b' : '#c4c4c4')};
     display: flex;
     align-items: center;
     
@@ -213,7 +213,7 @@ const CustomIcon = styled(Icon)`
     order: 2;
     
     &:hover {
-        color: ${(props : any) =>props.theme.primaryColor};
+        color: ${(props : any) => props.theme.primaryColor};
     }
     
     >i {
@@ -264,7 +264,7 @@ const TextBox: any = styled.input`
         max-height: 60px;
     `}
     
-    ${(props : any) =>props.inputType !== 'normal' && css`
+    ${(props : any) => props.inputType !== 'normal' && css`
         padding-left: 20px;
         
         ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
@@ -290,14 +290,14 @@ const TextBox: any = styled.input`
                 
                 ${MovePlaceholder} {
                     font-size: ${px2vw(14)};
-                    color: ${(props : any) =>props.readonly ? '#c4c4c4' : props => props.theme.primaryColor};
+                    color: ${props.readonly ? '#c4c4c4' : props.theme.primaryColor};
                     top: 0;
                 }
             }
         } 
         
         &:focus~${Border} {
-            border-color: ${(props : any) =>props.theme.primaryColor};
+            border-color: ${props.theme.primaryColor};
         }
        
         //input有值的情況需搭配placeholder
@@ -315,14 +315,14 @@ const TextBox: any = styled.input`
         `}
     `}
     
-    ${(props : any) =>props.readonly && css`
+    ${(props : any) => props.readonly && css`
         &~${Border} {
             border-color: #c4c4c4;
             pointer-events: auto;
         }
     `}
     
-    ${(props : any) =>props.isError && css`
+    ${(props : any) => props.isError && css`
         &~${Border} {
             border-color: #ff4b4b !important;
             

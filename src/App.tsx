@@ -7,16 +7,14 @@ import {getConfig} from '@config/utils/getConfig';
 
 import RootRouter from './pages/RootRouter';
 
-const App = () => {
-    return (
-        <ThemeProvider theme={getConfig('site.theme')}>
-            <GridThemeProvider gridTheme={gridConfig}>
-                <ScrollTopProvider>
-                    <RootRouter/>
-                </ScrollTopProvider>
-            </GridThemeProvider>
-        </ThemeProvider>
-    );
-};
+const App = () => (
+    <ThemeProvider theme={getConfig('site.theme')}>
+        <GridThemeProvider gridTheme={gridConfig}>
+            <ScrollTopProvider>
+                <RootRouter/>
+            </ScrollTopProvider>
+        </GridThemeProvider>
+    </ThemeProvider>
+);
 
 export default App;

@@ -1,10 +1,11 @@
 
-
 import React from 'react';
 import styled from 'styled-components';
 import * as yup from 'yup';
 import {useForm} from 'react-hook-form';
-import {media, Col, Container, Row} from '@styled-bs-grid';
+import {
+    media, Col, Container, Row,
+} from '@styled-bs-grid';
 import {asset} from '@config/utils/getAssetPrefix';
 
 type Props = {
@@ -32,7 +33,7 @@ const Home = (props: Props) => {
             alert(error.message);
             return false;
         });
-        if(validateResult){
+        if (validateResult) {
             // 驗證成功
             onSignIn(formData, reset);
         }
@@ -77,17 +78,17 @@ const Home = (props: Props) => {
 
     return (
         <HeaderHero className="d-lg-flex">
-                <Container>
-                    <Row>
-                        <Col lg={14}>
-                            <HeroTitle dangerouslySetInnerHTML={{__html: i18n({id: 'page.home.heroTitle'})}}/>
-                            <HeroText className="text">{i18n({id: 'page.home.heroText'})}</HeroText>
-                            <HeroSignUp>
-                                {renderForm()}
-                            </HeroSignUp>
-                        </Col>
-                    </Row>
-                </Container>
+            <Container>
+                <Row>
+                    <Col lg={14}>
+                        <HeroTitle dangerouslySetInnerHTML={{__html: i18n({id: 'page.home.heroTitle'})}}/>
+                        <HeroText className="text">{i18n({id: 'page.home.heroText'})}</HeroText>
+                        <HeroSignUp>
+                            {renderForm()}
+                        </HeroSignUp>
+                    </Col>
+                </Row>
+            </Container>
         </HeaderHero>
     );
 };

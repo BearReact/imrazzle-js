@@ -20,7 +20,7 @@ const composePage: any = compose(
     injectReducerSaga('news', {reducer, saga}),
     connect(
         mapStateToProps,
-        mapDispatchToProps
-    )
+        mapDispatchToProps,
+    ),
 )(List);
 export default composePage;

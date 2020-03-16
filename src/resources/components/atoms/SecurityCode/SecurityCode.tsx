@@ -24,7 +24,9 @@ type Props = {
  */
 const SecurityCode = (props: Props) => {
 
-    const {className, style, length, name, onChange, forwardRef}: any = props;
+    const {
+        className, style, length, name, onChange, forwardRef,
+    }: any = props;
 
     const serialRef: any = useRef([]);
     const inputRef: any = useRef();
@@ -55,7 +57,7 @@ const SecurityCode = (props: Props) => {
      */
     const handleMoveToNextInput = (currentIndex: number) => {
         const nextPosition = currentIndex + 1;
-        if(nextPosition <= maxLastPosition){
+        if (nextPosition <= maxLastPosition) {
             serialRef.current[nextPosition].focus();
             serialRef.current[nextPosition].value = '';
         }
@@ -67,10 +69,10 @@ const SecurityCode = (props: Props) => {
      * @param currentIndex
      */
     const handleBackInput = (e: any, currentIndex: number) => {
-        if(e.keyCode === 8){
+        if (e.keyCode === 8) {
             e.preventDefault();
 
-            if(currentIndex > 0) {
+            if (currentIndex > 0) {
                 // 若為最後一碼, 並且有值, 則把最後一碼值清空
                 if (currentIndex === maxLastPosition && serialRef.current[currentIndex].value !== '') {
                     serialRef.current[currentIndex].value = '';
@@ -88,7 +90,7 @@ const SecurityCode = (props: Props) => {
      */
     const generateSerialInput = () => {
         const serialInputList = [];
-        for(let i = 0; i < length; i += 1){
+        for (let i = 0; i < length; i += 1) {
             serialInputList[i] = (
                 <Col key={`serialInput_${i}`}>
                     <SerialInput
@@ -98,7 +100,7 @@ const SecurityCode = (props: Props) => {
                         maxLength={1}
                         onClick={handleFocusNext}
                         onKeyUp={handleSyncValue}
-                        onChange={()=>handleMoveToNextInput(i)}
+                        onChange={() => handleMoveToNextInput(i)}
                         onKeyDown={e => handleBackInput(e, i)}
                         placeholder=" "
                         type="text"
@@ -141,7 +143,7 @@ SecurityCode.defaultProps = {
 export default SecurityCode;
 
 const SerialInput = styled.input`
-    color: ${(props : any) =>props.theme.primaryColor};
+    color: ${(props : any) => props.theme.primaryColor};
     width: ${px2vw(30)};
     font-size: ${px2vw(20)};
 
@@ -166,7 +168,7 @@ const SerialInput = styled.input`
 
 
     &:not(:placeholder-shown) {
-        border-bottom-color: ${(props : any) =>props.theme.primaryColor};
+        border-bottom-color: ${(props : any) => props.theme.primaryColor};
     }
 
     ${media.lg`

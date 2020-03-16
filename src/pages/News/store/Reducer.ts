@@ -25,7 +25,7 @@ export const Selectors = {
  /** ---------------------------------------*/
 export const {Types, Creators}: any = createActions(
     {
-        // 取列表
+    // 取列表
         fetchPaginate: null,
         fetchPaginateBegin: null,
         fetchPaginateSuccess: ['data'],
@@ -37,7 +37,7 @@ export const {Types, Creators}: any = createActions(
         fetchCurrentSuccess: ['data'],
         fetchCurrentFail: ['message'],
     },
-    {prefix: `${PREFIX}/`}
+    {prefix: `${PREFIX}/`},
 );
 
 export default Creators;

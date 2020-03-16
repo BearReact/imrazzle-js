@@ -19,7 +19,7 @@ const Exp: any = compose(
     injectIntl,
     connect(
         mapStateToProps,
-        mapDispatchToProps
-    )
+        mapDispatchToProps,
+    ),
 )(Home);
 export default Exp;

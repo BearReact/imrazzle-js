@@ -4,8 +4,8 @@
  * @param className css class
  * @returns {boolean}
  */
-export function hasClass(dom: any, className: string){
-    return !!dom.className.match( new RegExp( '(\\s|^)' + className + '(\\s|$)') );
+export function hasClass(dom: any, className: string) {
+    return !!dom.className.match(new RegExp(`(\\s|^)${className}(\\s|$)`));
 }
 
 /**
@@ -13,8 +13,8 @@ export function hasClass(dom: any, className: string){
  * @param dom elements
  * @param className
  */
-export function addClass(dom: any, className: string){
-    if( !hasClass(dom, className) ){
+export function addClass(dom: any, className: string) {
+    if (!hasClass(dom, className)) {
         dom.classList.add(className);
     }
     return false;
@@ -26,7 +26,7 @@ export function addClass(dom: any, className: string){
  * @param dom elements
  * @param className
  */
-export function removeClass(dom: any, className: string){
+export function removeClass(dom: any, className: string) {
     dom.classList.remove(className);
     return false;
 }
@@ -40,7 +40,7 @@ export function removeClass(dom: any, className: string){
  */
 export function insertIFrame(frameId: string, url: string, callBack: Function) {
     // 插入測速工具
-    if(document.getElementById(frameId) === null){
+    if (document.getElementById(frameId) === null) {
         const i = document.createElement('iframe');
 
         const attr = {
@@ -50,16 +50,16 @@ export function insertIFrame(frameId: string, url: string, callBack: Function) {
             frameborder: '0',
             width: 0,
             height: 0,
-            onload: function(){
+            onload() {
                 // callBack
-                if(callBack){
+                if (callBack) {
                     callBack(i);
                 }
-            }
+            },
         };
 
         // add iFrame
-        document.body.appendChild(Object.assign({}, i,  attr));
+        document.body.appendChild(Object.assign({}, i, attr));
     }
     return false;
 }

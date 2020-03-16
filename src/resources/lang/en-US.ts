@@ -18,7 +18,7 @@ export default {
     'errorHttp.NETWORK_ERROR': 'NETWORK_ERROR: Your mobile network connection is unstable. Please check your network connection status and try again.',
     'errorHttp.CANCEL_ERROR': 'CANCEL_ERROR: Request has been cancelled. Only possible if `cancelToken` is provided in config, see axios `Cancellation`',
 
-    'common.language' : 'ENGLISH',
+    'common.language': 'ENGLISH',
 
     'menu.home': 'Home',
     'menu.news': 'News',

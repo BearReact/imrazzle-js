@@ -9,7 +9,7 @@ import {Types} from './Reducer';
  * @param payload
  */
 export function* changeLanguage(payload: any) {
-
+    // write some....
 }
 
 export default [

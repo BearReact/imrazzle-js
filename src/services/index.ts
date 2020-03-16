@@ -1,14 +1,14 @@
-import { create } from 'apisauce';
+import {create} from 'apisauce';
 import get from 'lodash/get';
 
-import { autoMapper } from '@utils/format';
-import { Selectors as LanguageSelectors } from '@store/Language/Reducer';
-import { Selectors as AuthSelectors } from '@store/Auth/Reducer';
+import {autoMapper} from '@utils/format';
+import {Selectors as LanguageSelectors} from '@store/Language/Reducer';
+import {Selectors as AuthSelectors} from '@store/Auth/Reducer';
 import LoginActions from '@store/Login/Reducer';
-import { i18n } from '@i18n';
+import {i18n} from '@i18n';
 
-import { replace } from 'connected-react-router';
-import { getConfig } from '@config/utils/getConfig';
+import {replace} from 'connected-react-router';
+import {getConfig} from '@config/utils/getConfig';
 
 const apiService: any = create({
     baseURL: getConfig('env.apiBaseUrl'),
@@ -44,7 +44,9 @@ export const initApiMiddleware = (getState: any, dispatch: any) => {
             data: 'body',
         });
 
-        const {ok, headers, status, problem, originalError, config, body}: any = reMappingResponse;
+        const {
+            ok, headers, status, problem, originalError, config, body,
+        }: any = reMappingResponse;
 
         if (ok) {
             /** 請求成功, 額外處理區塊 */
@@ -70,7 +72,7 @@ export const initApiMiddleware = (getState: any, dispatch: any) => {
                         dispatch(replace('/no-access'));
                         break;
                     default:
-                    throw new Error(message);
+                        throw new Error(message);
                 }
 
             } else if (problem) {
@@ -88,9 +90,7 @@ export const initApiMiddleware = (getState: any, dispatch: any) => {
  * @param func
  * @returns {{}}
  */
-const reMapping = (func: any) => {
-    return autoMapper(func, {data: 'body'});
-};
+const reMapping = (func: any) => autoMapper(func, {data: 'body'});
 
 export default {
     get: async (...params: any) => reMapping(await apiService.get(...params)),

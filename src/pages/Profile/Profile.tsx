@@ -32,31 +32,31 @@ const Profile = (props: Props) => {
     ] : [];
 
     return (
-            <Container>
+        <Container>
 
-                <Row className="align-items-center">
-                    <Col lg>
-                        <div className="text-center">
-                            <PageSubTitle>{i18n({id: 'page.profile.subTitle'}, {email: get(payload, 'email', '')})}</PageSubTitle>
-                            <PageTitle dangerouslySetInnerHTML={{__html: i18n({id: 'page.profile.title'})}}/>
-                        </div>
-                    </Col>
-                </Row>
+            <Row className="align-items-center">
+                <Col lg>
+                    <div className="text-center">
+                        <PageSubTitle>{i18n({id: 'page.profile.subTitle'}, {email: get(payload, 'email', '')})}</PageSubTitle>
+                        <PageTitle dangerouslySetInnerHTML={{__html: i18n({id: 'page.profile.title'})}}/>
+                    </div>
+                </Col>
+            </Row>
 
-                {
-                    columnLust.map(row => (
-                        <Row key={row.key} className="justify-content-center">
-                            <Col col={6}>
-                                <div>{row.column}</div>
-                            </Col>
-                            <Col col={6}>
-                                <div>{row.value}</div>
-                            </Col>
-                        </Row>
-                    ))
-                }
+            {
+                columnLust.map(row => (
+                    <Row key={row.key} className="justify-content-center">
+                        <Col col={6}>
+                            <div>{row.column}</div>
+                        </Col>
+                        <Col col={6}>
+                            <div>{row.value}</div>
+                        </Col>
+                    </Row>
+                ))
+            }
 
-            </Container>
+        </Container>
     );
 };
 

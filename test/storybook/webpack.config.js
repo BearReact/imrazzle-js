@@ -1,7 +1,7 @@
 const merge = require('lodash/merge');
-const webpackBase = require('../../webpack.config');
+// const webpackBase = require('../../webpack.config');
 
-module.exports = merge(webpackBase, {
+module.exports = merge({}, {
     module: {
         rules: [
             {

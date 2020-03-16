@@ -55,9 +55,11 @@ const themeConfig = {
  * @constructor
  */
 const PlayButton = (props: Props) => {
-    const {className, style, children, theme, type}: any = props;
+    const {
+        className, style, children, theme, type,
+    }: any = props;
 
-    const activeTheme = get(themeConfig, theme,  {});
+    const activeTheme = get(themeConfig, theme, {});
 
     return (
         <PlayButtonRoot
@@ -99,7 +101,7 @@ const PlayButtonRoot: any = styled.button`
     justify-content: center;
     align-items: center;
     position: relative;
-    padding: ${(props : any) =>props.baseTheme.padding || `${px2vw(2)} ${px2vw(10)}`};
+    padding: ${(props : any) => props.baseTheme.padding || `${px2vw(2)} ${px2vw(10)}`};
 
     transition:
         background-color .3s ease-out,
@@ -111,19 +113,19 @@ const PlayButtonRoot: any = styled.button`
 
     color: #fff;
     text-shadow: 0 0 2px rgba(0, 0, 0, 0.35);
-    -webkit-text-stroke: ${(props : any) =>props.baseTheme.textStroke};
+    -webkit-text-stroke: ${(props : any) => props.baseTheme.textStroke};
     font-size: ${px2vw(16)};
     font-weight: bold;
     
-    ${(props : any) =>props.baseTheme.shape === '50%' && css`
+    ${(props : any) => props.baseTheme.shape === '50%' && css`
         box-shadow: inset 0 -6px rgba(0, 0, 0, 0.3);
     `}
 
-    border-color: ${(props : any) =>props.baseTheme.borderColor};
-    background: ${(props : any) =>props.baseTheme.background};
-    border-radius: ${(props : any) =>props.baseTheme.shape};
-    width: ${(props : any) =>props.baseTheme.width};
-    height: ${(props : any) =>props.baseTheme.height};
+    border-color: ${(props : any) => props.baseTheme.borderColor};
+    background: ${(props : any) => props.baseTheme.background};
+    border-radius: ${(props : any) => props.baseTheme.shape};
+    width: ${(props : any) => props.baseTheme.width};
+    height: ${(props : any) => props.baseTheme.height};
     overflow: hidden;
 
 
@@ -136,7 +138,7 @@ const PlayButtonRoot: any = styled.button`
         background-color: rgba(255, 255, 255, 0.2);
         transition: background-color .3s ease-out;
         
-        ${(props : any) =>props.baseTheme.shape === '50%' && css`
+        ${(props : any) => props.baseTheme.shape === '50%' && css`
             box-shadow: ${props.baseTheme.width} ${props.baseTheme.height} 0 0
         `}
     }
@@ -145,25 +147,25 @@ const PlayButtonRoot: any = styled.button`
     ${CustomIcon} {
         i {
             transition: color .3s ease-out, border .3s ease-out;
-            color: ${(props : any) =>props.baseTheme.iconColor};
+            color: ${(props : any) => props.baseTheme.iconColor};
 
           &:before {
-                font-size: ${(props : any) =>props.baseTheme.fontSize};
+                font-size: ${(props : any) => props.baseTheme.fontSize};
             }
         }
     }
 
     &:hover {
-        border-color: ${(props : any) =>props.baseTheme.hoverBorderColor};
+        border-color: ${(props : any) => props.baseTheme.hoverBorderColor};
         ${CustomIcon} {
             i {
-                color: ${(props : any) =>props.baseTheme.hoverColor || props.baseTheme.iconColor};
+                color: ${(props : any) => props.baseTheme.hoverColor || props.baseTheme.iconColor};
             }
         }
-        box-shadow: ${(props : any) =>props.baseTheme.shape === '50%' ? '0 0 20px 0 rgba(0, 0, 0, 0.2), inset 0 -6px rgba(0, 0, 0, 0.39)' : '0 0 20px 0 rgba(0, 0, 0, 0.2), inset 0 -6px rgba(0, 0, 0, 0.3)'};
+        box-shadow: ${(props : any) => (props.baseTheme.shape === '50%' ? '0 0 20px 0 rgba(0, 0, 0, 0.2), inset 0 -6px rgba(0, 0, 0, 0.39)' : '0 0 20px 0 rgba(0, 0, 0, 0.2), inset 0 -6px rgba(0, 0, 0, 0.3)')};
         transform: translateY(-5px);
-        background: ${(props : any) =>props.baseTheme.hoverBackground || props.baseTheme.background};
-        -webkit-text-stroke: ${(props : any) =>props.baseTheme.hoverTextStroke};
+        background: ${(props : any) => props.baseTheme.hoverBackground || props.baseTheme.background};
+        -webkit-text-stroke: ${(props : any) => props.baseTheme.hoverTextStroke};
 
         &:before {
             background-color: rgba(255, 255, 255, 0.2);

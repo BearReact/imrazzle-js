@@ -8,6 +8,7 @@ class ScrollTopProvider extends React.PureComponent {
             window.scrollTo(0, 0);
         }
     }
+
     render() {
         const {children} = this.props;
         return children;

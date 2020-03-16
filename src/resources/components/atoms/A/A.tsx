@@ -20,20 +20,22 @@ type Props = {
  * @constructor
  */
 const A = (props: Props) => {
-    const {href, as, alt, style, className, children, onClick}: any = props;
+    const {
+        href, as, alt, style, className, children, onClick,
+    }: any = props;
 
     const params = {
         to: as === 'a' ? undefined : href,
-        href:as === 'a' ? href : undefined,
-        as: as,
-        alt:alt,
-        style: style,
-        className:className,
-        onClick: onClick,
+        href: as === 'a' ? href : undefined,
+        as,
+        alt,
+        style,
+        className,
+        onClick,
     };
 
     return (
-        // @ts-ignore
+    // @ts-ignore
         <Link {...params}>{children}</Link>
     );
 };

@@ -24,5 +24,5 @@ export function uploadUrl(path: string) {
  * @returns {string}
  */
 export function routePath(path: string) {
-    return (`${getConfig('env.routePrefixPath', '')}/${path}`).replace('//','/');
+    return (`${getConfig('env.routePrefixPath', '')}/${path}`).replace('//', '/');
 }

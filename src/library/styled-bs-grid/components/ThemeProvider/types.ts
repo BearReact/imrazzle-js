@@ -18,9 +18,9 @@ export type gridProps = {
         xl: number,
         xxl: number,
     },
-}
+};
 
 export type themeProps = {
     gridTheme: gridProps,
     children: React.ReactNode,
-}
+};

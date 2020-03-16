@@ -4,7 +4,7 @@ const css: ColCss = {
     col: (column: any, gridColumns: number) => {
         let colFlexBasis: number = 0;
 
-        switch(column){
+        switch (column) {
             case true:
                 return `
           -ms-flex-preferred-size: 0;

@@ -157,7 +157,9 @@ const shapeConfig = {
  * @constructor
  */
 const Button = (props: Props) => {
-    const {className, style, children, theme, size, shape, type, block}: any = props;
+    const {
+        className, style, children, theme, size, shape, type, block,
+    }: any = props;
 
     const activeTheme = get(themeConfig, theme, {});
     const activeSizeConfig = get(sizeConfig, size, {});
@@ -194,18 +196,18 @@ const ButtonRoot: any = styled.button`
     justify-content: center;
     align-items: center;
     position: relative;
-    padding: ${(props : any) =>props.baseTheme.padding || `${px2vw(2)} ${px2vw(10)}`};
+    padding: ${(props : any) => props.baseTheme.padding || `${px2vw(2)} ${px2vw(10)}`};
 
-    width: ${(props : any) =>(props.baseTheme.block ? '100%' : 'auto')};
+    width: ${(props : any) => (props.baseTheme.block ? '100%' : 'auto')};
     max-width: 100%;
 
-    background-color: ${(props : any) =>props.baseTheme.bgColor};
-    color: ${(props : any) =>props.baseTheme.fontColor};
-    border-color: ${(props : any) =>props.baseTheme.borderColor};
-    border-radius: ${(props : any) =>props.baseTheme.shape};
-    font-size: ${(props : any) =>px2vw(props.baseTheme.fontSize)};
-    font-weight: ${(props : any) =>props.baseTheme.fontWeight};
-    min-height: ${(props : any) =>px2vw(props.baseTheme.minHeight)};
+    background-color: ${(props : any) => props.baseTheme.bgColor};
+    color: ${(props : any) => props.baseTheme.fontColor};
+    border-color: ${(props : any) => props.baseTheme.borderColor};
+    border-radius: ${(props : any) => props.baseTheme.shape};
+    font-size: ${(props : any) => px2vw(props.baseTheme.fontSize)};
+    font-weight: ${(props : any) => props.baseTheme.fontWeight};
+    min-height: ${(props : any) => px2vw(props.baseTheme.minHeight)};
     transition: background-color .3s ease-out, color .3s ease-out, border-color .3s ease-out, box-shadow .3s ease-out;
 
 
@@ -217,15 +219,15 @@ const ButtonRoot: any = styled.button`
     };
 
     &:not([disabled]):hover {
-        background-color: ${(props : any) =>props.baseTheme.hoverBgColor};
-        border-color: ${(props : any) =>props.baseTheme.hoverBorderColor};
-        color: ${(props : any) =>props.baseTheme.hoverFontColor};
-        box-shadow: ${(props : any) =>props.baseTheme.hoverBoxShadow || '0 0 20px 0 rgba(0, 0, 0, 0.2)'};
+        background-color: ${(props : any) => props.baseTheme.hoverBgColor};
+        border-color: ${(props : any) => props.baseTheme.hoverBorderColor};
+        color: ${(props : any) => props.baseTheme.hoverFontColor};
+        box-shadow: ${(props : any) => props.baseTheme.hoverBoxShadow || '0 0 20px 0 rgba(0, 0, 0, 0.2)'};
     }
 
     ${media.lg`
-        font-size: ${(props : any) =>props.baseTheme.fontSize}px;
-        min-height: ${(props : any) =>props.baseTheme.minHeight};
+        font-size: ${(props : any) => props.baseTheme.fontSize}px;
+        min-height: ${(props : any) => props.baseTheme.minHeight};
         padding: 0 10px;
 
         // fix ie11

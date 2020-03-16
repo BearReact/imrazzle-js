@@ -6,10 +6,9 @@ import {version} from '../../../package.json';
 
 dotenv.config();
 
-
 // env setting
 const initConfig = {
-    version: version,
+    version,
     env: {
         siteENV: get(process, 'env.SITE_ENV', 'production'),
         staticPrefixUrl: get(process, 'env.STATIC_PREFIX_URL', appConfig.defaultStaticPrefixUrl),
@@ -27,23 +26,24 @@ const initConfig = {
  * @param defaultReturn
  */
 export const getConfig = (pathKey: string, defaultReturn?: string) => {
-    if(typeof window !== 'undefined'){
+    if (typeof window !== 'undefined') {
 
         interface window {
             __global__: any;
         }
 
         // @ts-ignore
+        // eslint-disable-next-line no-underscore-dangle
         return get(window.__global__, pathKey, defaultReturn);
-    }else{
-        if(get(initConfig, pathKey, false)){
-            return get(initConfig, pathKey, defaultReturn);
-        }
-        // @ts-ignore
-        return get(global.__global__, pathKey, defaultReturn);
     }
-};
+    if (get(initConfig, pathKey, false)) {
+        return get(initConfig, pathKey, defaultReturn);
+    }
+    // @ts-ignore
+    // eslint-disable-next-line no-underscore-dangle
+    return get(global.__global__, pathKey, defaultReturn);
 
+};
 
 /**
  * Server 產生站台設定
@@ -53,11 +53,12 @@ export const getConfig = (pathKey: string, defaultReturn?: string) => {
 export const serverGenerateConfig = (siteCode: string) => {
     const siteConfig = sites.find(row => row.siteCode === siteCode);
 
-    if(siteConfig === undefined){
+    if (siteConfig === undefined) {
         return {errorMessage: `throw Error: Site code could not find the site settings, please check SITE_CODE(${siteCode}) and src config/site.js`};
     }
 
     // @ts-ignore
+    // eslint-disable-next-line no-underscore-dangle
     global.__global__ = Object.assign({}, initConfig, {
         site: {
             ...siteConfig,
@@ -66,5 +67,6 @@ export const serverGenerateConfig = (siteCode: string) => {
     });
 
     // @ts-ignore
+    // eslint-disable-next-line no-underscore-dangle
     return global.__global__;
 };

@@ -6,13 +6,9 @@ import {themeName} from '../../config';
 import media from '../../media';
 import getDataName from './getDataName';
 
-const generateMedia = (props: any) => {
-    return Object.keys(props.theme[themeName].gridBreakpoints).map(sizeName => {
-        return media[sizeName]`
+const generateMedia = (props: any) => Object.keys(props.theme[themeName].gridBreakpoints).map(sizeName => media[sizeName]`
                 max-width: ${props.theme[themeName].gridBreakpoints[sizeName]}px;
-            `;
-    });
-};
+            `);
 
 /**
  * Row Component

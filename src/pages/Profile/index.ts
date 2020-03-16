@@ -23,6 +23,6 @@ export default compose(
     injectReducerSaga('profile', {reducer, saga}),
     connect(
         mapStateToProps,
-        mapDispatchToProps
-    )
+        mapDispatchToProps,
+    ),
 )(Profile);

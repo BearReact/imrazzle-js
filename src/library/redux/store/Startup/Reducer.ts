@@ -32,7 +32,7 @@ export const {Types, Creators}: any = createActions(
     },
     {
         prefix: `${PREFIX}/`,
-    }
+    },
 );
 
 export default Creators;

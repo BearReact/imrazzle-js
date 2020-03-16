@@ -18,10 +18,10 @@ export function formatCurrency(val: number = 0, isDecimal2 = true) {
  */
 export function toDecimal2(x: any) {
     let f = parseFloat(x);
-    if (isNaN(f)) {
+    if (Number.isNaN(f)) {
         return false;
     }
-    f = Math.round( x * 100) / 100;
+    f = Math.round(x * 100) / 100;
     let s = f.toString();
     let rs = s.indexOf('.');
     if (rs < 0) {
@@ -44,7 +44,7 @@ export function toDecimal2(x: any) {
  * result = {min: 5, max: 20}
  * @param obj
  */
-export function intersectionMin(...obj: any){
+export function intersectionMin(...obj: any) {
     let min: any = 0;
     let max: any = null;
 
@@ -65,7 +65,7 @@ export function intersectionMin(...obj: any){
         return true;
     });
 
-    if(min > max){
+    if (min > max) {
         min = null;
         max = null;
     }
