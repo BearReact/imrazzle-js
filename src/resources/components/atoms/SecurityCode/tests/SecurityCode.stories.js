@@ -1,9 +1,7 @@
-// @flow
 import React, {useState} from 'react';
 import styled from 'styled-components';
 import {Col, Container, Row} from '@styled-bs-grid';
 import {useForm} from 'react-hook-form';
-import renderPropsTable from '@test/storybook/addonConfig/renderPropsTable';
 import {isEmpty} from '@utils/equal';
 
 import readeMe from './SecurityCode.stories.md';
@@ -12,7 +10,7 @@ import SecurityCode from '../SecurityCode';
 export default {
     title: 'Atoms|SecurityCode',
     parameters: {
-        notes: readeMe + renderPropsTable(SecurityCode),
+        notes: readeMe,
     },
 };
 
