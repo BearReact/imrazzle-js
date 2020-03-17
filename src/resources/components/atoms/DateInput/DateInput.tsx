@@ -1,7 +1,3 @@
-// @flow
-/**
- * DatePickerInput
- */
 import React, {useRef, useState} from 'react';
 import styled, {css} from 'styled-components';
 import {media} from '@styled-bs-grid';
@@ -18,6 +14,11 @@ type Props = {
     forwardRef?: Function;
 };
 
+/**
+ * DatePicker Input
+ * @param props
+ * @constructor
+ */
 const DateInput = (props: Props) => {
     const {
         label, isSetTodayVisible, value, name, forwardRef,

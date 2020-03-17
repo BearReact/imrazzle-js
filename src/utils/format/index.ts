@@ -80,7 +80,7 @@ export function HEXToRGBA(hex: string, opacity = 1) {
  * @param length 補滿的目標长度
  * @returns {*}
  */
-export function paddingLeft(val: string, length: number): any {
+export function paddingLeft(val: string|number, length: number): any {
     if (String(val).length >= length) {
         return val;
     }
