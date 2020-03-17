@@ -6,12 +6,12 @@ import {media} from '@styled-bs-grid';
 import px2vw from '@config/utils/getPx2vw';
 
 type Props = {
-    style?: CSS.Properties,
-    className?: string,
-    name?: string,
-    length?: any,
-    forwardRef?: Function,
-    onChange?: Function,
+    style?: CSS.Properties;
+    className?: string;
+    name?: string;
+    length?: any;
+    forwardRef?: Function;
+    onChange?: Function;
 };
 
 /**
@@ -143,7 +143,7 @@ SecurityCode.defaultProps = {
 export default SecurityCode;
 
 const SerialInput = styled.input`
-    color: ${(props : any) => props.theme.primaryColor};
+    color: ${(props: any) => props.theme.primaryColor};
     width: ${px2vw(30)};
     font-size: ${px2vw(20)};
 
@@ -168,7 +168,7 @@ const SerialInput = styled.input`
 
 
     &:not(:placeholder-shown) {
-        border-bottom-color: ${(props : any) => props.theme.primaryColor};
+        border-bottom-color: ${(props: any) => props.theme.primaryColor};
     }
 
     ${media.lg`

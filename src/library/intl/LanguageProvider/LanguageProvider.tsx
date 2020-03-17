@@ -22,9 +22,9 @@ const TranslationWrapper = ({dangerouslySetInnerHTML, ...props}: IProps) => (dan
 ));
 
 type Props = {
-    locale: string,
-    messages: object,
-    children: React.ReactNode
+    locale: string;
+    messages: object;
+    children: React.ReactNode;
 };
 
 const LanguageProvider = (props: Props) => {

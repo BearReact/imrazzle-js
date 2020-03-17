@@ -11,7 +11,7 @@ const getBreakpoints = (props: any) => ({
 const media: any = Object.keys(defaultTheme.gridBreakpoints).reduce(
     (accumulator, label) => {
         const minMedia = (strings: any, ...interpolations: any) => css`
-      @media (min-width: ${(props : any) => getBreakpoints(props)[label]}px) {
+      @media (min-width: ${(props: any) => getBreakpoints(props)[label]}px) {
         ${css(strings, ...interpolations)}
       }
     `;

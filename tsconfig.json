@@ -57,8 +57,7 @@
     "package.json",
     "**/*/tests/*",
     "public/**/*",
-    "./internals",
-    "./razzle.config.js"
+    "./internals"
   ],
   "types": ["typePatches", "node", "webpack-env"]
 }

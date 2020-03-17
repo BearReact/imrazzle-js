@@ -20,7 +20,7 @@ export function serialize(obj: {} = {}) {
  * @param val QueryString 字串
  * @returns {undefined}
  */
-export function parseQueryString(val: string = '') {
+export function parseQueryString(val = '') {
     const pairs = val.replace(/^.*\?/, '').split('&');
     const obj = {};
 
@@ -35,7 +35,6 @@ export function parseQueryString(val: string = '') {
     return undefined;
 }
 
-// @ts-ignore
 /**
  * 取得主網域(二級域名)
  * 若非正確網址, 例如是IP位置就會回傳空白

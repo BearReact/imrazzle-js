@@ -1,10 +1,10 @@
-import React from 'react';
+// import React from 'react';
 import express from 'express';
 import {resolve} from 'path';
 import get from 'lodash/get';
 import cookiesMiddleware from 'universal-cookie-express';
 import {isEmpty} from '@utils/equal';
-import appConfig from '@config/app';
+// import appConfig from '@config/app';
 import {routePath} from '@config/utils/getAssetPrefix';
 import serverGeneratePage from './serverGeneratePage';
 

@@ -9,7 +9,7 @@ import type {ColProps} from './types';
 import type {themeProps} from '../ThemeProvider/types';
 
 type Props = ColProps & {
-    theme: themeProps,
+    theme: themeProps;
 };
 
 // eslint-disable-next-line array-callback-return

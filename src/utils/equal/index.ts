@@ -4,7 +4,7 @@
  * @param isCheckNumber0
  * @returns {boolean}
  */
-export function isEmpty(value: any, isCheckNumber0: boolean = false) {
+export function isEmpty(value: any, isCheckNumber0 = false) {
     return (
         value === undefined
         || value === null

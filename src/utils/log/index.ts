@@ -21,7 +21,7 @@ function messageConsole(title: string, styles: any, watchData = '') {
  * @param title
  * @param watchData
  */
-function primary(title: string, watchData: string = '') {
+function primary(title: string, watchData = '') {
     const styles = baseStyles.concat([
         'background-color: #007bff',
     ]).join(';');
@@ -34,7 +34,7 @@ function primary(title: string, watchData: string = '') {
  * @param title
  * @param watchData
  */
-function success(title: string, watchData: string = '') {
+function success(title: string, watchData = '') {
     const styles = baseStyles.concat([
         'background-color: #28a745',
     ]).join(';');
@@ -47,7 +47,7 @@ function success(title: string, watchData: string = '') {
  * @param title
  * @param watchData
  */
-function info(title: string, watchData: string = '') {
+function info(title: string, watchData = '') {
     const styles = baseStyles.concat([
         'background-color: #17a2b8',
     ]).join(';');
@@ -60,7 +60,7 @@ function info(title: string, watchData: string = '') {
  * @param title
  * @param watchData
  */
-function warning(title: string, watchData: string = '') {
+function warning(title: string, watchData = '') {
     const styles = baseStyles.concat([
         'background-color: #ffc107',
     ]).join(';');
@@ -73,7 +73,7 @@ function warning(title: string, watchData: string = '') {
  * @param title
  * @param watchData
  */
-function danger(title: string, watchData: string = '') {
+function danger(title: string, watchData = '') {
     const styles = baseStyles.concat([
         'background-color: #ec2127',
     ]).join(';');

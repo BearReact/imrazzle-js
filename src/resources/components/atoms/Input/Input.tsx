@@ -6,19 +6,19 @@ import px2vw from '@config/utils/getPx2vw';
 import Icon from '@components/atoms/Icon';
 
 type Props = {
-    forwardRef?: Function,
-    type?: 'text' | 'number' | 'password' | 'tel',
-    inputType?: 'normal' | 'material',
-    name?: string,
-    placeholder?: string,
-    defaultValue?: string,
-    readonly?: boolean,
-    errorMessage?: string,
-    remarkMessage?: string,
-    beforeIconCode?: string,
-    beforeIconOnClick?: Function,
-    afterIconCode?: string,
-    afterIconOnClick?: Function,
+    forwardRef?: Function;
+    type?: 'text' | 'number' | 'password' | 'tel';
+    inputType?: 'normal' | 'material';
+    name?: string;
+    placeholder?: string;
+    defaultValue?: string;
+    readonly?: boolean;
+    errorMessage?: string;
+    remarkMessage?: string;
+    beforeIconCode?: string;
+    beforeIconOnClick?: Function;
+    afterIconCode?: string;
+    afterIconOnClick?: Function;
 };
 
 /**
@@ -155,7 +155,7 @@ export default Input;
 const Remark: any = styled.div`
     font-size: ${px2vw(12)};
     padding-top: ${px2vw(5)};
-    color: ${(props : any) => (props.isError ? '#ff4b4b' : '#c4c4c4')};
+    color: ${(props: any) => (props.isError ? '#ff4b4b' : '#c4c4c4')};
     display: flex;
     align-items: center;
     
@@ -213,7 +213,7 @@ const CustomIcon = styled(Icon)`
     order: 2;
     
     &:hover {
-        color: ${(props : any) => props.theme.primaryColor};
+        color: ${(props: any) => props.theme.primaryColor};
     }
     
     >i {
@@ -264,7 +264,7 @@ const TextBox: any = styled.input`
         max-height: 60px;
     `}
     
-    ${(props : any) => props.inputType !== 'normal' && css`
+    ${(props: any) => props.inputType !== 'normal' && css`
         padding-left: 20px;
         
         ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
@@ -315,14 +315,14 @@ const TextBox: any = styled.input`
         `}
     `}
     
-    ${(props : any) => props.readonly && css`
+    ${(props: any) => props.readonly && css`
         &~${Border} {
             border-color: #c4c4c4;
             pointer-events: auto;
         }
     `}
     
-    ${(props : any) => props.isError && css`
+    ${(props: any) => props.isError && css`
         &~${Border} {
             border-color: #ff4b4b !important;
             

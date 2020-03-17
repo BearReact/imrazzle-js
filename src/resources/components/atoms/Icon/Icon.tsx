@@ -6,23 +6,23 @@ import {media} from '@styled-bs-grid';
 import px2vw from '@config/utils/getPx2vw';
 
 type Props = {
-    shapeType?: string,
-    shapeSize?: number,
-    shapeColor?: string,
-    shapeBorder?: number,
-    style?: CSS.Properties,
-    className?: string,
-    type?: 'fontClass' | 'svg',
-    isInline?: boolean,
-    onClick?: Function,
-    size?: number,
-    top?: number,
-    bottom?: number,
-    left?: number,
-    right?: number,
-    color?: string,
-    code: string,
-    isRotate?: boolean,
+    shapeType?: string;
+    shapeSize?: number;
+    shapeColor?: string;
+    shapeBorder?: number;
+    style?: CSS.Properties;
+    className?: string;
+    type?: 'fontClass' | 'svg';
+    isInline?: boolean;
+    onClick?: Function;
+    size?: number;
+    top?: number;
+    bottom?: number;
+    left?: number;
+    right?: number;
+    color?: string;
+    code: string;
+    isRotate?: boolean;
 };
 
 const shapeSetting = {
@@ -133,31 +133,31 @@ const rotate = keyframes`
 
 const IconImage: any = styled.i`
     display: inline-flex;
-    color: ${(props : any) => (props.color ? props.color : '#bdbdbd')};
-    font-size: ${(props : any) => px2vw(props.size)};
+    color: ${(props: any) => (props.color ? props.color : '#bdbdbd')};
+    font-size: ${(props: any) => px2vw(props.size)};
     font-weight: 100;
     height: auto;
     line-height: normal;
 
-    margin-bottom: ${(props : any) => (props.bottom ? `${props.bottom}px` : 'unset')};
-    margin-top: ${(props : any) => (props.top ? `${props.top}px` : 'unset')};
-    margin-right: ${(props : any) => (props.right ? `${props.right}px` : 'unset')};
-    margin-left: ${(props : any) => (props.left ? `${props.left}px` : 'unset')};
+    margin-bottom: ${(props: any) => (props.bottom ? `${props.bottom}px` : 'unset')};
+    margin-top: ${(props: any) => (props.top ? `${props.top}px` : 'unset')};
+    margin-right: ${(props: any) => (props.right ? `${props.right}px` : 'unset')};
+    margin-left: ${(props: any) => (props.left ? `${props.left}px` : 'unset')};
     
     ${media.lg`
-        font-size: ${(props : any) => props.size}px;
+        font-size: ${(props: any) => props.size}px;
     `}
         
 `;
 
 const IconGroup: any = styled.div`
     position: relative;
-    display: ${(props : any) => (props.isInline ? 'inline-flex' : 'flex')};
+    display: ${(props: any) => (props.isInline ? 'inline-flex' : 'flex')};
     align-items: center;
     justify-content: center;
     vertical-align: middle;
 
-    ${(props : any) => props.shapeType && css`
+    ${(props: any) => props.shapeType && css`
         border-radius: ${shapeSetting[props.shapeType]};
         width: ${px2vw(props.shapeSize)};
         height: ${px2vw(props.shapeSize)};
@@ -170,7 +170,7 @@ const IconGroup: any = styled.div`
         `}
     `}
     
-    ${(props : any) => props.isRotate && css`
+    ${(props: any) => props.isRotate && css`
         animation: ${rotate} 1s linear infinite;
     `}
 `;
@@ -178,27 +178,27 @@ const IconGroup: any = styled.div`
 const IconSvg: any = styled.svg`
     &.icon{
         display: inline-flex;
-        color: ${(props : any) => (props.color ? props.color : '#bdbdbd')};
-        font-size: ${(props : any) => px2vw(props.size)};
+        color: ${(props: any) => (props.color ? props.color : '#bdbdbd')};
+        font-size: ${(props: any) => px2vw(props.size)};
         font-weight: 100;
         line-height: normal;
         
-        width: ${(props : any) => px2vw(props.size)};
-        height: ${(props : any) => px2vw(props.size)};
+        width: ${(props: any) => px2vw(props.size)};
+        height: ${(props: any) => px2vw(props.size)};
         vertical-align: -0.15em;
         fill: currentColor;
         overflow: hidden;
        
 
-        margin-bottom: ${(props : any) => (props.bottom ? `${props.bottom}px` : 'unset')};
-        margin-top: ${(props : any) => (props.top ? `${props.top}px` : 'unset')};
-        margin-right: ${(props : any) => (props.right ? `${props.right}px` : 'unset')};
-        margin-left: ${(props : any) => (props.left ? `${props.left}px` : 'unset')};
+        margin-bottom: ${(props: any) => (props.bottom ? `${props.bottom}px` : 'unset')};
+        margin-top: ${(props: any) => (props.top ? `${props.top}px` : 'unset')};
+        margin-right: ${(props: any) => (props.right ? `${props.right}px` : 'unset')};
+        margin-left: ${(props: any) => (props.left ? `${props.left}px` : 'unset')};
         
         ${media.lg`
-            font-size: ${(props : any) => props.size}px;
-            width: ${(props : any) => props.size}px;
-            height: ${(props : any) => props.size}px;
+            font-size: ${(props: any) => props.size}px;
+            width: ${(props: any) => props.size}px;
+            height: ${(props: any) => props.size}px;
         `}
        
     }

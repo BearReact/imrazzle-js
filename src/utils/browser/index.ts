@@ -26,7 +26,7 @@ export function isIE() {
  */
 export function isLine() {
     const u = navigator.userAgent;
-    return u.indexOf('Line') > -1;
+    return u.includes('Line');
 }
 
 /**
@@ -35,7 +35,7 @@ export function isLine() {
  */
 export function isFacebook() {
     const u = navigator.userAgent;
-    return u.indexOf('FBAV') > -1;
+    return u.includes('FBAV');
 }
 
 /**
@@ -54,7 +54,7 @@ export function isWechat() {
  */
 export function isSafari() {
     const userAgent = window.navigator.userAgent.toLowerCase();
-    return /safari/.test(userAgent) && !/chrome/.test(userAgent);
+    return userAgent.includes('safari') && !userAgent.includes('chrome');
 }
 
 /**

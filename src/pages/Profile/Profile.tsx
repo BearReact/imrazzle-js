@@ -7,11 +7,11 @@ import type {payloadType} from '@store/Auth/type';
 import type {currentDataType, isFetchingType} from './store/type';
 
 type Props = {
-    intl: any,
-    fetchCurrent?: Function,
-    currentData?: currentDataType,
-    isFetching?: isFetchingType,
-    payload?: payloadType,
+    intl: any;
+    fetchCurrent?: Function;
+    currentData?: currentDataType;
+    isFetching?: isFetchingType;
+    payload?: payloadType;
 };
 
 const Profile = (props: Props) => {

@@ -9,12 +9,12 @@ import {
 import {asset} from '@config/utils/getAssetPrefix';
 
 type Props = {
-    intl: any,
-    onSignIn: Function,
-    onSignOut: Function,
-    isSubmitting?: boolean,
-    token?: string,
-    isAuth?: boolean,
+    intl: any;
+    onSignIn: Function;
+    onSignOut: Function;
+    isSubmitting?: boolean;
+    token?: string;
+    isAuth?: boolean;
 };
 
 const Home = (props: Props) => {

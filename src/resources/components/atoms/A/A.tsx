@@ -2,13 +2,13 @@ import * as React from 'react';
 import {Link} from 'react-router-dom';
 
 type Props = {
-    href: string,
-    as?: string,
-    alt?: string,
-    style?: {},
-    className?: string,
-    children?: React.ReactNode,
-    onClick?: Function,
+    href: string;
+    as?: string;
+    alt?: string;
+    style?: {};
+    className?: string;
+    children?: React.ReactNode;
+    onClick?: Function;
 };
 
 /**

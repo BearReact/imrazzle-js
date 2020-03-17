@@ -3,9 +3,9 @@ import * as CSS from 'csstype';
 import styled from 'styled-components';
 
 type Props = {
-    style?: CSS.Properties,
-    className?: string,
-    children?: React.ReactNode,
+    style?: CSS.Properties;
+    className?: string;
+    children?: React.ReactNode;
 };
 
 /**

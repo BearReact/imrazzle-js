@@ -4,7 +4,7 @@
  * @param isDecimal2 保留小數2位
  * @returns {string}
  */
-export function formatCurrency(val: number = 0, isDecimal2 = true) {
+export function formatCurrency(val = 0, isDecimal2 = true) {
     const dec = isDecimal2 ? toDecimal2(val) : Math.floor(val);
     const parts = dec.toString().split('.');
     parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ',');

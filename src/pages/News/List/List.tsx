@@ -8,16 +8,16 @@ import {
 } from '@styled-bs-grid';
 
 type Props = {
-    intl: any,
-    isFetching?: boolean,
-    fetchPaginate: Function,
+    intl: any;
+    isFetching?: boolean;
+    fetchPaginate: Function;
     paginateData?: Array<{
-        id: number,
-        title: string,
-        author: string,
-        thumb: string,
-        avatar: string,
-    }>,
+        id: number;
+        title: string;
+        author: string;
+        thumb: string;
+        avatar: string;
+    }>;
 };
 
 const List = (props: Props) => {

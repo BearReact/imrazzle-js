@@ -3,8 +3,8 @@ import {object} from 'prop-types';
 import {useStore} from 'react-redux';
 
 type injectStoreProps = {
-    reducer: any,
-    saga: any,
+    reducer: any;
+    saga: any;
 };
 
 /**

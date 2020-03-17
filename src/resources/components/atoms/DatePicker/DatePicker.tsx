@@ -9,13 +9,13 @@ import {isEmpty} from '@utils/equal';
 import Icon from '@components/atoms/Icon';
 
 type Props = {
-    intl: { formatMessage: Function },
-    isSetTodayVisible?: boolean,
-    value?: string,
-    format?: string,
-    name?: string,
-    forwardRef?: any,
-    onChange: Function,
+    intl: { formatMessage: Function };
+    isSetTodayVisible?: boolean;
+    value?: string;
+    format?: string;
+    name?: string;
+    forwardRef?: any;
+    onChange: Function;
 };
 
 const config = {
@@ -364,7 +364,7 @@ DatePicker.defaultProps = {
 export default injectIntl(DatePicker);
 
 const TodayButton: any = styled.button`
-    color: ${(props : any) => props.theme.primaryColor};
+    color: ${(props: any) => props.theme.primaryColor};
     background-color: transparent;
     flex: 1 1 auto;
     border: none;
@@ -421,12 +421,12 @@ const Day: any = styled(Week)`
         cursor: pointer;
     }
 
-    ${(props : any) => props.isToday && css`
+    ${(props: any) => props.isToday && css`
         color: ${props.theme.primaryColor};
     `};
 
 
-    ${(props : any) => props.isSelected && css`
+    ${(props: any) => props.isSelected && css`
         color: #fff;
 
         :before{
@@ -445,7 +445,7 @@ const PreDay: any = styled(Day)`
         z-index: 1;
     }
 
-    ${(props : any) => props.isSelected && css`
+    ${(props: any) => props.isSelected && css`
         color: #fff;
 
         :before{

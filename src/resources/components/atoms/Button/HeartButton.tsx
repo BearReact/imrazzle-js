@@ -5,9 +5,9 @@ import {media} from '@styled-bs-grid';
 import px2vw from '@config/utils/getPx2vw';
 
 type Props = {
-    style?: CSS.Properties,
-    className?: string,
-    size?: number,
+    style?: CSS.Properties;
+    className?: string;
+    size?: number;
 };
 
 function HeartButton(props: Props) {
@@ -66,12 +66,12 @@ const SecondCircle: any = styled.circle``;
 const EffectCircle: any = styled.g`
     opacity: 0;
     
-    ${(props : any) => props.active && css`  
+    ${(props: any) => props.active && css`  
         opacity:1; 
         transition:.1s all .3s;
     `}
     
-    ${(props : any) => props.position === 'top' && css`
+    ${(props: any) => props.position === 'top' && css`
         transform: translate(24px);
         
         ${FirstCircle} {
@@ -98,7 +98,7 @@ const EffectCircle: any = styled.g`
             `};
         }
     `};
-    ${(props : any) => props.position === 'rightTop' && css`
+    ${(props: any) => props.position === 'rightTop' && css`
         transform: translate(44px, 6px);
         
         ${FirstCircle} {
@@ -124,7 +124,7 @@ const EffectCircle: any = styled.g`
             `};
         }
     `};
-    ${(props : any) => props.position === 'right' && css`
+    ${(props: any) => props.position === 'right' && css`
         transform: translate(52px, 28px);
         
         ${FirstCircle} {
@@ -150,7 +150,7 @@ const EffectCircle: any = styled.g`
             `};
         }
     `};
-    ${(props : any) => props.position === 'rightBottom' && css`
+    ${(props: any) => props.position === 'rightBottom' && css`
         transform: translate(35px, 50px);
         
         ${FirstCircle} {
@@ -176,7 +176,7 @@ const EffectCircle: any = styled.g`
             `};
         }
     `};
-    ${(props : any) => props.position === 'leftBottom' && css`
+    ${(props: any) => props.position === 'leftBottom' && css`
         transform: translate(14px, 50px);
         
         ${FirstCircle} {
@@ -202,7 +202,7 @@ const EffectCircle: any = styled.g`
             `};
         }
     `};
-    ${(props : any) => props.position === 'left' && css`
+    ${(props: any) => props.position === 'left' && css`
         transform: translate(0, 28px);
         
         ${FirstCircle} {
@@ -228,7 +228,7 @@ const EffectCircle: any = styled.g`
             `};
         }
     `};
-    ${(props : any) => props.position === 'leftTop' && css`
+    ${(props: any) => props.position === 'leftTop' && css`
         transform: translate(7px, 6px);
         
         ${FirstCircle} {
@@ -261,7 +261,7 @@ const Circle: any = styled.circle`
     fill: #E2264D; 
     opacity: 0;
     
-    ${(props : any) => props.active && css`
+    ${(props: any) => props.active && css`
         transition:all 2s;
         animation:animateCircle .3s linear forwards;
         opacity:1;
@@ -285,7 +285,7 @@ const HeartPath: any = styled.path`
     transform-origin:center;
     animation:animateHeartOut .3s linear forwards;
     
-    ${(props : any) => props.active && css`
+    ${(props: any) => props.active && css`
         transform:scale(.2); 
         fill:#E2264D; 
         animation:animateHeart .3s linear forwards .25s;
@@ -322,10 +322,10 @@ const HeartContainer = styled.g`
 const HeartSvg: any = styled.svg`
     cursor:pointer;
     overflow:visible;
-    width:${(props : any) => px2vw(props.size)};
+    width:${(props: any) => px2vw(props.size)};
     
     ${media.lg`
-        width:${(props : any) => props.size}px;
+        width:${(props: any) => props.size}px;
     `}
 `;
 

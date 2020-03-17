@@ -6,13 +6,13 @@ import px2vw from '@config/utils/getPx2vw';
 import {media} from '@styled-bs-grid';
 
 type Props = {
-    style?: CSS.Properties,
-    children?: React.ReactNode,
-    className?: string,
-    position?: 'topRight' | 'topLeft' | 'bottomRight' | 'bottomLeft' | 'topCenter' | 'bottomCenter',
-    isTopAnimate?: boolean,
-    isVisibleTips?: boolean,
-    isAnimation?: boolean,
+    style?: CSS.Properties;
+    children?: React.ReactNode;
+    className?: string;
+    position?: 'topRight' | 'topLeft' | 'bottomRight' | 'bottomLeft' | 'topCenter' | 'bottomCenter';
+    isTopAnimate?: boolean;
+    isVisibleTips?: boolean;
+    isAnimation?: boolean;
 };
 
 /**

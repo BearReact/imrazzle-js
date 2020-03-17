@@ -3,6 +3,10 @@ module.exports = {
     parser: '@typescript-eslint/parser',
     extends: [
         'airbnb-typescript',
+        'airbnb/hooks',
+        "plugin:@typescript-eslint/eslint-recommended",
+        "plugin:@typescript-eslint/recommended",
+        "plugin:@typescript-eslint/recommended-requiring-type-checking",
     ],
     plugins: ['@typescript-eslint', 'redux-saga', 'react', 'react-hooks', 'jsx-a11y'],
     env: {
@@ -67,6 +71,7 @@ module.exports = {
         'no-use-before-define': 'off',
         '@typescript-eslint/no-use-before-define': 'off',
         '@typescript-eslint/no-unused-vars': 'off',
+        '@typescript-eslint/ban-ts-ignore': 'off',
         'func-names': 'off',
         'radix': ['error', 'as-needed'],
         'arrow-parens': ['error', 'as-needed'],

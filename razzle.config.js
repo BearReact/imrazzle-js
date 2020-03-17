@@ -1,7 +1,7 @@
 'use strict';
 
 const merge = require('lodash/merge');
-// const webpackBase = require('./webpack.config');
+const webpackBase = require('./webpack.config');
 
 module.exports = {
     plugins: [
@@ -10,17 +10,22 @@ module.exports = {
             options: {
                 useBabel: false,
                 tsLoader: {
-                    transpileOnly: false,
-                    experimentalWatchApi: false,
+                    transpileOnly: true,
+                    experimentalWatchApi: true,
                 },
-                forkTsChecker: false
+                forkTsChecker: {
+                    tsconfig: './tsconfig.json',
+                    tslint: false,
+                    watch: './src',
+                    typeCheck: true,
+                },
             },
         },
     ],
     modify(config, {target, dev}, webpack) {
 
-        // const appConfig = merge(config, webpackBase);
-        const appConfig = webpack;
+        const appConfig = merge(config, webpackBase);
+        // const appConfig = config;
 
         switch (target){
             case 'web':

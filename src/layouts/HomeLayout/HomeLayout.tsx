@@ -12,10 +12,10 @@ import {getConfig} from '@config/utils/getConfig';
 import Router from '@layouts/HomeLayout/Router';
 
 type Props = {
-    intl: any,
-    changeLocale: Function,
-    isAuth: boolean,
-    locale: string,
+    intl: any;
+    changeLocale: Function;
+    isAuth: boolean;
+    locale: string;
 };
 
 const HomeLayout = (props: Props) => {
@@ -134,7 +134,7 @@ const FooterCopyRight = styled.div`
     color: #798795;
 
     a{
-        color: ${(props : any) => props.theme.primaryColor};
+        color: ${(props: any) => props.theme.primaryColor};
     }
 `;
 
@@ -155,10 +155,10 @@ const NavItem: any = styled(Col)`
     }
 
     &.active > a, :hover > a {
-        color: ${(props : any) => props.theme.primaryColor};
+        color: ${(props: any) => props.theme.primaryColor};
     }
     
-    ${(props : any) => props.isHidden && css`
+    ${(props: any) => props.isHidden && css`
         opacity: .3;
     `}
 

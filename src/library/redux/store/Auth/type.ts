@@ -1,4 +1,4 @@
 export type payloadType = {
-    signUpDate: string,
-    exp: string,
+    signUpDate: string;
+    exp: string;
 };

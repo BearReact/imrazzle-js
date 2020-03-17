@@ -15,7 +15,7 @@ export default function createReducer(injectedReducers = {}) {
     });
 
     // 重設APP Redux Store
-    const rootReducer = (state:any, action:any) => {
+    const rootReducer = (state: any, action: any) => {
         if (action.type === 'startup/RESET_APP') {
             // 白名單設定(不做清除)
             const {

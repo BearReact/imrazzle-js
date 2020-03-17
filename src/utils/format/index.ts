@@ -64,7 +64,7 @@ export function HEXToRGB(hex: any) {
  * @returns {Object|number[]}
  * @constructor
  */
-export function HEXToRGBA(hex: string, opacity: number = 1) {
+export function HEXToRGBA(hex: string, opacity = 1) {
     const rgba = HEXToRGB(hex);
     if (typeof rgba === 'object') {
         rgba.push(opacity);
