@@ -1,16 +1,8 @@
-// @flow
-
 import React, {Suspense} from 'react';
 import {IntlProvider} from 'react-intl';
 // import LanguageProvider from "@i18n/provider";
-import {translationMessages, DEFAULT_LOCALE} from '@i18n/i18n';
+import {translationMessages, DEFAULT_LOCALE} from '@i18n';
 
-type Props = {
-    children?: React.Node,
-    i18n: any,
-    locale: string,
-};
-type State = {};
 
 if (!Intl.PluralRules) {
     require('@formatjs/intl-pluralrules/polyfill');
@@ -18,6 +10,7 @@ if (!Intl.PluralRules) {
     require('@formatjs/intl-pluralrules/dist/locale-data/zh'); // Add locale data for de
 }
 
+// @ts-ignore
 if (!Intl.RelativeTimeFormat) {
     require('@formatjs/intl-relativetimeformat/polyfill');
     require('@formatjs/intl-relativetimeformat/dist/locale-data/en'); // Add locale data for de
@@ -34,7 +27,7 @@ const TranslationWrapper = ({dangerouslySetInnerHTML, ...props}) =>
 /**
  * provider
  */
-function I18nProviderWrapper(props: Props) {
+function I18nProviderWrapper(props) {
     const {children, locale, messages} = props;
 
     return (

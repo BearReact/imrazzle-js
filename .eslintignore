@@ -6,3 +6,6 @@ node_modules
 public
 test
 doc
+webpack.config.js
+typings
+*.js
