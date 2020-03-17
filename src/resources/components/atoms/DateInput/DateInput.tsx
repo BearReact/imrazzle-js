@@ -1,35 +1,72 @@
-
+// @flow
 /**
  * DatePickerInput
  */
-import React, {useState} from 'react';
+import React, {useRef, useState} from 'react';
 import styled, {css} from 'styled-components';
 import {media} from '@styled-bs-grid';
+import {isMobile} from '@utils/browser';
 import px2vw from '@config/utils/getPx2vw';
 import DatePicker from '@components/atoms/DatePicker';
 import Icon from '@components/atoms/Icon';
 
 type Props = {
     label?: string;
+    name?: string;
+    value?: string;
     isSetTodayVisible?: boolean;
+    forwardRef?: Function;
 };
 
 const DateInput = (props: Props) => {
-    const {label, isSetTodayVisible}: any = props;
+    const {
+        label, isSetTodayVisible, value, name, forwardRef,
+    }: any = props;
 
-    const [selectedDate, setSelectedDate] = useState(null);
+    const mobileInputRef: any = useRef();
+    const [selectedDate, setSelectedDate] = useState(value);
     const [isDatePickerVisible, setIsDatePickerVisible] = useState(false);
 
-    const handleChange = (value: any) => {
-        setSelectedDate(value);
+    const handleOnChange = (dateValue: number) => {
+        setSelectedDate(dateValue);
     };
 
-    const handleDatePickerVisible = (value: any) => {
-        setIsDatePickerVisible(value);
-    };
-
-    const handleClearDate = () => {
+    const handleClearDate = (e: any) => {
+        e.stopPropagation();
         setSelectedDate(null);
+    };
+
+    const handleDatePickerVisible = (isVisible = false) => {
+        setIsDatePickerVisible(isVisible);
+    };
+
+    const renderDatePicker = () => {
+        if (isMobile()) {
+            return (
+                <MobileInput
+                    ref={e => {
+                        forwardRef(e);
+                        mobileInputRef.current = e;
+                    }}
+                    name={name}
+                    type="date"
+                    step={1}
+                    onChange={() => handleOnChange(mobileInputRef.current.value)}
+                />
+            );
+        }
+        return (
+            <DatePickerContainer isVisible={isDatePickerVisible}>
+                <DatePicker
+                    forwardRef={forwardRef}
+                    name={name}
+                    value={selectedDate}
+                    onChange={handleOnChange}
+                    onClose={() => handleDatePickerVisible(false)}
+                    isSetTodayVisible={isSetTodayVisible}
+                />
+            </DatePickerContainer>
+        );
     };
 
     return (
@@ -41,17 +78,10 @@ const DateInput = (props: Props) => {
 
                 <CalendarIcon code="calendar-alt" color="#c3c3c3"/>
 
-                <ClearIcon code="times-circle" color="#c3c3c3" onClick={() => handleClearDate()}/>
+                <ClearIcon code="times-circle" color="#c3c3c3" onClick={handleClearDate}/>
             </FakeInput>
 
-            <DatePickerContainer isVisible={isDatePickerVisible}>
-                <DatePicker
-                    value={selectedDate}
-                    onChange={handleChange}
-                    onClose={() => handleDatePickerVisible(false)}
-                    isSetTodayVisible={isSetTodayVisible}
-                />
-            </DatePickerContainer>
+            {renderDatePicker()}
 
             <CloseArea isVisible={isDatePickerVisible} onClick={() => handleDatePickerVisible(false)}/>
         </InputContainer>
@@ -60,10 +90,24 @@ const DateInput = (props: Props) => {
 
 DateInput.defaultProps = {
     label: '',
+    name: undefined,
+    value: undefined,
     isSetTodayVisible: false,
+    forwardRef: () => {},
 };
 
 export default DateInput;
+
+const MobileInput = styled.input`
+    width: 100%;
+    height: 100%;
+    border: none;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background-color: transparent;
+    opacity: 0;
+`;
 
 const CloseArea: any = styled.div`
     position: fixed;
@@ -103,9 +147,9 @@ const Label = styled.span`
 
 const DatePickerContainer: any = styled.div`
     position: absolute;
-    left: 0;
-    right: 0;
+    left: 50%;
     top: calc(100% + 1px);
+    transform: translateX(-50%);
     visibility: ${(props: any) => (props.isVisible ? 'visible' : 'hidden')};
     opacity: ${(props: any) => (props.isVisible ? 1 : 0)};
     z-index: ${(props: any) => (props.isVisible ? 1 : -1)};

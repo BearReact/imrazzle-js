@@ -1,3 +1,5 @@
+import * as CSS from 'csstype';
+
 export type Column = number | true | 'auto';
 
 export type ColProps = {
@@ -11,6 +13,7 @@ export type ColProps = {
     className?: string;
     forwardedAs?: any;
     key?: string;
+    style?: CSS.Properties;
 };
 
 export type ColCss = {

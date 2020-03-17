@@ -6,3 +6,8 @@ declare module '*.svg' {
 declare module "@storybook/addon-console" {
     export function withConsole(): any;
 }
+
+declare module '*.md' {
+    const content: string;
+    export = content;
+}

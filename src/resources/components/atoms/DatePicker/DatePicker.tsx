@@ -202,7 +202,8 @@ const DatePicker = (props: Props) => {
      */
     const renderWeek = () => (
         <WeekRow>
-            {localeWeekDay.map(week => <Week key={`week-${week}`}>{week}</Week>)}
+            {/* eslint-disable-next-line react/no-array-index-key */}
+            {localeWeekDay.map((week, index) => <Week key={`localeWeekDay-${index}-${week}`}>{week}</Week>)}
         </WeekRow>
     );
 

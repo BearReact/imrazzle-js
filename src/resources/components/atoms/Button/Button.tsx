@@ -15,6 +15,7 @@ type Props = {
     shape?: 'default' | 'circle' | 'raised';
     block?: boolean;
     type?: 'button' | 'submit';
+    disabled?: boolean;
 };
 
 const themeConfig = {
@@ -187,6 +188,7 @@ Button.defaultProps = {
     type: 'button',
     children: '',
     className: '',
+    disabled: false,
 };
 
 export default Button;

@@ -49,15 +49,12 @@
   "include": ["src"],
   "exclude": [
     "node_modules",
-    "./build",
-    "./scripts",
-    "./acceptance-tests",
-    "./webpack",
-    "./jest",
-    "package.json",
+    "build",
     "public/**/*",
-    "./internals"
-
+    "internals"
+  ],
+  "files": [
+    "./typings/index.d.ts"
   ],
   "types": ["typePatches", "node", "webpack-env"]
 }
