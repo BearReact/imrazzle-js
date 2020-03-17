@@ -17,7 +17,7 @@ server.use(cookiesMiddleware());
 
 server.use(routePath('/static'), express.static(resolve(process.cwd(), isDev ? 'public/static' : 'build/public/static')));
 if (isDev) {
-    const reverseProxyList = require('./middleware/reverseProxyList').default;
+    const reverseProxyList: any = require('./middleware/reverseProxyList').default;
     if (!isEmpty(reverseProxyList)) {
         reverseProxyList.map((proxy: any) => {
             server.use(proxy);

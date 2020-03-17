@@ -7,6 +7,7 @@
  *   script `extract-intl`, and must use CommonJS module syntax
  *   You CANNOT use import/export in this file.
  */
+// @ts-ignore
 const langConfig = {
     'zh-CN': require('../../resources/lang/zh-CN').default,
     'en-US': require('../../resources/lang/en-US').default,

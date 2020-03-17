@@ -3,7 +3,7 @@
 /** -----------------------------------------
             Assemble The Reducers
  /** ---------------------------------------*/
-const rootReducers = {
+const rootReducers: any = {
 
     language: require('./Language/Reducer').reducer,
     auth: require('./Auth/Reducer').reducer,

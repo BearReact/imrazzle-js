@@ -49,10 +49,9 @@
   "include": ["src"],
   "exclude": [
     "node_modules",
-    "./build",
-    "package.json",
-    "public/**/*",
-    "./internals"
+    "build",
+    "public",
+    "internals"
   ],
   "files": [
     "./typings/index.d.ts"

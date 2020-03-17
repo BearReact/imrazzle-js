@@ -27,6 +27,7 @@ if (module.hot) {
         console.log('🔁  HMR Reloading `../server`...');
 
         try {
+            // @ts-ignore
             const hotApp = require('./server').default;
             server.removeListener('request', currentApp);
             server.on('request', hotApp);

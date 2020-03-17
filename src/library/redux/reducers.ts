@@ -25,6 +25,7 @@ export default function createReducer(injectedReducers = {}) {
                 system, auth, startup, ui,
             };
         }
+        // @ts-ignore
         return appReducer(state, action);
     };
 
