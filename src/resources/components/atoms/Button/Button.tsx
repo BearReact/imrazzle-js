@@ -15,6 +15,7 @@ type Props = {
     shape?: 'default' | 'circle' | 'raised';
     block?: boolean;
     type?: 'button' | 'submit';
+    disabled?: boolean;
 };
 
 const themeConfig = {
@@ -158,7 +159,7 @@ const shapeConfig = {
  */
 const Button = (props: Props) => {
     const {
-        className, style, children, theme, size, shape, type, block,
+        className, style, children, theme, size, shape, type, block, disabled,
     }: any = props;
 
     const activeTheme = get(themeConfig, theme, {});
@@ -172,6 +173,7 @@ const Button = (props: Props) => {
             style={style}
             baseTheme={{...activeTheme, ...activeSizeConfig, ...activeShapeConfig}}
             block={block}
+            disabled={disabled}
         >
             {children}
         </ButtonRoot>
@@ -187,6 +189,7 @@ Button.defaultProps = {
     type: 'button',
     children: '',
     className: '',
+    disabled: false,
 };
 
 export default Button;
