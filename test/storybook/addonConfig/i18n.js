@@ -3,12 +3,6 @@ import {IntlProvider} from 'react-intl';
 // import LanguageProvider from "@i18n/provider";
 import {translationMessages, DEFAULT_LOCALE} from '@i18n';
 
-type Props = {
-    children?: React.ReactNode,
-    i18n: any,
-    locale: string,
-};
-type State = {};
 
 if (!Intl.PluralRules) {
     require('@formatjs/intl-pluralrules/polyfill');
@@ -23,7 +17,7 @@ if (!Intl.RelativeTimeFormat) {
     require('@formatjs/intl-relativetimeformat/dist/locale-data/zh'); // Add locale data for de
 }
 
-const TranslationWrapper = ({dangerouslySetInnerHTML, ...props}: any) =>
+const TranslationWrapper = ({dangerouslySetInnerHTML, ...props}) =>
     dangerouslySetInnerHTML ? (
         <span dangerouslySetInnerHTML={dangerouslySetInnerHTML} {...props}/>
     ) : (
@@ -33,8 +27,8 @@ const TranslationWrapper = ({dangerouslySetInnerHTML, ...props}: any) =>
 /**
  * provider
  */
-function I18nProviderWrapper(props: Props) {
-    const {children, locale, messages}: any = props;
+function I18nProviderWrapper(props) {
+    const {children, locale, messages} = props;
 
     return (
         <IntlProvider

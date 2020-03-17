@@ -10,12 +10,12 @@ import * as React from 'react';
 import {IntlProvider} from 'react-intl';
 import IntlGlobalProvider from '../global';
 
-interface IProps {
+interface TransProps {
     dangerouslySetInnerHTML: any;
     // any other props that come into the component
 }
 
-const TranslationWrapper = ({dangerouslySetInnerHTML, ...props}: IProps) => (dangerouslySetInnerHTML ? (
+const TranslationWrapper = ({dangerouslySetInnerHTML, ...props}: TransProps) => (dangerouslySetInnerHTML ? (
     <span dangerouslySetInnerHTML={dangerouslySetInnerHTML} {...props}/>
 ) : (
     <React.Fragment {...props}/>

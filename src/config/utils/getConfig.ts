@@ -28,10 +28,6 @@ const initConfig = {
 export const getConfig = (pathKey: string, defaultReturn?: string) => {
     if (typeof window !== 'undefined') {
 
-        interface window {
-            __global__: any;
-        }
-
         // @ts-ignore
         // eslint-disable-next-line no-underscore-dangle
         return get(window.__global__, pathKey, defaultReturn);

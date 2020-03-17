@@ -4,19 +4,19 @@
  * @param isDecimal2 保留小數2位
  * @returns {string}
  */
-export function formatCurrency(val = 0, isDecimal2 = true) {
+export const formatCurrency = (val = 0, isDecimal2 = true) => {
     const dec = isDecimal2 ? toDecimal2(val) : Math.floor(val);
     const parts = dec.toString().split('.');
     parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ',');
     return parts.join('.');
-}
+};
 
 /**
  * 保留小數第二位
  * @returns {string}
  * @param x
  */
-export function toDecimal2(x: any) {
+export const toDecimal2 = (x: any) => {
     let f = parseFloat(x);
     if (Number.isNaN(f)) {
         return false;
@@ -32,7 +32,7 @@ export function toDecimal2(x: any) {
         s += '0';
     }
     return s;
-}
+};
 
 /**
  * 取得數組中的交集最小範圍
@@ -44,7 +44,7 @@ export function toDecimal2(x: any) {
  * result = {min: 5, max: 20}
  * @param obj
  */
-export function intersectionMin(...obj: any) {
+export const intersectionMin = (...obj: any) => {
     let min: any = 0;
     let max: any = null;
 
@@ -70,4 +70,4 @@ export function intersectionMin(...obj: any) {
         max = null;
     }
     return {min, max};
-}
+};

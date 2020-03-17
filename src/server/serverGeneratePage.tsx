@@ -30,7 +30,7 @@ require('@formatjs/intl-pluralrules/dist/locale-data/en'); // Add locale data fo
 require('@formatjs/intl-pluralrules/dist/locale-data/zh'); // Add locale data for de
 
 // @ts-ignore
-// eslint-disable-next-line import/no-dynamic-require
+// eslint-disable-next-line import/no-dynamic-require,@typescript-eslint/no-var-requires
 const assets = require(process.env.RAZZLE_ASSETS_MANIFEST);
 
 export default (req: any, res: any) => {

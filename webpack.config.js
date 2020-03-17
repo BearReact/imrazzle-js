@@ -6,6 +6,6 @@ module.exports = {
     },
     resolve: {
         plugins: [new TsconfigPathsPlugin({/* options: see below */})],
-        extensions: ['.js', '.jsx', '.ts', '.tsx'],
+        extensions: ['.js','.jsx', '.ts', '.tsx'],
     },
 };

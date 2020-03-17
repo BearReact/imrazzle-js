@@ -14,7 +14,7 @@ import {routePath} from '@config/utils/getAssetPrefix';
  * @param isMultipleOpen 是否需要可以多開子視窗
  * @returns {boolean}
  */
-export default class windowOpen {
+export default class WindowOpen {
     openTargetId: string;
 
     isMultipleOpen: boolean;
