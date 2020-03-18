@@ -6,9 +6,14 @@ import {themeName} from '../../config';
 import media from '../../media';
 import getDataName from './getDataName';
 
-const generateMedia = (props: any) => Object.keys(props.theme[themeName].gridBreakpoints).map(sizeName => media[sizeName]`
-                max-width: ${props.theme[themeName].gridBreakpoints[sizeName]}px;
-            `);
+const generateMedia = (props: any) => Object.keys(props.theme[themeName].gridBreakpoints)
+    .map(sizeName => {
+        if (props.theme[themeName].gridBreakpoints[sizeName] > 0) {
+            return media[sizeName]`
+            max-width: ${props.theme[themeName].containerMaxWidths[sizeName]}px;
+            `;
+        }
+    });
 
 /**
  * Row Component
@@ -20,12 +25,12 @@ const Container: any = styled.div.attrs((props: ContainerProps) => ({
   width: 100%;
   margin-right: auto;
   margin-left: auto;
-  
+
   ${(props: any) => css`
      padding-right: ${props.theme[themeName].gridGutterWidth}px;
      padding-left: ${props.theme[themeName].gridGutterWidth}px;
-     
-     
+
+
      ${!props.fluid && css`
         ${generateMedia(props)};
     `}

@@ -15,6 +15,6 @@ export const defaultTheme = {
         md: 720,
         lg: 960,
         xl: 1140,
-        xxl: 1141,
+        xxl: 1140,
     },
 };
