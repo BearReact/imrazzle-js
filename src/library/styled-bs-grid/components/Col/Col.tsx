@@ -5,8 +5,8 @@ import getDataName from './getDataName';
 import media from '../../media';
 import {isEmpty} from '../../utils';
 import {themeName} from '../../config';
-import type {ColProps} from './types';
-import type {themeProps} from '../ThemeProvider/types';
+import {ColProps} from './types';
+import {themeProps} from '../ThemeProvider/types';
 
 type Props = ColProps & {
     theme: themeProps;

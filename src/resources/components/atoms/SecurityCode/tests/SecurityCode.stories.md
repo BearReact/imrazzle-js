@@ -1,11 +1,12 @@
 # SecurityCode
 
-安全認證碼輸入框
+## How To Use
 
 ```javascript
 <SecurityCode length={4}/>
 ```
 
+## With Hook Form
 安全認證碼輸入框 + React-Hook-Form  
 註冊表格的部分多了驗證條件`register`
 
@@ -14,8 +15,8 @@ const {register, handleSubmit} = useForm({
     mode: 'onChange',
 });
 
-const onSubmit = formData => {
-    // mySubmitFunc(formData);
+const onSubmit = (formData: any) => {
+    console.log('onSubmit', formData.securityCode);
 };
 
 <form onSubmit={handleSubmit(onSubmit)}>
@@ -39,4 +40,15 @@ const onSubmit = formData => {
         length={codeLength}
     />
 </form>
+```
+
+## With Input Type
+
+```javascript
+<SecurityCode
+    length={codeLength}
+    title="Reload Password"
+    remark="Each iCARD reload card can only be used ones."
+    type="material"
+/>
 ```

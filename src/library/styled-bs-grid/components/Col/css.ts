@@ -1,4 +1,4 @@
-import type {ColCss} from './types';
+import {ColCss} from './types';
 
 const css: ColCss = {
     col: (column: any, gridColumns: number) => {

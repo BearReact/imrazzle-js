@@ -19,27 +19,20 @@ export const Basic = () => {
     };
 
     return (
-        <Container>
+        <Container className="pt-3">
             <h2 className="story-title">Time Picker</h2>
 
             <Row>
-                <Col col={24} className="d-flex justify-content-center" style={{color: '#bdbdbd'}}>
-                    selected time is: {selectedTime}
+                <Col col={24} style={{color: '#bdbdbd'}}>
+                    selected date is: {selectedTime}
                 </Col>
                 <Col col={24} className="pb-3 pt-3">
                     <TimePicker onChange={handleChange}/>
                 </Col>
             </Row>
+
         </Container>
     );
-};
-
-Basic.story = {
-    parameters: {
-        backgrounds: [
-            {name: 'light', value: '#f0f0f0', default: true},
-        ],
-    },
 };
 
 export const UseHookForm = () => {
@@ -51,34 +44,36 @@ export const UseHookForm = () => {
 
     const onSubmit = (formData: any) => {
         // 將取回的值寫入state
-        setSelectedTime(formData.timePicker);
+        // eslint-disable-next-line no-console
+        console.log('onSubmit', formData.createTime);
     };
 
     return (
-        <Container>
-            <h2 className="story-title">Time Picker</h2>
+        <form onSubmit={handleSubmit(onSubmit)}>
+            <Container className="pt-3">
+                <h2 className="story-title">Use Hook-From</h2>
 
-            <Row>
-                <Col col={24} className="d-flex justify-content-center" style={{color: '#bdbdbd'}}>
-                    selected time is: {selectedTime}
-                </Col>
-                <form onSubmit={handleSubmit(onSubmit)}>
+                <Row>
+                    <Col col={24} style={{color: '#bdbdbd'}}>
+                        selected date is: {selectedTime}
+                    </Col>
+
                     <Col col={24} className="pb-3 pt-3">
                         <TimePicker
                             forwardRef={register}
-                            name="timePicker"
+                            name="createTime"
+                            onClickOk={setSelectedTime}
                         />
                     </Col>
-                </form>
-            </Row>
-        </Container>
+
+                    <Col col="auto" className="d-flex justify-content-center" style={{color: '#bdbdbd'}}>
+                        <button type="submit">Click Submit Form</button>
+                    </Col>
+                </Row>
+
+            </Container>
+        </form>
+
     );
 };
 
-UseHookForm.story = {
-    parameters: {
-        backgrounds: [
-            {name: 'light', value: '#f0f0f0', default: true},
-        ],
-    },
-};

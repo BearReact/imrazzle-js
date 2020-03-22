@@ -17,7 +17,7 @@ export default {
 
 export const Basic = () => (
     <Container className="pt-3">
-        <h2 className="story-title">Button</h2>
+        <h2 className="story-title">Basic Button</h2>
 
         <Row>
             <Col col={24} lg={6} className="mb-4">

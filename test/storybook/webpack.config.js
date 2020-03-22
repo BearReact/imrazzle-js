@@ -7,10 +7,10 @@ module.exports = merge(webpackBase, {
     module: {
         rules: [
             {
-                test: /\.tsx?$/,
-                loader: 'ts-loader',
+                test: /\.(ts|tsx)$/,
+                loader: 'babel-loader',
                 options: {
-                    transpileOnly: true,
+                    presets: ['@babel/preset-env'],
                 },
             },
             {

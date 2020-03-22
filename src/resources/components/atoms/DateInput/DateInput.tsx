@@ -10,7 +10,7 @@ type Props = {
     label?: string;
     name?: string;
     value?: string;
-    isSetTodayVisible?: boolean;
+    isVisibleSetToday?: boolean;
     forwardRef?: Function;
 };
 
@@ -21,7 +21,7 @@ type Props = {
  */
 const DateInput = (props: Props) => {
     const {
-        label, isSetTodayVisible, value, name, forwardRef,
+        label, isVisibleSetToday, value, name, forwardRef,
     }: any = props;
 
     const mobileInputRef: any = useRef();
@@ -64,7 +64,7 @@ const DateInput = (props: Props) => {
                     value={selectedDate}
                     onChange={handleOnChange}
                     onClose={() => handleDatePickerVisible(false)}
-                    isSetTodayVisible={isSetTodayVisible}
+                    isVisibleSetToday={isVisibleSetToday}
                 />
             </DatePickerContainer>
         );
@@ -77,9 +77,13 @@ const DateInput = (props: Props) => {
             <FakeInput onClick={() => handleDatePickerVisible(true)}>
                 <Label>{selectedDate || label}</Label>
 
-                <CalendarIcon code="calendar-alt" color="#c3c3c3"/>
+                <CalendarIcon>
+                    <Icon code="calendar-alt" color="#c3c3c3"/>
+                </CalendarIcon>
 
-                <ClearIcon code="times-circle" color="#c3c3c3" onClick={handleClearDate}/>
+                <ClearIcon onClick={handleClearDate}>
+                    <Icon code="times-circle" color="#c3c3c3" onClick={handleClearDate}/>
+                </ClearIcon>
             </FakeInput>
 
             {renderDatePicker()}
@@ -93,7 +97,7 @@ DateInput.defaultProps = {
     label: '',
     name: undefined,
     value: undefined,
-    isSetTodayVisible: false,
+    isVisibleSetToday: false,
     forwardRef: () => {},
 };
 
@@ -101,7 +105,7 @@ export default DateInput;
 
 const MobileInput = styled.input`
     width: 100%;
-    height: 100%;
+    height: inherit;
     border: none;
     position: absolute;
     left: 0;
@@ -119,10 +123,13 @@ const CloseArea: any = styled.div`
     z-index: ${(props: any) => (props.isVisible ? 0 : -1)};
 `;
 
-const CustomIcon = styled(Icon)`
+const CustomIcon = styled.div`
     width: ${px2vw(42)};
-    height: 100%;
+    height: inherit;
     transition: opacity .3s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     ${media.lg`
         width: 48px;
@@ -136,6 +143,7 @@ const ClearIcon = styled(CustomIcon)`
     right: 0;
     top: 0;
     opacity: 0;
+    pointer-events: none;
 `;
 
 const Label = styled.span`
@@ -159,7 +167,7 @@ const DatePickerContainer: any = styled.div`
 
 const FakeInput = styled.div`
     color: #8d8d8d;
-    height: 100%;
+    height: inherit;
     display: flex;
     align-items: center;
     justify-content: space-between;

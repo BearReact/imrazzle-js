@@ -2,7 +2,7 @@ import React from 'react';
 import styled, {css} from 'styled-components';
 import getDataName from './getDataName';
 import {themeName} from '../../config';
-import type {RowProps} from './types';
+import {RowProps} from './types';
 
 /**
  * Get Row Margin

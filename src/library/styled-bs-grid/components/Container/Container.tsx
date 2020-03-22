@@ -1,6 +1,6 @@
 import React from 'react';
 import styled, {css} from 'styled-components';
-import type {ContainerProps} from './types';
+import {ContainerProps} from './types';
 
 import {themeName} from '../../config';
 import media from '../../media';

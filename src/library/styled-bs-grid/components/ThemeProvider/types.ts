@@ -2,7 +2,7 @@ import * as React from 'react';
 
 export type gridProps = {
     gridGutterWidth?: number;
-    gridColumns: number;
+    gridColumns?: number;
     gridBreakpoints?: {
         xs: number;
         sm: number;

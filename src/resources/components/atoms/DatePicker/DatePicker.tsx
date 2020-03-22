@@ -156,7 +156,7 @@ const DatePicker = (props: Props) => {
                             panelPreYearMonth.get('month'),
                         )}
                     >
-                        <Icon code="arrow-left" color="rgba(0, 0, 0, 0.25)" size={12}/>
+                        <Icon code="arrow-right" color="rgba(0, 0, 0, 0.25)" size={12} rotate={180}/>
                     </MonthButton>
 
                     <YearMonth>

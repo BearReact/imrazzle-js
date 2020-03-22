@@ -1,4 +1,4 @@
-import type {RowProps} from './types';
+import {RowProps} from './types';
 
 export default (p: RowProps) => (process.env.NODE_ENV === 'production'
     ? undefined

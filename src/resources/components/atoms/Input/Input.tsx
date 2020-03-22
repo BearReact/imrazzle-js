@@ -1,11 +1,13 @@
-
 import React, {useRef} from 'react';
+import * as CSS from 'csstype';
 import styled, {css} from 'styled-components';
 import {media} from '@styled-bs-grid';
 import px2vw from '@config/utils/getPx2vw';
 import Icon from '@components/atoms/Icon';
 
 type Props = {
+    className?: string;
+    style?: CSS.Properties;
     forwardRef?: Function;
     type?: 'text' | 'number' | 'password' | 'tel';
     inputType?: 'normal' | 'material';
@@ -29,23 +31,23 @@ type Props = {
  * @returns {*}
  * @constructor
  */
-const Input = (props: Props) => {
-
-    const {
-        forwardRef,
-        type,
-        name,
-        inputType,
-        placeholder,
-        defaultValue,
-        readonly,
-        errorMessage,
-        remarkMessage,
-        beforeIconCode,
-        beforeIconOnClick,
-        afterIconCode,
-        afterIconOnClick,
-    }: any = props;
+const Input = ({
+    className,
+    style,
+    forwardRef = () => {},
+    name,
+    type = 'text',
+    inputType = 'material',
+    placeholder = '',
+    defaultValue,
+    readonly = false,
+    errorMessage,
+    remarkMessage,
+    beforeIconCode = '',
+    beforeIconOnClick,
+    afterIconCode = '',
+    afterIconOnClick,
+}: Props) => {
 
     const textBoxRef: any = useRef();
 
@@ -53,11 +55,11 @@ const Input = (props: Props) => {
         textBoxRef.current.value = '';
     };
 
-    const isVisibleBeforeIcon = beforeIconCode && inputType === 'normal';
+    const isVisibleBeforeIcon = beforeIconCode && inputType === 'normal'; // 只有Normal模式可以使用 BeforeIcon
     const isVisibleCleanButton = !readonly && !afterIconCode; // 當可寫(非唯獨) 並且 沒有設定 AfterIcon 時
 
     return (
-        <InputContainer>
+        <InputContainer className={className} style={style}>
             <InputRoot>
                 {/* Input */}
                 <TextBox
@@ -120,7 +122,7 @@ const Input = (props: Props) => {
             {/* 錯誤訊息提示 */}
             {errorMessage && (
                 <Remark isError={errorMessage}>
-                    <Icon code="exclamation-circle" right={5} color="#ff4b4b" size={12}/>
+                    <Icon code="exclamation-circle" color="#ff4b4b" size={12}/>
                     {errorMessage}
                 </Remark>
             )}
@@ -135,19 +137,6 @@ const Input = (props: Props) => {
 };
 
 Input.defaultProps = {
-    forwardRef: () => {},
-    name: undefined,
-    type: 'text',
-    inputType: 'material',
-    placeholder: '',
-    defaultValue: undefined,
-    readonly: false,
-    errorMessage: undefined,
-    remarkMessage: undefined,
-    beforeIconCode: '',
-    beforeIconOnClick: undefined,
-    afterIconCode: '',
-    afterIconOnClick: undefined,
 };
 
 export default Input;
@@ -208,7 +197,6 @@ const Border = styled.fieldset`
 
 const CustomIcon = styled(Icon)`
     padding: ${px2vw(20)};
-    max-height: ${px2vw(50)};
     color: #c3c3c3;
     order: 2;
     
@@ -216,13 +204,8 @@ const CustomIcon = styled(Icon)`
         color: ${(props: any) => props.theme.primaryColor};
     }
     
-    >i {
-        color: inherit;
-    }
-    
     ${media.lg`
         padding: 20px;
-        max-height: 50px;
     `}
 `;
 

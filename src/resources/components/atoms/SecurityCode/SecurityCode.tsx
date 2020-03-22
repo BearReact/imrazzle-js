@@ -1,7 +1,7 @@
 
 import React, {useRef} from 'react';
 import * as CSS from 'csstype';
-import styled from 'styled-components';
+import styled, {css} from 'styled-components';
 import {media} from '@styled-bs-grid';
 import px2vw from '@config/utils/getPx2vw';
 
@@ -9,6 +9,9 @@ type Props = {
     style?: CSS.Properties;
     className?: string;
     name?: string;
+    title?: string;
+    remark?: string;
+    type?: string;
     length?: any;
     forwardRef?: Function;
     onChange?: Function;
@@ -25,7 +28,7 @@ type Props = {
 const SecurityCode = (props: Props) => {
 
     const {
-        className, style, length, name, onChange, forwardRef,
+        className, style, length, name, onChange, forwardRef, title, remark, type,
     }: any = props;
 
     const serialRef: any = useRef([]);
@@ -92,32 +95,40 @@ const SecurityCode = (props: Props) => {
         const serialInputList = [];
         for (let i = 0; i < length; i += 1) {
             serialInputList[i] = (
-                <Col key={`serialInput_${i}`}>
-                    <SerialInput
-                        ref={e => {
-                            serialRef.current[i] = e;
-                        }}
-                        maxLength={1}
-                        onClick={handleFocusNext}
-                        onKeyUp={handleSyncValue}
-                        onChange={() => handleMoveToNextInput(i)}
-                        onKeyDown={e => handleBackInput(e, i)}
-                        placeholder=" "
-                        type="text"
-                    />
-                </Col>
+                <SerialInput
+                    key={`serialInput_${i}`}
+                    ref={e => {
+                        serialRef.current[i] = e;
+                    }}
+                    maxLength={1}
+                    onClick={handleFocusNext}
+                    onKeyUp={handleSyncValue}
+                    onChange={() => handleMoveToNextInput(i)}
+                    onKeyDown={e => handleBackInput(e, i)}
+                    placeholder=" "
+                    type="text"
+                />
             );
         }
         return serialInputList;
     };
 
     return (
-        <SecurityCodeRoot
-            className={className}
-            style={style}
-            length={length}
-        >
-            {generateSerialInput()}
+        <RootConatiner>
+            <InputContainer type={type}>
+                <SecurityCodeRoot
+                    className={className}
+                    style={style}
+                >
+                    {generateSerialInput()}
+
+                    {/* 外框 */}
+                    <Border>
+                        <Title>{title}</Title>
+                    </Border>
+                </SecurityCodeRoot>
+            </InputContainer>
+            {remark && <Remark>{remark}</Remark>}
 
             <input
                 ref={e => {
@@ -127,7 +138,7 @@ const SecurityCode = (props: Props) => {
                 name={name}
                 type="hidden"
             />
-        </SecurityCodeRoot>
+        </RootConatiner>
     );
 };
 
@@ -135,6 +146,9 @@ SecurityCode.defaultProps = {
     style: undefined,
     className: undefined,
     name: undefined,
+    title: undefined,
+    remark: undefined,
+    type: undefined,
     length: 4,
     forwardRef: () => {},
     onChange: () => {},
@@ -142,15 +156,56 @@ SecurityCode.defaultProps = {
 
 export default SecurityCode;
 
+const Remark = styled.span`
+    font-size: ${px2vw(12)};
+    padding-top: ${px2vw(4)};
+    color: #b8b8b8;
+    line-height: 1;
+    transform: scale(.833);
+    transform-origin: left;
+    display: block;
+
+    ${media.lg`
+        font-size: 12px;
+        padding-top: 4px;
+        transform: none;
+    `}
+`;
+
+const Title = styled.legend`
+    font-size: ${px2vw(14)};
+    color: #8d8d8d;
+    width: auto;
+    padding: 0 5px;
+    margin: 0 0 0 15px;
+
+    ${media.lg`
+        font-size: 14px;
+    `}
+`;
+
+const Border = styled.fieldset`
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 0;
+    border: solid 1px #8d8d8d;
+    pointer-events: none;
+    display: none;
+`;
+
 const SerialInput = styled.input`
     color: ${(props: any) => props.theme.primaryColor};
     width: ${px2vw(30)};
     font-size: ${px2vw(20)};
+    margin: 0 ${px2vw(10)};
 
     background-color: transparent;
     border: none;
     border-radius: 0;
-    border-bottom: solid 2px #fff;
+    border-bottom: solid 2px #c3c3c3;
     text-align: center;
 
     ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
@@ -166,35 +221,77 @@ const SerialInput = styled.input`
       color: transparent;
     }
 
+    &:focus {
+        &~${Border} {
+            border-color: ${(props: any) => props.theme.primaryColor};
+
+            ${Title} {
+                color: ${(props: any) => props.theme.primaryColor};
+            }
+        }
+    }
 
     &:not(:placeholder-shown) {
-        border-bottom-color: ${(props: any) => props.theme.primaryColor};
+        &~${Border} {
+            ${Title} {
+                color: ${(props: any) => props.theme.primaryColor};
+            }
+        }
     }
 
     ${media.lg`
         font-size: 20px;
-        width: 30px;
+        width: 40px;
+        margin: 0 10px;
     `}
 `;
 
-const Col = styled.div`
-    padding: 0 ${px2vw(10)};
+const SecurityCodeRoot = styled.div`
+    margin: 0 -${px2vw(10)};
 
     ${media.lg`
-        padding: 0 10px;
+        margin: 0 -10px;
     `}
 `;
 
-const SecurityCodeRoot: any = styled.div`
-    width: ${(props: any) => `calc(${props.length} * ${px2vw(50)})`};
-    max-width: 100%;
+const InputContainer: any = styled.div`
+    height: auto;
+    position: relative;
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    margin: 0 -10px;
+    align-items: center;
 
-    ${media.lg`
-        width: ${(props: any) => `calc(${props.length} * 50px)`};
+    ${(props: any) => props.type && css`
+        height: ${px2vw(85)};
+        padding: 0 ${px2vw(11)};
+
+        ${SecurityCodeRoot} {
+            margin: 0 -${px2vw(4)};
+        }
+
+        ${SerialInput} {
+            margin: 0 ${px2vw(4)};
+        }
+
+        ${Border} {
+            display: block;
+        }
+
+        ${media.lg`
+            width: 456px;
+            height: 104px;
+            padding: 0 10px;
+            margin: 0 -2px;
+
+            ${SecurityCodeRoot} {
+                margin: 0 -2px;
+            }
+
+            ${SerialInput} {
+                margin: 0 2px;
+            }
+        `}
     `}
+`;
+
+const RootConatiner = styled.div`
 `;

@@ -1,4 +1,4 @@
-import type {ContainerProps} from './types';
+import {ContainerProps} from './types';
 
 export default (p: ContainerProps) => (process.env.NODE_ENV === 'production'
     ? undefined

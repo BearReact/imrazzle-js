@@ -1,5 +1,5 @@
 import {suffix} from '../../utils';
-import type {ColProps} from './types';
+import {ColProps} from './types';
 
 export default (props: ColProps) => (process.env.NODE_ENV === 'production'
     ? undefined

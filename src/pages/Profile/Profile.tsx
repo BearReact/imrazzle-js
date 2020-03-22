@@ -3,8 +3,8 @@ import styled from 'styled-components';
 import {Container, Col, Row} from '@styled-bs-grid';
 import dayjs from 'dayjs';
 import get from 'lodash/get';
-import type {payloadType} from '@store/Auth/type';
-import type {currentDataType, isFetchingType} from './store/type';
+import {payloadType} from '@store/Auth/type';
+import {currentDataType, isFetchingType} from './store/type';
 
 type Props = {
     intl: any;

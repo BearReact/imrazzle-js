@@ -1,7 +1,7 @@
 import {css} from 'styled-components';
 import get from 'lodash/get';
 import {themeName, defaultTheme} from '../config';
-import type {mediaType} from './types';
+import {mediaType} from './types';
 
 const getBreakpoints = (props: any) => ({
     ...defaultTheme.gridBreakpoints,

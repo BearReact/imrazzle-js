@@ -1,7 +1,14 @@
-import type {IsNumberFn, SuffixFn} from './types';
+import {IsNumberFn, SuffixFn} from './types';
 
 export const isNumber: IsNumberFn = value => !Number(value) !== true;
-export const suffix: SuffixFn = value => (isNumber(value) ? `-${value}` : '');
+export const suffix: SuffixFn = value => {
+    if (isNumber(value)) {
+        return `-${value}`;
+    } if (value === 'auto') {
+        return '-auto';
+    }
+    return '';
+};
 export const isEmpty = (value: any, isCheckNumber0 = false) => (
     value === undefined
         || value === null

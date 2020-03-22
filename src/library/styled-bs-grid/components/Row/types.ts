@@ -5,4 +5,6 @@ export type RowProps = {
     children?: React.ReactNode;
     className?: string;
     style?: CSS.Properties;
+    forwardedAs?: 'a' | 'ul' | 'li';
+    as?: 'a' | 'ul' | 'li';
 };

@@ -147,7 +147,7 @@ const TimePicker = (props: Props) => {
         onChange(updateTimeValue);
         inputRef.current.value = updateTimeValue;
 
-        onClickOk();
+        onClickOk(updateTimeValue);
     };
 
     /**
@@ -166,7 +166,7 @@ const TimePicker = (props: Props) => {
         setMinute(reToday.format('mm'));
         setSecond(reToday.format('ss'));
 
-        onClickOk();
+        onClickOk(nowTime);
     };
 
     return (
@@ -195,8 +195,8 @@ const TimePicker = (props: Props) => {
             </PickContainer>
 
             <ButtonContainer>
-                <NowButton onClick={() => handleNowTime()}>此刻</NowButton>
-                <ConfirmButton onClick={() => handleClickOk()}>确 定</ConfirmButton>
+                <NowButton type="button" onClick={() => handleNowTime()}>此刻</NowButton>
+                <ConfirmButton type="button" onClick={() => handleClickOk()}>确 定</ConfirmButton>
             </ButtonContainer>
 
             <input
